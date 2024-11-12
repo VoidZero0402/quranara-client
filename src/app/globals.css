@@ -32,7 +32,7 @@
     }
 
     input[type="password"]::placeholder {
-        @apply tracking-normal
+        @apply tracking-normal;
     }
 }
 

@@ -24,7 +24,7 @@ function Toast({ text, caption, status = "success", className, ...props }: Toast
     const SvgComponent = toast[status].SvgComponent;
 
     return (
-        <div className={cn("flex items-center gap-x-2 p-4 w-[350px] fixed left-2 top-2 bg-white dark:bg-gray-800 rounded-lg shadow-md shadow-gray-100 dark:shadow-gray-900", toast[status].ClassName)} {...props}>
+        <div className={cn("flex items-center gap-x-2 p-4 w-[350px] fixed left-2 top-2 bg-white dark:bg-gray-800 rounded-lg border border-gray-100 dark:border-gray-800", toast[status].ClassName)} {...props}>
             <div className="shrink-0">
                 <SvgComponent className="w-12" />
             </div>

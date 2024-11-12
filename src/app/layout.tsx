@@ -28,7 +28,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="fa" dir="rtl" className={`${Pelak.variable} ${PelakMedium.variable} ${PelakSemiBold.variable}`}>
+        <html lang="fa" dir="rtl" className={`dark ${Pelak.variable} ${PelakMedium.variable} ${PelakSemiBold.variable}`}>
             <body className="font-pelak bg-gray-50 dark:bg-gray-900">{children}</body>
         </html>
     );
