@@ -1,8 +1,6 @@
-import { ComponentProps } from "react";
-
 import { cn } from "@/libs/cn";
 
-type DropdownProps = ComponentProps<"div">;
+type DropdownProps = React.ComponentProps<"div">;
 
 function Dropdown({ children, className }: DropdownProps) {
     return <div className={cn("w-full p-2.5 space-y-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-100 dark:border-gray-800", className)}>{children}</div>;

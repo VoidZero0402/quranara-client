@@ -1,4 +1,3 @@
-import { ComponentProps } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 
 import { cn } from "@/libs/cn";
@@ -16,7 +15,7 @@ const badge = cva("flex items-center gap-x-1 py-1 px-2 rounded-full select-none 
     },
 });
 
-type BadgeProps = VariantProps<typeof badge> & ComponentProps<"div">;
+type BadgeProps = VariantProps<typeof badge> & React.ComponentProps<"div">;
 
 function Badge({ children, className, color = "neutral" }: BadgeProps) {
     return <div className={cn(badge({ color }), className)}>{children}</div>;

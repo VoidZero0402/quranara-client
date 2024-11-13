@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, startTransition } from "react";
 import { useController, Control, FieldValues, Path } from "react-hook-form";
 
 import { cn } from "@/libs/cn";
@@ -41,9 +41,11 @@ function Select<T extends FieldValues>({ children, name, control, defaultText = 
     const { ref, toggleOpen, isOpen } = useToggle();
 
     const handleSelect = (value: string, text: string) => {
-        field.onChange(value);
-        setText(text);
-        toggleOpen();
+        startTransition(() => {
+            field.onChange(value);
+            setText(text);
+            toggleOpen();
+        });
     };
 
     return (

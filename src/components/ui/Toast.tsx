@@ -1,5 +1,3 @@
-import { ComponentProps, FC } from "react";
-
 import { SvgComponentProps } from "@/types/components.types";
 
 import { cn } from "@/libs/cn";
@@ -10,9 +8,9 @@ import InfoCircle from "../svgs/InfoCircle";
 
 type Status = "success" | "error" | "info";
 
-type StatusProps = { ClassName: string; SvgComponent: FC<SvgComponentProps> };
+type StatusProps = { ClassName: string; SvgComponent: React.FC<SvgComponentProps> };
 
-type ToastProps = { text: string; caption: string; status: Status } & ComponentProps<"div">;
+type ToastProps = { text: string; caption: string; status: Status } & React.ComponentProps<"div">;
 
 const toast: Record<Status, StatusProps> = {
     success: { ClassName: "text-teal-600 dark:text-teal-500", SvgComponent: CheckCircle },

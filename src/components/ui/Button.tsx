@@ -1,4 +1,3 @@
-import { ComponentProps } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 
 import { cn } from "@/libs/cn";
@@ -19,6 +18,7 @@ const button = cva("flex items-center gap-x-2 child:shrink-0 select-none transit
             sm: "text-sm py-2.5 px-4",
             base: "py-2.5 px-4.5",
             lg: "text-md py-3 px-5",
+            circle: "p-3",
         },
 
         rounded: {
@@ -34,7 +34,7 @@ const button = cva("flex items-center gap-x-2 child:shrink-0 select-none transit
     },
 });
 
-type ButtonProps = VariantProps<typeof button> & ComponentProps<"button">;
+type ButtonProps = VariantProps<typeof button> & React.ComponentProps<"button">;
 
 function Button({ children, className, variant = "filled-primary", size = "base", rounded = "base", ...props }: ButtonProps) {
     return (

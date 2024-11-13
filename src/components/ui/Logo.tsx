@@ -1,8 +1,6 @@
-import { ComponentProps } from "react";
-
 import { cn } from "@/libs/cn";
 
-type LogoProps = ComponentProps<"svg">;
+type LogoProps = React.ComponentProps<"svg">;
 
 function Logo({ className = "" }: LogoProps) {
     return (

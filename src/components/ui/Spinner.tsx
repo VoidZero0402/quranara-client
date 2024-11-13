@@ -1,4 +1,3 @@
-import { ComponentProps } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 
 import { cn } from "@/libs/cn";
@@ -18,7 +17,7 @@ const spinner = cva("animate-spin", {
     },
 });
 
-type SpinnerProps = VariantProps<typeof spinner> & { show: boolean } & ComponentProps<"svg">;
+type SpinnerProps = VariantProps<typeof spinner> & { show: boolean } & React.ComponentProps<"svg">;
 
 function Spinner({ className, show = false, size = "sm" }: SpinnerProps) {
     return show && <SpinnerCircle className={cn(spinner({ size }), className)} />;
