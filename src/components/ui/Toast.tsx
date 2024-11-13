@@ -20,11 +20,11 @@ const toast: Record<Status, StatusProps> = {
     info: { ClassName: "text-sky-500 dark:text-sky-400", SvgComponent: InfoCircle },
 };
 
-function Toast({ text, caption, status = "success", className, ...props }: ToastProps) {
+function Toast({ text, caption, status = "success", className }: ToastProps) {
     const SvgComponent = toast[status].SvgComponent;
 
     return (
-        <div className={cn("flex items-center gap-x-2 p-4 w-[350px] fixed left-2 top-2 bg-white dark:bg-gray-800 rounded-lg border border-gray-100 dark:border-gray-800", toast[status].ClassName)} {...props}>
+        <div className={cn("flex items-center gap-x-2 p-4 w-[350px] fixed left-2 top-2 bg-white dark:bg-gray-800 rounded-lg border border-gray-100 dark:border-gray-800", toast[status].ClassName, className)}>
             <div className="shrink-0">
                 <SvgComponent className="w-12" />
             </div>
