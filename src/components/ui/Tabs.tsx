@@ -10,7 +10,7 @@ type TabsProps = { defaultValue: string; onChange: (tab: string) => void } & Rea
 
 type TabsItemProps = { value: string; activeTabClassName?: string } & React.ComponentProps<"div">;
 
-function Tabs({ children, defaultValue, onChange, className }: TabsProps) {
+function Tabs({ children, defaultValue, onChange = () => {}, className }: TabsProps) {
     const [tab, setTab] = useState<string>(defaultValue);
 
     const onTab = (tab: string) => {
