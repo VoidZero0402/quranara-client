@@ -1,4 +1,5 @@
 import { createContext, useContext } from "react";
+import { useEventListener } from "usehooks-ts";
 
 import { cn } from "@/libs/cn";
 
@@ -14,6 +15,10 @@ type ModalProps = { isOpen: boolean; onClose: () => void } & React.ComponentProp
 type ModalChildrensProps = React.ComponentProps<"div">;
 
 function Modal({ children, isOpen, onClose, className }: ModalProps) {
+    useEventListener("keydown", (event) => {
+        if (event.key === "Escape") onClose();
+    });
+
     return (
         <div className={cn("flex-center fixed inset-0 size-full bg-gray-500/10 dark:bg-gray-800/10 invisible opacity-0 transition-all duration-300", isOpen && "visible opacity-100")}>
             <ModalContext.Provider value={{ onClose }}>

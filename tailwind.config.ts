@@ -17,6 +17,13 @@ export default {
             spacing: {
                 "4.5": "18px",
             },
+            keyframes: {
+                shimmer: {
+                    "100%": {
+                        transform: "translateX(100%)",
+                    },
+                },
+            },
         },
         screens: {
             sm: "640px",
