@@ -19,10 +19,10 @@ class Axios {
         this.requestOptions = config.requestOptions ?? {};
     }
 
-    private async resolve(method: string, url: string, options: RequestOptions) {
+    private async resolve(method: string, url: string, options?: RequestOptions) {
         const response = await fetch(`${this.baseURL}${url}`, {
             method,
-            headers: Object.assign(this.headers, options.headers),
+            headers: Object.assign(this.headers, options?.headers),
             ...this.requestOptions,
             ...options,
         });
@@ -35,27 +35,27 @@ class Axios {
         return data;
     }
 
-    async get(url: string, options: RequestOptions) {
+    async get(url: string, options?: RequestOptions) {
         return this.resolve("GET", url, options);
     }
 
-    async post(url: string, options: RequestOptions) {
+    async post(url: string, options?: RequestOptions) {
         return this.resolve("POST", url, options);
     }
 
-    async put(url: string, options: RequestOptions) {
+    async put(url: string, options?: RequestOptions) {
         return this.resolve("PUT", url, options);
     }
 
-    async delete(url: string, options: RequestOptions) {
+    async delete(url: string, options?: RequestOptions) {
         return this.resolve("DELETE", url, options);
     }
 
-    async patch(url: string, options: RequestOptions) {
+    async patch(url: string, options?: RequestOptions) {
         return this.resolve("PATCH", url, options);
     }
 
-    async custom(method: string, url: string, options: RequestOptions) {
+    async custom(method: string, url: string, options?: RequestOptions) {
         return this.resolve(method, url, options);
     }
 }
