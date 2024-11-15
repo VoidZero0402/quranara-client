@@ -1,8 +1,8 @@
 import Quranara from "../clients/Quranara";
 
-type CommentQueriesWithIdParams = { commentId: string };
+type CommentsQueriesWithIdParams = { commentId: string };
 
-export function getComment(params: CommentQueriesWithIdParams) {
+export function getComment(params: CommentsQueriesWithIdParams) {
     const url = `/comments/${params.commentId}`;
 
     return Quranara.get(url);
