@@ -22,9 +22,9 @@ class Axios {
     private async resolve(method: string, url: string, options?: RequestOptions) {
         const response = await fetch(`${this.baseURL}${url}`, {
             method,
-            headers: Object.assign(this.headers, options?.headers),
             ...this.requestOptions,
             ...options,
+            headers: Object.assign(this.headers, options?.headers),
         });
 
         return await this.parseResponseToJSON(response);

@@ -1,38 +1,25 @@
 import Quranara from "../clients/Quranara";
+import { SignupShcemaType, SendOtpSchemaType, LoginWithOtpSchemaType, LoginWithEmailSchemaType } from "@/validators/auth";
 
-type SignupProps = {
-    phone: string;
-    email: string;
-    fullname: string;
-    password: string;
-    otp: string;
-};
-
-export function signup(data: SignupProps) {
+export function signup(data: SignupShcemaType) {
     return Quranara.post("/auth/signup", {
         body: JSON.stringify(data),
     });
 }
 
-type SendOtpProps = { phone: string };
-
-export function sendOtp(data: SendOtpProps) {
+export function sendOtp(data: SendOtpSchemaType) {
     return Quranara.post("/auth/send-otp", {
         body: JSON.stringify(data),
     });
 }
 
-type LoginWithOtpProps = { phone: string; otp: string };
-
-export function loginWithOtp(data: LoginWithOtpProps) {
+export function loginWithOtp(data: LoginWithOtpSchemaType) {
     return Quranara.post("/auth/login/with-otp", {
         body: JSON.stringify(data),
     });
 }
 
-type LoginWithEmailProps = { email: string; password: string };
-
-export function loginWithEmail(data: LoginWithEmailProps) {
+export function loginWithEmail(data: LoginWithEmailSchemaType) {
     return Quranara.post("/auth/login/with-email", {
         body: JSON.stringify(data),
     });
