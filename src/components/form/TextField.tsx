@@ -36,7 +36,7 @@ function TextField<T extends FieldValues>({ children, name, control, label, type
 
     return (
         <div className={cn("flex flex-col gap-y-2", className)}>
-            <label htmlFor={name as string} className="text-gray-800 dark:text-gray-300 text-sm font-pelak-medium">
+            <label htmlFor={name as string} className="text-gray-800 dark:text-gray-200 text-sm font-pelak-medium">
                 {label}
             </label>
             <div className="relative text-gray-500">

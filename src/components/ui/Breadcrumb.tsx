@@ -9,7 +9,7 @@ type BreadcrumbProps = React.ComponentProps<"div">;
 type BreadcrumbItemProps = BreadcrumbProps & LinkProps;
 
 function Breadcrumb({ children, className }: BreadcrumbProps) {
-    return <div className={cn("flex items-center gap-x-2 p-4 w-full bg-white dark:bg-gray-800 text-sm text-gray-800 dark:text-gray-300 rounded-lg", className)}>{children}</div>;
+    return <div className={cn("flex items-center gap-x-2 p-4 w-full bg-white dark:bg-gray-800 text-sm text-gray-800 dark:text-gray-200 rounded-lg", className)}>{children}</div>;
 }
 
 export function BreadcrumbItem({ children, href, className }: BreadcrumbItemProps) {

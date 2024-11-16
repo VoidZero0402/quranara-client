@@ -14,7 +14,7 @@ function Navigation() {
     return (
         <ul className="flex gap-x-4">
             <NavigationItem text="صفحه اصلی" href="#" />
-            <NavigationItem text="دوره های تخصصی" href="#">
+            <NavigationItem text="دوره‌های تخصصی" href="#">
                 <NavigationDropDown>
                     <div className="flex flex-col gap-y-1">
                         <NavigationLink href="#" title="تفسیر قرآن" caption="مطالب مرتبط با تفسیر و فهم قرآن" />
@@ -36,7 +36,7 @@ function Navigation() {
                     </div>
                 </NavigationDropDown>
             </NavigationItem>
-            <NavigationItem text="آموزش های رایگان" href="#">
+            <NavigationItem text="آموزش‌های رایگان" href="#">
                 <NavigationDropDown>
                     <div className="flex flex-col gap-y-1">
                         <NavigationLink href="#" title="تفسیر قرآن" caption="مطالب مرتبط با تفسیر و فهم قرآن" />

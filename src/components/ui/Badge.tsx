@@ -7,7 +7,7 @@ const badge = cva("flex items-center gap-x-1 py-1 px-2 rounded-full select-none 
         color: {
             primary: "bg-blue-50 dark:bg-blue-500/10 text-blue-500",
             secondary: "bg-amber-50 dark:bg-amber-400/10 text-amber-400",
-            neutral: "bg-gray-50 dark:bg-gray-500/10 text-gray-600 dark:text-gray-300",
+            neutral: "bg-gray-50 dark:bg-gray-500/10 text-gray-600 dark:text-gray-200",
         },
     },
     defaultVariants: {

@@ -35,7 +35,7 @@ export function ModalHeader({ children, className }: ModalChildrensProps) {
 
     return (
         <div className={cn("flex items-center justify-between", className)}>
-            <span className="font-pelak-medium text-gray-800 dark:text-gray-300">{children}</span>
+            <span className="font-pelak-medium text-gray-800 dark:text-gray-200">{children}</span>
             <Button size="sm" variant="neutral-base" className="gap-x-1" onClick={onClose}>
                 <XMark />
             </Button>

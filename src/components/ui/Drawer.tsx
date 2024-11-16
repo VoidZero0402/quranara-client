@@ -31,7 +31,7 @@ export function DrawerHeader({ children, className }: DrawerChildrensProps) {
     const { onClose } = useContext(DrawerContext);
 
     return (
-        <div className={cn("flex items-center justify-between w-full p-6 bg-gray-50 dark:bg-gray-700 font-pelak-medium text-gray-800 dark:text-gray-300", className)}>
+        <div className={cn("flex items-center justify-between w-full p-6 bg-gray-50 dark:bg-gray-700 font-pelak-medium text-gray-800 dark:text-gray-200", className)}>
             {children}
             <button onClick={onClose}>
                 <CloseCircle strokeWidth={1.5} />

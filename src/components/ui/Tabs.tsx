@@ -33,7 +33,7 @@ export function TabsItem({ children, value, className, activeTabClassName = "bg-
     const isActive = active === value;
 
     return (
-        <div role="tab" onClick={() => onTab(value)} className={cn("py-2.5 px-4 text-gray-800 dark:text-gray-300 rounded-lg cursor-pointer transition-colors", className, isActive && activeTabClassName)}>
+        <div role="tab" onClick={() => onTab(value)} className={cn("py-2.5 px-4 text-gray-800 dark:text-gray-200 rounded-lg cursor-pointer transition-colors", className, isActive && activeTabClassName)}>
             {children}
         </div>
     );
