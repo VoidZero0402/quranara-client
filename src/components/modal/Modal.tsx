@@ -1,3 +1,5 @@
+"use client";
+
 import { createContext, useContext } from "react";
 import { useEventListener } from "usehooks-ts";
 
@@ -21,9 +23,9 @@ function Modal({ children, isOpen, onClose, className }: ModalProps) {
 
     return (
         <div className={cn("flex-center fixed inset-0 size-full bg-gray-500/10 dark:bg-gray-800/10 invisible opacity-0 transition-all duration-300", isOpen && "visible opacity-100")}>
-            <ModalContext.Provider value={{ onClose }}>
-                <div className={cn("p-4 space-y-4 rounded-xl bg-white dark:bg-gray-800", className)}>{children}</div>
-            </ModalContext.Provider>
+            <div className={cn("p-4 space-y-4 rounded-xl bg-white dark:bg-gray-800", className)}>
+                <ModalContext.Provider value={{ onClose }}>{children}</ModalContext.Provider>
+            </div>
         </div>
     );
 }

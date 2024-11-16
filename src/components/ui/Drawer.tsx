@@ -1,0 +1,47 @@
+"use client";
+
+import { createContext, useRef, useContext } from "react";
+
+import { cn } from "@/libs/cn";
+
+import CloseCircle from "../svgs/CloseCircle";
+
+type DrawerContextProps = { onClose: () => void };
+
+const DrawerContext = createContext<DrawerContextProps>({ onClose: () => {} });
+
+type DrawerProps = { isOpen: boolean; onClose: () => void } & React.ComponentProps<"div">;
+
+type DrawerChildrensProps = React.ComponentProps<"div">;
+
+function Drawer({ children, isOpen, onClose, className }: DrawerProps) {
+    const drawerRef = useRef<HTMLDivElement>(null);
+
+    return (
+        <div className={cn("fixed inset-0 size-full invisible", isOpen && "visible")}>
+            <div onClick={onClose} className={cn("size-full bg-gray-500/10 dark:bg-gray-800/10 invisible opacity-0 transition-all duration-300", isOpen && "visible opacity-100")}></div>
+            <div ref={drawerRef} className={cn("absolute top-full left-0 w-full h-max bg-white dark:bg-gray-800 rounded-t-2xl overflow-hidden transition-all duration-300", className)} style={{ ...(isOpen && { top: `calc(100% - ${drawerRef.current!.scrollHeight}px)` }) }}>
+                <DrawerContext.Provider value={{ onClose }}>{children}</DrawerContext.Provider>
+            </div>
+        </div>
+    );
+}
+
+Drawer.Header = function ({ children, className }: DrawerChildrensProps) {
+    const { onClose } = useContext(DrawerContext);
+
+    return (
+        <div className={cn("flex items-center justify-between w-full p-6 bg-gray-50 dark:bg-gray-700 font-pelak-medium text-gray-800 dark:text-gray-300", className)}>
+            {children}
+            <button onClick={onClose}>
+                <CloseCircle strokeWidth={1.5} />
+            </button>
+        </div>
+    );
+};
+
+Drawer.Body = function ({ children, className }: DrawerChildrensProps) {
+    return <div className={cn("w-full p-6", className)}>{children}</div>;
+};
+
+export default Drawer;
