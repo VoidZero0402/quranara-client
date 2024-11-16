@@ -9,6 +9,11 @@ export default {
                 center: true,
                 padding: "1rem",
             },
+            colors: {
+                gray: {
+                    850: "#18202f",
+                },
+            },
             fontFamily: {
                 pelak: ["var(--font-pelak)"],
                 "pelak-medium": ["var(--font-pelak-medium)"],

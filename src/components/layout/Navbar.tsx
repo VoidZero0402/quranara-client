@@ -10,10 +10,10 @@ import ArrowLogin from "../svgs/ArrowLogin";
 
 function Navbar() {
     return (
-        <nav className="flex items-center justify-between w-full max-w-[2000px] py-6 px-16 bg-white">
+        <nav className="flex items-center justify-between w-full max-w-[2000px] py-6 px-16 bg-white dark:bg-gray-850">
             <div className="flex items-center gap-x-8">
                 <Link href="/">
-                    <h2 className="font-pelak-medium text-xl text-gray-800">QA Logo</h2>
+                    <h2 className="font-pelak-medium text-xl text-gray-800 dark:text-gray-300">QA Logo</h2>
                 </Link>
                 <Navigation />
             </div>

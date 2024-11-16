@@ -1,5 +1,8 @@
 import localFont from "next/font/local";
 import type { Metadata } from "next";
+
+import Providers from "@/providers/Providers";
+
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -28,8 +31,10 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="fa" dir="rtl" className={`${Pelak.variable} ${PelakMedium.variable} ${PelakSemiBold.variable}`}>
-            <body className="font-pelak bg-gray-50 dark:bg-gray-900">{children}</body>
+        <html lang="fa" dir="rtl" className={`${Pelak.variable} ${PelakMedium.variable} ${PelakSemiBold.variable}`} suppressHydrationWarning>
+            <body className="font-pelak bg-gray-50 dark:bg-gray-900">
+                <Providers>{children}</Providers>
+            </body>
         </html>
     );
 }
