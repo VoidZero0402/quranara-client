@@ -1,12 +1,12 @@
-interface AxiosConfigRequestOptions extends Omit<RequestInit, "method" | "headers" | "body" | "next"> {}
+type AxiosConfigRequestOptions = Omit<RequestInit, "method" | "headers" | "body" | "next">;
 
-interface RequestOptions extends Omit<RequestInit, "method"> {}
+type RequestOptions = Omit<RequestInit, "method">;
 
-interface AxiosConfig {
+type AxiosConfig = {
     baseURL?: string;
     headers?: HeadersInit;
     requestOptions?: AxiosConfigRequestOptions;
-}
+};
 
 class Axios {
     private baseURL: string = "";

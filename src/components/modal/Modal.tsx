@@ -30,7 +30,7 @@ function Modal({ children, isOpen, onClose, className }: ModalProps) {
     );
 }
 
-Modal.Header = function ({ children, className }: ModalChildrensProps) {
+export function ModalHeader({ children, className }: ModalChildrensProps) {
     const { onClose } = useContext(ModalContext);
 
     return (
@@ -41,14 +41,14 @@ Modal.Header = function ({ children, className }: ModalChildrensProps) {
             </Button>
         </div>
     );
-};
+}
 
-Modal.Body = function ({ children, className }: ModalChildrensProps) {
+export function ModalBody({ children, className }: ModalChildrensProps) {
     return <div className={cn("", className)}>{children}</div>;
-};
+}
 
-Modal.Footer = function ({ children, className }: ModalChildrensProps) {
+export function ModalFooter({ children, className }: ModalChildrensProps) {
     return <div className={cn("flex items-center justify-between", className)}>{children}</div>;
-};
+}
 
 export default Modal;

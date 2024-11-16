@@ -13,4 +13,6 @@ export function getAllUsers(query: GetAllUsersQuerySchemaType) {
 export function getAllBan(query: PaginationQuerySchemaType) {
     const queryString = convertToQueryString(query);
     const url = `/users/ban?${queryString}`;
+
+    return Quranara.get(url);
 }

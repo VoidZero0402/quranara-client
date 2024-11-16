@@ -55,7 +55,7 @@ function Select<T extends FieldValues>({ children, name, control, defaultText = 
                 <span className="">{text || placeholder}</span>
                 <ArrowDown className="w-5" />
             </div>
-            <div className={cn("flex flex-col gap-y-1 absolute top-full  p-2.5 w-full bg-white dark:bg-gray-800 text-sm rounded-lg border border-gray-100 dark:border-gray-800 invisible opacity-0 mt-4 transition-all duration-300", isOpen && "visible opacity-100 mt-2")}>
+            <div className={cn("flex flex-col gap-y-1 absolute top-full  p-2.5 w-full bg-white dark:bg-gray-800 text-sm rounded-lg border border-gray-100 dark:border-gray-800 invisible opacity-0 mt-4 transition-all duration-300", selectClassName, isOpen && "visible opacity-100 mt-2")}>
                 <SelectContext.Provider value={{ handleSelect }}>{children}</SelectContext.Provider>
             </div>
             <FormDetails error={error} caption={caption} />
@@ -63,7 +63,7 @@ function Select<T extends FieldValues>({ children, name, control, defaultText = 
     );
 }
 
-Select.Item = function ({ children, className, value, text }: SelectItemProps) {
+export function SelectItem({ children, className, value, text }: SelectItemProps) {
     const { handleSelect } = useContext(SelectContext);
 
     return (
@@ -71,6 +71,6 @@ Select.Item = function ({ children, className, value, text }: SelectItemProps) {
             {children}
         </div>
     );
-};
+}
 
 export default Select;

@@ -24,15 +24,15 @@ function TextField<T extends FieldValues>({ children, name, control, label, type
         fieldState: { error },
     } = useController({ name: name as Path<T>, control });
 
-    const onChange = regex
-        ? useCallback(
-              (e: React.ChangeEvent<HTMLInputElement>) => {
-                  e.target.value = e.target.value.replace(new RegExp(`[^${regex.source}]`, "g"), "");
-                  field.onChange(e);
-              },
-              [field, regex]
-          )
-        : field.onChange;
+    const onChange = useCallback(
+        (e: React.ChangeEvent<HTMLInputElement>) => {
+            if (regex) {
+                e.target.value = e.target.value.replace(new RegExp(`[^${regex.source}]`, "g"), "");
+            }
+            field.onChange(e);
+        },
+        [field, regex]
+    );
 
     return (
         <div className={cn("flex flex-col gap-y-2", className)}>

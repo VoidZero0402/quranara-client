@@ -27,7 +27,7 @@ function Tabs({ children, defaultValue, onChange = () => {}, className }: TabsPr
     );
 }
 
-Tabs.Item = function ({ children, value, className, activeTabClassName = "bg-gray-100 dark:bg-gray-500/10" }: TabsItemProps) {
+export function TabsItem({ children, value, className, activeTabClassName = "bg-gray-100 dark:bg-gray-500/10" }: TabsItemProps) {
     const { active, onTab } = useContext(TabsContenxt);
 
     const isActive = active === value;

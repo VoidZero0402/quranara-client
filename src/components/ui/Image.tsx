@@ -5,7 +5,7 @@ import NextImage, { ImageProps as NextImageProps } from "next/image";
 
 import { cn } from "@/libs/cn";
 
-import Skeleton from "./Skeleton";
+import Skeleton, { SkeletonFrame } from "./Skeleton";
 
 type ImageProps = { wrapperClassName?: string } & NextImageProps;
 
@@ -16,7 +16,7 @@ function Image({ wrapperClassName, className, ...props }: ImageProps) {
         <div className={cn("relative size-full rounded-lg", wrapperClassName)}>
             {isLoading && (
                 <Skeleton>
-                    <Skeleton.Frame className="size-full" />
+                    <SkeletonFrame className="size-full" />
                 </Skeleton>
             )}
             <NextImage className={cn("object-cover size-full opacity-0 transition-opacity duration-300", className, !isLoading && "opacity-100")} onLoad={() => setIsLoading(false)} {...props} />

@@ -27,7 +27,7 @@ function Drawer({ children, isOpen, onClose, className }: DrawerProps) {
     );
 }
 
-Drawer.Header = function ({ children, className }: DrawerChildrensProps) {
+export function DrawerHeader({ children, className }: DrawerChildrensProps) {
     const { onClose } = useContext(DrawerContext);
 
     return (
@@ -40,7 +40,7 @@ Drawer.Header = function ({ children, className }: DrawerChildrensProps) {
     );
 };
 
-Drawer.Body = function ({ children, className }: DrawerChildrensProps) {
+export function DrawerBody({ children, className }: DrawerChildrensProps) {
     return <div className={cn("w-full p-6", className)}>{children}</div>;
 };
 
