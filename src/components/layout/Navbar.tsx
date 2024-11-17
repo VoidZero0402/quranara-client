@@ -1,8 +1,13 @@
+"use client";
+
 import Link from "next/link";
+import dynamic from "next/dynamic";
 
 import ToggleTheme from "../specific/navbar/ToggleTheme";
 import Navigation from "../specific/navbar/Navigation";
-import Account from "../specific/navbar/Account";
+import { AccountLoading } from "../specific/navbar/Account";
+
+const Account = dynamic(() => import("../specific/navbar/Account"), { ssr: false, loading: AccountLoading });
 
 import SearchBar from "../ui/SearchBar";
 

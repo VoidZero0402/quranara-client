@@ -2,7 +2,7 @@ import { cva, VariantProps } from "class-variance-authority";
 
 import { cn } from "@/libs/cn";
 
-const button = cva("flex items-center gap-x-1 child:shrink-0 select-none transition-colors", {
+const button = cva("flex-center gap-x-1 child:shrink-0 select-none transition-colors", {
     variants: {
         variant: {
             "filled-primary": "bg-blue-500 text-white hover:bg-blue-600 disabled:bg-blue-400",
