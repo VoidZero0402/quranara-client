@@ -18,7 +18,7 @@ import ChatRoundLine from "@/components/svgs/ChatRoundLine";
 import QuestionSquare from "@/components/svgs/QuestionSquare";
 import Logout from "@/components/svgs/Logout";
 
-import { CookieUser } from "@/types/users.types";
+import { CookieUser } from "@/types/user.types";
 
 type UserAccountProps = { user: CookieUser };
 

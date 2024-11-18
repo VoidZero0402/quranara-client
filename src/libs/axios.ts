@@ -20,14 +20,18 @@ class Axios {
     }
 
     private async resolve(method: string, url: string, options?: RequestOptions) {
-        const response = await fetch(`${this.baseURL}${url}`, {
-            method,
-            ...this.requestOptions,
-            ...options,
-            headers: Object.assign(this.headers, options?.headers),
-        });
+        try {
+            const response = await fetch(`${this.baseURL}${url}`, {
+                method,
+                ...this.requestOptions,
+                ...options,
+                headers: Object.assign(this.headers, options?.headers),
+            });
 
-        return await this.parseResponseToJSON(response);
+            return await this.parseResponseToJSON(response);
+        } catch (err) {
+            return { success: false, status: 500, data: { error: err } };
+        }
     }
 
     private async parseResponseToJSON(response: Response) {

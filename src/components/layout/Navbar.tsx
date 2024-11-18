@@ -1,15 +1,10 @@
-"use client";
-
 import Link from "next/link";
-import dynamic from "next/dynamic";
 
 import ToggleTheme from "../specific/navbar/ToggleTheme";
 import Navigation from "../specific/navbar/Navigation";
-import { AccountLoading } from "../specific/navbar/Account";
-
-const Account = dynamic(() => import("../specific/navbar/Account"), { ssr: false, loading: AccountLoading });
 
 import SearchBar from "../ui/SearchBar";
+import AccountWrapper from "../specific/navbar/AccountWrapper";
 
 function Navbar() {
     return (
@@ -21,9 +16,9 @@ function Navbar() {
                 <Navigation />
             </div>
             <div className="flex items-center gap-x-4">
-                <SearchBar id="search-bar" placeholder="در قرآن‌ آرا جستجو کنید" wrapperCalssName="w-80" />
+                <SearchBar route="/search" query="q" id="search-bar" placeholder="در قرآن‌ آرا جستجو کنید" wrapperCalssName="w-80" />
                 <ToggleTheme />
-                <Account />
+                <AccountWrapper />
             </div>
         </nav>
     );

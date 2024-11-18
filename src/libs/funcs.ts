@@ -11,3 +11,11 @@ export function convertToQueryString(params: Record<string, string | string[]>) 
 
     return searchParams.toString();
 }
+
+export function updateURLSearchParams(route: string, key: string, value: string) {
+    const url = new URL(route, window.location.origin);
+
+    url.searchParams.set(key, value);
+
+    return url.toString();
+}

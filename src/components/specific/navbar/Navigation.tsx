@@ -1,5 +1,7 @@
 import Link, { LinkProps } from "next/link";
 
+import { getMenus } from "@/api/queries/ui";
+
 import { cn } from "@/libs/cn";
 
 import ArrowDown from "@/components/svgs/ArrowDown";
@@ -10,40 +12,36 @@ type NavigationDropDownProps = React.ComponentProps<"div">;
 
 type NavigationLinkProps = { title: string; caption: string } & LinkProps;
 
-function Navigation() {
+async function Navigation() {
+    const { data } = await getMenus();
+
     return (
         <ul className="flex gap-x-4">
             <NavigationItem text="صفحه اصلی" href="#" />
             <NavigationItem text="دوره‌های تخصصی" href="#">
                 <NavigationDropDown>
                     <div className="flex flex-col gap-y-1">
-                        <NavigationLink href="#" title="تفسیر قرآن" caption="مطالب مرتبط با تفسیر و فهم قرآن" />
-                        <NavigationLink href="#" title="زندگی پیامبران" caption="زندگی و داستان‌های پیامبران" />
-                        <NavigationLink href="#" title="احکام و فقه" caption="مطالب مرتبط با احکام و مسائل فقهی" />
-                        <NavigationLink href="#" title="تاریخ اسلام" caption="مقالات تاریخ و رخدادهای اسلامی" />
-                        <NavigationLink href="#" title="علوم قرآنی" caption="مباحث و موضوعات مربوط به علوم قرآنی" />
+                        {data.courses.map((course) => (
+                            <NavigationLink key={course._id} href={`/courses/${course.slug}`} title={course.title} caption="مباحث و موضوعات مربوط به علوم قرآنی" />
+                        ))}
                     </div>
                 </NavigationDropDown>
             </NavigationItem>
             <NavigationItem text="مقالات" href="#">
                 <NavigationDropDown>
                     <div className="flex flex-col gap-y-1">
-                        <NavigationLink href="#" title="تفسیر قرآن" caption="مطالب مرتبط با تفسیر و فهم قرآن" />
-                        <NavigationLink href="#" title="زندگی پیامبران" caption="زندگی و داستان‌های پیامبران" />
-                        <NavigationLink href="#" title="احکام و فقه" caption="مطالب مرتبط با احکام و مسائل فقهی" />
-                        <NavigationLink href="#" title="تاریخ اسلام" caption="مقالات تاریخ و رخدادهای اسلامی" />
-                        <NavigationLink href="#" title="علوم قرآنی" caption="مباحث و موضوعات مربوط به علوم قرآنی" />
+                        {data.categories.blog.map((blog) => (
+                            <NavigationLink key={blog._id} href={`#`} title={blog.title} caption={blog.caption} />
+                        ))}
                     </div>
                 </NavigationDropDown>
             </NavigationItem>
             <NavigationItem text="آموزش‌های رایگان" href="#">
                 <NavigationDropDown>
                     <div className="flex flex-col gap-y-1">
-                        <NavigationLink href="#" title="تفسیر قرآن" caption="مطالب مرتبط با تفسیر و فهم قرآن" />
-                        <NavigationLink href="#" title="زندگی پیامبران" caption="زندگی و داستان‌های پیامبران" />
-                        <NavigationLink href="#" title="احکام و فقه" caption="مطالب مرتبط با احکام و مسائل فقهی" />
-                        <NavigationLink href="#" title="تاریخ اسلام" caption="مقالات تاریخ و رخدادهای اسلامی" />
-                        <NavigationLink href="#" title="علوم قرآنی" caption="مباحث و موضوعات مربوط به علوم قرآنی" />
+                        {data.categories.tv.map((tv) => (
+                            <NavigationLink key={tv._id} href={`#`} title={tv.title} caption={tv.caption} />
+                        ))}
                     </div>
                 </NavigationDropDown>
             </NavigationItem>

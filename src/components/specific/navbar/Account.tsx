@@ -16,7 +16,7 @@ import Skeleton, { SkeletonFrame } from "@/components/ui/Skeleton";
 import ArrowLogin from "@/components/svgs/ArrowLogin";
 import Setting from "@/components/svgs/Setting";
 
-import { CookieUser } from "@/types/users.types";
+import { CookieUser } from "@/types/user.types";
 
 async function fetchCookieUser(): Promise<{ value: CookieUser | undefined }> {
     const response = await fetch("/api/cookies?key=_user");

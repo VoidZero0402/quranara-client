@@ -1,4 +1,4 @@
-import { SvgComponentProps } from "@/types/components.types";
+import { SvgComponentProps } from "@/types/component.types";
 
 import { cn } from "@/libs/cn";
 

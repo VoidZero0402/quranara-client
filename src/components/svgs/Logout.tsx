@@ -1,4 +1,4 @@
-import { SvgComponentProps } from "@/types/components.types";
+import { SvgComponentProps } from "@/types/component.types";
 
 function Logout({ className = "w-5", strokeWidth = 1.25 }: SvgComponentProps) {
     return (
