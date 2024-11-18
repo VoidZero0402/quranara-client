@@ -18,7 +18,7 @@ function Drawer({ children, isOpen, onClose, className }: DrawerProps) {
     const drawerRef = useRef<HTMLDivElement>(null);
 
     return (
-        <div className={cn("fixed inset-0 size-full invisible", isOpen && "visible")}>
+        <div className={cn("fixed inset-0 size-full invisible z-20", isOpen && "visible")}>
             <div onClick={onClose} className={cn("size-full bg-gray-500/10 dark:bg-gray-800/10 invisible opacity-0 transition-all duration-300", isOpen && "visible opacity-100")}></div>
             <div ref={drawerRef} className={cn("absolute top-full left-0 w-full h-max bg-white dark:bg-gray-800 rounded-t-2xl overflow-hidden transition-all duration-300", className)} style={{ ...(isOpen && { top: `calc(100% - ${drawerRef.current!.scrollHeight}px)` }) }}>
                 <DrawerContext.Provider value={{ onClose }}>{children}</DrawerContext.Provider>

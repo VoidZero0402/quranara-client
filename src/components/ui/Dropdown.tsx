@@ -7,7 +7,7 @@ function Dropdown({ children, className }: DropdownProps) {
 }
 
 export function DropdownSlice() {
-    return <span className="block h-[1px] bg-gray-50 dark:bg-gray-700"></span>;
+    return <span className="block min-h-[1px] bg-gray-50 dark:bg-gray-700"></span>;
 }
 
 export function DropdownHeader({ children, className }: DropdownProps) {
@@ -15,11 +15,11 @@ export function DropdownHeader({ children, className }: DropdownProps) {
 }
 
 export function DropdownBody({ children, className }: DropdownProps) {
-    return <ul className={cn("flex flex-col gap-y-1", className)}>{children}</ul>;
+    return <div className={cn("flex flex-col gap-y-1", className)}>{children}</div>;
 }
 
 export function DropdownItem({ children, className }: DropdownProps) {
-    return <li className={cn("flex items-center gap-x-2 py-2.5 px-3 text-gray-800 dark:text-gray-200 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer transition-colors", className)}>{children}</li>;
+    return <div className={cn("flex items-center gap-x-2 py-2.5 px-3 text-gray-800 dark:text-gray-200 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer transition-colors", className)}>{children}</div>;
 }
 
 export function DropdownFooter({ children, className }: DropdownProps) {

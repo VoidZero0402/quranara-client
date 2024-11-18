@@ -34,6 +34,25 @@
     input[type="password"]::placeholder {
         @apply tracking-normal;
     }
+
+    .with-custom-scroll::-webkit-scrollbar {
+        @apply w-1;
+    }
+
+    .with-custom-scroll::-webkit-scrollbar-track {
+        @apply bg-gray-100 dark:bg-gray-800;
+    }
+
+    .with-custom-scroll::-webkit-scrollbar-thumb {
+        @apply bg-gray-200 dark:bg-gray-700 rounded-full;
+    }
+    .with-custom-scroll::-webkit-scrollbar-thumb:hover {
+        @apply bg-gray-300 dark:bg-gray-600
+    }
+
+    .with-custom-scroll {
+        scrollbar-gutter: stable;
+    }
 }
 
 @layer utilities {
