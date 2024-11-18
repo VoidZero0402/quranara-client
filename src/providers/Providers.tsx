@@ -8,7 +8,7 @@ function Providers({
     children: React.ReactNode;
 }>) {
     return (
-        <ThemeProvider attribute="class">
+        <ThemeProvider attribute="class" disableTransitionOnChange>
             <ReactQueryProvider>{children}</ReactQueryProvider>
         </ThemeProvider>
     );

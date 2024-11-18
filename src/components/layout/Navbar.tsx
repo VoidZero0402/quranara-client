@@ -15,7 +15,7 @@ async function Navbar() {
 
     return (
         <nav className="sm:p-4">
-            <div className="flex items-center justify-between gap-x-4 relative w-full max-w-[2000px] p-4 sm:py-6 sm:px-8 bg-white dark:bg-gray-850 sm:rounded-xl">
+            <div className="flex items-center justify-between gap-x-4 relative w-full max-w-[2000px] m-auto p-4 sm:py-6 sm:px-8 bg-white dark:bg-gray-850 sm:rounded-xl">
                 <div className="flex items-center gap-x-4 md:gap-x-8">
                     <div className="lg:hidden">
                         <MobileNavbar menus={data} />
