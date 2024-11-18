@@ -1,10 +1,12 @@
 import Link, { LinkProps } from "next/link";
 
-import { getMenus } from "@/api/queries/ui";
-
 import { cn } from "@/libs/cn";
 
 import ArrowDown from "@/components/svgs/ArrowDown";
+
+import { Menus } from "@/types/ui.types";
+
+type NavigationProps = { menus: Menus }
 
 type NavigationItemProps = { text: string } & React.ComponentProps<"li"> & LinkProps;
 
@@ -12,16 +14,14 @@ type NavigationDropDownProps = React.ComponentProps<"div">;
 
 type NavigationLinkProps = { title: string; caption: string } & LinkProps;
 
-async function Navigation() {
-    const { data } = await getMenus();
-
+async function Navigation({ menus }: NavigationProps) {
     return (
-        <ul className="flex gap-x-4">
+        <ul className="hidden lg:flex gap-x-4">
             <NavigationItem text="صفحه اصلی" href="#" />
             <NavigationItem text="دوره‌های تخصصی" href="#">
                 <NavigationDropDown>
                     <div className="flex flex-col gap-y-1">
-                        {data.courses.map((course) => (
+                        {menus.courses.map((course) => (
                             <NavigationLink key={course._id} href={`/courses/${course.slug}`} title={course.title} caption="مباحث و موضوعات مربوط به علوم قرآنی" />
                         ))}
                     </div>
@@ -30,7 +30,7 @@ async function Navigation() {
             <NavigationItem text="مقالات" href="#">
                 <NavigationDropDown>
                     <div className="flex flex-col gap-y-1">
-                        {data.categories.blog.map((blog) => (
+                        {menus.categories.blog.map((blog) => (
                             <NavigationLink key={blog._id} href={`#`} title={blog.title} caption={blog.caption} />
                         ))}
                     </div>
@@ -39,7 +39,7 @@ async function Navigation() {
             <NavigationItem text="آموزش‌های رایگان" href="#">
                 <NavigationDropDown>
                     <div className="flex flex-col gap-y-1">
-                        {data.categories.tv.map((tv) => (
+                        {menus.categories.tv.map((tv) => (
                             <NavigationLink key={tv._id} href={`#`} title={tv.title} caption={tv.caption} />
                         ))}
                     </div>

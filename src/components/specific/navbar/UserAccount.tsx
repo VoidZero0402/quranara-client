@@ -28,8 +28,8 @@ function UserAccount({ user }: UserAccountProps) {
     return (
         <div ref={ref} className="flex items-center relative">
             <motion.div {...OpacityAnimation}>
-                <Button onClick={toggleOpen} rounded="lg" variant="neutral-base" className="w-40 h-12 font-pelak-medium">
-                    حساب کاربری
+                <Button onClick={toggleOpen} rounded="lg" variant="neutral-base" className="size-12 sm:h-12 sm:w-40 font-pelak-medium">
+                    <span className="hidden sm:inline-block">حساب کاربری</span>
                     <UserRounded className="w-6" strokeWidth={1.5} />
                 </Button>
             </motion.div>

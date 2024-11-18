@@ -32,9 +32,9 @@ function Account() {
         return (
             <motion.div {...OpacityAnimation}>
                 <Link href="/login">
-                    <Button rounded="lg" className="h-12 w-40 font-pelak-medium">
-                        <ArrowLogin className="w-6" strokeWidth={1.5} />
-                        ورود | ثبت نام
+                    <Button rounded="lg" className="size-12 sm:h-12 sm:w-40 font-pelak-medium">
+                        <ArrowLogin className="w-7" strokeWidth={1.5} />
+                        <span className="hidden sm:inline-block"> ورود | ثبت نام</span>
                     </Button>
                 </Link>
             </motion.div>
@@ -46,9 +46,9 @@ function Account() {
             {user.role === ROLES.MANAGER ? (
                 <motion.div {...OpacityAnimation}>
                     <Link href="/manager-panel">
-                        <Button rounded="lg" variant="neutral-base" className="h-12 w-40 font-pelak-medium">
+                        <Button rounded="lg" variant="neutral-base" className="size-12 sm:h-12 sm:w-40 font-pelak-medium">
                             <Setting className="w-6" strokeWidth={1.5} />
-                            پنل مدیریت
+                            <span className="hidden sm:inline-block">پنل مدیریت</span>
                         </Button>
                     </Link>
                 </motion.div>
@@ -61,7 +61,7 @@ function Account() {
 
 export function AccountLoading() {
     return (
-        <Skeleton className="h-12 w-40 rounded-2xl">
+        <Skeleton className="size-12 sm:h-12 sm:w-40 rounded-2xl">
             <SkeletonFrame className="size-full"></SkeletonFrame>
         </Skeleton>
     );
