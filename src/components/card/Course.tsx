@@ -31,7 +31,7 @@ function Course({ title, description, slug, status, price, discount, metadata }:
                 <h3 className="font-pelak-medium text-lg text-gray-800 dark:text-gray-200 line-clamp-1">
                     <Link href={`/courses/${slug}`}>{title}</Link>
                 </h3>
-                <p className="line-clamp-3 h-[72px] text-sm text-gray-600 dark:text-gray-400 leading-6">نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.</p>
+                <p className="line-clamp-3 h-[72px] text-sm text-gray-600 dark:text-gray-400 leading-6">{description}</p>
                 <div className="flex items-center justify-between mt-2">
                     <div className="flex gap-x-2">
                         <div className="flex items-center gap-x-1 py-1 px-2 font-pelak-medium text-sm bg-blue-50 dark:bg-blue-500/10 text-blue-500 rounded-lg">
@@ -43,9 +43,12 @@ function Course({ title, description, slug, status, price, discount, metadata }:
                             <span className="h-4.5">{metadata.rating}</span>
                         </div>
                     </div>
-                    <span>
-                        <span className="font-pelak-medium text-xl text-gray-800 dark:text-gray-200">{price.toLocaleString("fa")}</span> <span className="text-xs text-gray-500">تومان</span>
-                    </span>
+                    <div className="flex items-center gap-x-1">
+                        <span className="font-pelak-medium text-xl text-gray-700 dark:text-gray-300" title={discount}>
+                            {price.toLocaleString()}
+                        </span>
+                        <span className="text-xs text-gray-500">تومان</span>
+                    </div>
                 </div>
             </div>
             <Slice className="mx-4 bg-gray-100 dark:bg-gray-800" />

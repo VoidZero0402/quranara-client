@@ -27,7 +27,7 @@ function SearchBar({ route, query, wrapperCalssName, className, id, placeholder 
                 router.push(url);
             }
         },
-        [route, query]
+        [route, query, router]
     );
 
     return (
