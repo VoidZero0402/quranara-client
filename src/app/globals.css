@@ -4,7 +4,7 @@
 
 @layer base {
     * {
-        @apply outline-none;
+        @apply outline-none scroll-smooth;
     }
 
     input:-webkit-autofill,

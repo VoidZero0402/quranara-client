@@ -1,8 +1,9 @@
 import Logo from "../ui/Logo";
+import Placeholder from "../ui/Placeholder";
 
 function Footer() {
     return (
-        <footer className="py-8 bg-white dark:bg-gray-850">
+        <footer className="py-8 bg-white dark:bg-gray-850" id="courses">
             <div className="container">
                 <div className="flex gap-x-8">
                     <div className="flex flex-col gap-y-8 w-1/3">
@@ -12,8 +13,8 @@ function Footer() {
                             <p className="text-gray-500 dark:text-gray-400 leading-7">دوره‌های آموزشی قرآن‌آرا برای هر سطح و نیاز طراحی شده است. به آسانی با قرآن آشنا شوید و از آموزش‌های مفید بهره‌مند شوید. ما در قرآن‌آرا به شما کمک می‌کنیم تا به ساده‌ترین و موثرترین روش قرآن را یاد بگیرید.</p>
                         </div>
                     </div>
-                    <div className="w-1/3 bg-gray-100 rounded-xl"></div>
-                    <div className="w-1/3 bg-gray-100 rounded-xl"></div>
+                    <Placeholder className="w-1/3" type="image" />
+                    <Placeholder className="w-1/3" />
                 </div>
                 <div className="flex items-center justify-between mt-8 pt-8 border-t border-gray-200 text-gray-500">
                     <span className="font-pelak-medium">ساخته شده با 💙 در قرآن آرا</span>
