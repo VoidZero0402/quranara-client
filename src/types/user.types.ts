@@ -13,3 +13,5 @@ export type User = {
 };
 
 export type CookieUser = Omit<User, "_id">;
+
+export type LimitedUser = Pick<User, "_id" | "username" | "profile">;

@@ -13,7 +13,7 @@ function Footer() {
                             <p className="text-gray-500 dark:text-gray-400 leading-7">دوره‌های آموزشی قرآن‌آرا برای هر سطح و نیاز طراحی شده است. به آسانی با قرآن آشنا شوید و از آموزش‌های مفید بهره‌مند شوید. ما در قرآن‌آرا به شما کمک می‌کنیم تا به ساده‌ترین و موثرترین روش قرآن را یاد بگیرید.</p>
                         </div>
                     </div>
-                    <Placeholder className="w-1/3" type="image" />
+                    <Placeholder className="w-1/3" />
                     <Placeholder className="w-1/3" />
                 </div>
                 <div className="flex items-center justify-between mt-8 pt-8 border-t border-gray-200 text-gray-500">

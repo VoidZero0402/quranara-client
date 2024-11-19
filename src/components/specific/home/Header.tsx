@@ -25,7 +25,7 @@ function Header() {
                         </div>
                     </div>
                     <div className="w-full lg:w-1/2 order-2">
-                        <Placeholder className="h-[400px]" type="image" />
+                        <Placeholder className="aspect-video" type="image" />
                     </div>
                 </section>
             </div>

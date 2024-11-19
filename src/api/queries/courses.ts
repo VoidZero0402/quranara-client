@@ -1,16 +1,28 @@
 import Quranara from "../clients/Quranara";
+
+import { GET_ALL_COURSES } from "@/constants/requestTags";
+
 import { GetAllCoursesQuerySchemaType, SearchCoursesQuerySchameType } from "@/validators/courses";
 import { PaginationQuerySchemaType } from "@/validators/pagination";
+
 import { convertToQueryString } from "@/libs/funcs";
+
+import { Pagination, Response } from "@/types/response.types";
+import { LimitedCourse } from "@/types/course.types";
 
 type CoursesQueriesWithIdParams = { courseId: string };
 type CoursesQueriesWithSlugParams = { slug: string };
 
-export function getAllCourses(query: GetAllCoursesQuerySchemaType) {
+export function getAllCourses(query: Partial<GetAllCoursesQuerySchemaType> = {}): Promise<Response<{ courses: LimitedCourse[]; pagination: Pagination }>> {
     const queryString = convertToQueryString(query);
     const url = `/courses?${queryString}`;
 
-    return Quranara.get(url);
+    return Quranara.get(url, {
+        cache: "force-cache",
+        next: {
+            tags: [GET_ALL_COURSES],
+        },
+    });
 }
 
 export function searchInCourses(query: SearchCoursesQuerySchameType) {

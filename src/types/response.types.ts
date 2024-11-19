@@ -3,3 +3,5 @@ export type Response<T> = {
     status: number;
     data: T;
 };
+
+export type Pagination = { page: number; limit: number; pagesCount: number; count: number };
