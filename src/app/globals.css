@@ -47,11 +47,23 @@
         @apply bg-gray-200 dark:bg-gray-700 rounded-full;
     }
     .with-custom-scroll::-webkit-scrollbar-thumb:hover {
-        @apply bg-gray-300 dark:bg-gray-600
+        @apply bg-gray-300 dark:bg-gray-600;
     }
 
     .with-custom-scroll {
         scrollbar-gutter: stable;
+    }
+
+    .blog-swiper-pagination {
+        position: static !important;
+    }
+
+    .blog-swiper-pagination > .swiper-pagination-bullet {
+        @apply size-2 bg-gray-400 dark:bg-gray-500 rounded-full transition-all duration-300;
+    }
+
+    .blog-swiper-pagination > .swiper-pagination-bullet-active {
+        @apply w-6 bg-blue-500 dark:bg-blue-500;
     }
 }
 

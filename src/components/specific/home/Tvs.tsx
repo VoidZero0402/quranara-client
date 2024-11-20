@@ -1,10 +1,13 @@
+import Link from "next/link";
+
+import { getAllTvs } from "@/api/queries/tv";
+
 import Tv from "@/components/card/Tv";
 
 import Button from "@/components/ui/Button";
 
 import LongArrowLeft from "@/components/svgs/LongArrowLeft";
 import PlayCircle from "@/components/svgs/PlayCircle";
-import { getAllTvs } from "@/api/queries/tv";
 
 async function Tvs() {
     const { data } = await getAllTvs({ limit: "4" });
@@ -19,10 +22,12 @@ async function Tvs() {
                     </div>
                     <p className="text-gray-500 font-pelak-medium">ویدیوهای کاربردی برای آشنایی با قرآن</p>
                 </div>
-                <Button size="lg" rounded="lg" variant="text-primary" className="font-pelak-medium">
-                    مشاهده همه آموزش‌ها
-                    <LongArrowLeft className="w-6" strokeWidth={1.5} />
-                </Button>
+                <Link href="/tv">
+                    <Button size="lg" rounded="lg" variant="text-primary" className="font-pelak-medium">
+                        مشاهده همه آموزش‌ها
+                        <LongArrowLeft className="w-6" strokeWidth={1.5} />
+                    </Button>
+                </Link>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                 {data.tvs.map((tv) => (

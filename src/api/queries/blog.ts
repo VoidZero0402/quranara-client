@@ -1,15 +1,27 @@
 import Quranara from "../clients/Quranara";
+
+import { GET_ALL_BLOGS } from "@/constants/requestTags";
+
 import { GetAllBlogsQuerySchemaType, SearchBlogsQuerySchameType } from "@/validators/blog";
 import { PaginationQuerySchemaType } from "@/validators/pagination";
+
 import { convertToQueryString } from "@/libs/funcs";
+
+import { Response } from "@/types/response.types";
+import { LimitedBlog } from "@/types/blog.types";
 
 type BlogsQueriesWithSlugParams = { slug: string };
 
-export function getAllBlogs(query: GetAllBlogsQuerySchemaType) {
+export function getAllBlogs(query: Partial<GetAllBlogsQuerySchemaType> = {}): Promise<Response<{ blogs: LimitedBlog[] }>> {
     const queryString = convertToQueryString(query);
     const url = `/blog?${queryString}`;
 
-    return Quranara.get(url);
+    return Quranara.get(url, {
+        cache: "force-cache",
+        next: {
+            tags: GET_ALL_BLOGS
+        }
+    });
 }
 
 export function searchInBlogs(query: SearchBlogsQuerySchameType) {
