@@ -2,6 +2,7 @@ import Header from "@/components/specific/home/Header";
 import CTABoxes from "@/components/specific/home/CTABoxes";
 import Courses from "@/components/specific/home/Courses";
 import News from "@/components/specific/home/News";
+import Tvs from "@/components/specific/home/Tvs";
 
 function Home() {
     return (
@@ -12,6 +13,7 @@ function Home() {
                     <CTABoxes />
                     <Courses />
                     <News />
+                    <Tvs />
                 </div>
             </main>
         </>

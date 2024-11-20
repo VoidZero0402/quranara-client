@@ -2,7 +2,7 @@ import { cva, VariantProps } from "class-variance-authority";
 
 import { cn } from "@/libs/cn";
 
-const badge = cva("flex items-center gap-x-1 py-1 px-2 rounded-full select-none text-xs", {
+const badge = cva("flex items-center gap-x-1 w-max py-1 px-2 rounded-full select-none text-xs", {
     variants: {
         color: {
             primary: "bg-blue-50 dark:bg-blue-500/10 text-blue-500",

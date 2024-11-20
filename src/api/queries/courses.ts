@@ -20,7 +20,7 @@ export function getAllCourses(query: Partial<GetAllCoursesQuerySchemaType> = {})
     return Quranara.get(url, {
         cache: "force-cache",
         next: {
-            tags: [GET_ALL_COURSES],
+            tags: GET_ALL_COURSES,
         },
     });
 }

@@ -1,15 +1,27 @@
 import Quranara from "../clients/Quranara";
+
+import { GET_ALL_TVS } from "@/constants/requestTags";
+
 import { SearchTvsQuerySchameType } from "@/validators/tv";
 import { PaginationQuerySchemaType } from "@/validators/pagination";
+
 import { convertToQueryString } from "@/libs/funcs";
+
+import { Response } from "@/types/response.types";
+import { LimitedTv } from "@/types/tv.types";
 
 type TvsQueriesWithSlugParams = { slug: string };
 
-export function getAllTvs(query: PaginationQuerySchemaType) {
+export function getAllTvs(query: Partial<PaginationQuerySchemaType> = {}): Promise<Response<{ tvs: LimitedTv[] }>> {
     const queryString = convertToQueryString(query);
     const url = `/tv?${queryString}`;
 
-    return Quranara.get(url);
+    return Quranara.get(url, {
+        cache: "force-cache",
+        next: {
+            tags: GET_ALL_TVS,
+        },
+    });
 }
 
 export function searchInTvs(query: SearchTvsQuerySchameType) {

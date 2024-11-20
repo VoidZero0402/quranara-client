@@ -31,7 +31,7 @@ function Course({ title, description, slug, status, price, discount, metadata }:
                 <h3 className="font-pelak-medium text-lg text-gray-800 dark:text-gray-200 line-clamp-1">
                     <Link href={`/courses/${slug}`}>{title}</Link>
                 </h3>
-                <p className="line-clamp-3 h-[72px] text-sm text-gray-600 dark:text-gray-400 leading-6">{description}</p>
+                <p className="line-clamp-3 h-18 text-sm text-gray-600 dark:text-gray-400 leading-6">{description}</p>
                 <div className="flex items-center justify-between mt-2">
                     <div className="flex gap-x-2">
                         <div className="flex items-center gap-x-1 py-1 px-2 font-pelak-medium text-sm bg-blue-50 dark:bg-blue-500/10 text-blue-500 rounded-lg">

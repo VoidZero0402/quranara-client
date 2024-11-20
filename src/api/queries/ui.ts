@@ -9,7 +9,7 @@ export function getMenus(): Promise<Response<Menus>> {
     return Quranara.get("/ui/menus", {
         cache: "force-cache",
         next: {
-            tags: [NAVBAR_MENUS],
+            tags: NAVBAR_MENUS,
         },
     });
 }

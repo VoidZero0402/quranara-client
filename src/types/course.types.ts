@@ -1,6 +1,6 @@
 import { STATUS } from "@/constants/courses";
 
-import { LimitedUser } from "./user.types";
+import { PopulatedUser } from "./user.types";
 
 type Status = (typeof STATUS)[keyof typeof STATUS]
 
@@ -22,7 +22,7 @@ export type Course = {
     price: number;
     status: Status;
     discount: string;
-    teacher: LimitedUser;
+    teacher: PopulatedUser;
     introduction: {
         video: string;
         content: string;
