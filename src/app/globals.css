@@ -55,7 +55,7 @@
     }
 
     .blog-swiper-pagination {
-        position: static !important;
+        @apply !static h-6;
     }
 
     .blog-swiper-pagination > .swiper-pagination-bullet {

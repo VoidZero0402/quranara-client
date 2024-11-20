@@ -7,7 +7,7 @@ import MedalRibbon from "@/components/svgs/MedalRibbon";
 
 function CTABoxes() {
     return (
-        <section className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <section className="grid lg:grid-cols-2 gap-8">
             <CTABox href="#courses" title="دوره‌های آموزشی جامع قرآن" description="با دوره‌های متنوع قرآن‌آرا، از روخوانی و روان‌خوانی تا تفسیر آیات را در فضایی ساده و قابل فهم بیاموزید و به عمق معانی کلام خدا پی ببرید">
                 <Layers className="w-10" />
             </CTABox>
