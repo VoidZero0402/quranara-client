@@ -12,9 +12,13 @@ import { Blog, LimitedBlog } from "@/types/blog.types";
 import { Comment } from "@/types/comment.types";
 
 type BlogsQueriesWithSlugParams = { slug: string };
+type BlogsQueriesWithIdParams = { blogId: string };
 
-export function getAllBlogs(): Promise<Response<{ blogs: LimitedBlog[]; pagination: Pagination }>> {
-    return Quranara.get("/blog", {
+export function getAllBlogs(query: PaginationQuerySchemaType): Promise<Response<{ blogs: LimitedBlog[]; pagination: Pagination }>> {
+    const queryString = convertToQueryString(query);
+    const url = `/blog?${queryString}`;
+
+    return Quranara.get(url, {
         cache: "force-cache",
         next: {
             tags: [blog.default],
@@ -47,6 +51,12 @@ export function getBlog(params: BlogsQueriesWithSlugParams): Promise<Response<{ 
     });
 }
 
+export function getDetails(params: BlogsQueriesWithIdParams): Promise<Response<{ isLiked: boolean; isSaved: boolean; disabled: boolean }>> {
+    const url = `/blog/${params.blogId}/details`;
+
+    return Quranara.get(url);
+}
+
 export function getRelatedBlogs(params: BlogsQueriesWithSlugParams): Promise<Response<{ blogs: LimitedBlog[] }>> {
     const url = `/blog/${params.slug}/related`;
 
@@ -59,7 +69,7 @@ export function getRelatedBlogs(params: BlogsQueriesWithSlugParams): Promise<Res
 }
 
 export function getBlogComments(params: BlogsQueriesWithSlugParams, query: PaginationQuerySchemaType): Promise<Response<{ comments: Comment[]; pagination: Pagination }>> {
-    const queryString = convertToQueryString(query);;
+    const queryString = convertToQueryString(query);
     const url = `/blog/${params.slug}/comments?${queryString}`;
 
     return Quranara.get(url, {
@@ -73,6 +83,12 @@ export function getBlogComments(params: BlogsQueriesWithSlugParams, query: Pagin
 export function getDraftedBlogs(query: PaginationQuerySchemaType): Promise<Response<{ blogs: LimitedBlog[]; pagination: Pagination }>> {
     const queryString = convertToQueryString(query);
     const url = `/blog/drafted?${queryString}`;
+
+    return Quranara.get(url);
+}
+
+export function getOneDraftedBlog(params: BlogsQueriesWithIdParams): Promise<Response<{ blog: Partial<Blog> }>> {
+    const url = `/blog/drafted/${params.blogId}`;
 
     return Quranara.get(url);
 }

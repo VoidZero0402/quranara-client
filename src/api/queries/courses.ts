@@ -12,9 +12,13 @@ import { Course, LimitedCourse } from "@/types/course.types";
 import { Topic } from "@/types/topic.types";
 
 type CoursesQueriesWithSlugParams = { slug: string };
+type CoursesQueriesWithIdParams = { courseId: string };
 
-export function getAllCourses(): Promise<Response<{ courses: LimitedCourse[]; pagination: Pagination }>> {
-    return Quranara.get("/courses", {
+export function getAllCourses(query: PaginationQuerySchemaType): Promise<Response<{ courses: LimitedCourse[]; pagination: Pagination }>> {
+    const queryString = convertToQueryString(query);
+    const url = `/courses?${queryString}`;
+
+    return Quranara.get(url, {
         cache: "force-cache",
         next: {
             tags: [courses.default],
@@ -68,4 +72,10 @@ export function getCourseTopics(params: CoursesQueriesWithSlugParams): Promise<R
             tags: [courses.getTopics(params.slug)],
         },
     });
+}
+
+export function checkAccess(params: CoursesQueriesWithIdParams): Promise<Response<{ hasAccess: boolean }>> {
+    const url = `/courses/${params.courseId}/check-access`;
+
+    return Quranara.get(url);
 }

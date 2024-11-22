@@ -12,9 +12,13 @@ import { Tv, LimitedTv } from "@/types/tv.types";
 import { Comment } from "@/types/comment.types";
 
 type TvsQueriesWithSlugParams = { slug: string };
+type TvsQueriesWithIdParams = { tvId: string };
 
-export function getAllTvs(): Promise<Response<{ tvs: LimitedTv[]; pagination: Pagination }>> {
-    return Quranara.get("/tv", {
+export function getAllTvs(query: PaginationQuerySchemaType): Promise<Response<{ tvs: LimitedTv[]; pagination: Pagination }>> {
+    const queryString = convertToQueryString(query);
+    const url = `/tv?${queryString}`;
+
+    return Quranara.get(url, {
         cache: "force-cache",
         next: {
             tags: [tv.default],
@@ -45,6 +49,12 @@ export function getTv(params: TvsQueriesWithSlugParams): Promise<Response<{ tv: 
             tags: [tv.getOne(params.slug)],
         },
     });
+}
+
+export function getDetails(params: TvsQueriesWithIdParams): Promise<Response<{ isLiked: boolean; isSaved: boolean; disabled: boolean }>> {
+    const url = `/tv/${params.tvId}/details`;
+
+    return Quranara.get(url);
 }
 
 export function getRelatedTvs(params: TvsQueriesWithSlugParams): Promise<Response<{ tvs: LimitedTv[] }>> {

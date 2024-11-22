@@ -6,7 +6,7 @@ import ArrowDown from "@/components/svgs/ArrowDown";
 
 import { Menus } from "@/types/ui.types";
 
-type NavigationProps = { menus: Menus }
+type NavigationProps = { menus: Menus };
 
 type NavigationItemProps = { text: string } & React.ComponentProps<"li"> & LinkProps;
 
@@ -24,6 +24,7 @@ async function Navigation({ menus }: NavigationProps) {
                         {menus.courses.map((course) => (
                             <NavigationLink key={course._id} href={`/courses/${course.slug}`} title={course.title} caption="مباحث و موضوعات مربوط به علوم قرآنی" />
                         ))}
+                        <NavigationLink href="/courses" title="همه دوره‌ای تخصصی" caption="مشاهده همه دوره‌های تخصصی قرآن‌آرا" />
                     </div>
                 </NavigationDropDown>
             </NavigationItem>
@@ -33,6 +34,7 @@ async function Navigation({ menus }: NavigationProps) {
                         {menus.categories.blog.map((blog) => (
                             <NavigationLink key={blog._id} href={`#`} title={blog.title} caption={blog.caption} />
                         ))}
+                        <NavigationLink href="/blog" title="همه دسته‌بندی‌ها" caption="مشاهده همه دسته‌بندی‌های مقالات" />
                     </div>
                 </NavigationDropDown>
             </NavigationItem>
@@ -42,6 +44,7 @@ async function Navigation({ menus }: NavigationProps) {
                         {menus.categories.tv.map((tv) => (
                             <NavigationLink key={tv._id} href={`#`} title={tv.title} caption={tv.caption} />
                         ))}
+                        <NavigationLink href="/فر" title="همه دسته‌بندی‌ها" caption="مشاهده همه دسته‌بندی‌های آموزشی" />
                     </div>
                 </NavigationDropDown>
             </NavigationItem>
