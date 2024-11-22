@@ -3,11 +3,7 @@ import { cookies } from "next/headers";
 
 export async function GET(request: NextRequest) {
     try {
-        const key = request.nextUrl.searchParams.get("key");
-
-        if (!key) {
-            throw new Error("key not provided");
-        }
+        const key = request.nextUrl.searchParams.get("key") as string;
 
         const cookie = (await cookies()).get(key)?.value;
 

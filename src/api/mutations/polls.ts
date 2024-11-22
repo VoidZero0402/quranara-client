@@ -1,5 +1,5 @@
-import { CreatePollSchemaType, UpdatePollSchemaType, VoutePollSchemaType } from "@/validators/polls";
 import Quranara from "../clients/Quranara";
+import { CreatePollSchemaType, UpdatePollSchemaType, VoutePollSchemaType } from "@/validators/polls";
 
 type PollsMutationsWithIdParams = { pollId: string };
 

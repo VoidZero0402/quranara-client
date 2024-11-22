@@ -14,7 +14,7 @@ function Search() {
 
     return (
         <>
-            <SearchBar route="/search" query="q" id="search-bar" placeholder="در قرآن‌ آرا جستجو کنید" wrapperCalssName="w-60 hidden xl:block" />
+            <SearchBar route="/search" query="q" id="search-bar" placeholder="در قرآن‌ آرا جستجو کنید" wrapperCalssName="w-60 min-[1400px]:w-80 hidden xl:block" />
             <div ref={ref} className="relative hidden lg:block xl:hidden">
                 <Button size="circle" rounded="lg" variant="neutral-base" className="size-12" onClick={toggleOpen}>
                     <Magnifer className="w-6" />

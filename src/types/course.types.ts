@@ -2,7 +2,7 @@ import { STATUS } from "@/constants/courses";
 
 import { PopulatedUser } from "./user.types";
 
-type Status = (typeof STATUS)[keyof typeof STATUS]
+type Status = (typeof STATUS)[keyof typeof STATUS];
 
 type CourseMetadata = {
     students: number;
@@ -23,6 +23,8 @@ export type Course = {
     status: Status;
     discount: string;
     teacher: PopulatedUser;
+    time: [number, number];
+    progress: number;
     introduction: {
         video: string;
         content: string;

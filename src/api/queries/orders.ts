@@ -1,8 +1,13 @@
 import Quranara from "../clients/Quranara";
+
 import { PaginationQuerySchemaType } from "@/validators/pagination";
+
 import { convertToQueryString } from "@/libs/funcs";
 
-export function getAllOrders(query: PaginationQuerySchemaType) {
+import { Pagination, Response } from "@/types/response.types";
+import { Order } from "@/types/order.types";
+
+export function getAllOrders(query: PaginationQuerySchemaType): Promise<Response<{ orders: Order[]; pagination: Pagination }>> {
     const queryString = convertToQueryString(query);
     const url = `/orders/all?${queryString}`;
 
@@ -11,7 +16,7 @@ export function getAllOrders(query: PaginationQuerySchemaType) {
 
 type CheckOrderParams = { shortId: string };
 
-export function checkOrder(params: CheckOrderParams) {
+export function checkOrder(params: CheckOrderParams): Promise<Response<{ order: Order }>> {
     const url = `/orders/check/${params.shortId}`;
 
     return Quranara.get(url);

@@ -1,16 +1,22 @@
 import Quranara from "../clients/Quranara";
+
 import { GetAllUsersQuerySchemaType } from "@/validators/users";
 import { PaginationQuerySchemaType } from "@/validators/pagination";
+
 import { convertToQueryString } from "@/libs/funcs";
 
-export function getAllUsers(query: GetAllUsersQuerySchemaType) {
+import { Pagination, Response } from "@/types/response.types";
+import { User } from "@/types/user.types";
+import { Ban } from "@/types/ban.types";
+
+export function getAllUsers(query: GetAllUsersQuerySchemaType): Promise<Response<{ users: User[]; pagination: Pagination }>> {
     const queryString = convertToQueryString(query);
     const url = `/users?${queryString}`;
 
     return Quranara.get(url);
 }
 
-export function getAllBan(query: PaginationQuerySchemaType) {
+export function getAllBan(query: PaginationQuerySchemaType): Promise<Response<{ bans: Ban[]; pagination: Pagination }>> {
     const queryString = convertToQueryString(query);
     const url = `/users/ban?${queryString}`;
 
