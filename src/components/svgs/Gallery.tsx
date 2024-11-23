@@ -1,6 +1,6 @@
 import { SvgComponentProps } from "@/types/component.types";
 
-function Gallery({ className = "w-5", strokeWidth = 1.25 }: SvgComponentProps) {
+function Gallery({ className = "w-6", strokeWidth = 1.5 }: SvgComponentProps) {
     return (
         <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx={16} cy={8} r={2} stroke="currentColor" strokeWidth={strokeWidth} />

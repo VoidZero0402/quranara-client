@@ -11,10 +11,10 @@ function AboutUs() {
         <section className="space-y-8">
             <div className="flex flex-col items-center gap-4 text-center">
                 <div className="flex items-center gap-x-2 text-gray-700 dark:text-gray-300">
-                    <Graph className="w-8" strokeWidth={1.5} />
+                    <Graph className="w-8" />
                     <h2 className="font-pelak-semibold text-2xl">درباره آکادمی قرآن‌آرا</h2>
                 </div>
-                <p className="text-gray-500 font-pelak-medium">از ایده گرفته تا اهداف و رسالت قرآن‌آرا</p>
+                <p className="font-pelak-medium text-gray-500">از ایده گرفته تا اهداف و رسالت قرآن‌آرا</p>
             </div>
             <div className="grid lg:grid-cols-2 gap-8">
                 <AboutUsBox title="شروع داستان قرآن‌آرا" description="ایده وبسایت قرآن‌آرا از جایی شروع شد که نیاز به یک پلتفرم مدرن و دسترس‌پذیر برای مطالعه و یادگیری قرآن حس شد. هدف ما این بود که تجربه‌ای متفاوت و کاربردی برای کاربران فراهم کنیم تا بتوانند در هر زمان و مکانی با قرآن کریم در ارتباط باشند و از منابع معتبر بهره‌مند شوند">

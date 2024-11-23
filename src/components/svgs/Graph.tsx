@@ -1,6 +1,6 @@
 import { SvgComponentProps } from "@/types/component.types";
 
-function Graph({ className = "w-5", strokeWidth = 1.25 }: SvgComponentProps) {
+function Graph({ className = "w-6", strokeWidth = 1.5 }: SvgComponentProps) {
     return (
         <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M7 14L8.79689 11.8437C9.50894 10.9893 9.86496 10.562 10.3333 10.562C10.8017 10.562 11.1577 10.9893 11.8698 11.8437L12.1302 12.1563C12.8423 13.0107 13.1983 13.438 13.6667 13.438C14.135 13.438 14.4911 13.0107 15.2031 12.1563L17 10" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" />

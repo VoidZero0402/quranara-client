@@ -29,10 +29,10 @@ function TextArea<T extends FieldValues>({ name, control, label, placeholder, ca
 
     return (
         <div className={cn("flex flex-col gap-y-2", className)}>
-            <label htmlFor={name as string} className="text-gray-800 dark:text-gray-200 text-sm font-pelak-medium">
+            <label htmlFor={name as string} className="font-pelak-medium text-sm text-gray-800 dark:text-gray-200">
                 {label}
             </label>
-            <textarea id={name as string} {...field} onInput={onInput} placeholder={placeholder} rows={rows} maxLength={maxLength} className={cn("py-2.5 px-3 w-full resize-none overflow-hidden min-h-[102px] max-h-[2000px] bg-white dark:bg-gray-800 text-sm dark:text-gray-200 border border-gray-100 dark:border-gray-800 focus:border-gray-200 dark:focus:border-gray-700 rounded-lg placeholder:text-gray-500 dark:placeholder:text-gray-400 transition-all", textAreaClassName)} />
+            <textarea id={name as string} {...field} onInput={onInput} placeholder={placeholder} rows={rows} maxLength={maxLength} className={cn("py-2.5 px-3 w-full min-h-[102px] max-h-[2000px] bg-white dark:bg-gray-800 text-sm dark:text-gray-200 border border-gray-100 dark:border-gray-800 focus:border-gray-200 dark:focus:border-gray-700 rounded-lg placeholder:text-gray-500 dark:placeholder:text-gray-400 resize-none overflow-hidden transition-all", textAreaClassName)} />
             <FormDetails error={error} caption={caption} />
         </div>
     );

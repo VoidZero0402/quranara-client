@@ -21,7 +21,7 @@ export function BreadcrumbItem({ children, href, className }: BreadcrumbItemProp
 }
 
 export function BreadcrumbSlice() {
-    return <ArrowLeft className="w-6 text-gray-500 dark:text-gray-400" />;
+    return <ArrowLeft className="text-gray-600 dark:text-gray-400" />;
 }
 
 export default Breadcrumb;

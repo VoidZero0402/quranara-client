@@ -44,7 +44,7 @@ async function Navigation({ menus }: NavigationProps) {
                         {menus.categories.tv.map((tv) => (
                             <NavigationLink key={tv._id} href={`#`} title={tv.title} caption={tv.caption} />
                         ))}
-                        <NavigationLink href="/فر" title="همه دسته‌بندی‌ها" caption="مشاهده همه دسته‌بندی‌های آموزشی" />
+                        <NavigationLink href="/tv" title="همه دسته‌بندی‌ها" caption="مشاهده همه دسته‌بندی‌های آموزشی" />
                     </div>
                 </NavigationDropDown>
             </NavigationItem>
@@ -67,19 +67,19 @@ function NavigationItem({ children, text, href }: NavigationItemProps) {
 function NavigationDropDown({ children, className }: NavigationDropDownProps) {
     return (
         <div className={cn("absolute right-0 top-full pt-6 w-64 invisible opacity-0 mt-2 group-hover:visible group-hover:opacity-100 group-hover:mt-0 transition-all delay-75", className)}>
-            <div className="w-full p-4 bg-white dark:bg-gray-850 border-y-2 border-amber-400 rounded-xl">{children}</div>
+            <div className="w-full p-4 bg-white dark:bg-gray-850 border-y-2 border-amber-400 rounded-2xl">{children}</div>
         </div>
     );
 }
 
 function NavigationLink({ href, title, caption }: NavigationLinkProps) {
     return (
-        <Link href={href} className="p-2 space-y-1 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-all">
+        <Link href={href} className="p-2.5 space-y-1 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-all">
             <div className="flex items-center gap-x-2">
                 <div className="size-2 rounded-sm bg-amber-400"></div>
-                <span className="block font-pelak-medium text-gray-800 dark:text-gray-200">{title}</span>
+                <span className="block font-pelak-medium text-gray-800 dark:text-gray-200 line-clamp-1">{title}</span>
             </div>
-            <p className="text-xs line-clamp-1 text-gray-600 dark:text-gray-400">{caption}</p>
+            <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-1">{caption}</p>
         </Link>
     );
 }

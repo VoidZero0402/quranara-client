@@ -6,9 +6,10 @@ import useToggle from "@/hooks/useToggle";
 import { OpacityAnimation } from "@/libs/motions";
 
 import Button from "@/components/ui/Button";
-import Dropdown, { DropdownHeader, DropdownSlice, DropdownBody, DropdownFooter } from "@/components/ui/Dropdown";
+import Dropdown, { DropdownHeader, DropdownBody, DropdownFooter } from "@/components/ui/Dropdown";
 import Badge from "@/components/ui/Badge";
 import Avatar from "@/components/ui/Avatar";
+import Slice from "@/components/ui/Slice";
 
 import UserRounded from "@/components/svgs/UserRounded";
 import HomeAngle from "@/components/svgs/HomeAngle";
@@ -28,15 +29,15 @@ function UserAccount({ user }: UserAccountProps) {
     return (
         <div ref={ref} className="flex items-center relative">
             <motion.div {...OpacityAnimation}>
-                <Button onClick={toggleOpen} rounded="lg" variant="neutral-base" className="size-12 sm:h-12 sm:w-40 font-pelak-medium">
+                <Button onClick={toggleOpen} variant="neutral-base" className="size-12 sm:h-12 sm:w-40">
                     <span className="hidden sm:inline-block">حساب کاربری</span>
-                    <UserRounded className="w-6" strokeWidth={1.5} />
+                    <UserRounded className="w-7" />
                 </Button>
             </motion.div>
 
-            <Dropdown className={`absolute left-0 top-full w-72 dark:bg-gray-850 transition-all ${isOpen ? "visible opacity-100 mt-4" : "invisible opacity-0 mt-6"}`}>
+            <Dropdown className={`absolute left-0 top-full w-72 dark:bg-gray-850 shadow-lg shadow-gray-100 dark:shadow-none transition-all duration- transform-gpu ${isOpen ? "visible opacity-100 mt-4" : "invisible opacity-0 mt-6"}`}>
                 <DropdownHeader className="flex items-center gap-x-4 p-2">
-                    <Avatar src={user.profile} className="size-16 shrink-0" />
+                    <Avatar src={user.profile} className="size-16" />
                     <div className="flex flex-col gap-y-2 transform-gpu">
                         <span className="font-pelak-medium text-md text-gray-800 dark:text-gray-200 line-clamp-1">{user.username}</span>
                         <div className="flex items-center gap-x-2">
@@ -45,36 +46,36 @@ function UserAccount({ user }: UserAccountProps) {
                         </div>
                     </div>
                 </DropdownHeader>
-                <DropdownSlice />
+                <Slice />
                 <DropdownBody>
-                    <Link href="#" className="flex items-center gap-x-2 py-2.5 px-3 text-gray-800 dark:text-gray-200 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer transition-colors">
+                    <Link href="#" className="flex items-center gap-x-2 py-2.5 px-3 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition-colors">
                         <HomeAngle className="w-6" />
                         پنل کاربری
                     </Link>
-                    <Link href="#" className="flex items-center gap-x-2 py-2.5 px-3 text-gray-800 dark:text-gray-200 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer transition-colors">
+                    <Link href="#" className="flex items-center gap-x-2 py-2.5 px-3 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition-colors">
                         <Bag className="w-6" />
                         سبد خرید دوره‌ها
                     </Link>
-                    <Link href="#" className="flex items-center gap-x-2 py-2.5 px-3 text-gray-800 dark:text-gray-200 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer transition-colors">
+                    <Link href="#" className="flex items-center gap-x-2 py-2.5 px-3 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition-colors">
                         <Folder className="w-6" />
                         دوره‌های من
                     </Link>
-                    <Link href="#" className="flex items-center gap-x-2 py-2.5 px-3 text-gray-800 dark:text-gray-200 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer transition-colors">
+                    <Link href="#" className="flex items-center gap-x-2 py-2.5 px-3 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition-colors">
                         <ChatRoundLine className="w-6" />
                         تیکت‌های من
                     </Link>
-                    <Link href="#" className="flex items-center gap-x-2 py-2.5 px-3 text-gray-800 dark:text-gray-200 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer transition-colors">
+                    <Link href="#" className="flex items-center gap-x-2 py-2.5 px-3 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition-colors">
                         <QuestionSquare className="w-6" />
                         سوالات من
                     </Link>
-                    <Link href="#" className="flex items-center gap-x-2 py-2.5 px-3 text-gray-800 dark:text-gray-200 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer transition-colors">
+                    <Link href="#" className="flex items-center gap-x-2 py-2.5 px-3 text-gray-800 dark:text-gray-200 hover:bg-gay-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition-colors">
                         <UserRounded className="w-6" />
                         جزئیات حساب کاربری
                     </Link>
                 </DropdownBody>
-                <DropdownSlice />
+                <Slice />
                 <DropdownFooter>
-                    <button className="flex items-center gap-x-2 w-full py-2.5 px-3 text-red-500 rounded-lg hover:bg-red-50 dark:hover:bg-red-500/10 cursor-pointer transition-colors">
+                    <button className="flex items-center gap-x-2 w-full py-2.5 px-3 text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-lg cursor-pointer transition-colors">
                         <Logout className="w-6" />
                         خروج از حساب
                     </button>

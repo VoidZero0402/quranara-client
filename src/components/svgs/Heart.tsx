@@ -1,6 +1,6 @@
 import { SvgComponentProps } from "@/types/component.types";
 
-function Heart({ className = "w-5", strokeWidth = 0.25 }: SvgComponentProps) {
+function Heart({ className = "w-6", strokeWidth = 0.25 }: SvgComponentProps) {
     return (
         <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path

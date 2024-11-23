@@ -1,6 +1,6 @@
 import { SvgComponentProps } from "@/types/component.types";
 
-function Magnifer({ className = "w-5", strokeWidth = 1.25 }: SvgComponentProps) {
+function Magnifer({ className = "w-6", strokeWidth = 1.5 }: SvgComponentProps) {
     return (
         <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M18.5 18.5L22 22" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" />

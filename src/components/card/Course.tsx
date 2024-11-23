@@ -19,11 +19,11 @@ const StatusText = {
 
 function Course({ title, description, slug, status, price, discount, metadata }: LimitedCourse) {
     return (
-        <div className="bg-white dark:bg-gray-850 overflow-hidden rounded-2xl">
+        <div className="bg-white dark:bg-gray-850 rounded-2xl overflow-hidden">
             <Link href={`/courses/${slug}`} className="overflow-hidden">
                 <Placeholder className="aspect-video rounded-xl" type="image" />
             </Link>
-            <div className="p-4 flex flex-col gap-2">
+            <div className="flex flex-col gap-2 p-4">
                 <div className="flex items-center gap-x-1 text-xs font-pelak-medium text-blue-500">
                     <span className="block size-1.5 bg-blue-500 rounded-full"></span>
                     {StatusText[status]}
@@ -31,15 +31,15 @@ function Course({ title, description, slug, status, price, discount, metadata }:
                 <h3 className="font-pelak-medium text-lg text-gray-800 dark:text-gray-200 line-clamp-1">
                     <Link href={`/courses/${slug}`}>{title}</Link>
                 </h3>
-                <p className="line-clamp-3 h-18 text-sm text-gray-600 dark:text-gray-400 leading-6">{description}</p>
+                <p className="h-18 text-sm text-gray-600 dark:text-gray-400 leading-6 line-clamp-3">{description}</p>
                 <div className="flex items-center justify-between mt-2">
                     <div className="flex gap-x-2">
-                        <div className="flex items-center gap-x-1 py-1 px-2 font-pelak-medium text-sm bg-blue-50 dark:bg-blue-500/10 text-blue-500 rounded-lg">
-                            <UserRounded className="w-4" strokeWidth={1.5} />
+                        <div className="flex items-center gap-x-1 py-1 px-2 font-pelak-medium text-sm blue-light rounded-lg">
+                            <UserRounded className="w-4" />
                             <span className="h-4.5">{metadata.students}</span>
                         </div>
-                        <div className="flex items-center gap-x-1 py-1 px-2 font-pelak-medium text-sm bg-amber-50 dark:bg-amber-400/10 text-amber-400 rounded-lg">
-                            <Star className="w-4" strokeWidth={1.5} />
+                        <div className="flex items-center gap-x-1 py-1 px-2 font-pelak-medium text-sm amber-light rounded-lg">
+                            <Star className="w-4" />
                             <span className="h-4.5">{metadata.rating}</span>
                         </div>
                     </div>
@@ -51,7 +51,7 @@ function Course({ title, description, slug, status, price, discount, metadata }:
                     </div>
                 </div>
             </div>
-            <Slice className="mx-4 bg-gray-100 dark:bg-gray-800" />
+            <Slice className="mx-4 dark:bg-gray-800" />
             <div className="p-4">
                 <Link href={`/courses/${slug}`} className="flex items-center gap-x-2 w-max m-auto font-pelak-medium text-gray-500 hover:text-amber-400 transition-colors">
                     مشاهده جزئیات دوره

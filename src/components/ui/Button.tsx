@@ -2,7 +2,7 @@ import { cva, VariantProps } from "class-variance-authority";
 
 import { cn } from "@/libs/cn";
 
-const button = cva("flex-center gap-x-1 child:shrink-0 select-none transition-colors", {
+const button = cva("flex-center gap-x-1 font-pelak-medium child:shrink-0 select-none transition-colors", {
     variants: {
         variant: {
             "filled-primary": "bg-blue-500 text-white hover:bg-blue-600 disabled:bg-blue-400",
@@ -30,13 +30,13 @@ const button = cva("flex-center gap-x-1 child:shrink-0 select-none transition-co
 
     defaultVariants: {
         size: "base",
-        rounded: "base",
+        rounded: "lg",
     },
 });
 
 type ButtonProps = VariantProps<typeof button> & React.ComponentProps<"button">;
 
-function Button({ children, className, variant = "filled-primary", size = "base", rounded = "base", ...props }: ButtonProps) {
+function Button({ children, className, variant = "filled-primary", size = "base", rounded = "lg", ...props }: ButtonProps) {
     return (
         <button className={cn(button({ variant, size, rounded }), className)} {...props}>
             {children}

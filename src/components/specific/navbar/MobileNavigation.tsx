@@ -40,20 +40,20 @@ function MobileNavigation({ menus }: MobileNavigationProps) {
             <MobileNavigationItem text="صفحه اصلی" Icon={HomeAngle} href="/" />
             <CollapsableMobileNavigationItem text="دوره‌های تخصصی" Icon={Layers} isActive={active === "courses"} onActive={onActive("courses")}>
                 <div className="w-full p-2">
-                    <NavigationLink href="/courses" title="همه دوره‌ها" caption="مشاهده همه دوره‌های تخصصی قرآن آرا" />
                     {useMemo(() => menus.courses.map((course) => <NavigationLink key={course._id} href={`/courses/${course.slug}`} title={course.title} caption="مباحث و موضوعات مربوط به علوم قرآنی" />), [])}
+                    <NavigationLink href="/courses" title="همه دوره‌ها" caption="مشاهده همه دوره‌های تخصصی قرآن آرا" />
                 </div>
             </CollapsableMobileNavigationItem>
             <CollapsableMobileNavigationItem text="مقالات" Icon={Document} isActive={active === "blog"} onActive={onActive("blog")}>
                 <div className="w-full p-2">
-                    <NavigationLink href="/blog" title="همه مقالات" caption="مشاهده همه مقالات قرآن آرا" />
                     {useMemo(() => menus.categories.blog.map((blog) => <NavigationLink key={blog._id} href={`#`} title={blog.title} caption={blog.caption} />), [])}
+                    <NavigationLink href="/blog" title="همه مقالات" caption="مشاهده همه مقالات قرآن آرا" />
                 </div>
             </CollapsableMobileNavigationItem>
             <CollapsableMobileNavigationItem text="آموزش‌های رایگان" Icon={PlayCircle} isActive={active === "tv"} onActive={onActive("tv")}>
                 <div className="w-full p-2">
-                    <NavigationLink href="/blog" title="همه آموزش‌های رایگان" caption="مشاهده همه آموزش‌های رایگان قرآن آرا" />
                     {useMemo(() => menus.categories.tv.map((tv) => <NavigationLink key={tv._id} href={`#`} title={tv.title} caption={tv.caption} />), [])}
+                    <NavigationLink href="/tv" title="همه آموزش‌های رایگان" caption="مشاهده همه آموزش‌های رایگان قرآن آرا" />
                 </div>
             </CollapsableMobileNavigationItem>
             <MobileNavigationItem text="درباره ما" Icon={QuestionSquare} href="/about-us" />
@@ -64,8 +64,8 @@ function MobileNavigation({ menus }: MobileNavigationProps) {
 function MobileNavigationItem({ text, Icon, href }: MobileNavigationItemProps) {
     return (
         <li>
-            <Link href={href} className="flex items-center gap-x-2 py-2.5 px-3 text-gray-800 dark:text-gray-200 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 select-none transition-colors">
-                <Icon className="w-6" />
+            <Link href={href} className="flex items-center gap-x-2 py-2.5 px-3 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg select-none transition-colors">
+                <Icon />
                 {text}
             </Link>
         </li>
@@ -79,12 +79,12 @@ function CollapsableMobileNavigationItem({ children, text, Icon, isActive, onAct
         <li>
             <div className={cn("flex items-center justify-between w-full py-2.5 px-3 text-gray-800 dark:text-gray-200 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 select-none transition-colors", isActive && "bg-gray-50 dark:bg-gray-700")} onClick={onActive}>
                 <div className="flex items-center gap-x-2">
-                    <Icon className="w-6" />
+                    <Icon />
                     {text}
                 </div>
                 <ArrowDown />
             </div>
-            <div ref={collapseRef} className={cn("overflow-hidden opacity-0 transition-all duration-300", isActive && "opacity-100")} style={{ height: isActive ? `${collapseRef.current!.scrollHeight}px` : "0" }}>
+            <div ref={collapseRef} className={cn("opacity-0 overflow-hidden transition-all duration-300", isActive && "opacity-100")} style={{ height: isActive ? `${collapseRef.current!.scrollHeight}px` : "0" }}>
                 {children}
             </div>
         </li>

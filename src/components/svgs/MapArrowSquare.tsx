@@ -1,6 +1,6 @@
 import { SvgComponentProps } from "@/types/component.types";
 
-function MapArrowSquare({ className = "w-5", strokeWidth = 1.25 }: SvgComponentProps) {
+function MapArrowSquare({ className = "w-6", strokeWidth = 1.5 }: SvgComponentProps) {
     return (
         <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M2 12C2 16.714 2 19.0711 3.46447 20.5355C4.92893 22 7.28595 22 12 22C16.714 22 19.0711 22 20.5355 20.5355C22 19.0711 22 16.714 22 12C22 7.28595 22 4.92893 20.5355 3.46447C19.0711 2 16.714 2 12 2C7.28595 2 4.92893 2 3.46447 3.46447C2.49073 4.43821 2.16444 5.80655 2.0551 8" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" />

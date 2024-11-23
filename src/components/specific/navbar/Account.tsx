@@ -13,7 +13,7 @@ import UserAccount from "./UserAccount";
 import Button from "@/components/ui/Button";
 import Skeleton, { SkeletonFrame } from "@/components/ui/Skeleton";
 
-import ArrowLogin from "@/components/svgs/ArrowLogin";
+import UserRounded from "@/components/svgs/UserRounded";
 import Setting from "@/components/svgs/Setting";
 
 import { CookieUser } from "@/types/user.types";
@@ -32,8 +32,8 @@ function Account() {
         return (
             <motion.div {...OpacityAnimation}>
                 <Link href="/login">
-                    <Button rounded="lg" className="size-12 sm:h-12 sm:w-40 font-pelak-medium">
-                        <ArrowLogin className="w-7" strokeWidth={1.5} />
+                    <Button className="size-12 sm:h-12 sm:w-40">
+                        <UserRounded className="w-7" />
                         <span className="hidden sm:inline-block"> ورود | ثبت نام</span>
                     </Button>
                 </Link>
@@ -45,9 +45,9 @@ function Account() {
         <>
             {user.role === ROLES.MANAGER ? (
                 <motion.div {...OpacityAnimation}>
-                    <Link href="/manager-panel">
-                        <Button rounded="lg" variant="neutral-base" className="size-12 sm:h-12 sm:w-40 font-pelak-medium">
-                            <Setting className="w-6" strokeWidth={1.5} />
+                    <Link href="/management-panel">
+                        <Button variant="neutral-base" className="size-12 sm:h-12 sm:w-40">
+                            <Setting className="w-7" />
                             <span className="hidden sm:inline-block">پنل مدیریت</span>
                         </Button>
                     </Link>

@@ -22,13 +22,13 @@ function Toast({ text, caption, status = "success", className }: ToastProps) {
     const SvgComponent = toast[status].SvgComponent;
 
     return (
-        <div className={cn("flex items-center gap-x-2 p-4 w-[350px] fixed left-2 top-2 bg-white dark:bg-gray-800 rounded-lg border border-gray-100 dark:border-gray-800", toast[status].ClassName, className)}>
+        <div className={cn("fixed left-2 top-2 flex items-center gap-x-2 p-4 w-[350px] bg-white dark:bg-gray-850 rounded-lg border border-gray-100 dark:border-gray-800", toast[status].ClassName, className)}>
             <div className="shrink-0">
                 <SvgComponent className="w-12" />
             </div>
             <div className="space-y-2">
                 <span className="font-pelak-medium text-sm">{text}</span>
-                <p className="text-xs text-gray-500 dark:text-gray-400">{caption}</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">{caption}</p>
             </div>
         </div>
     );

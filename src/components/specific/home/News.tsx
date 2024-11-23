@@ -16,17 +16,17 @@ async function News() {
             <div className="flex flex-col sm:flex-row items-center justify-between gap-y-4 sm:gap-0">
                 <div className="flex flex-col items-center sm:items-start gap-4 text-center sm:text-start">
                     <div className="flex items-center gap-x-2 text-gray-700 dark:text-gray-300">
-                        <NotificationUnreadLines className="w-8" strokeWidth={1.5} />
+                        <NotificationUnreadLines className="w-8" />
                         <h2 className="font-pelak-semibold text-2xl">تازه‌ترین اخبار قرآن‌آرا</h2>
                     </div>
-                    <p className="text-gray-500 font-pelak-medium">آخرین اخبار و رویدادهای قرآن‌آرا را دنبال کنید</p>
+                    <p className="font-pelak-medium text-gray-500">آخرین اخبار و رویدادهای قرآن‌آرا را دنبال کنید</p>
                 </div>
                 <div className="flex gap-x-4">
-                    <Button size="circle" rounded="lg" variant="neutral-base" className="next-news-btn">
-                        <ArrowRight className="w-6" strokeWidth={1.5} />
+                    <Button size="circle" variant="neutral-base" className="next-news-btn">
+                        <ArrowRight />
                     </Button>
-                    <Button size="circle" rounded="lg" variant="neutral-base" className="prev-news-btn">
-                        <ArrowLeft className="w-6" strokeWidth={1.5} />
+                    <Button size="circle" variant="neutral-base" className="prev-news-btn">
+                        <ArrowLeft />
                     </Button>
                 </div>
             </div>

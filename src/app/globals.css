@@ -71,4 +71,24 @@
     .flex-center {
         @apply flex items-center justify-center;
     }
+
+    .bg-backdrop {
+        @apply bg-gray-500/10 dark:bg-gray-800/10
+    }
+
+    .blue-light {
+        @apply bg-blue-50 dark:bg-blue-500/10 text-blue-500;
+    }
+
+    .amber-light {
+        @apply bg-amber-50 dark:bg-amber-400/10 text-amber-400;
+    }
+
+    .gray-light {
+        @apply bg-gray-100 dark:bg-gray-500/10 text-gray-600 dark:text-gray-200;
+    }
+
+    .red-light {
+        @apply bg-red-50 dark:bg-red-500/10 text-red-500;
+    }
 }

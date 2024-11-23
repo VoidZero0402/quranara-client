@@ -23,8 +23,8 @@ function ToggleTheme() {
     }
 
     return (
-        <Button size="circle" rounded="lg" variant="neutral-base" className="size-12" onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
-            {theme === "light" ? <Moon className="w-6" /> : <Sun className="w-6" />}
+        <Button size="circle" variant="neutral-base" className="size-12" onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+            {theme === "light" ? <Moon /> : <Sun />}
         </Button>
     );
 }

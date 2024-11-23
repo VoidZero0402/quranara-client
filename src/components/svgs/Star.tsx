@@ -1,6 +1,6 @@
 import { SvgComponentProps } from "@/types/component.types";
 
-function Star({ className = "w-5", strokeWidth = 1.25 }: SvgComponentProps) {
+function Star({ className = "w-6", strokeWidth = 1.5 }: SvgComponentProps) {
     return (
         <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path

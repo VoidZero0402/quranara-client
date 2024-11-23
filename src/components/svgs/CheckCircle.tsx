@@ -1,6 +1,6 @@
 import { SvgComponentProps } from "@/types/component.types";
 
-function CheckCircle({ className = "w-5", strokeWidth = 1.25 }: SvgComponentProps) {
+function CheckCircle({ className = "w-6", strokeWidth = 1.5 }: SvgComponentProps) {
     return (
         <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M8.5 12.5L10.5 14.5L15.5 9.5" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" />

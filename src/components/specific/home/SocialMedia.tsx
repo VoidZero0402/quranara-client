@@ -9,7 +9,7 @@ function SocialMedia() {
             <div className="flex flex-col lg:flex-row items-center gap-8 justify-between p-8 bg-white dark:bg-gray-850 rounded-2xl">
                 <div>
                     <div className="flex flex-col items-center md:items-start gap-4 text-center md:text-start">
-                        <h3 className="font-pelak-semibold text-2xl text-gray-700 dark:text-gray-300 text-center">قرآن‌آرا را در شبکه‌های اجتماعی دنبال کنید</h3>
+                        <h3 className="font-pelak-semibold text-2xl text-gray-800 dark:text-gray-200 text-center">قرآن‌آرا را در شبکه‌های اجتماعی دنبال کنید</h3>
                         <p className="text-gray-500 font-pelak-medium">برای دسترسی به محتوای ویژه، نکات قرآنی و آخرین به‌روزرسانی‌ها همراه ما باشید.</p>
                     </div>
                 </div>
