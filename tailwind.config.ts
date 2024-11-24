@@ -21,15 +21,9 @@ export default {
             },
             spacing: {
                 "4.5": "18px",
+                "6.5": "26px",
                 "18": "72px",
-            },
-            keyframes: {
-                shimmer: {
-                    "100%": {
-                        transform: "translateX(100%)",
-                    },
-                },
-            },
+            }
         },
         screens: {
             xs: "480px",

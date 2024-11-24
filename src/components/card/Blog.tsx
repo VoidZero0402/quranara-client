@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import Placeholder from "../ui/Placeholder";
 import Badge from "../ui/Badge";
+import Skeleton, { SkeletonFrame } from "../ui/Skeleton";
 
 import Eye from "../svgs/Eye";
 import Heart from "../svgs/Heart";
@@ -15,11 +16,13 @@ function Blog({ title, slug, description, cover, category, views, likes, timeToR
         <div className="bg-white dark:bg-gray-850 rounded-2xl overflow-hidden">
             <div>
                 <Link href={`/blog/${slug}`}>
-                    <Placeholder className="aspect-video rounded-xl" title={cover} />
+                    <Placeholder className="aspect-video rounded-xl" title={cover} type="image" />
                 </Link>
             </div>
             <div className="flex flex-col gap-2 p-4">
-                <Badge color="secondary">{category.title}</Badge>
+                <Badge color="secondary" className="rounded-lg">
+                    {category.title}
+                </Badge>
                 <h3 className="font-pelak-medium text-lg text-gray-800 dark:text-gray-200 line-clamp-1">
                     <Link href={`/blog/${slug}`}>{title}</Link>
                 </h3>
@@ -49,6 +52,36 @@ function Blog({ title, slug, description, cover, category, views, likes, timeToR
                 </div>
             </div>
         </div>
+    );
+}
+
+export function BlogLoading() {
+    return (
+        <Skeleton className="rounded-2xl">
+            <div className="aspect-video">
+                <SkeletonFrame className="rounded-xl"></SkeletonFrame>
+            </div>
+            <div className="flex flex-col gap-2 p-4">
+                <SkeletonFrame className="h-6 w-20"></SkeletonFrame>
+                <SkeletonFrame className="h-7 w-3/4"></SkeletonFrame>
+                <div className="space-y-1.5">
+                    <SkeletonFrame className="h-5"></SkeletonFrame>
+                    <SkeletonFrame className="h-5"></SkeletonFrame>
+                    <SkeletonFrame className="h-5 w-3/4"></SkeletonFrame>
+                </div>
+                <div className="flex items-center justify-between mt-2">
+                    <div className="flex gap-x-2 w-1/2">
+                        <SkeletonFrame className="w-1/2 h-6.5"></SkeletonFrame>
+                        <SkeletonFrame className="w-1/2 h-6.5"></SkeletonFrame>
+                    </div>
+                    <SkeletonFrame className="w-1/3 h-6.5"></SkeletonFrame>
+                </div>
+            </div>
+            <Slice className="mx-4 dark:bg-gray-800" />
+            <div className="p-4">
+                <SkeletonFrame className="w-1/2 h-4"></SkeletonFrame>
+            </div>
+        </Skeleton>
     );
 }
 

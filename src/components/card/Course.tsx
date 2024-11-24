@@ -4,6 +4,7 @@ import { STATUS } from "@/constants/courses";
 
 import Placeholder from "../ui/Placeholder";
 import Slice from "../ui/Slice";
+import Skeleton, { SkeletonFrame } from "../ui/Skeleton";
 
 import UserRounded from "../svgs/UserRounded";
 import Star from "../svgs/Star";
@@ -59,6 +60,36 @@ function Course({ title, description, slug, status, price, discount, metadata }:
                 </Link>
             </div>
         </div>
+    );
+}
+
+export function CourseLoading() {
+    return (
+        <Skeleton className="rounded-2xl">
+            <div className="aspect-video">
+                <SkeletonFrame className="rounded-xl"></SkeletonFrame>
+            </div>
+            <div className="flex flex-col gap-2 p-4">
+                <SkeletonFrame className="h-4 w-20"></SkeletonFrame>
+                <SkeletonFrame className="h-7 w-3/4"></SkeletonFrame>
+                <div className="space-y-1.5">
+                    <SkeletonFrame className="h-5"></SkeletonFrame>
+                    <SkeletonFrame className="h-5"></SkeletonFrame>
+                    <SkeletonFrame className="h-5 w-3/4"></SkeletonFrame>
+                </div>
+                <div className="flex items-center justify-between mt-2">
+                    <div className="flex gap-x-2 w-1/2">
+                        <SkeletonFrame className="w-1/2 h-6.5"></SkeletonFrame>
+                        <SkeletonFrame className="w-1/2 h-6.5"></SkeletonFrame>
+                    </div>
+                    <SkeletonFrame className="w-1/3 h-7"></SkeletonFrame>
+                </div>
+            </div>
+            <Slice className="mx-4 dark:bg-gray-800" />
+            <div className="p-4">
+                <SkeletonFrame className="h-6 w-44 m-auto"></SkeletonFrame>
+            </div>
+        </Skeleton>
     );
 }
 
