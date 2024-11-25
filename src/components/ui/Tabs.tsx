@@ -2,21 +2,21 @@ import { createContext, useState, useContext, startTransition } from "react";
 
 import { cn } from "@/libs/cn";
 
-type TabsContextProps = { active: string; onTab: (tab: string) => void };
+type TabsContextProps<> = { active: any; onTab: (tab: any) => void };
 
 const TabsContenxt = createContext<TabsContextProps>({ active: "", onTab: () => {} });
 
-type TabsProps = { defaultValue: string; onChange: (tab: string) => void } & React.ComponentProps<"div">;
+type TabsProps<T> = { defaultValue: T; onChangeTab: (tab: T) => void } & React.ComponentProps<"div">;
 
 type TabsItemProps = { value: string; activeTabClassName?: string } & React.ComponentProps<"div">;
 
-function Tabs({ children, defaultValue, onChange = () => {}, className }: TabsProps) {
-    const [tab, setTab] = useState<string>(defaultValue);
+function Tabs<T = string>({ children, defaultValue, onChangeTab = () => {}, className }: TabsProps<T>) {
+    const [tab, setTab] = useState<T>(defaultValue);
 
-    const onTab = (tab: string) => {
+    const onTab = (tab: T) => {
         startTransition(() => {
             setTab(tab);
-            onChange(tab);
+            onChangeTab(tab);
         });
     };
 

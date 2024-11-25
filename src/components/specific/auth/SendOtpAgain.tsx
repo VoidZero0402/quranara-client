@@ -32,13 +32,11 @@ function SendOtpAgainTimer({ seconds, onEndCountdown }: SendOtpAgainTimerProps) 
     const count = useCountdown(seconds, onEndCountdown);
 
     return (
-        <span className="font-pelak-medium text-sm text-gray-600 dark:text-gray-400">
-            {count !== 0 ? (
+        <span className="font-pelak-medium text-xs xs:text-sm text-gray-600 dark:text-gray-400">
+            {count !== 0 && (
                 <>
                     <span>{count}</span> ثانیه تا درخواست دوباره
                 </>
-            ) : (
-                "می‌توانید دوباره درخواست بدهید"
             )}
         </span>
     );

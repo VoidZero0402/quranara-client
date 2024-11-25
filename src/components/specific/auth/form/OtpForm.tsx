@@ -75,7 +75,7 @@ function OtpForm({ onSubmit }: OtpFormProps) {
                             }}
                             onChange={(e) => handleChange(e, index)}
                             onKeyDown={(e) => handleKeyDown(e, index)}
-                            className="bg-gray-50 dark:bg-gray-800 size-16 p-2 font-pelak-medium text-2xl text-center text-blue-500 dark:text-blue-400 border border-transparent focus:border-gray-200 dark:focus:border-gray-700 rounded-2xl transition-all duration-300"
+                            className="bg-gray-50 dark:bg-gray-800 w-full aspect-square xs:size-16 p-2 font-pelak-medium text-2xl text-center text-blue-500 dark:text-blue-400 border border-transparent focus:border-gray-200 dark:focus:border-gray-700 rounded-2xl transition-all duration-300"
                         />
                     );
                 })}

@@ -28,8 +28,8 @@ function MobileNavbar({ menus }: MobileNavbarProps) {
                 <HamburgerMenu className="w-8" />
             </Button>
             <div className={cn("fixed inset-0 size-full z-20 invisible", isOpen && "visible")}>
-                <div className={cn("size-full bg-backdrop invisible opacity-0 transition-all duration-300", isOpen && "visible opacity-100")} onClick={toggleOpen}></div>
-                <div className={cn("flex flex-col gap-y-4 absolute -right-72 top-0 bottom-0 w-72 h-full p-4 bg-white dark:bg-gray-850 overflow-auto with-custom-scroll transition-all duration-300 transform-gpu", isOpen && "right-0")}>
+                <div className={cn("h-screen bg-backdrop invisible opacity-0 transition-all duration-300", isOpen && "visible opacity-100")} onClick={toggleOpen}></div>
+                <div className={cn("flex flex-col gap-y-4 absolute -right-72 top-0 bottom-0 w-72 h-screen p-4 bg-white dark:bg-gray-850 overflow-auto with-custom-scroll transition-all duration-300 transform-gpu", isOpen && "right-0")}>
                     <div className="flex items-center justify-between">
                         <Logo className="h-12" />
                         <div className="flex gap-x-4">
