@@ -30,11 +30,24 @@ export const LoginWithPasswordStatusOptions: ResponseStatusHandlerOptions = {
     success: {
         status: "200",
         message: { text: "ورود موفقیت آمیز", caption: "به حساب کاربری خودت خوش اومدی" },
-
     },
 
     statuses: {
         "403": { text: "شماره موبایل محدود شده", caption: "شماره موبایل شما توسط مدیریت محدود شده" },
+        "404": { text: "اطلاعات نامعتبر", caption: "کاربری با این اطلاعات یافت نشد" },
+    },
+};
+
+export const LoginWithOtpStatusOptions: ResponseStatusHandlerOptions = {
+    success: {
+        status: "200",
+        message: { text: "ورود موفقیت آمیز", caption: "به حساب کاربری خودت خوش اومدی" },
+    },
+
+    statuses: {
+        "409": { text: "کد تایید منقضی شده", caption: "کد تایید شما منقضی شده، دوباره تلاش کنید" },
+        "400-otp": { text: "کد تایید نامعتبر", caption: "کد تایید شما معتبر نیست" },
+        "400-validation": { text: "اطلاعات نامعتبر", caption: "اطلاعاات شما معتبر نیست" },
         "404": { text: "اطلاعات نامعتبر", caption: "کاربری با این اطلاعات یافت نشد" },
     },
 };
