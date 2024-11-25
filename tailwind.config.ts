@@ -23,7 +23,21 @@ export default {
                 "4.5": "18px",
                 "6.5": "26px",
                 "18": "72px",
-            }
+            },
+            keyframes: {
+                enter: {
+                    "0%": { opacity: "0", transform: "translateX(-20px)" },
+                    "100%": { opacity: "1", transform: "translateX(0)" },
+                },
+                leave: {
+                    "0%": { opacity: "1", transform: "translateX(0)" },
+                    "100%": { opacity: "0", transform: "translateX(-20px)" },
+                },
+            },
+            animation: {
+                enter: "enter 150ms ease-in-out forwards",
+                leave: "leave 150ms ease-in-out forwards",
+            },
         },
         screens: {
             xs: "480px",

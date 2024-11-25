@@ -35,7 +35,7 @@ function UserAccount({ user }: UserAccountProps) {
                 </Button>
             </motion.div>
 
-            <Dropdown className={`absolute left-0 top-full w-72 dark:bg-gray-850 shadow-lg shadow-gray-100 dark:shadow-none transition-all duration- transform-gpu ${isOpen ? "visible opacity-100 mt-4" : "invisible opacity-0 mt-6"}`}>
+            <Dropdown className={`absolute left-0 top-full w-72 dark:bg-gray-800 shadow-lg shadow-gray-100 dark:shadow-none transition-all duration- transform-gpu ${isOpen ? "visible opacity-100 mt-4" : "invisible opacity-0 mt-6"}`}>
                 <DropdownHeader className="flex items-center gap-x-4 p-2">
                     <Avatar src={user.profile} className="size-16" />
                     <div className="flex flex-col gap-y-2 transform-gpu">

@@ -15,6 +15,7 @@
     "clsx": "^2.1.1",
     "framer-motion": "^11.11.11",
     "next": "15.0.3",
+    "next-nprogress-bar": "^2.3.15",
     "next-themes": "^0.4.3",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
@@ -23,6 +24,7 @@
     "swiper": "^11.1.14",
     "tailwind-merge": "^2.5.4",
     "usehooks-ts": "^3.1.0",
+    "uuid": "^11.0.3",
     "zod": "^3.23.8",
     "zustand": "^5.0.1"
   },

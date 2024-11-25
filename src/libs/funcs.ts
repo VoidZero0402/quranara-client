@@ -19,3 +19,13 @@ export function updateURLSearchParams(route: string, key: string, value: string)
 
     return url.toString();
 }
+
+export const persianToEnglish = (value: string) => {
+    const persian = "۰۱۲۳۴۵۶۷۸۹";
+    const english = "0123456789";
+
+    return value.replace(/[\u06F0-\u06F9]/g, (char) => {
+        const index = persian.indexOf(char);
+        return index !== -1 ? english[index] : char;
+    });
+};

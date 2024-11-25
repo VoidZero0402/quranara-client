@@ -1,6 +1,7 @@
 import { ThemeProvider } from "next-themes";
 
 import ReactQueryProvider from "./ReactQueryProvider";
+import ProgressBarProvider from "./ProgressBarProvider";
 
 function Providers({
     children,
@@ -9,7 +10,9 @@ function Providers({
 }>) {
     return (
         <ThemeProvider attribute="class" disableTransitionOnChange>
-            <ReactQueryProvider>{children}</ReactQueryProvider>
+            <ReactQueryProvider>
+                <ProgressBarProvider>{children}</ProgressBarProvider>
+            </ReactQueryProvider>
         </ThemeProvider>
     );
 }

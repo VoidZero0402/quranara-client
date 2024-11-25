@@ -73,7 +73,7 @@
     }
 
     .bg-backdrop {
-        @apply bg-gray-500/10 dark:bg-gray-800/10
+        @apply bg-gray-500/10 dark:bg-gray-800/10;
     }
 
     .blue-light {

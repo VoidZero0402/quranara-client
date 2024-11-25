@@ -2,6 +2,7 @@ import { useCallback } from "react";
 import { useController, FieldValues, Control, Path } from "react-hook-form";
 
 import { cn } from "@/libs/cn";
+import { persianToEnglish } from "@/libs/funcs";
 
 import FormDetails from "./FormDetails";
 
@@ -9,16 +10,16 @@ interface TextFieldProps<T extends FieldValues> {
     name: keyof T;
     control: Control<T>;
     label: string;
-    type?: "text" | "password" | "email" | "tel";
     placeholder?: string;
     caption?: string;
     className?: string;
     inputClassName?: string;
-    regex?: RegExp;
     children?: React.ReactNode;
 }
 
-function TextField<T extends FieldValues>({ children, name, control, label, type = "text", placeholder, caption, className, inputClassName, regex }: TextFieldProps<T>) {
+const regex = /0-9\u06F0-\u06F9/;
+
+function TextField<T extends FieldValues>({ children, name, control, label, placeholder, caption, className, inputClassName }: TextFieldProps<T>) {
     const {
         field,
         fieldState: { error },
@@ -26,12 +27,17 @@ function TextField<T extends FieldValues>({ children, name, control, label, type
 
     const onChange = useCallback(
         (e: React.ChangeEvent<HTMLInputElement>) => {
-            if (regex) {
-                e.target.value = e.target.value.replace(new RegExp(`[^${regex.source}]`, "g"), "");
-            }
+            let value = e.target.value;
+
+            value = value.replace(new RegExp(`[^${regex.source}]`, "g"), "");
+
+            value = persianToEnglish(value);
+
+            e.target.value = value;
+
             field.onChange(e);
         },
-        [field, regex]
+        [field]
     );
 
     return (
@@ -40,7 +46,7 @@ function TextField<T extends FieldValues>({ children, name, control, label, type
                 {label}
             </label>
             <div className="relative text-gray-500">
-                <input {...field} onChange={onChange} type={type} placeholder={placeholder} id={name as string} className={cn("p-4 w-full bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-200 border border-gray-100 dark:border-gray-800 focus:border-gray-200 dark:focus:border-gray-700 rounded-xl placeholder:text-gray-500 dark:placeholder:text-gray-400 placeholder:text-sm transition-colors", inputClassName)} />
+                <input {...field} onChange={onChange} type="text" placeholder={placeholder} id={name as string} className={cn("p-4 w-full bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-200 border border-gray-100 dark:border-gray-800 focus:border-gray-200 dark:focus:border-gray-700 rounded-xl placeholder:text-gray-500 dark:placeholder:text-gray-400 placeholder:text-sm transition-colors", inputClassName)} />
                 <div className="flex-center absolute left-3 top-0 bottom-0 m-auto">{children}</div>
             </div>
             <FormDetails error={error} caption={caption} />

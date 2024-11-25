@@ -13,6 +13,7 @@ import { LoginWithPasswordchema, LoginWithPasswordchemaType } from "@/validators
 import { statusHandler } from "@/libs/responses";
 
 import TextField from "@/components/form/TextField";
+import NumericField from "@/components/form/NumericField";
 import Button from "@/components/ui/Button";
 
 import SmartPhone from "@/components/svgs/SmartPhone";
@@ -42,13 +43,13 @@ function LoginWithPasswordForm() {
 
     return (
         <form className="flex flex-col gap-y-4" onSubmit={handleSubmit(mutate as SubmitHandler<LoginWithPasswordchemaType>)}>
-            <TextField control={control} name="phone" label="شماره موبایل" placeholder="شماره موبایلت رو اینجا وارد کن" regex={/\d/}>
+            <NumericField control={control} name="phone" label="شماره موبایل" placeholder="شماره موبایلت رو اینجا وارد کن">
                 <SmartPhone />
-            </TextField>
+            </NumericField>
             <TextField control={control} name="password" type="password" label="رمز عبور" placeholder="رمز عبورت رو اینجا وارد کن" caption="دقت کن رمز عبورت باید  حداقل ۷ کاراکتر داشته باشه">
                 <Lock />
             </TextField>
-            <Button size="lg" className="w-full mt-4" type="submit" disabled={isPending}>
+            <Button size="lg" className="w-full h-14 mt-4" type="submit" disabled={isPending}>
                 {isPending ? "در حال ورود" : "ورود به قرآن‌آرا"}
             </Button>
         </form>

@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { v4 as uuidv4 } from 'uuid';
 
 import { sendOtp } from "@/api/mutations/auth";
 import { SendOtpStatusOptions } from "@/api/errors/auth";
@@ -24,7 +25,7 @@ const useLoginStore = create<LoginStore>((set, get) => ({
         phone: "",
     },
     TTL: 120,
-    resetTTL: crypto.randomUUID(),
+    resetTTL: uuidv4(),
     setTTL: (ttl: number) => set({ TTL: ttl }),
     getOtp: async (phone: string) => {
         const response = await sendOtp({ phone });
@@ -32,9 +33,9 @@ const useLoginStore = create<LoginStore>((set, get) => ({
         statusHandler(response, SendOtpStatusOptions);
 
         if (response.status === 409) {
-            set({ TTL: response.data.ttl as number, resetTTL: crypto.randomUUID() });
+            set({ TTL: response.data.ttl as number, resetTTL: uuidv4() });
         } else {
-            set({ TTL: 120, resetTTL: crypto.randomUUID() });
+            set({ TTL: 120, resetTTL: uuidv4() });
         }
     },
     submit: (data: LoginWithOtpFormSchemaType) => set({ user: data, isOtp: true }),

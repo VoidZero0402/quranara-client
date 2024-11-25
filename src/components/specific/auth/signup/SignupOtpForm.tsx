@@ -103,7 +103,7 @@ function SignupOtpForm() {
                     );
                 })}
             </div>
-            <Button size="lg" rounded="lg" className="w-full mt-4" disabled={isPending}>
+            <Button size="lg" rounded="lg" className="w-full h-14 mt-4" disabled={isPending}>
                 {isPending ? "در حال ورود" : "ثبت کد تایید"}
             </Button>
         </form>

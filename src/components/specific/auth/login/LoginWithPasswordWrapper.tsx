@@ -11,7 +11,7 @@ function LoginWithPasswordWrapper() {
             <div className="space-y-4">
                 <LoginWithPasswordForm />
                 <Link href="/login" className="block">
-                    <Button size="lg" variant="neutral-base" className="w-full">
+                    <Button size="lg" variant="neutral-base" className="w-full h-14">
                         ورود با کد تایید
                     </Button>
                 </Link>

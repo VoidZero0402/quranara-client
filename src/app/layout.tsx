@@ -36,7 +36,7 @@ export default function RootLayout({
         <html lang="fa" dir="rtl" className={`${Pelak.variable} ${PelakMedium.variable} ${PelakSemiBold.variable}`} suppressHydrationWarning>
             <body className="font-pelak bg-gray-50 dark:bg-gray-900">
                 <Providers>{children}</Providers>
-                <Toaster />
+                <Toaster position="top-right" />
             </body>
         </html>
     );
