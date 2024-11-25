@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import SignupForm from "../form/SignupForm";
+import SignupForm from "../signup/SignupForm";
 
 function SignupWrapper() {
     return (

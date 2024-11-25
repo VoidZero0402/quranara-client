@@ -2,8 +2,8 @@
 
 import useSignupStore from "@/store/signup";
 
-import SignupOtpWrapper from "@/components/specific/auth/wrapper/SignupOtpWrapper";
-import SignupWrapper from "@/components/specific/auth/wrapper/SignupWrapper";
+import SignupOtpWrapper from "@/components/specific/auth/signup/SignupOtpWrapper"; 
+import SignupWrapper from "@/components/specific/auth/signup/SignupWrapper";
 
 function Signup() {
     const { isOtp } = useSignupStore();

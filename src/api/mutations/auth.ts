@@ -22,7 +22,7 @@ export function loginWithOtp(data: LoginWithOtpSchemaType): Promise<Response<{ m
     });
 }
 
-export function loginWithEmail(data: LoginWithPasswordchemaType): Promise<Response<{ message: string; username: string }>> {
+export function loginWithPassword(data: LoginWithPasswordchemaType): Promise<Response<{ message: string; username: string }>> {
     return Quranara.post("/auth/login/with-password", {
         body: JSON.stringify(data),
     });

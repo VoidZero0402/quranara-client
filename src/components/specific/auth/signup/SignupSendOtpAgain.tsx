@@ -4,7 +4,7 @@ import { useToggle } from "usehooks-ts";
 
 import useSignupStore from "@/store/signup";
 
-import SendOtpAgainTimer from "./SendOtpAgainTimer";
+import SendOtpAgainTimer from "../SendOtpAgainTimer";
 
 import Button from "@/components/ui/Button";
 

@@ -1,4 +1,4 @@
-import LoginWithPasswordWrapper from "@/components/specific/auth/wrapper/LoginWithPasswordWrapper";
+import LoginWithPasswordWrapper from "@/components/specific/auth/login/LoginWithPasswordWrapper";
 
 function LoginWithPassword() {
     return (

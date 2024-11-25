@@ -25,3 +25,16 @@ export const SendOtpStatusOptions: ResponseStatusHandlerOptions = {
         "409": { text: "کد تایید ارسال شده", caption: "کد تایید برای شما ارسال شده و هنوز منقضی نشده" },
     },
 };
+
+export const LoginWithPasswordStatusOptions: ResponseStatusHandlerOptions = {
+    success: {
+        status: "200",
+        message: { text: "ورود موفقیت آمیز", caption: "به حساب کاربری خودت خوش اومدی" },
+
+    },
+
+    statuses: {
+        "403": { text: "شماره موبایل محدود شده", caption: "شماره موبایل شما توسط مدیریت محدود شده" },
+        "404": { text: "اطلاعات نامعتبر", caption: "کاربری با این اطلاعات یافت نشد" },
+    },
+};

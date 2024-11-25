@@ -2,8 +2,8 @@
 
 import useSignupStore from "@/store/signup";
 
-import SignupOtpForm from "../form/SignupOtpForm";
-import SignupSendOtpAgain from "../SignupSendOtpAgain";
+import SignupOtpForm from "../signup/SignupOtpForm";
+import SignupSendOtpAgain from "./SignupSendOtpAgain";
 
 import Button from "@/components/ui/Button";
 
