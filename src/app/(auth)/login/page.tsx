@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 import LoginWrapper from "@/components/specific/auth/wrapper/LoginWrapper";
-import OtpWrapper from "@/components/specific/auth/wrapper/OtpWrapper";
+import OtpWrapper from "@/components/specific/auth/wrapper/SignupOtpWrapper";
 
 function Login() {
     const [isOtp, setIsOtp] = useState<boolean>(false);

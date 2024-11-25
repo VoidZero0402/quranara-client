@@ -1,14 +1,36 @@
 "use client";
 
 import { useState, useRef } from "react";
+import { useRouter } from "next/navigation";
+import { useMutation } from "@tanstack/react-query";
+
+import { signup } from "@/api/mutations/auth";
+import { SignupStatusOptions } from "@/api/errors/auth";
+
+import useSignupStore from "@/store/signup";
+
+import { statusHandler } from "@/libs/responses";
 
 import Button from "@/components/ui/Button";
 
-type OtpFormProps = { onSubmit: (otp: string) => void };
-
-function OtpForm({ onSubmit }: OtpFormProps) {
+function SignupOtpForm() {
     const [otp, setOtp] = useState<string[]>(Array(5).fill(""));
     const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
+
+    const { user } = useSignupStore();
+
+    const router = useRouter();
+
+    const { mutate, isPending } = useMutation({
+        mutationFn: signup,
+        onSettled(data) {
+            if (data) {
+                statusHandler(data, SignupStatusOptions);
+            }
+
+            if (data?.status === 201) router.replace("/");
+        },
+    });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
         const { value } = e.target;
@@ -56,12 +78,13 @@ function OtpForm({ onSubmit }: OtpFormProps) {
         inputsRef.current[5 - Math.min(pastedData.length, 5)]?.focus();
     };
 
-    const handleSubmit = () => {
-        onSubmit(otp.join(""));
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        mutate({ ...user, otp: [...otp].reverse().join("") });
     };
 
     return (
-        <div className="flex flex-col gap-y-2">
+        <form className="flex flex-col items-center gap-y-2" onSubmit={handleSubmit}>
             <div className="flex gap-x-2" onPaste={handlePaste}>
                 {Array.from({ length: 5 }).map((_, index) => {
                     return (
@@ -80,11 +103,11 @@ function OtpForm({ onSubmit }: OtpFormProps) {
                     );
                 })}
             </div>
-            <Button size="lg" rounded="lg" className="w-full mt-4" onClick={handleSubmit}>
-                ثبت کد تایید
+            <Button size="lg" rounded="lg" className="w-full mt-4" disabled={isPending}>
+                {isPending ? "در حال ورود" : "ثبت کد تایید"}
             </Button>
-        </div>
+        </form>
     );
 }
 
-export default OtpForm;
+export default SignupOtpForm;

@@ -1,8 +1,11 @@
 "use client";
 
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-import { SignupShcemaType } from "@/validators/auth";
+import useSignupStore from "@/store/signup";
+
+import { SignupFormSchema, SignupFormSchemaType } from "@/validators/auth";
 
 import TextField from "@/components/form/TextField";
 import Button from "@/components/ui/Button";
@@ -12,17 +15,24 @@ import SmartPhone from "@/components/svgs/SmartPhone";
 import Lock from "@/components/svgs/Lock";
 
 function SignupForm() {
-    const { control, handleSubmit } = useForm<SignupShcemaType>({
-        defaultValues: {
-            phone: "",
-            fullname: "",
-            password: "",
-            otp: "",
-        },
+    const { user, submit, getOtp } = useSignupStore();
+
+    const {
+        control,
+        handleSubmit,
+        formState: { isSubmitting },
+    } = useForm<SignupFormSchemaType>({
+        defaultValues: user,
+        resolver: zodResolver(SignupFormSchema),
     });
 
+    const submitHandler = async (data: SignupFormSchemaType) => {
+        await getOtp(data.phone);
+        submit(data);
+    };
+
     return (
-        <div className="flex flex-col gap-y-4">
+        <form className="flex flex-col gap-y-4" onSubmit={handleSubmit(submitHandler)}>
             <TextField control={control} name="fullname" label="نام و نام خانوادگی" placeholder="نام کاملت رو اینجا وارد کن">
                 <UserRounded />
             </TextField>
@@ -32,10 +42,10 @@ function SignupForm() {
             <TextField control={control} name="password" type="password" label="رمز عبور" placeholder="رمز عبورت رو اینجا وارد کن" caption="دقت کن رمز عبورت باید  حداقل ۷ کاراکتر داشته باشه">
                 <Lock />
             </TextField>
-            <Button size="lg" className="w-full mt-4">
-                ادامه و تکمیل ثبت نام
+            <Button size="lg" className="w-full mt-4" type="submit" disabled={isSubmitting}>
+                {isSubmitting ? "در حال ارسال کد تایید" : "ادامه و تکمیل ثبت نام"}
             </Button>
-        </div>
+        </form>
     );
 }
 

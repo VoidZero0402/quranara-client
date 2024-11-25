@@ -19,7 +19,7 @@ function LoginWithPasswordForm() {
     });
 
     return (
-        <div className="flex flex-col gap-y-4">
+        <form className="flex flex-col gap-y-4">
             <TextField control={control} name="phone" label="شماره موبایل" placeholder="شماره موبایلت رو اینجا وارد کن" regex={/\d/}>
                 <SmartPhone />
             </TextField>
@@ -29,7 +29,7 @@ function LoginWithPasswordForm() {
             <Button size="lg" className="w-full mt-4">
                 ورود به قرآن‌آرا
             </Button>
-        </div>
+        </form>
     );
 }
 

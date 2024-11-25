@@ -5,12 +5,13 @@ import { cn } from "@/libs/cn";
 import CheckCircle from "../svgs/CheckCircle";
 import DangerCircle from "../svgs/DangerCircle";
 import InfoCircle from "../svgs/InfoCircle";
+import { Toast as ToastType } from "react-hot-toast";
 
 type Status = "success" | "error" | "info";
 
 type StatusProps = { ClassName: string; SvgComponent: React.FC<SvgComponentProps> };
 
-type ToastProps = { text: string; caption: string; status: Status } & React.ComponentProps<"div">;
+type ToastProps = { t: ToastType; text: string; caption: string; status: Status } & React.ComponentProps<"div">;
 
 const toast: Record<Status, StatusProps> = {
     success: { ClassName: "text-teal-600 dark:text-teal-500", SvgComponent: CheckCircle },
@@ -18,11 +19,11 @@ const toast: Record<Status, StatusProps> = {
     info: { ClassName: "text-sky-500 dark:text-sky-400", SvgComponent: InfoCircle },
 };
 
-function Toast({ text, caption, status = "success", className }: ToastProps) {
+function Toast({ t, text, caption, status = "success", className }: ToastProps) {
     const SvgComponent = toast[status].SvgComponent;
 
     return (
-        <div className={cn("fixed left-2 top-2 flex items-center gap-x-2 p-4 w-[350px] bg-white dark:bg-gray-850 rounded-lg border border-gray-100 dark:border-gray-800", toast[status].ClassName, className)}>
+        <div className={cn("fixed left-2 top-2 flex items-center gap-x-2 p-4 w-[350px] bg-white dark:bg-gray-850 rounded-lg border border-gray-100 dark:border-gray-800", toast[status].ClassName, className, t.visible ? "animate-enter" : "animate-leave")}>
             <div className="shrink-0">
                 <SvgComponent className="w-12" />
             </div>

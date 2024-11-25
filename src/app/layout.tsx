@@ -1,6 +1,8 @@
 import localFont from "next/font/local";
 import type { Metadata } from "next";
 
+import { Toaster } from "react-hot-toast";
+
 import Providers from "@/providers/Providers";
 
 import "./globals.css";
@@ -34,6 +36,7 @@ export default function RootLayout({
         <html lang="fa" dir="rtl" className={`${Pelak.variable} ${PelakMedium.variable} ${PelakSemiBold.variable}`} suppressHydrationWarning>
             <body className="font-pelak bg-gray-50 dark:bg-gray-900">
                 <Providers>{children}</Providers>
+                <Toaster />
             </body>
         </html>
     );

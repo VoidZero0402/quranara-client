@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function useCountdown(seconds: number, onEndCountdown?: () => void) {
+function useCountdown(seconds: number, onEndCountdown?: () => void, reset?: string) {
     const [count, setCount] = useState<number>(seconds);
 
     useEffect(() => {
@@ -18,7 +18,7 @@ function useCountdown(seconds: number, onEndCountdown?: () => void) {
         }, 1000);
 
         return () => clearInterval(interval);
-    }, [seconds]);
+    }, [reset]);
 
     useEffect(() => {
         if (count === 0 && onEndCountdown) {

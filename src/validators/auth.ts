@@ -12,6 +12,10 @@ export const SignupShcema = z.object({
 
 export type SignupShcemaType = z.infer<typeof SignupShcema>;
 
+export const SignupFormSchema = SignupShcema.omit({ otp: true });
+
+export type SignupFormSchemaType = z.infer<typeof SignupFormSchema>;
+
 export const SendOtpSchema = SignupShcema.pick({ phone: true });
 
 export type SendOtpSchemaType = z.infer<typeof SendOtpSchema>;
@@ -19,6 +23,10 @@ export type SendOtpSchemaType = z.infer<typeof SendOtpSchema>;
 export const LoginWithOtpSchema = SignupShcema.pick({ phone: true, otp: true });
 
 export type LoginWithOtpSchemaType = z.infer<typeof LoginWithOtpSchema>;
+
+export const LoginWithOtpFormSchema = LoginWithOtpSchema.omit({ otp: true });
+
+export type LoginWithOtpFormSchemaType = z.infer<typeof LoginWithOtpFormSchema>;
 
 export const LoginWithPasswordchema = SignupShcema.pick({ phone: true, password: true });
 

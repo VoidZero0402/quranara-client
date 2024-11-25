@@ -6,7 +6,7 @@ import Button from "@/components/ui/Button";
 
 function LoginWrapper() {
     return (
-        <div className="space-y-8 p-8 sm:p-12 max-w-[400px] w-full bg-white dark:bg-gray-850 rounded-2xl sm:rounded-3xl shadow-xl shadow-gray-100 dark:shadow-none">
+        <div className="space-y-8 p-8 sm:p-12 max-w-[480px] w-full bg-white dark:bg-gray-850 rounded-2xl sm:rounded-3xl shadow-xl shadow-gray-100 dark:shadow-none">
             <h3 className="font-pelak-semibold text-2xl text-center text-gray-800 dark:text-gray-200">ورود به قرآن‌آرا با کد تایید</h3>
             <div className="space-y-4">
                 <LoginForm />

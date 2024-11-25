@@ -1,14 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import useSignupStore from "@/store/signup";
 
-import OtpWrapper from "@/components/specific/auth/wrapper/OtpWrapper";
+import SignupOtpWrapper from "@/components/specific/auth/wrapper/SignupOtpWrapper";
 import SignupWrapper from "@/components/specific/auth/wrapper/SignupWrapper";
 
 function Signup() {
-    const [isOtp, setIsOtp] = useState<boolean>(false);
+    const { isOtp } = useSignupStore();
 
-    return <main className="flex-center h-screen p-4">{isOtp ? <OtpWrapper /> : <SignupWrapper />}</main>;
+    return <main className="flex-center h-screen p-4">{isOtp ? <SignupOtpWrapper /> : <SignupWrapper />}</main>;
 }
 
 export default Signup;
