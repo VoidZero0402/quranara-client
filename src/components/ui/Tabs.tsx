@@ -1,3 +1,5 @@
+"use client";
+
 import { createContext, useState, useContext, startTransition } from "react";
 
 import { cn } from "@/libs/cn";
@@ -21,7 +23,7 @@ function Tabs<T = string>({ children, defaultValue, onChangeTab = () => {}, clas
     };
 
     return (
-        <div className={cn("flex items-center", className)}>
+        <div className={cn("flex items-center gap-x-2", className)}>
             <TabsContenxt.Provider value={{ active: tab, onTab }}>{children}</TabsContenxt.Provider>
         </div>
     );
@@ -37,6 +39,6 @@ export function TabsItem({ children, value, className, activeTabClassName = "bg-
             {children}
         </div>
     );
-};
+}
 
 export default Tabs;

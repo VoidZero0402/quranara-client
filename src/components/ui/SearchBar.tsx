@@ -8,9 +8,9 @@ import { updateURLSearchParams } from "@/libs/funcs";
 
 import Magnifer from "../svgs/Magnifer";
 
-type SearchBarProps = { route: string; query: string; wrapperCalssName?: string } & React.ComponentProps<"input">;
+type SearchBarProps = { route: string; query: string; wrapperCalssName?: string; empty?: boolean } & React.ComponentProps<"input">;
 
-function SearchBar({ route, query, wrapperCalssName, className, id, placeholder }: SearchBarProps) {
+function SearchBar({ route, query, wrapperCalssName, empty = false, className, id, placeholder }: SearchBarProps) {
     const router = useRouter();
 
     const onSubmit = useCallback(
@@ -21,11 +21,13 @@ function SearchBar({ route, query, wrapperCalssName, className, id, placeholder 
 
             const search = fromData.get("search") as string;
 
-            if (search) {
-                const url = updateURLSearchParams(route, query, search);
-
-                router.push(url);
+            if (!empty && !search) {
+                return;
             }
+
+            const url = updateURLSearchParams(route, query, search);
+
+            router.push(url);
         },
         [route, query, router]
     );
