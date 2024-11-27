@@ -71,7 +71,7 @@ function BlogGrid({ updateCount }: BlogGridProps) {
 
 function EmptyState() {
     return (
-        <div className="flex-center col-span-4">
+        <div className="flex-center col-span-4 py-10">
             <span className="font-pelak-medium text-lg text-gray-600 dark:text-gray-400">مقاله‌ای با این مشخصات پیدا نشد</span>
         </div>
     );

@@ -13,10 +13,14 @@ import CategoriesDrawer from "./CategoriesDrawer";
 import Button from "@/components/ui/Button";
 import Skeleton, { SkeletonFrame } from "@/components/ui/Skeleton";
 
-function Categories() {
+import { Refrences } from "@/types/category.types";
+
+type CategoriesProps = { reference: Refrences };
+
+function Categories({ reference }: CategoriesProps) {
     const { data } = useSuspenseQuery({
-        queryKey: ["blog-categories"],
-        queryFn: async () => await getCategories({ page: 1, limit: 10, ref: "BLOG" }),
+        queryKey: [`${reference}-categories`],
+        queryFn: async () => await getCategories({ page: 1, limit: 10, ref: reference }),
     });
 
     const router = useRouter();
@@ -45,11 +49,11 @@ function Categories() {
             <div className="hidden md:flex items-center gap-x-4">
                 <span className="shrink-0 hidden xl:block font-pelak-medium text-lg text-gray-800 dark:text-gray-200">دسته‌بندی مقالات</span>
                 <div className="flex flex-wrap gap-4">
-                    <Button variant={category === "all" ? "neutral-primary" : "neutral-base"} onClick={() => updateCategory("all")}>
+                    <Button variant={category === "all" ? "neutral-secondary" : "neutral-base"} onClick={() => updateCategory("all")}>
                         همه دسته‌بندی‌ها
                     </Button>
                     {data.data.categories.map((item) => (
-                        <Button key={item._id} variant={category === item._id ? "neutral-primary" : "neutral-base"} onClick={() => updateCategory(item._id)}>
+                        <Button key={item._id} variant={category === item._id ? "neutral-secondary" : "neutral-base"} onClick={() => updateCategory(item._id)}>
                             {item.title}
                         </Button>
                     ))}

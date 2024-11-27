@@ -32,7 +32,7 @@ async function Navigation({ menus }: NavigationProps) {
                 <NavigationDropDown>
                     <div className="flex flex-col gap-y-1">
                         {menus.categories.blog.map((blog) => (
-                            <NavigationLink key={blog._id} href={`#`} title={blog.title} caption={blog.caption} />
+                            <NavigationLink key={blog._id} href={`/blog?category=${blog._id}`} title={blog.title} caption={blog.caption} />
                         ))}
                         <NavigationLink href="/blog" title="همه دسته‌بندی‌ها" caption="مشاهده همه دسته‌بندی‌های مقالات" />
                     </div>
@@ -42,7 +42,7 @@ async function Navigation({ menus }: NavigationProps) {
                 <NavigationDropDown>
                     <div className="flex flex-col gap-y-1">
                         {menus.categories.tv.map((tv) => (
-                            <NavigationLink key={tv._id} href={`#`} title={tv.title} caption={tv.caption} />
+                            <NavigationLink key={tv._id} href={`/tv?category=${tv._id}`} title={tv.title} caption={tv.caption} />
                         ))}
                         <NavigationLink href="/tv" title="همه دسته‌بندی‌ها" caption="مشاهده همه دسته‌بندی‌های آموزشی" />
                     </div>

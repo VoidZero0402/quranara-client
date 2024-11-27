@@ -3,7 +3,7 @@
 import { useCallback, startTransition } from "react";
 import { useToggle } from "usehooks-ts";
 
-import DrawerItem from "../entities/DrawerItem";
+import DrawerItem from "./DrawerItem";
 
 import Drawer, { DrawerBody, DrawerHeader } from "@/components/ui/Drawer";
 

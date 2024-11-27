@@ -10,7 +10,7 @@ const button = cva("flex-center gap-x-1 font-pelak-medium child:shrink-0 select-
             "text-primary": "text-blue-500 hover:bg-blue-500 hover:text-white",
             "text-secondary": "text-amber-400 hover:bg-amber-400 hover:text-white",
             "neutral-primary": "bg-blue-50 dark:bg-blue-500/10 text-blue-500 hover:bg-blue-100 dark:hover:bg-blue-500/15 disabled:bg-blue-100 dark:disabled:bg-blue-500/15",
-            "neutral-secondary": "bg-amber-50 dark:bg-amber-400/10 text-amber-400 hover:bg-amber-100 dark:hover:bg-amber-400/15 disabled:bg-amber-100 dark:disabled:bg-amber-400/15",
+            "neutral-secondary": "bg-[#fff7d9] dark:bg-amber-400/10 text-amber-400 hover:bg-amber-100 dark:hover:bg-amber-400/15 disabled:bg-amber-100 dark:disabled:bg-amber-400/15",
             "neutral-base": "bg-gray-100 dark:bg-gray-500/10 text-gray-600 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-500/15 disabled:bg-gray-200 dark:disabled:bg-gray-500/15",
         },
 

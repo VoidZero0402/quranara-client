@@ -4,34 +4,33 @@ import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { useSuspenseInfiniteQuery } from "@tanstack/react-query";
 
-import { getCourses } from "@/api/queries/courses";
+import { getTvs } from "@/api/queries/tv";
 
-import { SORTING } from "@/constants/courses";
+import { SORTING } from "@/constants/blog";
 
-import Course, { CourseLoading } from "@/components/card/Course";
+import Tv, { TvLoading } from "@/components/card/Tv";
 
 import Button from "@/components/ui/Button";
 import UpdateIndicator from "@/components/ui/UpdateIndicator";
 
-import { Sorting } from "@/types/course.types";
+import { Sorting } from "@/types/blog.types";
 
-type CoursesGridProps = { updateCount: (count: number) => void };
+type TvGridProps = { updateCount: (count: number) => void };
 
-function CoursesGrid({ updateCount }: CoursesGridProps) {
+function TvGrid({ updateCount }: TvGridProps) {
     const searchParams = useSearchParams();
 
-    const fetchCourses = async ({ pageParam = 1 }: { pageParam: number }) => {
+    const fetchTvs = async ({ pageParam = 1 }: { pageParam: number }) => {
         const sort = (searchParams.get("sort") ?? SORTING.DEFAULT) as Sorting;
         const search = searchParams.get("search");
+        const category = searchParams.get("category");
 
-        await new Promise((res) => setTimeout(res, 500));
-
-        return await getCourses({ page: pageParam, limit: 8, sort, ...(search && { search }) });
+        return await getTvs({ page: pageParam, limit: 8, sort, ...(search && { search }), ...(category && category !== "all" && { category }) });
     };
 
     const { data, fetchNextPage, hasNextPage, isFetchingNextPage, refetch, isFetching } = useSuspenseInfiniteQuery({
-        queryKey: ["infinite-courses"],
-        queryFn: fetchCourses,
+        queryKey: ["infinite-tvs"],
+        queryFn: fetchTvs,
         initialPageParam: 1,
         getNextPageParam: (lastPage) => {
             const { page, pagesCount } = lastPage.data.pagination;
@@ -47,8 +46,6 @@ function CoursesGrid({ updateCount }: CoursesGridProps) {
         updateCount(data.pages[0].data.pagination.count);
     }, [data]);
 
-    console.log(data);
-
     return (
         <section>
             <UpdateIndicator show={isFetching} />
@@ -58,13 +55,13 @@ function CoursesGrid({ updateCount }: CoursesGridProps) {
                         return <EmptyState key="empty-state" />;
                     }
 
-                    return res.data.courses.map((course) => <Course key={course._id} {...course} />);
+                    return res.data.tvs.map((tv) => <Tv key={tv._id} {...tv} />);
                 })}
             </div>
             {hasNextPage && (
                 <div className="flex-center mt-12">
                     <Button size="lg" disabled={isFetchingNextPage} onClick={() => fetchNextPage()}>
-                        {isFetchingNextPage ? "در حال بروزرسانی دوره‌ها" : "مشاهده دوره‌های بیشتر"}
+                        {isFetchingNextPage ? "در حال بروزرسانی آموزش‌ها" : "مشاهده آموزش‌ها بیشتر"}
                     </Button>
                 </div>
             )}
@@ -75,22 +72,22 @@ function CoursesGrid({ updateCount }: CoursesGridProps) {
 function EmptyState() {
     return (
         <div className="flex-center col-span-4 py-10">
-            <span className="font-pelak-medium text-lg text-gray-600 dark:text-gray-400">دوره‌ای با این مشخصات پیدا نشد</span>
+            <span className="font-pelak-medium text-lg text-gray-600 dark:text-gray-400">آموزشی با این مشخصات پیدا نشد</span>
         </div>
     );
 }
 
-export function CoursesGridLoading() {
+export function TvGridLoading() {
     return (
         <section>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                <CourseLoading />
-                <CourseLoading />
-                <CourseLoading />
-                <CourseLoading />
+                <TvLoading />
+                <TvLoading />
+                <TvLoading />
+                <TvLoading />
             </div>
         </section>
     );
 }
 
-export default CoursesGrid;
+export default TvGrid;
