@@ -1,6 +1,6 @@
 import { getAllNews } from "@/api/queries/news";
 
-import NewsSlides from "./NewsSlides";
+import NewsSlides from "@/components/specific/home/NewsSlides";
 
 import Button from "@/components/ui/Button";
 

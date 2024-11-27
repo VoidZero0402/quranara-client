@@ -1,4 +1,4 @@
-export function convertToQueryString(params: Record<string, string | string[]>) {
+export function convertToQueryString(params: Record<string, any | string[]>) {
     const searchParams = new URLSearchParams();
 
     for (const key in params) {

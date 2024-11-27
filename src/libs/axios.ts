@@ -20,7 +20,7 @@ class Axios {
     }
 
     private async resolve(method: string, url: string, options?: RequestOptions) {
-        try {
+        try {            
             const response = await fetch(`${this.baseURL}${url}`, {
                 method,
                 ...this.requestOptions,
@@ -29,7 +29,7 @@ class Axios {
             });
 
             return await this.parseResponseToJSON(response);
-        } catch (err) {
+        } catch (err) {            
             return { success: false, status: 500, data: { error: err } };
         }
     }

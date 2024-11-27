@@ -2,15 +2,15 @@ import Link from "next/link";
 
 import { getAllBlogs } from "@/api/queries/blog";
 
-import Button from "@/components/ui/Button";
+import BlogSlides from "@/components/specific/home/BlogSlides"; 
 
-import BlogSlides from "./BlogSlides";
+import Button from "@/components/ui/Button";
 
 import LongArrowLeft from "@/components/svgs/LongArrowLeft";
 import Document from "@/components/svgs/Document";
 
 async function Blog() {
-    const { data } = await getAllBlogs({ page: "1", limit: "8" });
+    const { data } = await getAllBlogs({ page: 1, limit: 8 });
 
     return (
         <section className="space-y-8" id="blog">

@@ -1,6 +1,6 @@
-import MapArrowSquare from "@/components/svgs/MapArrowSquare";
-import AboutUsBox from "./AboutUsBox";
+import AboutUsBox from "@/components/specific/home/AboutUsBox";
 
+import MapArrowSquare from "@/components/svgs/MapArrowSquare";
 import Graph from "@/components/svgs/Graph";
 import Letter from "@/components/svgs/Letter";
 import ChartSquare from "@/components/svgs/ChartSquare";

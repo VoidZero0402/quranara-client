@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, startTransition } from "react";
+import { useCallback, startTransition } from "react";
 import { useToggle } from "usehooks-ts";
 
 import { SORTING } from "@/constants/courses";
@@ -21,18 +21,16 @@ const sorting: Record<string, string> = {
     [SORTING.POPULAR]: "محبوب ترین",
 };
 
-type NavigationDrawerProps = { onChange: (sort: string) => void };
+type NavigationDrawerProps = { sort: string; onChange: (sort: string) => void };
 
 type NavigationDrawerItemProps = { isActive: boolean; handleChange: () => void } & React.ComponentProps<"div">;
 
-function NavigationDrawer({ onChange }: NavigationDrawerProps) {
-    const [sort, setSort] = useState<string>(SORTING.DEFAULT);
+function NavigationDrawer({ sort, onChange }: NavigationDrawerProps) {
     const [isOpen, toggleOpen] = useToggle();
 
     const handleChangeSort = useCallback(
         (sort: string) => () => {
             startTransition(() => {
-                setSort(sort);
                 onChange(sort);
                 toggleOpen();
             });

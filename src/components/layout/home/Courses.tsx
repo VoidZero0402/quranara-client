@@ -10,7 +10,7 @@ import Layers from "@/components/svgs/Layers";
 import LongArrowLeft from "@/components/svgs/LongArrowLeft";
 
 async function Courses() {
-    const { data } = await getAllCourses({ page: "1", limit: "8" });
+    const { data } = await getAllCourses({ page: 1, limit: 8 });
 
     return (
         <section className="space-y-8" id="courses">

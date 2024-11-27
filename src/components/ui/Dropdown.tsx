@@ -3,7 +3,7 @@ import { cn } from "@/libs/cn";
 type DropdownProps = React.ComponentProps<"div">;
 
 function Dropdown({ children, className }: DropdownProps) {
-    return <div className={cn("w-full p-2.5 space-y-4 bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-800", className)}>{children}</div>;
+    return <div className={cn("w-full p-2.5 space-y-4 bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-800 z-10", className)}>{children}</div>;
 }
 
 export function DropdownHeader({ children, className }: DropdownProps) {

@@ -1,4 +1,4 @@
-import CTABox from "./CTABox";
+import CTABox from "@/components/specific/home/CTABox";
 
 import Layers from "@/components/svgs/Layers";
 import Document from "@/components/svgs/Document";

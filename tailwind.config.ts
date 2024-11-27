@@ -33,10 +33,16 @@ export default {
                     "0%": { opacity: "1", transform: "translateX(0)" },
                     "100%": { opacity: "0", transform: "translateX(-20px)" },
                 },
+                loading: {
+                    "0%": { transform: "translateX(-100%)" },
+                    "50%": { transform: "translateX(100%)" },
+                    "100%": { transform: "translateX(-100%)" },
+                },
             },
             animation: {
                 enter: "enter 150ms ease-in-out forwards",
                 leave: "leave 150ms ease-in-out forwards",
+                loading: "loading 2s ease-in-out infinite",
             },
         },
         screens: {

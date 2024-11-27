@@ -1,6 +1,8 @@
 "use client";
 
-import { createContext, useState, useContext, startTransition } from "react";
+import { createContext, useContext, startTransition } from "react";
+
+import useEffectState from "@/hooks/useEffectState";
 
 import { cn } from "@/libs/cn";
 
@@ -13,7 +15,7 @@ type TabsProps<T> = { defaultValue: T; onChangeTab: (tab: T) => void } & React.C
 type TabsItemProps = { value: string; activeTabClassName?: string } & React.ComponentProps<"div">;
 
 function Tabs<T = string>({ children, defaultValue, onChangeTab = () => {}, className }: TabsProps<T>) {
-    const [tab, setTab] = useState<T>(defaultValue);
+    const [tab, setTab] = useEffectState<T>(defaultValue);
 
     const onTab = (tab: T) => {
         startTransition(() => {

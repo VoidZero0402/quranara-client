@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback } from "react";
+import { useState, useCallback, startTransition } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { SORTING } from "@/constants/courses";
@@ -23,15 +23,21 @@ function Navigation() {
     const path = usePathname();
     const searchParams = useSearchParams();
 
+    const [sort, setSort] = useState(searchParams.get("sort") ?? SORTING.DEFAULT);
+
     const route = `${path}?${searchParams.toString()}`;
 
     const updateSort = useCallback(
         (sort: string) => {
             const updatedParams = updateURLSearchParams(route, "sort", sort);
 
-            router.push(updatedParams);
+            startTransition(() => {
+                setSort(sort);
+            });
+
+            router.push(updatedParams, { scroll: false });
         },
-        [searchParams]
+        [sort, searchParams]
     );
 
     return (
@@ -41,7 +47,7 @@ function Navigation() {
                     <SortLines className="w-8" />
                     مرتب‌سازی دوره‌ها
                 </span>
-                <Tabs defaultValue={searchParams.get("sort") ?? SORTING.DEFAULT} onChangeTab={updateSort}>
+                <Tabs defaultValue={sort} onChangeTab={updateSort}>
                     <TabsItem value={SORTING.DEFAULT} className="flex items-center gap-x-1 font-pelak-medium hover:text-blue-500 dark:hover:text-amber-400" activeTabClassName="blue-light dark:amber-light">
                         <Sort />
                         پیش فرض
@@ -60,7 +66,7 @@ function Navigation() {
                     </TabsItem>
                 </Tabs>
             </div>
-            <NavigationDrawer onChange={updateSort} />
+            <NavigationDrawer sort={sort} onChange={updateSort} />
             <div className="grow w-full xl:w-min p-4 md:p-6 xl:p-0 bg-white dark:bg-gray-850 rounded-2xl xl:rounded-none">
                 <SearchBar route={route} query="search" placeholder="در دوره‌ها جستجو کنید" empty />
             </div>

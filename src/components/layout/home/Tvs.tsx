@@ -10,7 +10,7 @@ import LongArrowLeft from "@/components/svgs/LongArrowLeft";
 import PlayCircle from "@/components/svgs/PlayCircle";
 
 async function Tvs() {
-    const { data } = await getAllTvs({ page: "1", limit: "4" });
+    const { data } = await getAllTvs({ page: 1, limit: 4 });
 
     return (
         <section className="space-y-8" id="tv">

@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { useToggle } from "usehooks-ts";
 
 import { cn } from "@/libs/cn";
@@ -21,6 +23,13 @@ type MobileNavbarProps = { menus: Menus };
 
 function MobileNavbar({ menus }: MobileNavbarProps) {
     const [isOpen, toggleOpen] = useToggle();
+    const pathname = usePathname();
+
+    useEffect(() => {
+        if (isOpen) {
+            toggleOpen();
+        }
+    }, [pathname]);
 
     return (
         <>

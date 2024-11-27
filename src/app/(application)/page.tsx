@@ -1,11 +1,11 @@
-import Header from "@/components/specific/home/Header";
-import CTABoxes from "@/components/specific/home/CTABoxes";
-import Courses from "@/components/specific/home/Courses";
-import News from "@/components/specific/home/News";
-import Tvs from "@/components/specific/home/Tvs";
-import SocialMedia from "@/components/specific/home/SocialMedia";
-import Blog from "@/components/specific/home/Blog";
-import AboutUs from "@/components/specific/home/AboutUs";
+import Header from "@/components/layout/home/Header";
+import CTABoxes from "@/components/layout/home/CTABoxes";
+import Courses from "@/components/layout/home/Courses";
+import News from "@/components/layout/home/News";
+import Tvs from "@/components/layout/home/Tvs";
+import SocialMedia from "@/components/layout/home/SocialMedia";
+import Blog from "@/components/layout/home/Blog";
+import AboutUs from "@/components/layout/home/AboutUs";
 
 function Home() {
     return (

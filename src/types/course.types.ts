@@ -1,4 +1,4 @@
-import { STATUS } from "@/constants/courses";
+import { SORTING, STATUS } from "@/constants/courses";
 
 import { PopulatedUser } from "./user.types";
 
@@ -33,3 +33,5 @@ export type Course = {
 };
 
 export type LimitedCourse = Omit<Course, "introduction">;
+
+export type Sorting = (typeof SORTING)[keyof typeof SORTING];

@@ -17,8 +17,8 @@ type NavigationLinkProps = { title: string; caption: string } & LinkProps;
 async function Navigation({ menus }: NavigationProps) {
     return (
         <ul className="hidden lg:flex gap-x-4">
-            <NavigationItem text="صفحه اصلی" href="#" />
-            <NavigationItem text="دوره‌های تخصصی" href="#">
+            <NavigationItem text="صفحه اصلی" href="/" />
+            <NavigationItem text="دوره‌های تخصصی" href="/courses">
                 <NavigationDropDown>
                     <div className="flex flex-col gap-y-1">
                         {menus.courses.map((course) => (
@@ -28,7 +28,7 @@ async function Navigation({ menus }: NavigationProps) {
                     </div>
                 </NavigationDropDown>
             </NavigationItem>
-            <NavigationItem text="مقالات" href="#">
+            <NavigationItem text="مقالات" href="/blog">
                 <NavigationDropDown>
                     <div className="flex flex-col gap-y-1">
                         {menus.categories.blog.map((blog) => (
@@ -38,7 +38,7 @@ async function Navigation({ menus }: NavigationProps) {
                     </div>
                 </NavigationDropDown>
             </NavigationItem>
-            <NavigationItem text="آموزش‌های رایگان" href="#">
+            <NavigationItem text="آموزش‌های رایگان" href="/tv">
                 <NavigationDropDown>
                     <div className="flex flex-col gap-y-1">
                         {menus.categories.tv.map((tv) => (
@@ -48,7 +48,7 @@ async function Navigation({ menus }: NavigationProps) {
                     </div>
                 </NavigationDropDown>
             </NavigationItem>
-            <NavigationItem text="درباره ما" href="#" />
+            <NavigationItem text="درباره ما" href="/about-us" />
         </ul>
     );
 }
