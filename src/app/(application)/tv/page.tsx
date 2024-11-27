@@ -1,7 +1,7 @@
-import Header from "@/components/layout/tv/Header";
-import Main from "@/components/layout/tv/Main";
+import Header from "@/components/layout/tvs/Header";
+import Main from "@/components/layout/tvs/Main";
 
-function Tv() {
+function Tvs() {
     return (
         <main className="my-20">
             <div className="container space-y-8">
@@ -12,4 +12,4 @@ function Tv() {
     );
 }
 
-export default Tv;
+export default Tvs;

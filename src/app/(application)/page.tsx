@@ -9,7 +9,7 @@ import AboutUs from "@/components/layout/home/AboutUs";
 
 function Home() {
     return (
-        <>
+        <div className="my-8">
             <Header />
             <main className="my-20">
                 <div className="container space-y-32">
@@ -22,7 +22,7 @@ function Home() {
                     <AboutUs />
                 </div>
             </main>
-        </>
+        </div>
     );
 }
 

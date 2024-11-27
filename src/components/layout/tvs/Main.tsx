@@ -7,7 +7,7 @@ import { REFERENCES } from "@/constants/categories";
 import Details from "@/components/specific/entities/Details";
 import Navigation from "@/components/specific/entities/Navigation";
 import Categories, { CategoriesLoading } from "@/components/specific/entities/Categories";
-import BlogGrid, { BlogGridLoading } from "@/components/specific/blog/BlogGrid";
+import TvGrid, { TvGridLoading } from "@/components/specific/tvs/TvGrid";
 
 function Main() {
     const [count, setCount] = useState(0);
@@ -15,15 +15,15 @@ function Main() {
     return (
         <div className="space-y-4 md:space-y-8">
             <div className="space-y-8">
-                <Details count={count} text="همه مقالات قرآن‌آرا" countText="مقاله" />
-                <Navigation entity="مقالات" />
+                <Details count={count} text="همه آموزش‌های قرآن‌آرا" countText="عنوان آموزشی" />
+                <Navigation entity="آموزش‌ها" />
             </div>
             <div className="flex flex-col gap-y-8">
                 <Suspense fallback={<CategoriesLoading />}>
-                    <Categories reference={REFERENCES.BLOG} />
+                    <Categories reference={REFERENCES.TV} />
                 </Suspense>
-                <Suspense fallback={<BlogGridLoading />}>
-                    <BlogGrid updateCount={setCount} />
+                <Suspense fallback={<TvGridLoading />}>
+                    <TvGrid updateCount={setCount} />
                 </Suspense>
             </div>
         </div>

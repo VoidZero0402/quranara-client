@@ -1,16 +1,16 @@
-import Document from "@/components/svgs/Document";
+import Breadcrumb, { BreadcrumbItem, BreadcrumbSlice } from "@/components/ui/Breadcrumb";
 
 function Header() {
     return (
-        <div className="pb-8 flex-center">
-            <div className="flex flex-col items-center gap-4 text-center">
-                <div className="flex items-center gap-x-2 text-gray-700 dark:text-gray-300">
-                    <Document className="w-8" />
-                    <h1 className="font-pelak-semibold text-2xl sm:text-3xl">مقالات تخصصی قرآن‌آرا</h1>
-                </div>
-                <p className="font-pelak-medium sm:text-lg text-gray-500">مطالب ارزشمند و عمقی درباره قرآن و مفاهیم آن</p>
-            </div>
-        </div>
+        <header className="container">
+            <Breadcrumb>
+                <BreadcrumbItem href="/blog">مقالات</BreadcrumbItem>
+                <BreadcrumbSlice />
+                <BreadcrumbItem href="/blog">دسته آموزش تجوید</BreadcrumbItem>
+                <BreadcrumbSlice />
+                <BreadcrumbItem href="#">اهمیت تفسیر در فهم قرآن</BreadcrumbItem>
+            </Breadcrumb>
+        </header>
     );
 }
 

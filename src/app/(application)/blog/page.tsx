@@ -1,7 +1,7 @@
-import Header from "@/components/layout/blog/Header";
-import Main from "@/components/layout/blog/Main";
+import Header from "@/components/layout/blogs/Header";
+import Main from "@/components/layout/blogs/Main";
 
-function Blog() {
+function Blogs() {
     return (
         <main className="my-20">
             <div className="container space-y-8">
@@ -12,4 +12,4 @@ function Blog() {
     );
 }
 
-export default Blog;
+export default Blogs;

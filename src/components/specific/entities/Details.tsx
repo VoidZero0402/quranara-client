@@ -9,7 +9,7 @@ function Details({ count, text, countText }: DetailsProps) {
 
     return (
         <div className="flex items-center justify-between">
-            <span className="font-pelak-medium sm:text-lg text-gray-600 dark:text-gray-400">
+            <span className="font-pelak-medium sm:text-xl text-gray-600 dark:text-gray-400">
                 {searchParams.get("search") ? (
                     <>
                         نتیجه جستجو برای <span className="font-pelak-semibold text-gray-800 dark:text-gray-200">{searchParams.get("search")}</span>

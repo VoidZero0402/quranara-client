@@ -1,4 +1,5 @@
 import Navbar from "@/components/layout/shared/Navbar";
+import ScrollToTop from "@/components/ui/ScrollToTop";
 import Footer from "@/components/layout/shared/Footer";
 
 function ApplicationLayout({
@@ -10,6 +11,7 @@ function ApplicationLayout({
         <>
             <Navbar />
             {children}
+            <ScrollToTop />
             <Footer />
         </>
     );

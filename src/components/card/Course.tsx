@@ -25,7 +25,7 @@ function Course({ title, description, slug, status, price, discount, metadata }:
                 <Placeholder className="aspect-video rounded-xl" type="image" />
             </Link>
             <div className="flex flex-col gap-2 p-4">
-                <div className="flex items-center gap-x-1 text-xs font-pelak-medium text-blue-500">
+                <div className="flex items-center gap-x-1 font-pelak-medium text-xs text-blue-500">
                     <span className="block size-1.5 bg-blue-500 rounded-full"></span>
                     {StatusText[status]}
                 </div>
