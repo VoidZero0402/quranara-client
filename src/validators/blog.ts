@@ -30,7 +30,7 @@ export const GetAllBlogsQuerySchema = PaginationQuerySchema.extend({
         .string({ required_error: "دسته‌بندی ضروری است" })
         .or(z.array(z.string({ required_error: "دسته‌بندی ضروری است" })))
         .optional(),
-    sort: z.enum([SORTING.NEWEST, SORTING.OLDEST, SORTING.POPULAR]).default(SORTING.NEWEST),
+    sort: z.enum([SORTING.DEFAULT, SORTING.NEWEST, SORTING.OLDEST, SORTING.POPULAR]).default(SORTING.NEWEST),
     search: z.string().min(1, { message: "کوئری نباید خالی باشد" }).optional(),
 });
 

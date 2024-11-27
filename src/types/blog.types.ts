@@ -1,4 +1,4 @@
-import { STATUS } from "@/constants/blog";
+import { SORTING, STATUS } from "@/constants/blog";
 
 import { PopulatedUser } from "./user.types";
 import { PopulatedCategory } from "./category.types";
@@ -25,3 +25,5 @@ export type Blog = {
 };
 
 export type LimitedBlog = Omit<Blog, "content" | "headings" | "status" | "tags" | "relatedCourses">;
+
+export type Sorting = (typeof SORTING)[keyof typeof SORTING];

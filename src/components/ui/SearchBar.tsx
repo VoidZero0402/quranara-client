@@ -14,24 +14,21 @@ function SearchBar({ route, query, wrapperCalssName, empty = false, className, i
     const router = useRouter();
     const searchParams = useSearchParams();
 
-    const onSubmit = useCallback(
-        (e: React.FormEvent<HTMLFormElement>) => {
-            e.preventDefault();
+    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
 
-            const fromData = new FormData(e.currentTarget);
+        const fromData = new FormData(e.currentTarget);
 
-            const search = fromData.get("search") as string;
+        const search = fromData.get("search") as string;
 
-            if (!empty && !search) {
-                return;
-            }
+        if (!empty && !search) {
+            return;
+        }
 
-            const url = updateURLSearchParams(route, query, search);
+        const url = updateURLSearchParams(route, query, search);
 
-            router.push(url);
-        },
-        [route, query, router]
-    );
+        router.push(url, { scroll: false });
+    }
 
     return (
         <form onSubmit={onSubmit} className={cn("relative", wrapperCalssName)}>

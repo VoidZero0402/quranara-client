@@ -2,9 +2,9 @@
 
 import { useSearchParams } from "next/navigation";
 
-type DetailsProps = { count: number };
+type DetailsProps = { count: number; text: string; countText: string };
 
-function Details({ count }: DetailsProps) {
+function Details({ count, text, countText }: DetailsProps) {
     const searchParams = useSearchParams();
 
     return (
@@ -15,10 +15,14 @@ function Details({ count }: DetailsProps) {
                         نتیجه جستجو برای <span className="font-pelak-semibold text-gray-800 dark:text-gray-200">{searchParams.get("search")}</span>
                     </>
                 ) : (
-                    "دوره‌های تخصصی قرآن‌آرا"
+                    text
                 )}
             </span>
-            {Boolean(count) && <span className="font-pelak-medium sm:text-xl text-gray-800 dark:text-gray-200">{count} دوره تخصصی</span>}
+            {Boolean(count) && (
+                <span className="font-pelak-medium sm:text-xl text-gray-800 dark:text-gray-200">
+                    {count} {countText}
+                </span>
+            )}
         </div>
     );
 }

@@ -1,5 +1,5 @@
-import Logo from "../ui/Logo";
-import Placeholder from "../ui/Placeholder";
+import Logo from "@/components/ui/Logo";
+import Placeholder from "@/components/ui/Placeholder";
 
 function Footer() {
     return (

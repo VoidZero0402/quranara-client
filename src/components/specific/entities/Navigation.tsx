@@ -18,7 +18,9 @@ import SortLines from "@/components/svgs/SortLines";
 import SortUp from "@/components/svgs/SortUp";
 import SortDown from "@/components/svgs/SortDown";
 
-function Navigation() {
+type NavigationProps = { entity: string };
+
+function Navigation({ entity }: NavigationProps) {
     const router = useRouter();
     const path = usePathname();
     const searchParams = useSearchParams();
@@ -29,46 +31,46 @@ function Navigation() {
 
     const updateSort = useCallback(
         (sort: string) => {
-            const updatedParams = updateURLSearchParams(route, "sort", sort);
+            const updatedURL = updateURLSearchParams(route, "sort", sort);
 
             startTransition(() => {
                 setSort(sort);
             });
 
-            router.push(updatedParams, { scroll: false });
+            router.push(updatedURL, { scroll: false });
         },
-        [sort, searchParams]
+        [router, searchParams, route]
     );
 
     return (
-        <div className="flex flex-col xl:flex-row items-center gap-4 md:gap-8 xl:p-6 xl:bg-white xl:dark:bg-gray-850 rounded-2xl">
+        <div className="flex flex-col-reverse xl:flex-row items-center gap-4 md:gap-8 xl:p-6 xl:bg-white xl:dark:bg-gray-850 rounded-2xl">
             <div className="hidden md:flex flex-col lg:flex-row items-center justify-center xl:justify-normal gap-4 w-full xl:w-3/4 p-6 xl:p-0 bg-white dark:bg-gray-850 rounded-2xl xl:rounded-none">
                 <span className="flex items-center gap-x-1 font-pelak-medium text-gray-600 dark:text-gray-400">
                     <SortLines className="w-8" />
-                    مرتب‌سازی دوره‌ها
+                    مرتب‌سازی {entity}
                 </span>
                 <Tabs defaultValue={sort} onChangeTab={updateSort}>
-                    <TabsItem value={SORTING.DEFAULT} className="flex items-center gap-x-1 font-pelak-medium hover:text-blue-500 dark:hover:text-amber-400" activeTabClassName="blue-light dark:amber-light">
+                    <TabsItem value={SORTING.DEFAULT} className="flex items-center gap-x-1 font-pelak-medium hover:text-blue-500 dark:hover:text-amber-400 rounded-2xl" activeTabClassName="blue-light dark:amber-light">
                         <Sort />
                         پیش فرض
                     </TabsItem>
-                    <TabsItem value={SORTING.NEWSET} className="flex items-center gap-x-1 font-pelak-medium hover:text-blue-500 dark:hover:text-amber-400" activeTabClassName="blue-light dark:amber-light">
+                    <TabsItem value={SORTING.NEWSET} className="flex items-center gap-x-1 font-pelak-medium hover:text-blue-500 dark:hover:text-amber-400 rounded-2xl" activeTabClassName="blue-light dark:amber-light">
                         <SortUp />
                         جدید ترین
                     </TabsItem>
-                    <TabsItem value={SORTING.OLDEST} className="flex items-center gap-x-1 font-pelak-medium hover:text-blue-500 dark:hover:text-amber-400" activeTabClassName="blue-light dark:amber-light">
+                    <TabsItem value={SORTING.OLDEST} className="flex items-center gap-x-1 font-pelak-medium hover:text-blue-500 dark:hover:text-amber-400 rounded-2xl" activeTabClassName="blue-light dark:amber-light">
                         <SortDown />
                         قدیمی ترین
                     </TabsItem>
-                    <TabsItem value={SORTING.POPULAR} className="flex items-center gap-x-1 font-pelak-medium hover:text-blue-500 dark:hover:text-amber-400" activeTabClassName="blue-light dark:amber-light">
+                    <TabsItem value={SORTING.POPULAR} className="flex items-center gap-x-1 font-pelak-medium hover:text-blue-500 dark:hover:text-amber-400 rounded-2xl" activeTabClassName="blue-light dark:amber-light">
                         <MedalRibbon />
                         محبوب ترین
                     </TabsItem>
                 </Tabs>
             </div>
-            <NavigationDrawer sort={sort} onChange={updateSort} />
+            <NavigationDrawer entity={entity} sort={sort} onChange={updateSort} />
             <div className="grow w-full xl:w-min p-4 md:p-6 xl:p-0 bg-white dark:bg-gray-850 rounded-2xl xl:rounded-none">
-                <SearchBar route={route} query="search" placeholder="در دوره‌ها جستجو کنید" empty />
+                <SearchBar route={route} query="search" placeholder={`در ${entity} جستجو کنید`} empty />
             </div>
         </div>
     );

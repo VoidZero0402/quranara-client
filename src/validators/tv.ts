@@ -28,7 +28,7 @@ export const GetAllTvsQuerySchema = PaginationQuerySchema.extend({
         .string({ required_error: "دسته‌بندی الزامی است" })
         .or(z.array(z.string({ required_error: "دسته‌بندی الزامی است" })))
         .optional(),
-    sort: z.enum([SORTING.NEWEST, SORTING.OLDEST, SORTING.POPULAR], { message: "مقدار مرتب‌سازی نامعتبر است." }).default(SORTING.NEWEST),
+    sort: z.enum([SORTING.DEFAULT, SORTING.NEWEST, SORTING.OLDEST, SORTING.POPULAR], { message: "مقدار مرتب‌سازی نامعتبر است." }).default(SORTING.NEWEST),
     search: z.string().min(1, { message: "جستجو نباید خالی باشد" }).optional(),
 });
 

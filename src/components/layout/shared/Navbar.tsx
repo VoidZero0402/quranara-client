@@ -2,13 +2,13 @@ import Link from "next/link";
 
 import { getMenus } from "@/api/queries/ui";
 
-import ToggleTheme from "../specific/navbar/ToggleTheme";
-import Navigation from "../specific/navbar/Navigation";
-import Search from "../specific/navbar/Search";
-import AccountWrapper from "../specific/navbar/AccountWrapper";
-import MobileNavbar from "../specific/navbar/MobileNavbar";
+import ToggleTheme from "@/components/specific/navbar/ToggleTheme";
+import Navigation from "@/components/specific/navbar/Navigation";
+import Search from "@/components/specific/navbar/Search";
+import AccountWrapper from "@/components/specific/navbar/AccountWrapper";
+import MobileNavbar from "@/components/specific/navbar/MobileNavbar";
 
-import Logo from "../ui/Logo";
+import Logo from "@/components/ui/Logo";
 
 async function Navbar() {
     const { data } = await getMenus();

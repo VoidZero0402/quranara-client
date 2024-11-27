@@ -1,9 +1,9 @@
 "use client";
 
-import { Suspense, useState } from "react";
+import { useState, Suspense } from "react";
 
-import Details from "@/components/specific/courses/Details";
-import Navigation from "@/components/specific/courses/Navigation";
+import Details from "@/components/specific/entities/Details";
+import Navigation from "@/components/specific/entities/Navigation";
 import CoursesGrid, { CoursesGridLoading } from "@/components/specific/courses/CoursesGrid";
 
 function Main() {
@@ -11,8 +11,8 @@ function Main() {
 
     return (
         <>
-            <Details count={count} />
-            <Navigation />
+            <Details count={count} text="دوره‌های تخصصی قرآن‌آرا" countText="دوره تخصصی" />
+            <Navigation entity="دوره‌ها" />
             <Suspense fallback={<CoursesGridLoading />}>
                 <CoursesGrid updateCount={setCount} />
             </Suspense>
