@@ -54,6 +54,10 @@
         scrollbar-gutter: stable;
     }
 
+    .ball {
+        @apply block size-1.5 bg-amber-400 rounded-sm;
+    }
+
     .blog-swiper-pagination {
         @apply !static h-6;
     }
@@ -81,7 +85,7 @@
     }
 
     .amber-light {
-        @apply bg-amber-50 dark:bg-amber-400/10 text-amber-400;
+        @apply bg-[#fff7d9] dark:bg-amber-400/10 text-amber-400;
     }
 
     .gray-light {

@@ -1,6 +1,7 @@
-import Quranara from "@/api/clients/Quranara";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+
+import Quranara from "@/api/clients/Quranara";
 
 async function AuthLayout({
     children,

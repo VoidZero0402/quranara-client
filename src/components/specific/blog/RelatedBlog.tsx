@@ -7,7 +7,7 @@ import { LimitedBlog } from "@/types/blog.types";
 
 function RelatedBlog({ title, slug, description, views, likes, timeToRead }: LimitedBlog) {
     return (
-        <Link href={`/blog/${slug}`} className="group flex flex-col gap-y-4 relative p-4 bg-[#f6f7f8] dark:bg-gray-800 rounded-xl">
+        <Link href={`/blog/${slug}`} className="group flex flex-col gap-y-4 relative p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
             <div className="space-y-2">
                 <span className="font-pelak-semibold text-sm text-gray-800 dark:text-gray-200 group-hover:text-amber-400 transition-all line-clamp-1">{title}</span>
                 <p className="text-xs text-gray-600 dark:text-gray-400 leading-6 line-clamp-2">{description}</p>

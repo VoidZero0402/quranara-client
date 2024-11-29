@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import Button from "@/components/ui/Button";
 import Placeholder from "@/components/ui/Placeholder";
 
@@ -14,14 +16,18 @@ function Header() {
                         <h1 className="font-pelak-semibold text-3xl/[1.5] sm:text-4xl/[1.5] text-gray-800 dark:text-gray-200">قرآن‌آرا؛ پلی به سوی یادگیری و درک بهتر قرآن</h1>
                         <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300">با قرآن‌آرا، دوره‌های متنوع روخوانی، روان‌خوانی و تفسیر قرآن را به زبانی روان و با کیفیت بالا بیاموزید</p>
                         <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-4 mt-4">
-                            <Button size="lg" className="font-pelak-medium gap-x-2">
-                                <Layers />
-                                دوره‌های تخصصی قرآن‌آرا
-                            </Button>
-                            <Button size="lg" variant="neutral-base" className="font-pelak-medium gap-x-2">
-                                <PlayCircle />
-                                آموزش‌های رایگان قرآن‌آرا
-                            </Button>
+                            <Link href="/courses" className="flex">
+                                <Button size="lg" className="font-pelak-medium gap-x-2 w-full">
+                                    <Layers />
+                                    دوره‌های تخصصی قرآن‌آرا
+                                </Button>
+                            </Link>
+                            <Link href="/tv" className="flex">
+                                <Button size="lg" variant="neutral-base" className="font-pelak-medium gap-x-2 w-full">
+                                    <PlayCircle />
+                                    آموزش‌های رایگان قرآن‌آرا
+                                </Button>
+                            </Link>
                         </div>
                     </div>
                     <div className="w-full lg:w-1/2 order-2">

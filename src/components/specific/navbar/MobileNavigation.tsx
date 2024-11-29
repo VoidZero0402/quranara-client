@@ -13,7 +13,7 @@ import Document from "@/components/svgs/Document";
 import HomeAngle from "@/components/svgs/HomeAngle";
 import Layers from "@/components/svgs/Layers";
 import PlayCircle from "@/components/svgs/PlayCircle";
-import QuestionSquare from "@/components/svgs/QuestionSquare";
+import QuestionCircle from "@/components/svgs/QuestionCircle";
 
 type MobileNavigationProps = { menus: Menus };
 
@@ -56,7 +56,7 @@ function MobileNavigation({ menus }: MobileNavigationProps) {
                     <NavigationLink href="/tv" title="همه آموزش‌های رایگان" caption="مشاهده همه آموزش‌های رایگان قرآن آرا" />
                 </div>
             </CollapsableMobileNavigationItem>
-            <MobileNavigationItem text="درباره ما" Icon={QuestionSquare} href="/about-us" />
+            <MobileNavigationItem text="درباره ما" Icon={QuestionCircle} href="/about-us" />
         </ul>
     );
 }

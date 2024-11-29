@@ -24,8 +24,6 @@ function CoursesGrid({ updateCount }: CoursesGridProps) {
         const sort = (searchParams.get("sort") ?? SORTING.DEFAULT) as Sorting;
         const search = searchParams.get("search");
 
-        await new Promise((res) => setTimeout(res, 500));
-
         return await getCourses({ page: pageParam, limit: 8, sort, ...(search && { search }) });
     };
 
@@ -46,8 +44,6 @@ function CoursesGrid({ updateCount }: CoursesGridProps) {
     useEffect(() => {
         updateCount(data.pages[0].data.pagination.count);
     }, [data]);
-
-    console.log(data);
 
     return (
         <section>

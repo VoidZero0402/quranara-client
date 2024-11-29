@@ -16,7 +16,7 @@ import HomeAngle from "@/components/svgs/HomeAngle";
 import Bag from "@/components/svgs/Bag";
 import Folder from "@/components/svgs/Folder";
 import ChatRoundLine from "@/components/svgs/ChatRoundLine";
-import QuestionSquare from "@/components/svgs/QuestionSquare";
+import QuestionCircle from "@/components/svgs/QuestionCircle";
 import Logout from "@/components/svgs/Logout";
 
 import { CookieUser } from "@/types/user.types";
@@ -49,34 +49,34 @@ function UserAccount({ user }: UserAccountProps) {
                 <Slice />
                 <DropdownBody>
                     <Link href="#" className="flex items-center gap-x-2 py-2.5 px-3 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition-colors">
-                        <HomeAngle className="w-6" />
+                        <HomeAngle />
                         پنل کاربری
                     </Link>
                     <Link href="#" className="flex items-center gap-x-2 py-2.5 px-3 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition-colors">
-                        <Bag className="w-6" />
+                        <Bag />
                         سبد خرید دوره‌ها
                     </Link>
                     <Link href="#" className="flex items-center gap-x-2 py-2.5 px-3 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition-colors">
-                        <Folder className="w-6" />
+                        <Folder />
                         دوره‌های من
                     </Link>
                     <Link href="#" className="flex items-center gap-x-2 py-2.5 px-3 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition-colors">
-                        <ChatRoundLine className="w-6" />
+                        <ChatRoundLine />
                         تیکت‌های من
                     </Link>
                     <Link href="#" className="flex items-center gap-x-2 py-2.5 px-3 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition-colors">
-                        <QuestionSquare className="w-6" />
+                        <QuestionCircle />
                         سوالات من
                     </Link>
-                    <Link href="#" className="flex items-center gap-x-2 py-2.5 px-3 text-gray-800 dark:text-gray-200 hover:bg-gay-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition-colors">
-                        <UserRounded className="w-6" />
+                    <Link href="#" className="flex items-center gap-x-2 py-2.5 px-3 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition-colors">
+                        <UserRounded />
                         جزئیات حساب کاربری
                     </Link>
                 </DropdownBody>
                 <Slice />
                 <DropdownFooter>
-                    <button className="flex items-center gap-x-2 w-full py-2.5 px-3 text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-lg cursor-pointer transition-colors">
-                        <Logout className="w-6" />
+                    <button className="flex items-center gap-x-2 w-full py-2.5 px-3 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition-colors">
+                        <Logout />
                         خروج از حساب
                     </button>
                 </DropdownFooter>
