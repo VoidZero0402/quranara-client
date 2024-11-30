@@ -10,7 +10,7 @@ type CreateCommentModalProps = { isOpen: boolean; onClose: () => void; replyTo?:
 
 function CreateCommentModal({ isOpen, onClose, replyTo }: CreateCommentModalProps) {
     return (
-        <Modal isOpen={isOpen} onClose={onClose} className="w-3/5">
+        <Modal isOpen={isOpen} onClose={onClose} className="size-full rounded-none md:rounded-xl md:w-3/5 md:h-max">
             <ModalHeader>
                 <span className="flex items-center gap-x-2 font-pelak-medium text-lg text-gray-800 dark:text-gray-200">
                     <PenSquare />

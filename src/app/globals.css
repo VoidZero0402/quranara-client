@@ -46,12 +46,17 @@
     .with-custom-scroll::-webkit-scrollbar-thumb {
         @apply bg-gray-200 dark:bg-gray-700 rounded-full;
     }
+
     .with-custom-scroll::-webkit-scrollbar-thumb:hover {
         @apply bg-gray-300 dark:bg-gray-600;
     }
 
     .with-custom-scroll {
         scrollbar-gutter: stable;
+    }
+
+    .hidden-scroll::-webkit-scrollbar {
+        @apply hidden
     }
 
     .ball {
@@ -77,7 +82,7 @@
     }
 
     .bg-backdrop {
-        @apply bg-gray-500/25 dark:bg-gray-800/25;
+        @apply bg-gray-500/30 dark:bg-gray-800/30;
     }
 
     .blue-light {

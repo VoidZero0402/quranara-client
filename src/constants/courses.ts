@@ -10,3 +10,9 @@ export const SORTING = {
     OLDEST: "oldest",
     POPULAR: "popular",
 } as const;
+
+export const StatusText = {
+    [STATUS.ON_PERFORMING]: "پیش فروش",
+    [STATUS.PRE_SELL]: "در حال برگزاری",
+    [STATUS.REACHED]: "تکمیل شده",
+} as const;

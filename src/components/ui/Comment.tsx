@@ -8,18 +8,18 @@ type CommentProps = { onReply: ({ replyTo }: { replyTo: string }) => void };
 
 function Comment({ onReply }: CommentProps) {
     return (
-        <div className="space-y-4 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
+        <div className="space-y-4 p-4 sm:p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-x-2">
                     <Avatar />
                     <div className="space-y-2 font-pelak-medium text-gray-800 dark:text-gray-200">
                         <span className="block">محمدحسن خانی</span>
-                        <span className="block text-sm text-gray-500">{new Date().toLocaleString("fa", { dateStyle: "medium", timeStyle: "short" })}</span>
+                        <span className="block text-sm text-gray-600 dark:text-gray-400">{new Date().toLocaleString("fa", { dateStyle: "medium", timeStyle: "short" })}</span>
                     </div>
                 </div>
-                <Button size="sm" onClick={() => onReply({ replyTo: "محمدحسن خانی" })}>
+                <Button size="sm" className="size-12 sm:size-max" onClick={() => onReply({ replyTo: "محمدحسن خانی" })}>
                     <Reply />
-                    پاسخ به دیدگاه
+                    <span className="hidden sm:block">پاسخ به دیدگاه</span>
                 </Button>
             </div>
             <Slice />
@@ -42,12 +42,12 @@ function Comment({ onReply }: CommentProps) {
 
 function ReplyComment() {
     return (
-        <div className="space-y-4 p-6 bg-white dark:bg-gray-850 rounded-xl">
+        <div className="space-y-4 p-4 sm:p-6 bg-white dark:bg-gray-850 rounded-xl">
             <div className="flex items-center gap-x-2">
                 <Avatar />
                 <div className="space-y-2 font-pelak-medium text-gray-800 dark:text-gray-200">
                     <span className="block">محمدحسن خانی</span>
-                    <span className="block text-sm text-gray-500">{new Date().toLocaleString("fa", { dateStyle: "medium", timeStyle: "short" })}</span>
+                    <span className="block text-sm text-gray-600 dark:text-gray-400">{new Date().toLocaleString("fa", { dateStyle: "medium", timeStyle: "short" })}</span>
                 </div>
             </div>
             <Slice className="opacity-50" />

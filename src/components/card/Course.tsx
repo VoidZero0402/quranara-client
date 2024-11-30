@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { STATUS } from "@/constants/courses";
+import { StatusText } from "@/constants/courses";
 
 import Placeholder from "../ui/Placeholder";
 import Slice from "../ui/Slice";
@@ -11,12 +11,6 @@ import Star from "../svgs/Star";
 import LongArrowLeft from "../svgs/LongArrowLeft";
 
 import { LimitedCourse } from "@/types/course.types";
-
-const StatusText = {
-    [STATUS.ON_PERFORMING]: "پیش فروش",
-    [STATUS.PRE_SELL]: "در حال برگزاری",
-    [STATUS.REACHED]: "تکمیل شده",
-} as const;
 
 function Course({ title, description, slug, status, price, discount, metadata }: LimitedCourse) {
     return (

@@ -8,3 +8,5 @@ export type Response<T> = {
 export type Pagination = { page: number; limit: number; pagesCount: number; count: number };
 
 export type MessageResponse = Promise<Response<{ message: string }>>;
+
+export type ResponseWithMessage = Response<{ message: string }>;

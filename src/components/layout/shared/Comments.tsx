@@ -13,14 +13,14 @@ function Comments() {
     const { isOpen, isPending, props, open, close } = useModal<{ replyTo?: string }>();
 
     return (
-        <section className="flex flex-col gap-y-8 p-8 bg-white dark:bg-gray-850 rounded-2xl">
+        <section className="flex flex-col gap-y-8 p-4 sm:p-8 bg-white dark:bg-gray-850 rounded-2xl">
             <div className="flex items-center justify-between">
-                <span className="flex items-center gap-x-2 font-pelak-medium text-xl text-gray-800 dark:text-gray-200">
-                    <ChatRoundLine className="w-8" />
+                <span className="flex items-center gap-x-2 font-pelak-medium text-lg sm:text-xl text-gray-800 dark:text-gray-200">
+                    <ChatRoundLine className="w-6 sm:w-8" />
                     دیدگاه و پرسش
                 </span>
                 <Button size="lg" variant="filled-secondary" disabled={isPending} onClick={() => open({})}>
-                    ثبت دیدگاه جدید
+                    ثبت دیدگاه
                 </Button>
             </div>
 

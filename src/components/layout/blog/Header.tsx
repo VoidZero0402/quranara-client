@@ -1,14 +1,18 @@
 import Breadcrumb, { BreadcrumbItem, BreadcrumbSlice } from "@/components/ui/Breadcrumb";
 
-function Header() {
+import { Blog } from "@/types/blog.types";
+
+type HeaderProps = Pick<Blog, "title" | "category">;
+
+function Header({ title, category }: HeaderProps) {
     return (
         <header className="container">
             <Breadcrumb>
                 <BreadcrumbItem href="/blog">مقالات</BreadcrumbItem>
                 <BreadcrumbSlice />
-                <BreadcrumbItem href="/blog">دسته آموزش تجوید</BreadcrumbItem>
+                <BreadcrumbItem href={`/blog?category=${category._id}`}>{category.title}</BreadcrumbItem>
                 <BreadcrumbSlice />
-                <BreadcrumbItem href="#">اهمیت تفسیر در فهم قرآن</BreadcrumbItem>
+                <BreadcrumbItem href="#">{title}</BreadcrumbItem>
             </Breadcrumb>
         </header>
     );

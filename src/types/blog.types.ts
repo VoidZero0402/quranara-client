@@ -2,6 +2,7 @@ import { SORTING, STATUS } from "@/constants/blog";
 
 import { PopulatedUser } from "./user.types";
 import { PopulatedCategory } from "./category.types";
+import { RelatedCourse } from "./course.types";
 
 type Status = (typeof STATUS)[keyof typeof STATUS];
 
@@ -20,7 +21,7 @@ export type Blog = {
     views: number;
     likes: number;
     timeToRead: number;
-    relatedCourses: string[];
+    relatedCourses: RelatedCourse[];
     updatedAt: Date;
 };
 

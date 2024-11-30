@@ -20,7 +20,7 @@ export function statusHandler(response: Response<any>, options: ResponseStatusHa
         
         const errors = options.statuses[key];
 
-        toast.custom((t) => <Toast t={t} status="error" {...errors} />);
+        toast.custom((t) => <Toast t={t} status="info" {...errors} />);
     }
 
     if (response.status === 500) {

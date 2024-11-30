@@ -30,7 +30,7 @@ function Heading({ children, href }: HeadingProps) {
     return (
         <li className="flex items-center gap-x-2">
             <span className="ball"></span>
-            <Link href={href} className="hover:text-amber-500 dark:hover:text-amber-400 transition-all line-clamp-1">
+            <Link href={href} className="hover:text-amber-500 dark:hover:text-amber-400 transition-all">
                 {children}
             </Link>
         </li>

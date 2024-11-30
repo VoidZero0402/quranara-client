@@ -15,7 +15,7 @@ function CreateCommentForm({ onCancel, replyTo }: CreateCommentFormProps) {
     const { control } = useForm({});
 
     return (
-        <div className="space-y-8 p-6">
+        <div className="space-y-8 sm:p-6">
             <div className="flex items-center gap-x-2">
                 <Avatar />
                 <div className="space-y-2 font-pelak-medium text-gray-800 dark:text-gray-200">

@@ -32,7 +32,7 @@ function TextArea<T extends FieldValues>({ name, control, label, placeholder, ca
             <label htmlFor={name as string} className="font-pelak-medium text-sm text-gray-800 dark:text-gray-200">
                 {label}
             </label>
-            <textarea id={name as string} {...field} onInput={onInput} placeholder={placeholder} rows={rows} maxLength={maxLength} className={cn("p-4 w-full min-h-40 max-h-[2000px] bg-white dark:bg-gray-800 dark:text-gray-200 border border-gray-100 dark:border-gray-800 focus:border-gray-200 dark:focus:border-gray-700 rounded-xl placeholder:text-gray-500 dark:placeholder:text-gray-400 resize-none overflow-hidden transition-all", textAreaClassName)} />
+            <textarea id={name as string} {...field} onInput={onInput} placeholder={placeholder} rows={rows} maxLength={maxLength} className={cn("p-4 w-full min-h-40 max-h-[500px] bg-white dark:bg-gray-800 dark:text-gray-200 border border-gray-100 dark:border-gray-800 focus:border-gray-200 dark:focus:border-gray-700 rounded-xl placeholder:text-gray-500 dark:placeholder:text-gray-400 resize-none overflow-auto with-custom-scroll transition-all", textAreaClassName)} />
             <FormDetails error={error} caption={caption} />
         </div>
     );
