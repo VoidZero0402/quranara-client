@@ -5,7 +5,7 @@ type OptionProps = { active: boolean } & React.ComponentProps<"div">;
 
 function Poll() {
     return (
-        <div className="space-y-8 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
+        <div className="my-8 space-y-8 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
             <div className="space-y-2">
                 <span className="flex items-center gap-x-2 font-pelak-medium text-lg text-gray-800 dark:text-gray-200">
                     <QuestionCircle className="w-8" />

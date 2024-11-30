@@ -5,7 +5,7 @@ import { Image as ImageProps } from "@/types/blog-content.types";
 
 function Image({ srcs }: ImageProps) {
     return (
-        <div className="flex gap-x-8">
+        <div className="my-8 flex gap-x-8">
             {srcs.map((src) => (
                 <Placeholder key={src} className="w-full aspect-video rounded-xl" type="image" />
             ))}

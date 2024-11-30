@@ -5,9 +5,9 @@ function useModal<T>(initialProps: T = {} as T) {
     const [props, setProps] = useState<T>(initialProps);
     const [isPending, startTransition] = useTransition();
 
-    const open = useCallback((props: T) => {
+    const open = useCallback((props?: T) => {
         startTransition(() => {
-            setProps(props);
+            props && setProps(props);
             setIsOpen(true);
         });
     }, []);

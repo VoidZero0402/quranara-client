@@ -1,11 +1,12 @@
-import { List as ListProps } from "@/types/blog-content.types";
 import Paragraph from "./Paragraph";
+
+type ListProps = { items: { content: string }[] };
 
 function List({ items }: ListProps) {
     return (
-        <ul className="space-y-4">
+        <ul className="my-4 space-y-4">
             {items.map((item) => (
-                <li>
+                <li key={item.content}>
                     <div className="flex items-center gap-x-2">
                         <span className="ball"></span>
                         <span className="font-pelak-medium text-lg">{item.content}</span>
