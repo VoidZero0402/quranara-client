@@ -2,9 +2,9 @@
 
 import { useQueryClient, useSuspenseQuery, useMutation } from "@tanstack/react-query";
 
-import { getDetails } from "@/api/queries/blog";
-import { likeBlog, dislikeBlog, saveBlog, unsaveBlog } from "@/api/mutations/blog";
-import { DislikeBlogStatusOptions, LikeBlogStatusOptions, SaveBlogStatusOptions, UnsaveBlogStatusOptions } from "@/api/errors/blog";
+import { getDetails } from "@/api/queries/tv";
+import { likeTv, dislikeTv, saveTv, unsaveTv } from "@/api/mutations/tv";
+import { LikeTvStatusOptions, DislikeTvStatusOptions, SaveTvStatusOptions, UnsaveTvStatusOptions } from "@/api/errors/tv";
 
 import { statusHandler } from "@/libs/responses";
 
@@ -18,63 +18,63 @@ type ActionsProps = { _id: string };
 
 function Actions({ _id }: ActionsProps) {
     const fetchDetails = async () => {
-        return await getDetails({ blogId: _id });
+        return await getDetails({ tvId: _id });
     };
 
     const queryClient = useQueryClient();
 
     const {
         data: { data: details },
-    } = useSuspenseQuery({ queryKey: [`blog-details-${_id}`], queryFn: fetchDetails });
+    } = useSuspenseQuery({ queryKey: [`tv-details-${_id}`], queryFn: fetchDetails });
 
     const { mutate: like, isPending: isPendingLike } = useMutation({
-        mutationFn: () => likeBlog({ blogId: _id }),
+        mutationFn: () => likeTv({ tvId: _id }),
         onSettled(data) {
             if (data) {
-                statusHandler(data, LikeBlogStatusOptions);
+                statusHandler(data, LikeTvStatusOptions);
             }
 
             if (data?.status === 201) {
-                queryClient.setQueryData([`blog-details-${_id}`], (data: ResponseWithMessage) => ({ ...data, data: { ...data.data, isLiked: true } }));
+                queryClient.setQueryData([`tv-details-${_id}`], (data: ResponseWithMessage) => ({ ...data, data: { ...data.data, isLiked: true } }));
             }
         },
     });
 
     const { mutate: dislike, isPending: isPendingDislike } = useMutation({
-        mutationFn: () => dislikeBlog({ blogId: _id }),
+        mutationFn: () => dislikeTv({ tvId: _id }),
         onSettled(data) {
             if (data) {
-                statusHandler(data, DislikeBlogStatusOptions);
+                statusHandler(data, DislikeTvStatusOptions);
             }
 
             if (data?.status === 200) {
-                queryClient.setQueryData([`blog-details-${_id}`], (data: ResponseWithMessage) => ({ ...data, data: { ...data.data, isLiked: false } }));
+                queryClient.setQueryData([`tv-details-${_id}`], (data: ResponseWithMessage) => ({ ...data, data: { ...data.data, isLiked: false } }));
             }
         },
     });
 
     const { mutate: save, isPending: isPendingSave } = useMutation({
-        mutationFn: () => saveBlog({ blogId: _id }),
+        mutationFn: () => saveTv({ tvId: _id }),
         onSettled(data) {
             if (data) {
-                statusHandler(data, SaveBlogStatusOptions);
+                statusHandler(data, SaveTvStatusOptions);
             }
 
             if (data?.status === 201) {
-                queryClient.setQueryData([`blog-details-${_id}`], (data: ResponseWithMessage) => ({ ...data, data: { ...data.data, isSaved: true } }));
+                queryClient.setQueryData([`tv-details-${_id}`], (data: ResponseWithMessage) => ({ ...data, data: { ...data.data, isSaved: true } }));
             }
         },
     });
 
     const { mutate: unsave, isPending: isPendingUnsave } = useMutation({
-        mutationFn: () => unsaveBlog({ blogId: _id }),
+        mutationFn: () => unsaveTv({ tvId: _id }),
         onSettled(data) {
             if (data) {
-                statusHandler(data, UnsaveBlogStatusOptions);
+                statusHandler(data, UnsaveTvStatusOptions);
             }
 
             if (data?.status === 200) {
-                queryClient.setQueryData([`blog-details-${_id}`], (data: ResponseWithMessage) => ({ ...data, data: { ...data.data, isSaved: false } }));
+                queryClient.setQueryData([`tv-details-${_id}`], (data: ResponseWithMessage) => ({ ...data, data: { ...data.data, isSaved: false } }));
             }
         },
     });

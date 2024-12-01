@@ -1,5 +1,5 @@
 import LinkRoundAngle from "@/components/svgs/LinkRoundAngle";
-import RelatedCourse from "./RelatedCourse";
+import RelatedCourse from "../../specific/blog/RelatedCourse";
 
 import { RelatedCourse as RelatedCourseType } from "@/types/course.types";
 

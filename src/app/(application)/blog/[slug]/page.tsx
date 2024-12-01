@@ -5,14 +5,14 @@ import { getBlog } from "@/api/queries/blog";
 
 import Header from "@/components/layout/blog/Header";
 import Details from "@/components/layout/blog/Details";
+import Headings from "@/components/layout/blog/Headings";
 import Content from "@/components/layout/blog/Content";
-import Author from "@/components/layout/blog/Author";
-import Actions, { ActionsLoading } from "@/components/layout/blog/Actions";
 import Comments from "@/components/layout/shared/Comments";
+import RelatedBlogs from "@/components/layout/blog/RelatedBlogs";
+import RelatedCourses from "@/components/layout/blog/RelatedCourses";
 
-import Headings from "@/components/specific/blog/Headings";
-import RelatedBlogs from "@/components/specific/blog/RelatedBlogs";
-import RelatedCourses from "@/components/specific/blog/RelatedCourses";
+import Author from "@/components/specific/blog/Author";
+import Actions, { ActionsLoading } from "@/components/specific/blog/Actions";
 
 import Slice from "@/components/ui/Slice";
 

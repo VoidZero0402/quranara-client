@@ -1,6 +1,6 @@
 import { getRelatedBlogs } from "@/api/queries/blog";
 
-import RelatedBlog from "./RelatedBlog";
+import RelatedBlog from "../../specific/blog/RelatedBlog";
 
 import LinkRoundAngle from "@/components/svgs/LinkRoundAngle";
 
