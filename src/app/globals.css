@@ -107,5 +107,21 @@
 }
 
 .plyr {
-    border-radius: .75rem;
+    border-radius: 0.75rem;
+    height: 100%;
+}
+
+@media (max-width: 640px) {
+    .plyr__progress__container {
+        position: absolute;
+        bottom: 2.5rem;
+        left: 10px;
+        width: 80%;
+    }
+
+    .plyr__time {
+        position: absolute;
+        bottom: 2.5rem;
+        right: 10px;
+    }
 }

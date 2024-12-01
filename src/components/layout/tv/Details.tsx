@@ -33,7 +33,7 @@ function Details({ _id, title, description, category, cover, video, attached }: 
                     ],
                 }}
             />
-            <div className="flex flex-col xs:flex-row items-center gap-4">
+            <div className="flex items-center gap-4">
                 <Link href={`/blog?category=${category._id}`} className="flex items-center gap-x-2 py-2.5 px-4 font-pelak-medium amber-light rounded-xl">
                     <Folder />
                     {category.title}
@@ -43,14 +43,14 @@ function Details({ _id, title, description, category, cover, video, attached }: 
                 <h1 className="font-pelak-semibold text-2xl text-gray-800 dark:text-gray-200 leading-10">{title}</h1>
                 <p className="text-gray-600 dark:text-gray-400 leading-7">{description}</p>
             </div>
-            <div className="flex items-center justify-between">
-                <div className="flex gap-x-4">
-                    <Button>
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="flex flex-wrap gap-4">
+                    <Button className="grow">
                         <PlayCircle />
                         دانلود ویدیو
                     </Button>
                     {attached && (
-                        <Button variant="filled-secondary">
+                        <Button variant="filled-secondary" className="grow">
                             <Copy />
                             دانلود پیوست
                         </Button>

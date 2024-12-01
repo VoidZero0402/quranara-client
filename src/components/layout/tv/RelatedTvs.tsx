@@ -10,7 +10,7 @@ async function RelatedTvs({ slug }: RelatedTvsProps) {
     const { data } = await getRelatedTvs({ slug });
 
     return (
-        <div className="space-y-8 p-4 sm:p-6 bg-white dark:bg-gray-850 rounded-2xl">
+        <div className="space-y-8 w-full p-4 sm:p-6 bg-white dark:bg-gray-850 rounded-2xl">
             <div className="space-y-2">
                 <span className="flex items-center gap-x-2 font-pelak-medium">
                     <LinkRoundAngle />

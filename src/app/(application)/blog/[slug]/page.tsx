@@ -6,7 +6,7 @@ import { getBlog } from "@/api/queries/blog";
 import Header from "@/components/layout/blog/Header";
 import Details from "@/components/layout/blog/Details";
 import Headings from "@/components/layout/blog/Headings";
-import Content from "@/components/layout/blog/Content";
+import Content from "@/components/layout/content/Content";
 import Comments from "@/components/layout/shared/Comments";
 import RelatedBlogs from "@/components/layout/blog/RelatedBlogs";
 import RelatedCourses from "@/components/layout/blog/RelatedCourses";
