@@ -12,7 +12,7 @@ export const SORTING = {
 } as const;
 
 export const StatusText = {
-    [STATUS.ON_PERFORMING]: "پیش فروش",
+    [STATUS.ON_PERFORMING]: "در حال پیش فروش",
     [STATUS.PRE_SELL]: "در حال برگزاری",
     [STATUS.REACHED]: "تکمیل شده",
 } as const;

@@ -25,10 +25,10 @@ function Details({ _id, title, description, category, cover, video, attached }: 
             <Player
                 source={{
                     type: "video",
-                    poster: "",
+                    poster: "https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg",
                     sources: [
                         {
-                            src: "",
+                            src: "https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4",
                         },
                     ],
                 }}

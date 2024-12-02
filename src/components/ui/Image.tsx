@@ -13,7 +13,7 @@ function Image({ wrapperClassName, className, ...props }: ImageProps) {
     const [isLoading, setIsLoading] = useState(true);
 
     return (
-        <div className={cn("relative size-full overflow-hidden", wrapperClassName)}>
+        <div className={cn("relative size-full aspect-video overflow-hidden", wrapperClassName)}>
             {isLoading && (
                 <Skeleton>
                     <SkeletonFrame className="size-full" />
