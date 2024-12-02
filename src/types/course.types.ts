@@ -30,6 +30,7 @@ export type Course = {
         content: string;
     };
     metadata: CourseMetadata;
+    updatedAt: Date
 };
 
 export type LimitedCourse = Omit<Course, "introduction">;

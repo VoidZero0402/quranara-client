@@ -3,11 +3,11 @@ export type Session = {
     title: string;
     slug: string;
     order: string;
-    isPublic: string;
+    isPublic: boolean;
     video: string;
     time: string;
     seconds: string;
     attached?: string;
 };
 
-export type PopulatedSession = Pick<Session, "_id" | "title" | "slug" | "time" | "isPublic">;
+export type PopulatedSession = Pick<Session, "_id" | "title" | "slug" | "time" | "isPublic" | "order">;

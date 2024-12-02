@@ -6,15 +6,15 @@ import Content from "@/components/layout/content/Content";
 
 import Button from "@/components/ui/Button";
 
-import Copy from "@/components/svgs/Copy";
+import Widgets from "@/components/svgs/Widgets";
 
 function IntroContent() {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
         <section className="space-y-8 p-6 bg-white dark:bg-gray-850 rounded-2xl" id="content">
-            <h3 className="flex items-center gap-x-2 font-pelak-medium text-2xl">
-                <Copy className="w-8" />
+            <h3 className="flex items-center gap-x-2 font-pelak-medium text-xl">
+                <Widgets className="w-8" />
                 توضیحات دوره
             </h3>
             <div className="relative overflow-hidden" style={{ height: isOpen ? "auto" : "600px" }}>
