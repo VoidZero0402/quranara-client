@@ -4,7 +4,7 @@ type ProgressProps = { progress: number; hours: number };
 
 function Progress({ progress, hours }: ProgressProps) {
     return (
-        <div className="space-y-4 p-4 sm:p-6 bg-white dark:bg-gray-850 rounded-2xl">
+        <div className="grow xl:grow-0 space-y-4 p-4 sm:p-6 bg-white dark:bg-gray-850 rounded-2xl">
             <div className="space-y-2">
                 <span className="flex items-center gap-x-2 font-pelak-medium">
                     <Transform />

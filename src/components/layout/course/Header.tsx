@@ -27,8 +27,8 @@ function Header({ _id, title, description, price, status, cover, video }: Header
                     <BreadcrumbItem href="#">{title}</BreadcrumbItem>
                 </Breadcrumb>
 
-                <section className="flex gap-x-8">
-                    <div className="w-1/2 space-y-8">
+                <section className="flex flex-col-reverse xl:flex-row gap-8">
+                    <div className="xl:w-1/2 space-y-8">
                         <div className="flex items-center gap-x-2 font-pelak-semibold text-blue-500">
                             <div className="size-2 bg-blue-500 rounded-full">
                                 <div className="size-2 bg-blue-500 rounded-full animate-ping"></div>
@@ -52,11 +52,11 @@ function Header({ _id, title, description, price, status, cover, video }: Header
                             </div>
                         </div>
 
-                        <div className="flex gap-x-4">
+                        <div className="flex flex-col sm:flex-row gap-4">
                             <Suspense fallback={<RegisterLoading />}>
                                 <Register _id={_id} />
                             </Suspense>
-                            <Link href="#topics" className="w-1/2">
+                            <Link href="#topics" className="w-full sm:w-1/2">
                                 <Button size="lg" className="w-full h-14" variant="neutral-base">
                                     <Layers />
                                     مشاهده سرفصل‌های دوره
@@ -65,7 +65,7 @@ function Header({ _id, title, description, price, status, cover, video }: Header
                         </div>
                     </div>
 
-                    <div className="w-1/2">
+                    <div className="xl:w-1/2">
                         <HeaderPlayer cover={cover} video={video} />
                     </div>
                 </section>

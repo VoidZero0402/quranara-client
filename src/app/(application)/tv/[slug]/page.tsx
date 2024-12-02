@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import { notFound } from "next/navigation";
 
 import { getTv } from "@/api/queries/tv";
@@ -7,7 +6,7 @@ import Header from "@/components/layout/tv/Header";
 import RelatedTvs from "@/components/layout/tv/RelatedTvs";
 import Details from "@/components/layout/tv/Details";
 import TvContent from "@/components/layout/tv/TvContent";
-import Comments from "@/components/layout/shared/Comments";
+import TvComments from "@/components/layout/tv/TvComments";
 
 async function Tv({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
@@ -38,7 +37,7 @@ async function Tv({ params }: { params: Promise<{ slug: string }> }) {
                 </div>
                 <div className="flex gap-8">
                     <div className="w-full xl:w-[70%]">
-                        <Comments />
+                        <TvComments />
                     </div>
                     <div className="hidden xl:block w-[30%]"></div>
                 </div>

@@ -10,6 +10,7 @@ import { convertToQueryString } from "@/libs/funcs";
 import { Response, Pagination } from "@/types/response.types";
 import { Course, LimitedCourse } from "@/types/course.types";
 import { Topic } from "@/types/topic.types";
+import { Comment } from "@/types/comment.types";
 
 type CoursesQueriesWithSlugParams = { slug: string };
 type CoursesQueriesWithIdParams = { courseId: string };

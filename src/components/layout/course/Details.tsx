@@ -1,3 +1,8 @@
+"use client";
+
+import { memo, useEffect } from "react";
+import { useInView } from "react-intersection-observer";
+
 import DetailBox from "@/components/specific/course/DetailBox";
 
 import CircleTopDown from "@/components/svgs/CircleTopDown";
@@ -10,16 +15,22 @@ import UserGroup from "@/components/svgs/UserGroup";
 
 import { Course } from "@/types/course.types";
 
-type DetailsProps = Pick<Course, "time" | "metadata" | "updatedAt">;
+type DetailsProps = Pick<Course, "time" | "metadata" | "updatedAt"> & { onInView: (section: string) => void };
 
-function Details({ time, metadata, updatedAt }: DetailsProps) {
+function Details({ time, metadata, updatedAt, onInView }: DetailsProps) {
+    const [ref, inView] = useInView({ threshold: .5 });
+
+    useEffect(() => {
+        if (inView) onInView("details");
+    }, [inView]);
+
     return (
-        <section className="space-y-8 p-6 bg-white dark:bg-gray-850 rounded-2xl" id="details">
+        <section ref={ref} className="space-y-8 p-6 bg-white dark:bg-gray-850 rounded-2xl" id="details">
             <h3 className="flex items-center gap-x-2 font-pelak-medium text-xl">
                 <Plain className="w-8" />
                 جزئیات دوره
             </h3>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 <DetailBox text="مدت زمان دوره" caption={`${time[0]} ساعت و ${time[1]} دقیقه`}>
                     <ClockCircle className="w-8" />
                 </DetailBox>
@@ -43,4 +54,4 @@ function Details({ time, metadata, updatedAt }: DetailsProps) {
     );
 }
 
-export default Details;
+export default memo(Details);

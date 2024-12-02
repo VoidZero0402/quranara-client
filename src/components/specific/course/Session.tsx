@@ -14,25 +14,28 @@ function Session({ title, slug, time, isPublic, order }: SessionProps) {
         <div className="group flex items-center justify-between p-4 h-[76px] font-pelak-medium text-gray-700 dark:text-gray-200 bg-gray-50 dark:bg-gray-800 rounded-xl">
             <div className="flex items-center gap-x-2 group-hover:text-blue-500 dark:group-hover:text-amber-400 transition-all">
                 <span className="flex-center size-8 text-sm gray-light group-hover:blue-light dark:group-hover:amber-light rounded-md transition-all">{order}</span>
-                <Link href={isPublic ? `/sessions/${slug}` : ""} className={isPublic ? "" : "pointer-events-none"}>
+                <Link href={isPublic ? `/sessions/${slug}` : ""} className={`text-sm ${isPublic ? "" : "pointer-events-none"}`}>
                     {title}
                 </Link>
             </div>
             <div className="flex items-center gap-x-4">
-                {isPublic ? (
-                    <Link href={`/sessions/${slug}`}>
-                        <Button size="sm" rounded="base" variant="neutral-base">
-                            مشاهده ویدیو
-                        </Button>
-                    </Link>
-                ) : (
-                    <div className="flex-center size-11 amber-light rounded-lg">
-                        <Lock />
-                    </div>
-                )}
+                <div className="hidden sm:block">
+                    {isPublic ? (
+                        <Link href={`/sessions/${slug}`}>
+                            <Button size="sm" rounded="base" variant="neutral-base">
+                                مشاهده ویدیو
+                            </Button>
+                        </Link>
+                    ) : (
+                        <div className="flex-center size-11 amber-light rounded-lg">
+                            <Lock />
+                        </div>
+                    )}
+                </div>
                 <div className="flex items-center gap-x-2 w-20">
                     {time}
-                    <PlaybackSpeed className="w-6 shrink-0" />
+                    <PlaybackSpeed className="w-6 shrink-0 hidden sm:block" />
+                    <div className="sm:hidden">{isPublic ? <PlaybackSpeed className="w-6 shrink-0" /> : <Lock />}</div>
                 </div>
             </div>
         </div>

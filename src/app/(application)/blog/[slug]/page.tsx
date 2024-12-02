@@ -7,9 +7,9 @@ import Header from "@/components/layout/blog/Header";
 import Details from "@/components/layout/blog/Details";
 import Headings from "@/components/layout/blog/Headings";
 import Content from "@/components/layout/content/Content";
-import Comments from "@/components/layout/shared/Comments";
 import RelatedBlogs from "@/components/layout/blog/RelatedBlogs";
 import RelatedCourses from "@/components/layout/blog/RelatedCourses";
+import BlogComments from "@/components/layout/blog/BlogComments";
 
 import Author from "@/components/specific/blog/Author";
 import Actions, { ActionsLoading } from "@/components/specific/blog/Actions";
@@ -56,7 +56,7 @@ async function Blog({ params }: { params: Promise<{ slug: string }> }) {
                 </div>
                 <div className="flex gap-8">
                     <div className="w-full xl:w-[70%]">
-                        <Comments />
+                        <BlogComments />
                     </div>
                     <div className="hidden xl:block w-[30%]"></div>
                 </div>

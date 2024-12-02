@@ -32,7 +32,7 @@ function Register({ _id }: RegisterProps) {
     });
 
     return (
-        <div className="w-1/2">
+        <div className="w-full sm:w-1/2">
             {data.hasAccess ? (
                 <div className="flex items-center justify-center gap-x-1 w-full h-14 font-pelak-medium amber-light rounded-2xl">
                     <UserRounded />

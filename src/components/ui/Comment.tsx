@@ -4,7 +4,7 @@ import Slice from "./Slice";
 
 import Reply from "../svgs/Reply";
 
-type CommentProps = { onReply: ({ replyTo }: { replyTo: string }) => void };
+type CommentProps = { onReply: () => void };
 
 function Comment({ onReply }: CommentProps) {
     return (
@@ -17,7 +17,7 @@ function Comment({ onReply }: CommentProps) {
                         <span className="block text-sm text-gray-600 dark:text-gray-400">{new Date().toLocaleString("fa", { dateStyle: "medium", timeStyle: "short" })}</span>
                     </div>
                 </div>
-                <Button size="sm" className="size-12 sm:size-max" onClick={() => onReply({ replyTo: "محمدحسن خانی" })}>
+                <Button size="sm" className="size-12 sm:size-max">
                     <Reply />
                     <span className="hidden sm:block">پاسخ به دیدگاه</span>
                 </Button>
