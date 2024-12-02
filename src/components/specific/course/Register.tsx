@@ -12,7 +12,7 @@ import Button from "@/components/ui/Button";
 import Skeleton, { SkeletonFrame } from "@/components/ui/Skeleton";
 
 import UserRounded from "@/components/svgs/UserRounded";
-import Plain from "@/components/svgs/Plain";
+import AcademicCap from "@/components/svgs/AcademicCap";
 
 type RegisterProps = { _id: string };
 
@@ -40,7 +40,7 @@ function Register({ _id }: RegisterProps) {
                 </div>
             ) : (
                 <Button size="lg" className="w-full h-14" disabled={isPending} onClick={() => register()}>
-                    <Plain />
+                    <AcademicCap />
                     ثبت‌نام و دسترسی به دوره
                 </Button>
             )}
