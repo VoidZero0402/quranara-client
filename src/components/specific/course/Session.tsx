@@ -27,9 +27,7 @@ function Session({ title, slug, time, isPublic, order }: SessionProps) {
                             </Button>
                         </Link>
                     ) : (
-                        <div className="flex-center size-11 amber-light rounded-lg">
-                            <Lock />
-                        </div>
+                        <Lock />
                     )}
                 </div>
                 <div className="flex items-center gap-x-2 w-20">

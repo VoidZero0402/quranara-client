@@ -80,3 +80,11 @@ export function checkAccess(params: CoursesQueriesWithIdParams): Promise<Respons
 
     return Quranara.get(url);
 }
+
+export function checkAccessServerSide(params: CoursesQueriesWithIdParams, cookie: string): Promise<Response<{ hasAccess: boolean }>> {
+    const url = `/courses/${params.courseId}/check-access`;
+
+    return Quranara.get(url, {
+        headers: { cookie },
+    });
+}

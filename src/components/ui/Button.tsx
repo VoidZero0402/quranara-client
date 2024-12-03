@@ -17,7 +17,7 @@ const button = cva("flex-center gap-x-1 font-pelak-medium child:shrink-0 select-
         size: {
             sm: "text-sm py-2.5 px-4 h-11",
             base: "py-2.5 px-4.5 h-11",
-            lg: "text-md py-3 px-5 h-12",
+            lg: "py-3 px-5 h-12",
             circle: "p-3 h-12",
         },
 

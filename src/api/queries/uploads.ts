@@ -6,7 +6,7 @@ import { convertToQueryString } from "@/libs/funcs";
 
 import { Response } from "@/types/response.types";
 
-export function getPreSignedURL(query: GetPreSignedUrlQuerySchemaType): Promise<Response<{ url: string }>> {
+export function getPreSignedURL(query: GetPreSignedUrlQuerySchemaType): Promise<Response<{ url: string; filename: string }>> {
     const queryString = convertToQueryString(query);
     const url = `/uploads/pre-signed-url?${queryString}`;
 

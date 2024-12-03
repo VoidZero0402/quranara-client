@@ -7,7 +7,7 @@ import QuestionChat from "@/components/specific/session/QuestionChat";
 
 function Question() {
     return (
-        <section className="space-y-8 p-6 bg-white dark:bg-gray-850 rounded-2xl">
+        <section className="space-y-8 p-6 bg-white dark:bg-gray-850 rounded-2xl" id="question">
             <div className="space-y-2">
                 <span className="flex items-center gap-x-2 font-pelak-medium text-xl">
                     <QuestionCircle className="w-8" />
