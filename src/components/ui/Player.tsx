@@ -19,6 +19,7 @@ function Player(props: PlyrProps) {
                         settings: "تنظیمات",
                         pip: "حالت شناور",
                         enterFullscreen: "حالت تمام صفحه",
+                        exitFullscreen: "خروج از حالت تمام صفحه",
                         speed: "سرعت",
                         normal: "پیش فرض",
                     },

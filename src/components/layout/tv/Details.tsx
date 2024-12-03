@@ -19,7 +19,7 @@ const Player = dynamic(() => import("@/components/ui/Player"), { ssr: false, loa
 
 type DetailsProps = Pick<Tv, "_id" | "title" | "description" | "category" | "cover" | "video" | "attached">;
 
-function Details({ _id, title, description, category, cover, video, attached }: DetailsProps) {
+function Details({ _id, title, description, category, attached }: DetailsProps) {
     return (
         <section className="space-y-4 p-4 sm:p-8 bg-white dark:bg-gray-850 rounded-2xl">
             <Player
@@ -34,7 +34,7 @@ function Details({ _id, title, description, category, cover, video, attached }: 
                 }}
             />
             <div className="flex items-center gap-4">
-                <Link href={`/blog?category=${category._id}`} className="flex items-center gap-x-2 py-2.5 px-4 font-pelak-medium amber-light rounded-xl">
+                <Link href={`/tv?category=${category._id}`} className="flex items-center gap-x-2 py-2.5 px-4 font-pelak-medium amber-light rounded-xl">
                     <Folder />
                     {category.title}
                 </Link>

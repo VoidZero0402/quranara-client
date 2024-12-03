@@ -26,7 +26,7 @@ function CategoriesDrawer({ categories, category, onChange }: CategoriesDrawerPr
         [category, onChange]
     );
 
-    const text = category === "all" ? "همه دسته‌بندی‌ها" : (categories.find((item) => item._id === category) as Category).title;
+    const text = category === "all" ? "همه دسته‌بندی‌ها" : categories.find((item) => item._id === category)?.title;
 
     return (
         <>

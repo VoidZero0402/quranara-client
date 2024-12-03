@@ -27,7 +27,7 @@ function Topic({ title, order, sessions, hasAccess }: TopicProps) {
                 </div>
                 <ArrowDown />
             </div>
-            <div ref={sessionsRef} className={`space-y-2 overflow-hidden transition-all duration-300 ${isOpen ? "mb-4" : ""}`} style={{ height: isOpen ? `${sessionsRef.current?.scrollHeight}px` : "0" }}>
+            <div ref={sessionsRef} className={`space-y-2 overflow-hidden transition-all duration-300 ${isOpen ? "mb-4 opacity-100" : "opacity-0"}`} style={{ height: isOpen ? `${sessionsRef.current?.scrollHeight}px` : "0" }}>
                 {sessions.map((session) => (
                     <Session key={session._id} {...session} isPublic={hasAccess || session.isPublic} />
                 ))}
