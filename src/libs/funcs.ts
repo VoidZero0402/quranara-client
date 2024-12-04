@@ -1,3 +1,5 @@
+import { UploadFileType } from "@/constants/uploads";
+
 export function convertToQueryString(params: Record<string, any | string[]>) {
     const searchParams = new URLSearchParams();
 
@@ -29,3 +31,14 @@ export const persianToEnglish = (value: string) => {
         return index !== -1 ? english[index] : char;
     });
 };
+
+const UploadPrefixes: Record<string, UploadFileType> = {
+    image: "IMAGE",
+    audio: "AUDIO",
+    application: "ZIP",
+};
+
+export function getUploadType(type: string): UploadFileType {
+    const prefix = type.slice(0, type.indexOf("/"));
+    return UploadPrefixes[prefix];
+}

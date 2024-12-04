@@ -36,7 +36,7 @@ async function Session({ params }: { params: Promise<{ slug: string }> }) {
                     <main className="space-y-8 w-full xl:w-[70%]">
                         <Details title={session.title} order={session.order} topic={session.topic.title} video={session.video} cover={session.course.cover} attached={session.attached} />
                         <SessionContent />
-                        <Question />
+                        <Question _id={session._id} slug={slug} />
                     </main>
                     <aside className="flex flex-col md:flex-row xl:flex-col gap-8 w-full xl:w-[30%]">
                         <Topics slug={session.course.slug} hasAccess={data.hasAccess} />

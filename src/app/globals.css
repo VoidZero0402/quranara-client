@@ -104,6 +104,10 @@
     .red-light {
         @apply bg-red-50 dark:bg-red-500/10 text-red-500;
     }
+
+    .teal-light {
+        @apply bg-teal-50 dark:bg-teal-500/10 text-teal-500;
+    }
 }
 
 .plyr {

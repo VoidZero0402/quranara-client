@@ -31,31 +31,31 @@ function Details({ title, order, topic, video, attached }: DetailsProps) {
                 }}
             />
             <div className="space-y-4">
-                <div className="flex items-center gap-x-2 font-pelak-medium text-gray-600 dark:text-gray-400">سرفصل {topic}</div>
+                <div className="flex items-center gap-x-2 font-pelak-medium text-sm sm:text-base text-gray-600 dark:text-gray-400">سرفصل {topic}</div>
                 <div className="flex items-center gap-x-2">
                     <span className="flex-center p-2.5 font-pelak-medium text-sm gray-light rounded-xl">جلسه {order}</span>
-                    <h1 className="font-pelak-semibold text-2xl text-gray-800 dark:text-gray-200 leading-10">{title}</h1>
+                    <h1 className="font-pelak-semibold text-xl sm:text-2xl text-gray-800 dark:text-gray-200 leading-10">{title}</h1>
                 </div>
             </div>
             <Slice className="dark:bg-gray-800" />
-            <div className="flex justify-between">
+            <div className="flex flex-col sm:flex-row sm:justify-between gap-4">
                 <Link href={video}>
-                    <Button size="lg">
+                    <Button size="lg" className="w-full sm:w-max">
                         <PlayCircle />
                         دانلود ویدیو
                     </Button>
                 </Link>
-                <div className="flex gap-x-4">
+                <div className="flex flex-col sm:flex-row gap-4">
                     {attached && (
                         <Link href={attached}>
-                            <Button size="lg" variant="filled-secondary">
+                            <Button size="lg" variant="filled-secondary" className="w-full sm:w-max">
                                 <Copy />
                                 دانلود پیوست
                             </Button>
                         </Link>
                     )}
                     <Link href="#question">
-                        <Button size="lg" variant="neutral-base">
+                        <Button size="lg" variant="neutral-base" className="w-full sm:w-max">
                             <QuestionCircle />
                             پرسش و پاسخ
                         </Button>

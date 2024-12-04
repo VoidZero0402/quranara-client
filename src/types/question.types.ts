@@ -4,15 +4,16 @@ import { PopulatedUser } from "./user.types";
 import { Session } from "./session.types";
 import { AttachedType } from "./attached.types";
 
-type Status = (typeof STATUS)[keyof typeof STATUS];
+export type Status = (typeof STATUS)[keyof typeof STATUS];
 
-type QuestionMessage = {
+export type QuestionMessage = {
     content: string;
     user: PopulatedUser;
     attached?: {
         type: AttachedType;
         url: string;
     };
+    createdAt: Date
 };
 
 type QuestionSession = Pick<Session, "_id" | "slug">;

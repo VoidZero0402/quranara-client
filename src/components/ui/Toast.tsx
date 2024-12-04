@@ -14,7 +14,7 @@ type StatusProps = { ClassName: string; SvgComponent: React.FC<SvgComponentProps
 type ToastProps = { t: ToastType; text: string; caption: string; status: Status } & React.ComponentProps<"div">;
 
 const toast: Record<Status, StatusProps> = {
-    success: { ClassName: "text-blue-500 dark:text-blue-500 border-blue-500", SvgComponent: CheckCircle },
+    success: { ClassName: "text-teal-500 dark:text-teal-500 border-teal-500", SvgComponent: CheckCircle },
     error: { ClassName: "text-red-500 border-red-500", SvgComponent: DangerCircle },
     info: { ClassName: "text-sky-500 dark:text-sky-400 border-sky-500", SvgComponent: InfoCircle },
 };
