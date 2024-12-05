@@ -8,10 +8,9 @@ import { getCourseComments } from "@/api/queries/courses";
 
 import Comments from "../shared/Comments";
 
-type CommentsProps = { onInView: (section: string) => void };
+type CommentsProps = { _id: string; slug: string; onInView: (section: string) => void };
 
-function CourseComments({ onInView }: CommentsProps) {
-    const { slug } = useParams<{ slug: string }>();
+function CourseComments({ _id, slug, onInView }: CommentsProps) {
     const [ref, inView] = useInView({ threshold: 0.1 });
 
     useEffect(() => {
@@ -25,7 +24,7 @@ function CourseComments({ onInView }: CommentsProps) {
     return (
         <div ref={ref}>
             <Suspense>
-                <Comments queryKey={[`course-comments-${slug}`]} fetcher={fetchComments} />
+                <Comments entity={{ name: "course", _id }} queryKey={[`course-comments-${slug}`]} fetcher={fetchComments} />
             </Suspense>
         </div>
     );

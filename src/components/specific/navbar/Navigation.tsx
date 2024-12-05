@@ -56,7 +56,7 @@ async function Navigation({ menus }: NavigationProps) {
 function NavigationItem({ children, text, href }: NavigationItemProps) {
     return (
         <li className="relative group text-gray-800 dark:text-gray-200 hover:text-amber-500 dark:hover:text-amber-400 transition-all">
-            <Link href={href} className="flex items-center gap-x-0.5 w-full">
+            <Link href={href} className="flex items-center gap-x-0.5 w-full font-pelak-medium">
                 {text} {children && <ArrowDown />}
             </Link>
             {children}

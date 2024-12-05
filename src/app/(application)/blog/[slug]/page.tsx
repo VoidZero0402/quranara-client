@@ -56,7 +56,7 @@ async function Blog({ params }: { params: Promise<{ slug: string }> }) {
                 </div>
                 <div className="flex gap-8">
                     <div className="w-full xl:w-[70%]">
-                        <BlogComments />
+                        <BlogComments _id={blog._id} slug={slug} />
                     </div>
                     <div className="hidden xl:block w-[30%]"></div>
                 </div>

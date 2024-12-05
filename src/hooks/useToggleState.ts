@@ -1,6 +1,6 @@
 import { useState, useTransition, useCallback } from "react";
 
-function useModal<T>(initialProps: T = {} as T) {
+function useToggleState<T>(initialProps: T = {} as T) {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [props, setProps] = useState<T>(initialProps);
     const [isPending, startTransition] = useTransition();
@@ -17,4 +17,4 @@ function useModal<T>(initialProps: T = {} as T) {
     return { isOpen, isPending, props, open, close };
 }
 
-export default useModal;
+export default useToggleState;

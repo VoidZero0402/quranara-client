@@ -11,9 +11,9 @@ import Comments from "./CourseComments";
 
 import { Course } from "@/types/course.types";
 
-type MainProps = Pick<Course, "_id" | "time" | "metadata" | "updatedAt"> & { content: string };
+type MainProps = Pick<Course, "_id" | "slug" | "time" | "metadata" | "updatedAt"> & { content: string };
 
-function Main({ _id, content, time, metadata, updatedAt }: MainProps) {
+function Main({ _id, content, slug, time, metadata, updatedAt }: MainProps) {
     const [section, setSection] = useState("details");
 
     const onInView = useCallback((section: string) => setSection(section), []);
@@ -26,7 +26,7 @@ function Main({ _id, content, time, metadata, updatedAt }: MainProps) {
             <Suspense fallback={<TopicsLoading />}>
                 <Topics _id={_id} onInView={onInView} />
             </Suspense>
-            <Comments onInView={onInView} />
+            <Comments _id={_id} slug={slug} onInView={onInView} />
         </main>
     );
 }

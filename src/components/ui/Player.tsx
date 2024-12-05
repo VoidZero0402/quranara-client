@@ -23,7 +23,7 @@ function Player(props: PlyrProps) {
                         speed: "سرعت",
                         normal: "پیش فرض",
                     },
-                    ratio: "16:9"
+                    ratio: "16:9",
                 }}
             />
         </div>

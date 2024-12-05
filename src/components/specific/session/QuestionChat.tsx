@@ -2,6 +2,7 @@ import QuestionStatus from "./QuestionStatus";
 import Message from "./Message";
 
 import Slice from "@/components/ui/Slice";
+import Attached from "@/components/ui/Attached";
 
 import ChatRoundLine from "@/components/svgs/ChatRoundLine";
 import QuestionCircle from "@/components/svgs/QuestionCircle";
@@ -24,6 +25,7 @@ function QuestionChat({ messages, status }: QuestionChatProps) {
                             <span className="font-pelak-medium text-sm text-gray-800 dark:text-gray-200">{new Date(messages[0].createdAt).toLocaleString("fa", { dateStyle: "medium", timeStyle: "short" })}</span>
                         </div>
                         <p className="text-gray-600 dark:text-gray-400 whitespace-pre-line leading-8">{messages[0].content}</p>
+                        {messages[0].attached && <Attached {...messages[0].attached} />}
                     </div>
                     <div className="space-y-4">
                         <div className="flex items-center justify-between">
@@ -33,13 +35,15 @@ function QuestionChat({ messages, status }: QuestionChatProps) {
                             </span>
                             <QuestionStatus status={status as Status} />
                         </div>
-                        <Slice className="dark:opacity-50" />
                         {messages.length >= 2 && (
-                            <div className="space-y-4 sm:p-6 bg-white dark:bg-gray-850 rounded-xl">
-                                {messages.slice(1).map((message) => (
-                                    <Message key={message.createdAt.toString()} {...message} />
-                                ))}
-                            </div>
+                            <>
+                                <Slice className="dark:opacity-50" />
+                                <div className="space-y-4 sm:p-6 bg-white dark:bg-gray-850 rounded-xl">
+                                    {messages.slice(1).map((message) => (
+                                        <Message key={message.createdAt.toString()} {...message} />
+                                    ))}
+                                </div>
+                            </>
                         )}
                     </div>
                 </div>

@@ -1,22 +1,21 @@
 "use client";
 
 import { Suspense } from "react";
-import { useParams } from "next/navigation";
 
 import { getBlogComments } from "@/api/queries/blog";
 
 import Comments from "../shared/Comments";
 
-function BlogComments() {
-    const { slug } = useParams<{ slug: string }>();
+type BlogCommentsProps = { _id: string; slug: string }
 
+function BlogComments({ _id, slug }: BlogCommentsProps) {
     const fetchComments = async ({ pageParam = 1 }: { pageParam: number }) => {
         return await getBlogComments({ slug }, { page: pageParam, limit: 10 });
     };
 
     return (
         <Suspense>
-            <Comments queryKey={[`blog-comments-${slug}`]} fetcher={fetchComments} />
+            <Comments entity={{ name: "blog", _id }} queryKey={[`blog-comments-${slug}`]} fetcher={fetchComments} />
         </Suspense>
     );
 }

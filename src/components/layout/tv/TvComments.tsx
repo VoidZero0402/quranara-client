@@ -7,16 +7,16 @@ import { getTvComments } from "@/api/queries/tv";
 
 import Comments from "../shared/Comments";
 
-function TvComments() {
-    const { slug } = useParams<{ slug: string }>();
+type TvCommentsProps = { _id: string; slug: string };
 
+function TvComments({ _id, slug }: TvCommentsProps) {
     const fetchComments = async ({ pageParam = 1 }: { pageParam: number }) => {
         return await getTvComments({ slug }, { page: pageParam, limit: 10 });
     };
 
     return (
         <Suspense>
-            <Comments queryKey={[`tv-comments-${slug}`]} fetcher={fetchComments} />
+            <Comments entity={{ name: "tv", _id }} queryKey={[`tv-comments-${slug}`]} fetcher={fetchComments} />
         </Suspense>
     );
 }
