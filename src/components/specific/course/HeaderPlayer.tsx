@@ -9,7 +9,7 @@ const Player = dynamic(() => import("@/components/ui/Player"), { ssr: false, loa
 
 type HeaderPlayerProps = { cover: string; video?: string };
 
-function HeaderPlayer({ cover, video }: HeaderPlayerProps) {
+function HeaderPlayer({ video }: HeaderPlayerProps) {
     return (
         <>
             {video ? (

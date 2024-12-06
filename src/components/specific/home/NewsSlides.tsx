@@ -10,6 +10,7 @@ import Button from "@/components/ui/Button";
 import "swiper/css";
 
 import { News } from "@/types/news.types";
+import LinkCircle from "@/components/svgs/LinkCircle";
 
 type NewsSlidesProps = { news: News[] };
 
@@ -38,7 +39,8 @@ function NewsSlide({ cover, title, description, link }: News) {
                 {link && (
                     <div>
                         <Link href={link.url}>
-                            <Button size="lg" rounded="lg" variant="neutral-primary">
+                            <Button>
+                                <LinkCircle />
                                 {link.text}
                             </Button>
                         </Link>

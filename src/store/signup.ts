@@ -19,7 +19,7 @@ type SignupStore = {
     back: () => void;
 };
 
-const useSignupStore = create<SignupStore>((set, get) => ({
+const useSignupStore = create<SignupStore>((set) => ({
     isOtp: false,
     user: {
         phone: "",

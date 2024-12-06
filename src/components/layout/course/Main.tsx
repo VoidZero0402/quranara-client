@@ -13,7 +13,7 @@ import { Course } from "@/types/course.types";
 
 type MainProps = Pick<Course, "_id" | "slug" | "time" | "metadata" | "updatedAt"> & { content: string };
 
-function Main({ _id, content, slug, time, metadata, updatedAt }: MainProps) {
+function Main({ _id, slug, time, metadata, updatedAt }: MainProps) {
     const [section, setSection] = useState("details");
 
     const onInView = useCallback((section: string) => setSection(section), []);

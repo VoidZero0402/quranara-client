@@ -7,7 +7,9 @@ function useToggleState<T>(initialProps: T = {} as T) {
 
     const open = useCallback((props?: T) => {
         startTransition(() => {
-            props && setProps(props);
+            if (props) {
+                setProps(props);
+            }
             setIsOpen(true);
         });
     }, []);

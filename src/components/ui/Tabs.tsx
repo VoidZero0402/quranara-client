@@ -6,7 +6,7 @@ import useEffectState from "@/hooks/useEffectState";
 
 import { cn } from "@/libs/cn";
 
-type TabsContextProps<> = { active: any; onTab: (tab: any) => void };
+type TabsContextProps = { active: any; onTab: (tab: any) => void };
 
 const TabsContenxt = createContext<TabsContextProps>({ active: "", onTab: () => {} });
 

@@ -10,7 +10,7 @@ function Header({ query }: HeaderProps) {
                     <Magnifer className="w-8 sm:w-10" />
                     <h1 className="font-pelak-semibold text-2xl sm:text-3xl">جستجو پیشرفته در قرآن‌آرا</h1>
                 </div>
-                <p className="font-pelak-medium sm:text-lg text-gray-500">نتیجه جستجو "{query}" در قرآن‌آرا</p>
+                <p className="font-pelak-medium sm:text-lg text-gray-500">نتیجه جستجو &quot;{query}&quot; در قرآن‌آرا</p>
             </div>
         </div>
     );

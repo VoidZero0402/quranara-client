@@ -15,8 +15,12 @@ function Main() {
     return (
         <div className="space-y-4 md:space-y-8">
             <div className="space-y-8">
-                <Details count={count} text="همه مقالات قرآن‌آرا" countText="مقاله" />
-                <Navigation entity="مقالات" />
+                <Suspense>
+                    <Details count={count} text="همه مقالات قرآن‌آرا" countText="مقاله" />
+                </Suspense>
+                <Suspense>
+                    <Navigation entity="مقالات" />
+                </Suspense>
             </div>
             <div className="flex flex-col gap-y-8">
                 <Suspense fallback={<CategoriesLoading />}>

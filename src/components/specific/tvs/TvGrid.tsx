@@ -48,7 +48,7 @@ function TvGrid({ updateCount }: TvGridProps) {
 
     return (
         <section>
-            <UpdateIndicator show={isFetching} />
+            <UpdateIndicator show={isFetching} text="در حال بروزرسانی آموزش‌ها" />
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                 {data.pages.flat().map((res, index) => {
                     if (index === 0 && res.data.pagination.count === 0) {

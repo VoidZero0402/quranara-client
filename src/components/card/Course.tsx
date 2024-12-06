@@ -20,7 +20,9 @@ function Course({ title, description, slug, status, price, discount, metadata }:
             </Link>
             <div className="flex flex-col gap-2 p-4">
                 <div className="flex items-center gap-x-1 font-pelak-medium text-xs text-blue-500">
-                    <span className="block size-1.5 bg-blue-500 rounded-full"></span>
+                    <span className="block size-1.5 bg-blue-500 rounded-full">
+                        <span className="block size-full bg-blue-500 rounded-full animate-ping"></span>
+                    </span>
                     {StatusText[status]}
                 </div>
                 <h3 className="font-pelak-medium text-lg text-gray-800 dark:text-gray-200 line-clamp-1">

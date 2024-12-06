@@ -2,8 +2,6 @@ import Attached from "@/components/ui/Attached";
 import Avatar from "@/components/ui/Avatar";
 import Slice from "@/components/ui/Slice";
 
-import Gallery from "@/components/svgs/Gallery";
-
 import { QuestionMessage } from "@/types/question.types";
 
 function Message({ content, user, createdAt, attached }: QuestionMessage) {

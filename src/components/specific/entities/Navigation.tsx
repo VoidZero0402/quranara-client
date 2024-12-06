@@ -39,7 +39,7 @@ function Navigation({ entity }: NavigationProps) {
 
             router.push(updatedURL, { scroll: false });
         },
-        [router, searchParams, route]
+        [router, route]
     );
 
     return (

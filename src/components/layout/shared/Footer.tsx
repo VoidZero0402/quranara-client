@@ -88,25 +88,25 @@ function Footer() {
                             ما در شبکه‌های اجتماعی
                         </span>
                         <div className="space-y-4 sm:w-max">
-                            <Link href="https://eitaa.com/quranara" className="flex items-center gap-x-2 py-2.5 px-4 bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 rounded-xl transition-all">
+                            <a href="https://eitaa.com/quranara" target="_blank" data-disable-nprogress={true} className="flex items-center gap-x-2 py-2.5 px-4 bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 rounded-xl transition-all">
                                 <span className="block size-2 bg-amber-400 rounded-full">
-                                    <span className="block size-2 bg-amber-400 rounded-full animate-ping"></span>
+                                    <span className="block size-full bg-amber-400 rounded-full animate-ping"></span>
                                 </span>
                                 کانال قرآن‌آرا در ایتا
-                            </Link>
-                            <Link href="https://instagram.com/quranara.academy" className="flex items-center gap-x-2 py-2.5 px-4 bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 rounded-xl transition-all">
+                            </a>
+                            <a href="https://instagram.com/quranara.academy" target="_blank" data-disable-nprogress={true} className="flex items-center gap-x-2 py-2.5 px-4 bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 rounded-xl transition-all">
                                 <span className="block size-2 bg-blue-500 rounded-full">
-                                    <span className="block size-2 bg-blue-500 rounded-full animate-ping"></span>
+                                    <span className="block size-full bg-blue-500 rounded-full animate-ping"></span>
                                 </span>
                                 قرآن‌آرا در اینستاگرام
-                            </Link>
+                            </a>
                         </div>
                     </div>
                 </div>
                 <div className="flex flex-col md:flex-row items-center justify-between gap-4 mt-8 pt-8 text-gray-800 dark:text-gray-200 border-t border-gray-100 dark:border-gray-800">
                     <div className="flex items-center text-center gap-x-2">
                         <div className="hidden sm:flex-center size-2 bg-blue-500 rounded-full">
-                            <div className="size-2 bg-blue-500 animate-ping rounded-full"></div>
+                            <div className="size-full bg-blue-500 animate-ping rounded-full"></div>
                         </div>
                         <span className="leading-7">
                             تمامی حقوق محتوای وبسایت متعلق به <span className="text-blue-500 underline">آکادمی قرآن‌آرا</span> می‌باشد

@@ -1,7 +1,6 @@
 "use client";
 
 import { memo, Suspense, useEffect } from "react";
-import { useParams } from "next/navigation";
 import { useInView } from "react-intersection-observer";
 
 import { getCourseComments } from "@/api/queries/courses";

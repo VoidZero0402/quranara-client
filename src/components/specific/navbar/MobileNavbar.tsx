@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { useToggle } from "usehooks-ts";
 
@@ -49,7 +49,9 @@ function MobileNavbar({ menus }: MobileNavbarProps) {
                         </div>
                     </div>
                     <Slice />
-                    <SearchBar route="/search" query="q" id="search-bar" placeholder="در قرآن‌ آرا جستجو کنید" wrapperCalssName="w-full" />
+                    <Suspense>
+                        <SearchBar route="/search" query="q" id="search-bar" placeholder="در قرآن‌ آرا جستجو کنید" wrapperCalssName="w-full" />
+                    </Suspense>
                     <Slice />
                     <MobileNavigation menus={menus} />
                 </div>

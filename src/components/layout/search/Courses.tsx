@@ -23,7 +23,7 @@ async function Courses({ query }: CoursesProps) {
                         <Layers className="w-8" />
                         <h2 className="font-pelak-semibold text-2xl">دوره‌های تخصصی قرآن‌آرا</h2>
                     </div>
-                    <p className="font-pelak-medium text-gray-500">نتیجه جستجوی "{query}" در دوره‌های تخصصی قرآن‌آرا</p>
+                    <p className="font-pelak-medium text-gray-500">نتیجه جستجوی &quot;{query}&quot; در دوره‌های تخصصی قرآن‌آرا</p>
                 </div>
                 <Link href="/courses">
                     <Button size="lg" rounded="lg" variant="text-primary">
@@ -60,7 +60,7 @@ async function Courses({ query }: CoursesProps) {
 function EmptyState({ query }: CoursesProps) {
     return (
         <div className="flex-center col-span-4 py-10">
-            <span className="font-pelak-medium text-lg text-gray-600 dark:text-gray-400">دوره‌ای در نتیجه جستجو "{query}" پیدا نشد</span>
+            <span className="font-pelak-medium text-lg text-gray-600 dark:text-gray-400">دوره‌ای در نتیجه جستجو &quot;{query}&quot; پیدا نشد</span>
         </div>
     );
 }
@@ -74,7 +74,7 @@ export function CoursesLoading({ query }: CoursesProps) {
                         <Layers className="w-8" />
                         <h2 className="font-pelak-semibold text-2xl">دوره‌های تخصصی قرآن‌آرا</h2>
                     </div>
-                    <p className="font-pelak-medium text-gray-500">نتیجه جستجوی "{query}" در دروه‌های تخصصی قرآن‌آرا</p>
+                    <p className="font-pelak-medium text-gray-500">نتیجه جستجوی &quot;{query}&quot; در دروه‌های تخصصی قرآن‌آرا</p>
                 </div>
                 <Link href="/courses">
                     <Button size="lg" rounded="lg" variant="text-primary">

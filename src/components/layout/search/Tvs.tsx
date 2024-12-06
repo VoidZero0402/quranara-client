@@ -23,7 +23,7 @@ async function Tvs({ query }: TvsProps) {
                         <PlayCircle className="w-8" />
                         <h2 className="font-pelak-semibold text-2xl">ویدیوهای آموزشی رایگان</h2>
                     </div>
-                    <p className="font-pelak-medium text-gray-500">نتیجه جستجوی "{query}" در ویدیوهای آموزشی قرآن‌آرا</p>
+                    <p className="font-pelak-medium text-gray-500">نتیجه جستجوی &quot;{query}&quot; در ویدیوهای آموزشی قرآن‌آرا</p>
                 </div>
                 <Link href="/tv">
                     <Button size="lg" variant="text-primary">
@@ -60,7 +60,7 @@ async function Tvs({ query }: TvsProps) {
 function EmptyState({ query }: TvsProps) {
     return (
         <div className="flex-center col-span-4 py-10">
-            <span className="font-pelak-medium text-lg text-gray-600 dark:text-gray-400">آموزشی در نتیجه جستجو "{query}" پیدا نشد</span>
+            <span className="font-pelak-medium text-lg text-gray-600 dark:text-gray-400">آموزشی در نتیجه جستجو &quot;{query}&quot; پیدا نشد</span>
         </div>
     );
 }
@@ -74,7 +74,7 @@ export function TvsLoading({ query }: TvsProps) {
                         <PlayCircle className="w-8" />
                         <h2 className="font-pelak-semibold text-2xl">ویدیوهای آموزشی رایگان</h2>
                     </div>
-                    <p className="font-pelak-medium text-gray-500">نتیجه جستجوی "{query}" در ویدیوهای آموزشی قرآن‌آرا</p>
+                    <p className="font-pelak-medium text-gray-500">نتیجه جستجوی &quot;{query}&quot; در ویدیوهای آموزشی قرآن‌آرا</p>
                 </div>
                 <Link href="/tv">
                     <Button size="lg" variant="text-primary">

@@ -23,7 +23,7 @@ async function Blogs({ query }: BlogsProps) {
                         <Widgets className="w-8" />
                         <h2 className="font-pelak-semibold text-2xl">مقالات تخصصی قرآن‌آرا</h2>
                     </div>
-                    <p className="font-pelak-medium text-gray-500">نتیجه جستجوی "{query}" در مقالات تخصصی قرآن‌آرا</p>
+                    <p className="font-pelak-medium text-gray-500">نتیجه جستجوی &quot;{query}&quot; در مقالات تخصصی قرآن‌آرا</p>
                 </div>
                 <Link href="/blog">
                     <Button size="lg" rounded="lg" variant="text-primary" className="font-pelak-medium">
@@ -60,7 +60,7 @@ async function Blogs({ query }: BlogsProps) {
 function EmptyState({ query }: BlogsProps) {
     return (
         <div className="flex-center col-span-4 py-10">
-            <span className="font-pelak-medium text-lg text-gray-600 dark:text-gray-400">مقاله‌ای در نتیجه جستجو "{query}" پیدا نشد</span>
+            <span className="font-pelak-medium text-lg text-gray-600 dark:text-gray-400">مقاله‌ای در نتیجه جستجو &quot;{query}&quot; پیدا نشد</span>
         </div>
     );
 }
@@ -74,7 +74,7 @@ export function BlogsLoading({ query }: BlogsProps) {
                         <Widgets className="w-8" />
                         <h2 className="font-pelak-semibold text-2xl">مقالات تخصصی قرآن‌آرا</h2>
                     </div>
-                    <p className="font-pelak-medium text-gray-500">نتیجه جستجوی "{query}" در مقالات تخصصی قرآن‌آرا</p>
+                    <p className="font-pelak-medium text-gray-500">نتیجه جستجوی &quot;{query}&quot; در مقالات تخصصی قرآن‌آرا</p>
                 </div>
                 <Link href="/blog">
                     <Button size="lg" rounded="lg" variant="text-primary" className="font-pelak-medium">

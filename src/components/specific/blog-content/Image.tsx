@@ -1,4 +1,3 @@
-import UIImage from "@/components/ui/Image";
 import Placeholder from "@/components/ui/Placeholder";
 
 type ImageProps = { srcs: string[] };

@@ -1,7 +1,6 @@
 "use client";
 
 import { Suspense } from "react";
-import { useParams } from "next/navigation";
 
 import { getTvComments } from "@/api/queries/tv";
 

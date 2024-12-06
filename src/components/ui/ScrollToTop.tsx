@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import Button from "./Button";
+
 import ArrowUp from "../svgs/ArrowUp";
 
 function ScrollToTop() {

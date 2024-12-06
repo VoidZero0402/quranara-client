@@ -19,7 +19,7 @@ type LoginStore = {
     back: () => void;
 };
 
-const useLoginStore = create<LoginStore>((set, get) => ({
+const useLoginStore = create<LoginStore>((set) => ({
     isOtp: false,
     user: {
         phone: "",

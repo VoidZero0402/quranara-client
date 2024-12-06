@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Link from "next/link";
 
 import { getMenus } from "@/api/queries/ui";
@@ -26,7 +27,9 @@ async function Navbar() {
                     <Navigation menus={data} />
                 </div>
                 <div className="flex items-center gap-x-4">
-                    <Search />
+                    <Suspense>
+                        <Search />
+                    </Suspense>
                     <div className="hidden sm:block">
                         <ToggleTheme />
                     </div>
