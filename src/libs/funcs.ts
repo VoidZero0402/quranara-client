@@ -42,3 +42,23 @@ export function getUploadType(type: string): UploadFileType {
     const prefix = type.slice(0, type.indexOf("/"));
     return UploadPrefixes[prefix];
 }
+
+const formatter = new Intl.DateTimeFormat("fa-IR", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    calendar: "persian",
+});
+
+export function getFullDate(): string {
+    const parts = formatter.formatToParts(new Date());
+
+    const indexed: Record<string, string> = {};
+
+    for (const part of parts) {
+        indexed[part.type] = part.value;
+    }
+
+    return `${indexed.weekday}, ${indexed.day} ${indexed.month} ${indexed.year}`;
+}
