@@ -3,11 +3,11 @@ import Link from "next/link";
 import Placeholder from "../ui/Placeholder";
 import Badge from "../ui/Badge";
 import Skeleton, { SkeletonFrame } from "../ui/Skeleton";
+import Slice from "../ui/Slice";
 
 import Eye from "../svgs/Eye";
 import Heart from "../svgs/Heart";
 import Calendar from "../svgs/Calendar";
-import Slice from "../ui/Slice";
 
 import { LimitedBlog } from "@/types/blog.types";
 
@@ -46,8 +46,10 @@ function Blog({ title, slug, description, cover, category, views, likes, timeToR
             </div>
             <Slice className="mx-4 dark:bg-gray-800" />
             <div className="p-4">
-                <div className="flex items-center gap-x-1 font-pelak-medium text-xs text-gray-500">
-                    <span className="block size-1.5 bg-gray-500 rounded-full"></span>
+                <div className="flex items-center gap-x-1 font-pelak-medium text-xs text-blue-500">
+                    <span className="block size-1.5 bg-blue-500 rounded-full">
+                        <span className="block size-1.5 bg-blue-500 rounded-full animate-ping"></span>
+                    </span>
                     <span className="h-4">{timeToRead} دقیقه برای مطالعه</span>
                 </div>
             </div>

@@ -22,8 +22,6 @@ type UploaderProps = { isUploaded: boolean; onUpload: (type: UploadType, url: st
 function Uploader({ isUploaded, onUpload, onCancel }: UploaderProps) {
     const [isUploading, setIsUploading] = useState(false);
 
-    console.log(isUploaded, onUpload, onCancel);
-
     const uploadHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.files) {
             const file = event.target.files[0];

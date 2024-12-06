@@ -19,7 +19,7 @@ const Player = dynamic(() => import("@/components/ui/Player"), { ssr: false, loa
 
 type DetailsProps = Pick<Tv, "_id" | "title" | "description" | "category" | "cover" | "video" | "attached">;
 
-function Details({ _id, title, description, category, attached }: DetailsProps) {
+function Details({ _id, title, description, video, category, attached }: DetailsProps) {
     return (
         <section className="space-y-4 p-4 sm:p-8 bg-white dark:bg-gray-850 rounded-2xl">
             <Player
@@ -45,15 +45,19 @@ function Details({ _id, title, description, category, attached }: DetailsProps) 
             </div>
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div className="flex flex-wrap gap-4">
-                    <Button className="grow">
-                        <PlayCircle />
-                        دانلود ویدیو
-                    </Button>
-                    {attached && (
-                        <Button variant="filled-secondary" className="grow">
-                            <Copy />
-                            دانلود پیوست
+                    <a href={video} download data-disable-nprogress={true} className="grow">
+                        <Button className="w-full">
+                            <PlayCircle />
+                            دانلود ویدیو
                         </Button>
+                    </a>
+                    {attached && (
+                        <a href={attached} download data-disable-nprogress={true} className="grow">
+                            <Button variant="filled-secondary" className="w-full">
+                                <Copy />
+                                دانلود پیوست
+                            </Button>
+                        </a>
                     )}
                 </div>
                 <Suspense fallback={<ActionsLoading />}>

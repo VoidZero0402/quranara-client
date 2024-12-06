@@ -1,24 +1,118 @@
-import Logo from "@/components/ui/Logo";
-import Placeholder from "@/components/ui/Placeholder";
+import Link from "next/link";
+
+import Widgets from "@/components/svgs/Widgets";
+import LongArrowLeft from "@/components/svgs/LongArrowLeft";
+import LinkRoundAngle from "@/components/svgs/LinkRoundAngle";
+import PlayCircle from "@/components/svgs/PlayCircle";
+import Plain from "@/components/svgs/Plain";
 
 function Footer() {
     return (
-        <footer className="py-8 bg-white dark:bg-gray-850" id="courses">
+        <footer className="py-8 bg-white dark:bg-gray-850 font-pelak-medium">
             <div className="container">
-                <div className="flex gap-x-8">
-                    <div className="flex flex-col gap-y-8 w-1/3">
-                        <Logo className="h-12" />
-                        <div className="flex flex-col gap-y-2">
-                            <h3 className="font-pelak-semibold text-2xl text-gray-700 dark:text-gray-200 leading-">آکادمی قرآن آرا، رشد و پیشرفت</h3>
-                            <p className="text-gray-500 dark:text-gray-400 leading-7">دوره‌های آموزشی قرآن‌آرا برای هر سطح و نیاز طراحی شده است. به آسانی با قرآن آشنا شوید و از آموزش‌های مفید بهره‌مند شوید. ما در قرآن‌آرا به شما کمک می‌کنیم تا به ساده‌ترین و موثرترین روش قرآن را یاد بگیرید.</p>
+                <div className="flex flex-col xl:flex-row gap-16 py-8">
+                    <div className="space-y-4 xl:w-[35%]">
+                        <div className="space-y-2">
+                            <div className="flex items-center gap-x-1 text-gray-800 dark:text-gray-200">
+                                <Widgets className="w-7" />
+                                <h3 className="text-lg">درباره آکادمی قرآن‌آرا</h3>
+                            </div>
+                            <p className="text-gray-600 dark:text-gray-400 font-pelak leading-8">دوره‌های آموزشی قرآن‌آرا برای هر سطح و نیاز طراحی شده است. به آسانی با قرآن آشنا شوید و از آموزش‌های مفید بهره‌مند شوید. ما در قرآن‌آرا به شما کمک می‌کنیم تا به ساده‌ترین و موثرترین روش قرآن را یاد بگیرید.</p>
+                        </div>
+                        <Link href="/about-us" className="flex items-center gap-x-1 text-blue-500">
+                            درباره قرآن‌آرا بخوانید
+                            <LongArrowLeft />
+                        </Link>
+                    </div>
+                    <div className="flex flex-col md:flex-row gap-16 xl:w-[45%]">
+                        <div className="space-y-4">
+                            <span className="flex items-center gap-x-1 text-lg text-gray-800 dark:text-gray-200">
+                                <LinkRoundAngle className="w-7" />
+                                لینک‌های مفید
+                            </span>
+                            <div className="space-y-4">
+                                <Link href="/courses" className="flex items-center gap-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-all">
+                                    <span className="w-3 h-1 bg-gray-300 dark:bg-gray-700 rounded-full"></span>
+                                    دوره‌های تخصصی
+                                </Link>
+                                <Link href="/tv" className="flex items-center gap-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-all">
+                                    <span className="w-3 h-1 bg-gray-300 dark:bg-gray-700 rounded-full"></span>
+                                    آموزش‌های رایگان
+                                </Link>
+                                <Link href="/blog" className="flex items-center gap-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-all">
+                                    <span className="w-3 h-1 bg-gray-300 dark:bg-gray-700 rounded-full"></span>
+                                    مقالات تخصصی قرآن‌آرا
+                                </Link>
+                                <Link href="/about-us" className="flex items-center gap-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-all">
+                                    <span className="w-3 h-1 bg-gray-300 dark:bg-gray-700 rounded-full"></span>
+                                    درباره قرآن‌آرا
+                                </Link>
+                                <Link href="/about-us#faq" className="flex items-center gap-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-all">
+                                    <span className="w-3 h-1 bg-gray-300 dark:bg-gray-700 rounded-full"></span>
+                                    سوالات متداول
+                                </Link>
+                            </div>
+                        </div>
+                        <div className="space-y-4">
+                            <span className="flex items-center gap-x-1 text-lg text-gray-800 dark:text-gray-200">
+                                <PlayCircle className="w-7" />
+                                محبوب‌ترین آموزش‌ها
+                            </span>
+                            <div className="space-y-4">
+                                <Link href="#" className="flex items-center gap-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-all">
+                                    <span className="w-3 h-1 bg-gray-300 dark:bg-gray-700 rounded-full"></span>
+                                    آموزش مقدماتی حفظ قرآن
+                                </Link>
+                                <Link href="#" className="flex items-center gap-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-all">
+                                    <span className="w-3 h-1 bg-gray-300 dark:bg-gray-700 rounded-full"></span>
+                                    تلاوت سوره فاتحه با تجوید
+                                </Link>
+                                <Link href="#" className="flex items-center gap-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-all">
+                                    <span className="w-3 h-1 bg-gray-300 dark:bg-gray-700 rounded-full"></span>
+                                    آشنایی با مفهوم صبر در قرآن
+                                </Link>
+                                <Link href="#" className="flex items-center gap-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-all">
+                                    <span className="w-3 h-1 bg-gray-300 dark:bg-gray-700 rounded-full"></span>
+                                    مبانی تجوید
+                                </Link>
+                                <Link href="#" className="flex items-center gap-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-all">
+                                    <span className="w-3 h-1 bg-gray-300 dark:bg-gray-700 rounded-full"></span>
+                                    داستان‌های پیامبران در قرآن
+                                </Link>
+                            </div>
                         </div>
                     </div>
-                    <Placeholder className="w-1/3" />
-                    <Placeholder className="w-1/3" />
+                    <div className="space-y-4 xl:w-[20%]">
+                        <span className="flex items-center gap-x-1 text-lg text-gray-800 dark:text-gray-200">
+                            <Plain className="w-7" />
+                            ما در شبکه‌های اجتماعی
+                        </span>
+                        <div className="space-y-4 sm:w-max">
+                            <Link href="https://eitaa.com/quranara" className="flex items-center gap-x-2 py-2.5 px-4 bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 rounded-xl transition-all">
+                                <span className="block size-2 bg-amber-400 rounded-full">
+                                    <span className="block size-2 bg-amber-400 rounded-full animate-ping"></span>
+                                </span>
+                                کانال قرآن‌آرا در ایتا
+                            </Link>
+                            <Link href="https://instagram.com/quranara.academy" className="flex items-center gap-x-2 py-2.5 px-4 bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 rounded-xl transition-all">
+                                <span className="block size-2 bg-blue-500 rounded-full">
+                                    <span className="block size-2 bg-blue-500 rounded-full animate-ping"></span>
+                                </span>
+                                قرآن‌آرا در اینستاگرام
+                            </Link>
+                        </div>
+                    </div>
                 </div>
-                <div className="flex items-center justify-between mt-8 pt-8 border-t border-gray-200 text-gray-500">
-                    <span className="font-pelak-medium">ساخته شده با 💙 در قرآن آرا</span>
-                    <span>کلیه حقوق مادی و معنوی وبسایت برای قرآن آرا محفوظ است.</span>
+                <div className="flex flex-col md:flex-row items-center justify-between gap-4 mt-8 pt-8 text-gray-800 dark:text-gray-200 border-t border-gray-100 dark:border-gray-800">
+                    <div className="flex items-center text-center gap-x-2">
+                        <div className="hidden sm:flex-center size-2 bg-blue-500 rounded-full">
+                            <div className="size-2 bg-blue-500 animate-ping rounded-full"></div>
+                        </div>
+                        <span className="leading-7">
+                            تمامی حقوق محتوای وبسایت متعلق به <span className="text-blue-500 underline">آکادمی قرآن‌آرا</span> می‌باشد
+                        </span>
+                    </div>
+                    <span>در قرآن‌آرا منتظر شما هستیم</span>
                 </div>
             </div>
         </footer>

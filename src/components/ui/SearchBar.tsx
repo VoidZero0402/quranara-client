@@ -1,7 +1,7 @@
 "use client";
 
-import { useCallback } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next-nprogress-bar";
 
 import { cn } from "@/libs/cn";
 import { updateURLSearchParams } from "@/libs/funcs";
@@ -28,7 +28,7 @@ function SearchBar({ route, query, wrapperCalssName, empty = false, className, i
         const url = updateURLSearchParams(route, query, search);
 
         router.push(url, { scroll: false });
-    }
+    };
 
     return (
         <form onSubmit={onSubmit} className={cn("relative", wrapperCalssName)}>

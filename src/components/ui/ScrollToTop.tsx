@@ -25,7 +25,7 @@ function ScrollToTop() {
     }, []);
 
     return (
-        <div className={`fixed right-8 bottom-8 transition-all duration-300 ${isVisible ? "visible opacity-100" : "invisible opacity-0"}`}>
+        <div className={`fixed right-8 bottom-8 transition-all duration-300 z-50 ${isVisible ? "visible opacity-100" : "invisible opacity-0"}`}>
             <button className="flex-center size-16 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full" onClick={scrollToTop}>
                 <ArrowUp className="w-8" />
             </button>

@@ -14,7 +14,7 @@ import Slice from "@/components/ui/Slice";
 import UserRounded from "@/components/svgs/UserRounded";
 import HomeAngle from "@/components/svgs/HomeAngle";
 import Bag from "@/components/svgs/Bag";
-import Folder from "@/components/svgs/Folder";
+import Layers from "@/components/svgs/Layers";
 import ChatRoundLine from "@/components/svgs/ChatRoundLine";
 import QuestionCircle from "@/components/svgs/QuestionCircle";
 import Logout from "@/components/svgs/Logout";
@@ -57,7 +57,7 @@ function UserAccount({ user }: UserAccountProps) {
                         سبد خرید دوره‌ها
                     </Link>
                     <Link href="#" className="flex items-center gap-x-2 py-2.5 px-3 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition-colors">
-                        <Folder />
+                        <Layers />
                         دوره‌های من
                     </Link>
                     <Link href="#" className="flex items-center gap-x-2 py-2.5 px-3 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition-colors">

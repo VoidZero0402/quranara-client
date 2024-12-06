@@ -39,20 +39,20 @@ function Details({ title, order, topic, video, attached }: DetailsProps) {
             </div>
             <Slice className="dark:bg-gray-800" />
             <div className="flex flex-col sm:flex-row sm:justify-between gap-4">
-                <Link href={video}>
+                <a href={video} download data-disable-nprogress={true}>
                     <Button size="lg" className="w-full sm:w-max">
                         <PlayCircle />
                         دانلود ویدیو
                     </Button>
-                </Link>
+                </a>
                 <div className="flex flex-col sm:flex-row gap-4">
                     {attached && (
-                        <Link href={attached}>
+                        <a href={attached} download data-disable-nprogress={true}>
                             <Button size="lg" variant="filled-secondary" className="w-full sm:w-max">
                                 <Copy />
                                 دانلود پیوست
                             </Button>
-                        </Link>
+                        </a>
                     )}
                     <Link href="#question">
                         <Button size="lg" variant="neutral-base" className="w-full sm:w-max">
