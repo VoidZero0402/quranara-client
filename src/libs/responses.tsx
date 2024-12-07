@@ -16,7 +16,7 @@ export function statusHandler(response: Response<any>, options: ResponseStatusHa
     if (response.data?.key) {
         key += `-${response.data.key}`;
     }
-
+    
     const result = options.statuses[key];
 
     if (result) {

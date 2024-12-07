@@ -24,7 +24,11 @@ import QuestionCircle from "@/components/svgs/QuestionCircle";
 import UserRounded from "@/components/svgs/UserRounded";
 import XMark from "@/components/svgs/XMark";
 
-function Sidebar() {
+import { CookieUser } from "@/types/user.types";
+
+type SidebarProps = { user: CookieUser }
+
+function Sidebar({ user }: SidebarProps) {
     const [isOpen, toggleOpen] = useToggle();
     const pathname = usePathname();
 
@@ -39,7 +43,7 @@ function Sidebar() {
             <Button size="circle" variant="neutral-base" className="size-12 lg:hidden" onClick={toggleOpen}>
                 <HamburgerMenu className="w-8" />
             </Button>
-            <div className={cn("fixed inset-0 lg:hidden w-full h-screen bg-backdrop invisible opacity-0 transition-all duration-300", isOpen && "visible opacity-100")} onClick={toggleOpen}></div>
+            <div className={cn("fixed inset-0 lg:hidden w-full h-screen bg-backdrop invisible opacity-0 transition-all duration-300 z-20", isOpen && "visible opacity-100")} onClick={toggleOpen}></div>
             <aside className={cn("flex flex-col gap-8 fixed top-0 bottom-0 -right-72 lg:right-0 w-72 h-screen p-4 bg-white dark:bg-gray-850 shadow-xl shadow-gray-100 dark:shadow-none transition-all duration-300 z-20", isOpen && "right-0")}>
                 <div className="flex lg:hidden gap-x-4 justify-end">
                     <Link href="/">
@@ -53,14 +57,14 @@ function Sidebar() {
                 </div>
                 <div className="flex gap-x-2 p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
                     <div className="relative">
-                        <Avatar className="size-14 rounded-full" />
+                        <Avatar src={user.profile} className="size-14 rounded-full" />
                         <div className="absolute left-1 bottom-1 size-2 bg-teal-500 rounded-full">
                             <div className="size-full bg-teal-500 rounded-full animate-ping"></div>
                         </div>
                     </div>
                     <div className="flex flex-col gap-y-2">
-                        <span className="font-pelak-medium text-gray-800 dark:text-gray-200">محمدحسن خانی</span>
-                        <span className="text-sm text-gray-600 dark:text-gray-400">09393159173</span>
+                        <span className="font-pelak-medium text-gray-800 dark:text-gray-200">{user.username}</span>
+                        <span className="text-sm text-gray-600 dark:text-gray-400">{user.phone}</span>
                     </div>
                 </div>
                 <div className="flex flex-col justify-between grow">

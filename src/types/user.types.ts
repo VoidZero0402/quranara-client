@@ -10,6 +10,8 @@ export type User = {
     username: string;
     role: Role;
     profile?: string;
+    age?: number;
+    city?: string;
 };
 
 export type CookieUser = Omit<User, "_id">;

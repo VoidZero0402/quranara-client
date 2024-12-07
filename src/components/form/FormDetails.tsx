@@ -8,7 +8,7 @@ function FormDetails({ error, caption }: DetailsProps) {
     return (
         <>
             {error ? (
-                <span className="text-sm min-h-6 text-red-500 dark:text-red-400">{error.message}</span>
+                <span className="text-sm min-h-6 text-red-500">{error.message}</span>
             ) : (
                 caption && (
                     <div className="flex items-center gap-x-1 min-h-6 text-gray-600 dark:text-gray-400">

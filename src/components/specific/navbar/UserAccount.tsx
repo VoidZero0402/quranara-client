@@ -68,7 +68,7 @@ function UserAccount({ user }: UserAccountProps) {
                         <QuestionCircle />
                         سوالات من
                     </Link>
-                    <Link href="/panel/accounts" className="flex items-center gap-x-2 py-2.5 px-3 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition-colors">
+                    <Link href="/panel/account" className="flex items-center gap-x-2 py-2.5 px-3 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition-colors">
                         <UserRounded />
                         جزئیات حساب کاربری
                     </Link>

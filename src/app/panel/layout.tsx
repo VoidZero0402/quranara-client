@@ -7,9 +7,9 @@ function PanelLayout({
 }>) {
     return (
         <div className="lg:pr-72">
-            <div className="sm:p-4">
+            <div className="flex flex-col gap-y-4 sm:p-4">
                 <Navigation />
-                {/* <main className="bg-white dark:bg-gray-850 h-full rounded-2xl">{children}</main> */}
+                <main className="py-8 px-4 sm:p-8 mb-4 grow bg-white dark:bg-gray-850 h-full sm:rounded-2xl">{children}</main>
             </div>
         </div>
     );

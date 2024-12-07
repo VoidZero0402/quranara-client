@@ -3,7 +3,9 @@ import { SignupShcema } from "./auth";
 
 export const UpdateAccountSchema = SignupShcema.pick({ fullname: true }).extend({
     username: z.string({ required_error: "وارد کردن نام کاربری الزامی است." }).min(3, { message: "نام کاربری باید حداقل ۳ کاراکتر باشد." }).max(255, { message: "نام کاربری باید حداکثر ۲۵۵ کاراکتر باشد." }),
-    profile: z.string().url({ message: "آدرس پروفایل معتبر نیست." }).optional(),
+    profile: z.string().optional(),
+    age: z.coerce.number().min(2, { message: "سن باید بین ۲ تا ۱۰۰ سال باشد" }).max(100, { message: "سن باید بین ۲ تا ۱۰۰ سال باشد" }).optional(),
+    city: z.string().optional(),
 });
 
 export type UpdateAccountSchemaType = z.infer<typeof UpdateAccountSchema>;

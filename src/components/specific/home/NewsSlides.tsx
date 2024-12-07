@@ -9,8 +9,9 @@ import Button from "@/components/ui/Button";
 
 import "swiper/css";
 
-import { News } from "@/types/news.types";
 import LinkCircle from "@/components/svgs/LinkCircle";
+
+import { News } from "@/types/news.types";
 
 type NewsSlidesProps = { news: News[] };
 
@@ -35,7 +36,7 @@ function NewsSlide({ cover, title, description, link }: News) {
         <div className="flex flex-col-reverse lg:flex-row items-center gap-8">
             <div className="lg:w-1/2 space-y-4">
                 <h3 className="font-pelak-semibold text-2xl sm:text-3xl text-gray-800 dark:text-gray-200">{title}</h3>
-                <p className="sm:text-lg text-gray-600 dark:text-gray-400 leading-6">{description}</p>
+                <p className="sm:text-lg text-gray-600 dark:text-gray-400 leading-7">{description}</p>
                 {link && (
                     <div>
                         <Link href={link.url}>

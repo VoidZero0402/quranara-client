@@ -62,3 +62,15 @@ export function getFullDate(): string {
 
     return `${indexed.weekday}, ${indexed.day} ${indexed.month} ${indexed.year}`;
 }
+
+export function getTruthyValues(obj: Record<string, any>): Record<string, any> {
+    const record: Record<string, any> = {};
+
+    for (const prop in obj) {
+        if (obj[prop]) {
+            record[prop] = obj[prop];
+        }
+    }
+
+    return record;
+}
