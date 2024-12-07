@@ -20,7 +20,7 @@ export function getSavedBlog(query: PaginationQuerySchemaType): Promise<Response
     return Quranara.get(url);
 }
 
-export function getSavedTv(query: PaginationQuerySchemaType): Promise<Response<{ saved: LimitedTv[]; pagination: Pagination }>> {
+export function getSavedTv(query: PaginationQuerySchemaType): Promise<Response<{ saves: LimitedTv[]; pagination: Pagination }>> {
     const queryString = convertToQueryString(query);
     const url = `/me/saved-tv?${queryString}`;
 

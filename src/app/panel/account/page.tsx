@@ -5,7 +5,7 @@ import UserRounded from "@/components/svgs/UserRounded";
 
 function Account() {
     return (
-        <div className="space-y-8">
+        <div className="space-y-8 py-8 px-4 sm:p-8">
             <div className="space-y-2">
                 <span className="flex items-center gap-x-1 font-pelak-medium text-xl text-gray-700 dark:text-gray-300">
                     <UserRounded className="w-8" />
