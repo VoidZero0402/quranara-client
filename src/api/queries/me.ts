@@ -27,14 +27,14 @@ export function getSavedTv(query: PaginationQuerySchemaType): Promise<Response<{
     return Quranara.get(url);
 }
 
-export function getMyLikedBlog(query: PaginationQuerySchemaType): Promise<Response<{ likes: LimitedBlog[]; pagination: Pagination }>> {
+export function getLikedBlog(query: PaginationQuerySchemaType): Promise<Response<{ likes: LimitedBlog[]; pagination: Pagination }>> {
     const queryString = convertToQueryString(query);
     const url = `/me/liked-blog?${queryString}`;
 
     return Quranara.get(url);
 }
 
-export function getMyLikedTv(query: PaginationQuerySchemaType): Promise<Response<{ likes: LimitedTv[]; pagination: Pagination }>> {
+export function getLikedTv(query: PaginationQuerySchemaType): Promise<Response<{ likes: LimitedTv[]; pagination: Pagination }>> {
     const queryString = convertToQueryString(query);
     const url = `/me/liked-tv?${queryString}`;
 

@@ -17,7 +17,7 @@ function Tvs() {
     };
 
     const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useSuspenseInfiniteQuery({
-        queryKey: ["me-infinite-tvs"],
+        queryKey: ["saved-infinite-tvs"],
         queryFn: fetchTvs,
         initialPageParam: 1,
         getNextPageParam: (lastPage) => {
@@ -28,7 +28,7 @@ function Tvs() {
 
     return (
         <section className="space-y-8">
-            <div className="flex items-center justify-between font-pelak-medium text-xl text-gray-700 dark:text-gray-300">
+            <div className="flex items-center justify-between font-pelak-medium text-lg xl:text-xl text-gray-700 dark:text-gray-300">
                 <span className="flex items-center gap-x-1">
                     <PlayCircle className="w-8" />
                     آموزش‌های ذخیره شده
@@ -66,7 +66,7 @@ function EmptyState() {
 export function TvsLoading() {
     return (
         <section className="space-y-8">
-            <div className="flex items-center justify-between font-pelak-medium text-xl text-gray-700 dark:text-gray-300">
+            <div className="flex items-center justify-between font-pelak-medium text-lg xl:text-xl text-gray-700 dark:text-gray-300">
                 <span className="flex items-center gap-x-1">
                     <PlayCircle className="w-8" />
                     آموزش‌های ذخیره شده

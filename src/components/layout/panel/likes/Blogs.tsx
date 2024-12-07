@@ -2,7 +2,7 @@
 
 import { useSuspenseInfiniteQuery } from "@tanstack/react-query";
 
-import { getSavedBlog } from "@/api/queries/me";
+import { getLikedBlog } from "@/api/queries/me";
 
 import Blog, { BlogLoading } from "@/components/card/Blog";
 
@@ -13,11 +13,11 @@ import Widgets from "@/components/svgs/Widgets";
 
 function Blogs() {
     const fetchBlogs = async ({ pageParam = 1 }: { pageParam: number }) => {
-        return await getSavedBlog({ page: pageParam, limit: 8 });
+        return await getLikedBlog({ page: pageParam, limit: 8 });
     };
 
     const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useSuspenseInfiniteQuery({
-        queryKey: ["saved-infinite-blogs"],
+        queryKey: ["liked-infinite-blogs"],
         queryFn: fetchBlogs,
         initialPageParam: 1,
         getNextPageParam: (lastPage) => {
@@ -31,7 +31,7 @@ function Blogs() {
             <div className="flex items-center justify-between font-pelak-medium text-lg xl:text-xl text-gray-700 dark:text-gray-300">
                 <span className="flex items-center gap-x-1">
                     <Widgets className="w-8" />
-                    مقالات ذخیره شده
+                    مقالات پسندیده شده
                 </span>
                 {!!data.pages[0].data.pagination.count && <span className="">{data.pages[0].data.pagination.count} مقاله</span>}
             </div>
@@ -41,7 +41,7 @@ function Blogs() {
                         return <EmptyState key="empty-state" />;
                     }
 
-                    return res.data.saves.map((blog) => <Blog key={blog._id} {...blog} />);
+                    return res.data.likes.map((blog) => <Blog key={blog._id} {...blog} />);
                 })}
             </div>
             {hasNextPage && (
@@ -58,7 +58,7 @@ function Blogs() {
 function EmptyState() {
     return (
         <div className="flex-center col-span-4 py-10">
-            <span className="font-pelak-medium text-lg text-gray-600 dark:text-gray-400">هنوز مقاله‌ای رو ذخیره نکردی</span>
+            <span className="font-pelak-medium text-lg text-gray-600 dark:text-gray-400">هنوز مقاله‌ای رو نپسندیدی</span>
         </div>
     );
 }
@@ -69,7 +69,7 @@ export function BlogsLoading() {
             <div className="flex items-center justify-between font-pelak-medium text-lg xl:text-xl text-gray-700 dark:text-gray-300">
                 <span className="flex items-center gap-x-1">
                     <Widgets className="w-8" />
-                    مقالات ذخیره شده
+                    مقالات پسندیده شده
                 </span>
                 <div>
                     <Skeleton>

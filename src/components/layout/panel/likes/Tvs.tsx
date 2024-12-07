@@ -2,23 +2,23 @@
 
 import { useSuspenseInfiniteQuery } from "@tanstack/react-query";
 
-import { getSavedBlog } from "@/api/queries/me";
+import { getLikedTv } from "@/api/queries/me";
 
-import Blog, { BlogLoading } from "@/components/card/Blog";
+import Tv, { TvLoading } from "@/components/card/Tv";
 
-import Button from "@/components/ui/Button";
 import Skeleton, { SkeletonFrame } from "@/components/ui/Skeleton";
+import Button from "@/components/ui/Button";
 
-import Widgets from "@/components/svgs/Widgets";
+import PlayCircle from "@/components/svgs/PlayCircle";
 
-function Blogs() {
-    const fetchBlogs = async ({ pageParam = 1 }: { pageParam: number }) => {
-        return await getSavedBlog({ page: pageParam, limit: 8 });
+function Tvs() {
+    const fetchTvs = async ({ pageParam = 1 }: { pageParam: number }) => {
+        return await getLikedTv({ page: pageParam, limit: 8 });
     };
 
     const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useSuspenseInfiniteQuery({
-        queryKey: ["saved-infinite-blogs"],
-        queryFn: fetchBlogs,
+        queryKey: ["liked-infinite-tvs"],
+        queryFn: fetchTvs,
         initialPageParam: 1,
         getNextPageParam: (lastPage) => {
             const { page, pagesCount } = lastPage.data.pagination;
@@ -30,10 +30,10 @@ function Blogs() {
         <section className="space-y-8">
             <div className="flex items-center justify-between font-pelak-medium text-lg xl:text-xl text-gray-700 dark:text-gray-300">
                 <span className="flex items-center gap-x-1">
-                    <Widgets className="w-8" />
-                    مقالات ذخیره شده
+                    <PlayCircle className="w-8" />
+                    آموزش‌های پسندیده شده
                 </span>
-                {!!data.pages[0].data.pagination.count && <span className="">{data.pages[0].data.pagination.count} مقاله</span>}
+                {!!data.pages[0].data.pagination.count && <span className="">{data.pages[0].data.pagination.count} آموزش</span>}
             </div>
             <div className="grid sm:grid-cols-2 xl:grid-cols-3 min-[1480px]:grid-cols-4 gap-8">
                 {data.pages.flat().map((res, index) => {
@@ -41,7 +41,7 @@ function Blogs() {
                         return <EmptyState key="empty-state" />;
                     }
 
-                    return res.data.saves.map((blog) => <Blog key={blog._id} {...blog} />);
+                    return res.data.likes.map((tv) => <Tv key={tv._id} {...tv} />);
                 })}
             </div>
             {hasNextPage && (
@@ -58,18 +58,18 @@ function Blogs() {
 function EmptyState() {
     return (
         <div className="flex-center col-span-4 py-10">
-            <span className="font-pelak-medium text-lg text-gray-600 dark:text-gray-400">هنوز مقاله‌ای رو ذخیره نکردی</span>
+            <span className="font-pelak-medium text-lg text-gray-600 dark:text-gray-400">هنوز آموزشی رو نپسندیدی</span>
         </div>
     );
 }
 
-export function BlogsLoading() {
+export function TvsLoading() {
     return (
         <section className="space-y-8">
             <div className="flex items-center justify-between font-pelak-medium text-lg xl:text-xl text-gray-700 dark:text-gray-300">
                 <span className="flex items-center gap-x-1">
-                    <Widgets className="w-8" />
-                    مقالات ذخیره شده
+                    <PlayCircle className="w-8" />
+                    آموزش‌های پسندیده شده
                 </span>
                 <div>
                     <Skeleton>
@@ -78,13 +78,13 @@ export function BlogsLoading() {
                 </div>
             </div>
             <div className="grid sm:grid-cols-2 xl:grid-cols-3 min-[1480px]:grid-cols-4 gap-8">
-                <BlogLoading />
-                <BlogLoading />
-                <BlogLoading />
-                <BlogLoading />
+                <TvLoading />
+                <TvLoading />
+                <TvLoading />
+                <TvLoading />
             </div>
         </section>
     );
 }
 
-export default Blogs;
+export default Tvs;
