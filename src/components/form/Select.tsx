@@ -49,13 +49,13 @@ function Select<T extends FieldValues>({ children, name, control, defaultText = 
     };
 
     return (
-        <div ref={ref} className={cn("flex flex-col gap-y-2 relative", className)}>
-            <span className="font-pelak-medium text-sm text-gray-800 dark:text-gray-200">{label}</span>
-            <div onClick={toggleOpen} className="flex items-center justify-between py-2.5 px-3 w-full bg-white dark:bg-gray-800 text-sm text-gray-600 dark:text-gray-200 border border-gray-100 dark:border-gray-800 hover:border-gray-200 dark:hover:border-gray-700 rounded-lg cursor-pointer transition-colors">
+        <div ref={ref} className={cn("flex flex-col gap-y-2 relative font-pelak-medium", className)}>
+            <span className="text-sm text-gray-800 dark:text-gray-200">{label}</span>
+            <div onClick={toggleOpen} className="flex items-center justify-between p-4 w-full bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border border-gray-100 dark:border-gray-800 hover:border-gray-200 dark:hover:border-gray-700 rounded-xl cursor-pointer transition-colors">
                 <span className="">{text || placeholder}</span>
                 <ArrowDown className="w-5" />
             </div>
-            <div className={cn("absolute top-full flex flex-col gap-y-1 p-2.5 w-full bg-white dark:bg-gray-800 text-sm border border-gray-100 dark:border-gray-800 rounded-lg invisible opacity-0 mt-4 transition-all duration-300", selectClassName, isOpen && "visible opacity-100 mt-2")}>
+            <div className={cn("absolute top-full flex flex-col gap-y-1 p-2 w-full bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700/50 rounded-xl invisible opacity-0 mt-4 transition-all duration-300", selectClassName, isOpen && "visible opacity-100 mt-2")}>
                 <SelectContext.Provider value={{ handleSelect }}>{children}</SelectContext.Provider>
             </div>
             <FormDetails error={error} caption={caption} />
@@ -67,7 +67,7 @@ export function SelectItem({ children, className, value, text }: SelectItemProps
     const { handleSelect } = useContext(SelectContext);
 
     return (
-        <div onClick={() => handleSelect(value, text)} className={cn("flex items-center gap-x-2 py-2.5 px-3 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer transition-colors", className)}>
+        <div onClick={() => handleSelect(value, text)} className={cn("flex items-center gap-x-2 p-4 text-gray-700 dark:text-gray-300 hover:blue-light dark:hover:amber-light rounded-lg cursor-pointer transition-colors duration-300", className)}>
             {children}
         </div>
     );

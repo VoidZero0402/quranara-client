@@ -9,6 +9,7 @@ import { getPreSignedURLStatusOptions } from "@/api/errors/uploads";
 import { TYPES, UploadType, MAX_FILE_SIZE } from "@/constants/uploads";
 
 import { statusHandler } from "@/libs/responses";
+import { cn } from "@/libs/cn";
 
 import Toast from "./Toast";
 import Spinner from "./Spinner";
@@ -17,9 +18,9 @@ import Upload from "../svgs/Upload";
 import CheckCircle from "../svgs/CheckCircle";
 import XMark from "../svgs/XMark";
 
-type UploaderProps = { isUploaded: boolean; onUpload: (type: UploadType, url: string) => void; onCancel: () => void };
+type UploaderProps = { isUploaded: boolean; onUpload: (type: UploadType, url: string) => void; onCancel: () => void } & React.ComponentProps<"div">;
 
-function Uploader({ isUploaded, onUpload, onCancel }: UploaderProps) {
+function Uploader({ isUploaded, onUpload, onCancel, className }: UploaderProps) {
     const [isUploading, setIsUploading] = useState(false);
 
     const uploadHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -75,12 +76,12 @@ function Uploader({ isUploaded, onUpload, onCancel }: UploaderProps) {
                     <input type="file" id="uploader" className="hidden" onChange={uploadHandler} />
 
                     {isUploading ? (
-                        <div className="flex-center gap-x-1 py-3 px-5 h-12 font-pelak-medium blue-light rounded-2xl cursor-pointer select-none transition-colors">
+                        <div className={cn("flex-center gap-x-1 py-3 px-5 h-14 font-pelak-medium blue-light rounded-2xl cursor-pointer select-none transition-colors", className)}>
                             <Spinner show />
                             در حال آپلود فایل
                         </div>
                     ) : (
-                        <label htmlFor="uploader" className="flex-center gap-x-1 py-3 px-5 h-12 font-pelak-medium text-gray-600 dark:text-gray-200 bg-gray-100 dark:bg-gray-500/10 hover:bg-gray-200 dark:hover:bg-gray-500/15 rounded-2xl cursor-pointer select-none transition-colors">
+                        <label htmlFor="uploader" className={cn("flex-center gap-x-1 py-3 px-5 h-14 font-pelak-medium text-gray-600 dark:text-gray-200 bg-gray-100 dark:bg-gray-500/10 hover:bg-gray-200 dark:hover:bg-gray-500/15 rounded-2xl cursor-pointer select-none transition-colors", className)}>
                             <Upload />
                             آپلود فایل پیوست
                         </label>

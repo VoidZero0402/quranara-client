@@ -47,7 +47,7 @@ function ChangePasswordForm() {
             <TextField control={control} name="new" type="password" label="رمز عبور جدید" placeholder="رمز عبور جدیدت رو وارد کن" inputClassName="dark:bg-gray-850">
                 <Lock />
             </TextField>
-            <Button size="lg" className="h-14" disabled={!isDirty || isSubmitting}>
+            <Button size="lg" disabled={!isDirty || isSubmitting}>
                 {isSubmitting ? "در حال تغییر رمز عبور" : "تغییر رمز عبور"}
             </Button>
         </form>

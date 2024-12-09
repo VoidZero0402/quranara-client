@@ -96,7 +96,7 @@ function UpdateAccountForm({ user }: UpdateAccountFormProps) {
                 <SmartPhone />
             </UnchangeableField>
             <ImageUploader className="self-end" entity="تصویر پروفایل" isUploaded={isUploaded} onUpload={onUpload} onCancel={onCancelUpload} />
-            <Button size="lg" className="h-14" type="submit" disabled={!isDirty || isSubmitting}>
+            <Button size="lg" type="submit" disabled={!isDirty || isSubmitting}>
                 {isSubmitting ? "در حال بروزرسانی حساب کاربری" : "بروزرسانی حساب کاربری"}
             </Button>
         </form>
