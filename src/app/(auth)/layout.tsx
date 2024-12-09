@@ -10,8 +10,8 @@ async function AuthLayout({
 }>) {
     const allCookies = (await cookies()).toString();
     const { data } = await Quranara.get("/auth/me", { headers: { cookie: allCookies } });
-    
-    if (data) {
+
+    if (data.user) {
         redirect("/");
     }
 

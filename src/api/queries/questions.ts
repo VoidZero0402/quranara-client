@@ -9,7 +9,7 @@ import { Question, LimitedQuestion } from "@/types/question.types";
 
 type QuestionsQueriesWithIdParams = { questionId: string };
 
-export function getQuestions(query: PaginationQuerySchemaType): Promise<Response<{ questions: LimitedQuestion[]; pagination: Pagination }>> {
+export function getQuestions(query: PaginationQuerySchemaType): Promise<Response<{ questions: Question[]; pagination: Pagination }>> {
     const queryString = convertToQueryString(query);
     const url = `/questions?${queryString}`;
 

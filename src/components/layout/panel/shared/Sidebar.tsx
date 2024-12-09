@@ -87,7 +87,7 @@ function Sidebar({ user }: SidebarProps) {
                         </NavLink>
                         <NavLink href="/panel/questions">
                             <QuestionCircle />
-                            سوالات من
+                            پرسش‌های من
                         </NavLink>
                         <NavLink href="/panel/likes">
                             <Heart />

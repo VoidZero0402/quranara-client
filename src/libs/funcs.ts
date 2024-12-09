@@ -51,8 +51,8 @@ const formatter = new Intl.DateTimeFormat("fa-IR", {
     calendar: "persian",
 });
 
-export function getFullDate(): string {
-    const parts = formatter.formatToParts(new Date());
+export function formatDate(date: Date): string {
+    const parts = formatter.formatToParts(new Date(date));
 
     const indexed: Record<string, string> = {};
 
@@ -61,6 +61,10 @@ export function getFullDate(): string {
     }
 
     return `${indexed.weekday}, ${indexed.day} ${indexed.month} ${indexed.year}`;
+}
+
+export function getFullDate(): string {
+    return formatDate(new Date());
 }
 
 export function getTruthyValues(obj: Record<string, any>): Record<string, any> {
