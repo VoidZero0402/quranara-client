@@ -13,7 +13,7 @@ export type QuestionMessage = {
         type: AttachedType;
         url: string;
     };
-    createdAt: Date
+    createdAt: string;
 };
 
 type QuestionSession = Pick<Session, "_id" | "slug">;
@@ -26,9 +26,9 @@ export type Question = {
     session: QuestionSession;
     status: Status;
     messages: QuestionMessage[];
-    createdAt: Date
+    createdAt: string;
 };
 
-export type LimitedQuestion = Omit<Question, "messages">
+export type LimitedQuestion = Omit<Question, "messages">;
 
-export type QuestionWithFirstMessage = LimitedQuestion & { message: QuestionMessage }
+export type QuestionWithFirstMessage = LimitedQuestion & { message: QuestionMessage };

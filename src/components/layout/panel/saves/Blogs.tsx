@@ -20,7 +20,7 @@ function Blogs() {
         queryKey: ["saved-infinite-blogs"],
         queryFn: fetchBlogs,
         initialPageParam: 1,
-        getNextPageParam: (lastPage) => {
+        getNextPageParam: (lastPage) => {            
             const { page, pagesCount } = lastPage.data.pagination;
             return page < pagesCount ? page + 1 : undefined;
         },

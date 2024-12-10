@@ -1,7 +1,7 @@
 import { STATUS, TYPE } from "@/constants/tickets";
 
 import { Course } from "./course.types";
-import { PopulatedUser } from "./user.types";
+import { User } from "./user.types";
 import { AttachedType } from "./attached.types";
 
 type Status = (typeof STATUS)[keyof typeof STATUS];
@@ -9,15 +9,17 @@ type TicketType = (typeof TYPE)[keyof typeof TYPE];
 
 type TicketCourse = Pick<Course, "_id" | "title">;
 
-type TicketMessage = {
+export type TicketMessage = {
     content: string;
     user: PopulatedUser;
     attached?: {
         type: AttachedType;
         url: string;
     };
-    createdAt: Date
+    createdAt: string
 };
+
+type PopulatedUser = Pick<User, "_id" | "username" | "role" | "profile">
 
 export type Ticket = {
     _id: string;
@@ -29,7 +31,7 @@ export type Ticket = {
     type: TicketType;
     shortId: string;
     messages: TicketMessage[];
-    createdAt: Date
+    createdAt: string
 };
 
 export type LimitedTicket = Omit<Ticket, "messages">

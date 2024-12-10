@@ -14,7 +14,7 @@ export type Tv = {
     content: string;
     views: number;
     likes: number;
-    createdAt: Date;
+    createdAt: string;
 };
 
 export type LimitedTv = Omit<Tv, "video" | "attached" | "content">;

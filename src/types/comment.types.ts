@@ -4,7 +4,7 @@ export type Reply = {
     _id: string;
     content: string;
     user: PopulatedUser;
-    createdAt: Date;
+    createdAt: string;
 };
 
 export type Comment = {
@@ -13,5 +13,5 @@ export type Comment = {
     user: PopulatedUser;
     pin: boolean;
     replies: Reply[];
-    createdAt: Date;
+    createdAt: string;
 };

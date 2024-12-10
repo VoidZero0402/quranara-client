@@ -16,10 +16,14 @@ export function getTickets(query: PaginationQuerySchemaType): Promise<Response<{
     return Quranara.get(url);
 }
 
-export function getTicket(params: TicketsQueriesWithIdParams): Promise<Response<{ tickets: Ticket }>> {
+export function getTicket(params: TicketsQueriesWithIdParams, cookie: string): Promise<Response<{ ticket: Ticket }>> {
     const url = `/tickets/${params.ticketId}`;
 
-    return Quranara.get(url);
+    return Quranara.get(url, {
+        headers: {
+            cookie
+        }
+    });
 }
 
 export function getAllTickets(query: PaginationQuerySchemaType): Promise<Response<{ tickets: LimitedTicket[]; pagination: Pagination }>> {
