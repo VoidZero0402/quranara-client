@@ -4,7 +4,7 @@ import { useSuspenseInfiniteQuery } from "@tanstack/react-query";
 
 import { getTickets } from "@/api/queries/tickets";
 
-import Ticket, { TicketLoading } from "@/components/specific/panel/tickets/Ticket";
+import Ticket, { TicketLoading } from "@/components/card/panel/Ticket";
 
 import Button from "@/components/ui/Button";
 import Skeleton, { SkeletonFrame } from "@/components/ui/Skeleton";

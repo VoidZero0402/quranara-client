@@ -9,8 +9,12 @@ import { Course } from "@/types/course.types";
 import { LimitedBlog } from "@/types/blog.types";
 import { LimitedTv } from "@/types/tv.types";
 
-export function getMyCourses(): Promise<Response<{ courses: Course[] }>> {
-    return Quranara.get("/me/courses");
+export function getMyCourses(cookie: string): Promise<Response<{ courses: Course[] }>> {
+    return Quranara.get("/me/courses", {
+        headers: {
+            cookie,
+        },
+    });
 }
 
 export function getSavedBlog(query: PaginationQuerySchemaType): Promise<Response<{ saves: LimitedBlog[]; pagination: Pagination }>> {
