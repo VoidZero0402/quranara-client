@@ -3,7 +3,7 @@ import { SvgComponentProps } from "@/types/component.types";
 
 import { cn } from "@/libs/cn";
 
-import CheckCircle from "../svgs/CheckCircle";
+import DoubleCheck from "../svgs/DoubleCheck";
 import DangerCircle from "../svgs/DangerCircle";
 import InfoCircle from "../svgs/InfoCircle";
 
@@ -14,7 +14,7 @@ type StatusProps = { ClassName: string; SvgComponent: React.FC<SvgComponentProps
 type ToastProps = { t: ToastType; text: string; caption: string; status: Status } & React.ComponentProps<"div">;
 
 const toast: Record<Status, StatusProps> = {
-    success: { ClassName: "text-teal-500 dark:text-teal-500 border-teal-500", SvgComponent: CheckCircle },
+    success: { ClassName: "text-teal-500 dark:text-teal-500 border-teal-500", SvgComponent: DoubleCheck },
     error: { ClassName: "text-red-500 border-red-500", SvgComponent: DangerCircle },
     info: { ClassName: "text-sky-500 dark:text-sky-400 border-sky-500", SvgComponent: InfoCircle },
 };

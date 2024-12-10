@@ -1,4 +1,3 @@
-import QuestionStatus from "./QuestionStatus";
 import Message from "./Message";
 
 import Slice from "@/components/ui/Slice";
@@ -7,7 +6,8 @@ import Attached from "@/components/ui/Attached";
 import ChatRoundLine from "@/components/svgs/ChatRoundLine";
 import QuestionCircle from "@/components/svgs/QuestionCircle";
 
-import { Question, Status } from "@/types/question.types";
+import { Question, Status as StatusType } from "@/types/question.types";
+import Status from "@/components/ui/Status";
 
 type QuestionChatProps = Partial<Pick<Question, "messages" | "status">>;
 
@@ -33,7 +33,7 @@ function QuestionChat({ messages, status }: QuestionChatProps) {
                                 <ChatRoundLine />
                                 پاسخ و تبادل نظر
                             </span>
-                            <QuestionStatus status={status as Status} />
+                            <Status status={status as StatusType} />
                         </div>
                         {messages.length >= 2 && (
                             <>

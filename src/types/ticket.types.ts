@@ -16,17 +16,20 @@ type TicketMessage = {
         type: AttachedType;
         url: string;
     };
+    createdAt: Date
 };
 
 export type Ticket = {
     _id: string;
     title: string;
+    description: string;
     user: PopulatedUser;
     course?: TicketCourse;
     status: Status;
     type: TicketType;
     shortId: string;
     messages: TicketMessage[];
+    createdAt: Date
 };
 
 export type LimitedTicket = Omit<Ticket, "messages">

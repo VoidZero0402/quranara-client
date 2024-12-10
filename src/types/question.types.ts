@@ -21,10 +21,12 @@ type QuestionSession = Pick<Session, "_id" | "slug">;
 export type Question = {
     _id: string;
     title: string;
+    question: string;
     user: PopulatedUser;
     session: QuestionSession;
     status: Status;
     messages: QuestionMessage[];
+    createdAt: Date
 };
 
 export type LimitedQuestion = Omit<Question, "messages">
