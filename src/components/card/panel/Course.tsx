@@ -10,9 +10,8 @@ import LongArrowLeft from "@/components/svgs/LongArrowLeft";
 import Play from "@/components/svgs/Play";
 
 import { LimitedCourse } from "@/types/course.types";
-import Image from "@/components/ui/Image";
 
-function Course({ title, description, slug, status, price, discount, metadata }: LimitedCourse) {
+function Course({ title, description, slug, status }: LimitedCourse) {
     return (
         <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden">
             <div>

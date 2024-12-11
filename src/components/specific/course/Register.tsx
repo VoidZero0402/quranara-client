@@ -4,7 +4,7 @@ import { useMutation, useSuspenseQuery } from "@tanstack/react-query";
 
 import { checkAccess } from "@/api/queries/courses";
 import { addToCart } from "@/api/mutations/cart";
-import { AddToCartStatusOptions } from "@/api/errors/course";
+import { AddToCartStatusOptions } from "@/api/errors/cart";
 
 import { statusHandler } from "@/libs/responses";
 
@@ -34,7 +34,7 @@ function Register({ _id }: RegisterProps) {
     return (
         <div className="w-full sm:w-1/2">
             {data.hasAccess ? (
-                <div className="flex items-center justify-center gap-x-1 w-full h-14 font-pelak-medium amber-light rounded-2xl">
+                <div className="flex items-center justify-center gap-x-1 w-full h-14 font-pelak-medium blue-light dark:amber-light rounded-2xl">
                     <UserRounded />
                     شما دانشجوی دوره هستید
                 </div>

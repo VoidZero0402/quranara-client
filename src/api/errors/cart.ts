@@ -9,3 +9,10 @@ export const AddToCartStatusOptions: ResponseStatusHandlerOptions = {
         "409": { status: "info", text: "تناقص در سرور", caption: "دوره از قبل در سبد خرید شما وجود دارد" },
     },
 };
+
+export const RemoveFormCartStatusOptions: ResponseStatusHandlerOptions = {
+    statuses: {
+        "200": { status: "success", text: "عملیات موفق", caption: "دوره از سبد خرید شما حذف شد" },
+        "401": { status: "info", text: "لطفا ابتدا وارد شوید", caption: "ابتدا نیاز به ورود یا ثبت‌نام دارید" },
+    },
+};

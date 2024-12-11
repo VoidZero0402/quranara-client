@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { createTicketMessage } from "@/api/mutations/tickets";
-import { CreateTicketMessageStatusOptions, CreateTicketStatusOptions } from "@/api/errors/tickets";
+import { CreateTicketMessageStatusOptions } from "@/api/errors/tickets";
 
 import { UploadType } from "@/constants/uploads";
 

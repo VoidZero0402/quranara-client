@@ -25,8 +25,9 @@ import UserRounded from "@/components/svgs/UserRounded";
 import XMark from "@/components/svgs/XMark";
 
 import { CookieUser } from "@/types/user.types";
+import NotificationUnreadLines from "@/components/svgs/NotificationUnreadLines";
 
-type SidebarProps = { user: CookieUser }
+type SidebarProps = { user: CookieUser };
 
 function Sidebar({ user }: SidebarProps) {
     const [isOpen, toggleOpen] = useToggle();
@@ -88,6 +89,10 @@ function Sidebar({ user }: SidebarProps) {
                         <NavLink href="/panel/questions">
                             <QuestionCircle />
                             پرسش‌های من
+                        </NavLink>
+                        <NavLink href="/panel/notifications">
+                            <NotificationUnreadLines />
+                            اعلانات من
                         </NavLink>
                         <NavLink href="/panel/likes">
                             <Heart />
