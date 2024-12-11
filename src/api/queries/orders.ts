@@ -16,8 +16,12 @@ export function getAllOrders(query: PaginationQuerySchemaType): Promise<Response
 
 type CheckOrderParams = { shortId: string };
 
-export function checkOrder(params: CheckOrderParams): Promise<Response<{ order: Order }>> {
+export function checkOrder(params: CheckOrderParams, cookie: string): Promise<Response<{ order: Order }>> {
     const url = `/orders/check/${params.shortId}`;
 
-    return Quranara.get(url);
+    return Quranara.get(url, {
+        headers: {
+            cookie,
+        },
+    });
 }
