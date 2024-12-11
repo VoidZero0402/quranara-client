@@ -8,7 +8,7 @@ type BasketProps = { items: CartItemType[] };
 
 function Basket({ items }: BasketProps) {
     return (
-        <section className="space-y-8 min-[1480px]:w-2/3 p-4 sm:p-8 bg-gray-50 dark:bg-gray-800 rounded-xl">
+        <section className="space-y-8 min-[1480px]:w-2/3 h-max p-4 sm:p-8 bg-gray-50 dark:bg-gray-800 rounded-xl">
             <div className="space-y-2">
                 <span className="flex items-center gap-x-1 font-pelak-medium text-xl text-gray-700 dark:text-gray-300">
                     <Bag className="w-8" />
@@ -27,7 +27,7 @@ function Basket({ items }: BasketProps) {
 
 export function BasketLoading() {
     return (
-        <section className="space-y-8 min-[1480px]:w-2/3 p-4 sm:p-8 bg-gray-50 dark:bg-gray-800 rounded-xl">
+        <section className="space-y-8 min-[1480px]:w-2/3 h-max p-4 sm:p-8 bg-gray-50 dark:bg-gray-800 rounded-xl">
             <div className="space-y-2">
                 <span className="flex items-center gap-x-1 font-pelak-medium text-xl text-gray-700 dark:text-gray-300">
                     <Bag className="w-8" />

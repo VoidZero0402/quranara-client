@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 import PaymentButton from "@/components/specific/panel/cart/PaymentButton";
 
 import Skeleton, { SkeletonFrame } from "@/components/ui/Skeleton";
@@ -6,56 +10,65 @@ import Slice from "@/components/ui/Slice";
 import Card from "@/components/svgs/Card";
 
 import { Cart } from "@/types/cart.types";
+import { Discount } from "@/types/discount.types";
+import ApplyDiscountForm from "@/components/form/template/panel/ApplyDiscountForm";
 
 type PaymentProps = Omit<Cart, "_id" | "items">;
 
 function Payment({ totalPrice, discount, payableAmount }: PaymentProps) {
+    const [discountCode, setDiscountCode] = useState<Discount | undefined>(undefined);
+
     return (
-        <aside className="space-y-8 min-[1480px]:w-1/3 h-max p-4 sm:p-8 bg-gray-50 dark:bg-gray-800 rounded-xl">
-            <div className="space-y-2">
-                <span className="flex items-center gap-x-1 font-pelak-medium text-xl text-gray-600 dark:text-gray-300">
-                    <Card className="w-8" />
-                    جزئیات پرداخت
-                </span>
-                <p className="text-sm text-gray-600 dark:text-gray-400 leading-7">با شرایط و قوانین موافقت کن تا به درگاه پرداخت بری</p>
-            </div>
-            <div className="space-y-4">
+        <div className="space-y-8 min-[1480px]:w-1/3 h-max">
+            <aside className="space-y-8 p-4 sm:p-8 bg-gray-50 dark:bg-gray-800 rounded-xl">
+                <div className="space-y-2">
+                    <span className="flex items-center gap-x-1 font-pelak-medium text-xl text-gray-600 dark:text-gray-300">
+                        <Card className="w-8" />
+                        جزئیات پرداخت
+                    </span>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 leading-7">با شرایط و قوانین موافقت کن تا به درگاه پرداخت بری</p>
+                </div>
+                <div className="space-y-4">
+                    <div className="flex items-center justify-between font-pelak-medium text-gray-600 dark:text-gray-300">
+                        <span className="text-sm xs:text-base">مبلغ قابل پرداخت</span>
+                        <div className="flex items-center gap-x-1">
+                            <span className="font-pelak-semibold text-2xl">{totalPrice.toLocaleString()}</span>
+                            <span className="text-xs text-gray-600 dark:text-gray-400">تومان</span>
+                        </div>
+                    </div>
+                    {!!discount.percent && (
+                        <div className="flex items-center justify-between font-pelak-medium text-teal-500">
+                            <span className="text-sm xs:text-base">میزان تخفیف</span>
+                            <div className="flex items-center gap-x-1">
+                                <span className="text-xs">( {discount.percent}% )</span>
+                                <span className="font-pelak-semibold text-2xl">{discount.price.toLocaleString()}</span>
+                                <span className="text-xs">تومان</span>
+                            </div>
+                        </div>
+                    )}
+                    {discountCode && (
+                        <div className="flex items-center justify-between font-pelak-medium text-amber-400">
+                            <span className="text-sm xs:text-base">کد تخفیف</span>
+                            <div className="flex items-center gap-x-1">
+                                <span className="text-xs">( {discountCode.percent}% )</span>
+                                <span className="font-pelak-semibold text-2xl">{Math.floor((payableAmount * discountCode.percent) / 100).toLocaleString()}</span>
+                                <span className="text-xs">تومان</span>
+                            </div>
+                        </div>
+                    )}
+                </div>
+                <Slice className="dark:opacity-50" />
                 <div className="flex items-center justify-between font-pelak-medium text-gray-600 dark:text-gray-300">
-                    <span className="text-sm xs:text-base">مبلغ قابل پرداخت</span>
+                    <span className="text-sm xs:text-base">مجموع مبلغ</span>
                     <div className="flex items-center gap-x-1">
-                        <span className="font-pelak-semibold text-2xl">{totalPrice.toLocaleString()}</span>
+                        <span className="font-pelak-semibold text-3xl">{(discountCode ? payableAmount - Math.floor((payableAmount * discountCode.percent) / 100) : payableAmount).toLocaleString()}</span>
                         <span className="text-xs text-gray-600 dark:text-gray-400">تومان</span>
                     </div>
                 </div>
-                {!!discount.percent && (
-                    <div className="flex items-center justify-between font-pelak-medium text-teal-500">
-                        <span className="text-sm xs:text-base">میزان تخفیف</span>
-                        <div className="flex items-center gap-x-1">
-                            <span className="text-xs">( {discount.percent}% )</span>
-                            <span className="font-pelak-semibold text-2xl">{discount.price.toLocaleString()}</span>
-                            <span className="text-xs">تومان</span>
-                        </div>
-                    </div>
-                )}
-                {/* <div className="flex items-center justify-between font-pelak-medium text-teal-500">
-                    <span className="text-sm xs:text-base">کد تخفیف</span>
-                    <div className="flex items-center gap-x-1">
-                        <span className="text-xs">( 20% )</span>
-                        <span className="font-pelak-semibold text-2xl">{(400000).toLocaleString()}</span>
-                        <span className="text-xs">تومان</span>
-                    </div>
-                </div> */}
-            </div>
-            <Slice className="dark:opacity-50" />
-            <div className="flex items-center justify-between font-pelak-medium text-gray-600 dark:text-gray-300">
-                <span className="text-sm xs:text-base">مجموع مبلغ</span>
-                <div className="flex items-center gap-x-1">
-                    <span className="font-pelak-semibold text-3xl">{payableAmount.toLocaleString()}</span>
-                    <span className="text-xs text-gray-600 dark:text-gray-400">تومان</span>
-                </div>
-            </div>
-            <PaymentButton />
-        </aside>
+                <PaymentButton discount={discountCode} />
+            </aside>
+            <ApplyDiscountForm onChange={setDiscountCode} />
+        </div>
     );
 }
 
