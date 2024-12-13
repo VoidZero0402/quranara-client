@@ -3,3 +3,8 @@ export const TYPES = {
     COURSE_REGISTERS: "COURSE_REGISTERS",
     ONE_USER: "ONE_USER",
 } as const;
+
+export const MODE = {
+    READ: "read",
+    UNREAD: "unread",
+} as const;

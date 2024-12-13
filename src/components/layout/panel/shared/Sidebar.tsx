@@ -20,12 +20,12 @@ import HamburgerMenu from "@/components/svgs/HamburgerMenu";
 import Heart from "@/components/svgs/Heart";
 import HomeAngle from "@/components/svgs/HomeAngle";
 import Layers from "@/components/svgs/Layers";
+import BellBing from "@/components/svgs/BellBing";
 import QuestionCircle from "@/components/svgs/QuestionCircle";
 import UserRounded from "@/components/svgs/UserRounded";
 import XMark from "@/components/svgs/XMark";
 
 import { CookieUser } from "@/types/user.types";
-import NotificationUnreadLines from "@/components/svgs/NotificationUnreadLines";
 
 type SidebarProps = { user: CookieUser };
 
@@ -91,7 +91,7 @@ function Sidebar({ user }: SidebarProps) {
                             پرسش‌های من
                         </NavLink>
                         <NavLink href="/panel/notifications">
-                            <NotificationUnreadLines />
+                            <BellBing />
                             اعلانات من
                         </NavLink>
                         <NavLink href="/panel/likes">

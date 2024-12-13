@@ -7,7 +7,7 @@ import { MessageResponse } from "@/types/response.types";
 type NotificationsMutationsWithIdParams = { notificationId: string };
 
 export function seenNotification(params: NotificationsMutationsWithIdParams): MessageResponse {
-    const url = `/notifications/seen/${params.notificationId}`;
+    const url = `/notifications/${params.notificationId}/seen`;
 
     return Quranara.patch(url);
 }

@@ -12,7 +12,7 @@ import { LimitedQuestion } from "@/types/question.types";
 
 function Question({ title, status, session, question, createdAt }: LimitedQuestion) {
     return (
-        <div className="space-y-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
+        <div className="space-y-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-2xl">
             <Link href={`/sessions/${session.slug}#question`} className="font-pelak-medium sm:text-lg text-gray-800 dark:text-gray-200 hover:text-blue-500 dark:hover:text-amber-400 line-clamp-2 leading-8 transition-all">
                 {title}
             </Link>
