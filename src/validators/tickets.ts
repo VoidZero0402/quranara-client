@@ -5,8 +5,8 @@ import { PaginationQuerySchema } from "./pagination";
 
 export const CreateTicketSchema = z.object({
     course: z.string().optional(),
-    title: z.string({ required_error: "وارد کردن عنوان الزامی است." }).min(1, { message: "عنوان نمی‌تواند خالی باشد." }).max(255, { message: "عنوان باید کمتر از ۲۵۵ کاراکتر باشد." }).trim(),
-    content: z.string({ required_error: "وارد کردن محتوا الزامی است." }).min(1, { message: "محتوا نمی‌تواند خالی باشد." }).max(2048, { message: "محتوا باید کمتر از ۲۰۴۸ کاراکتر باشد." }).trim(),
+    title: z.string({ required_error: "وارد کردن عنوان الزامی است." }).min(1, { message: "عنوان نمی‌تواند خالی باشد." }).max(255, { message: "عنوان باید کمتر از ۲۵۵ کاراکتر باشد." }),
+    content: z.string({ required_error: "وارد کردن محتوا الزامی است." }).min(1, { message: "محتوا نمی‌تواند خالی باشد." }).max(2048, { message: "محتوا باید کمتر از ۲۰۴۸ کاراکتر باشد." }),
     type: z.enum([TYPE.SUPPORT, TYPE.MANAGEMENT], { message: "نوع فقط می‌تواند SUPPORT یا MANAGEMENT باشد." }).default(TYPE.SUPPORT),
     attached: z
         .object({

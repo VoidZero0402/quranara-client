@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const CreateTopicSchema = z.object({
-    title: z.string({ required_error: "وارد کردن عنوان الزامی است." }).min(1, { message: "عنوان نمی‌تواند خالی باشد." }).max(255, { message: "عنوان باید کمتر از ۲۵۵ کاراکتر باشد." }).trim(),
+    title: z.string({ required_error: "وارد کردن عنوان الزامی است." }).min(1, { message: "عنوان نمی‌تواند خالی باشد." }).max(255, { message: "عنوان باید کمتر از ۲۵۵ کاراکتر باشد." }),
     course: z.string({ required_error: "وارد کردن دوره الزامی است." }),
 });
 

@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const CreateCommentSchema = z
     .object({
-        content: z.string({ required_error: "وارد کردن محتوای نظر الزامی است." }).min(1, { message: "محتوای نظر نمی‌تواند خالی باشد." }).max(2048, { message: "محتوای نظر باید کمتر از ۲۰۴۸ کاراکتر باشد." }).trim(),
+        content: z.string({ required_error: "وارد کردن محتوای نظر الزامی است." }).min(1, { message: "محتوای نظر نمی‌تواند خالی باشد." }).max(2048, { message: "محتوای نظر باید کمتر از ۲۰۴۸ کاراکتر باشد." }),
         blog: z.string().optional(),
         course: z.string().optional(),
         tv: z.string().optional(),
@@ -16,7 +16,7 @@ export const CreateCommentSchema = z
 export type CreateCommentSchemaType = z.infer<typeof CreateCommentSchema>;
 
 export const ReplyCommentSchema = z.object({
-    content: z.string({ required_error: "وارد کردن محتوای نظر الزامی است." }).min(1, { message: "محتوای نظر نمی‌تواند خالی باشد." }).max(2048, { message: "محتوای نظر باید کمتر از ۲۰۴۸ کاراکتر باشد." }).trim(),
+    content: z.string({ required_error: "وارد کردن محتوای نظر الزامی است." }).min(1, { message: "محتوای نظر نمی‌تواند خالی باشد." }).max(2048, { message: "محتوای نظر باید کمتر از ۲۰۴۸ کاراکتر باشد." }),
 });
 
 export type ReplyCommentSchemaType = z.infer<typeof ReplyCommentSchema>;

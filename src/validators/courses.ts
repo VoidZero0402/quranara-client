@@ -3,9 +3,9 @@ import { SORTING, STATUS } from "@/constants/courses";
 import { PaginationQuerySchema } from "./pagination";
 
 export const CreateCourseSchema = z.object({
-    title: z.string({ required_error: "وارد کردن عنوان الزامی است." }).min(1, { message: "عنوان نمی‌تواند خالی باشد." }).max(255, { message: "عنوان باید کمتر از ۲۵۵ کاراکتر باشد." }).trim(),
-    slug: z.string().min(1, { message: "اسلاگ نمی‌تواند خالی باشد." }).max(255, { message: "اسلاگ باید کمتر از ۲۵۵ کاراکتر باشد." }).trim().optional(),
-    description: z.string({ required_error: "وارد کردن توضیحات الزامی است." }).min(1, { message: "توضیحات نمی‌تواند خالی باشد." }).max(1024, { message: "توضیحات باید کمتر از ۱۰۲۴ کاراکتر باشد." }).trim(),
+    title: z.string({ required_error: "وارد کردن عنوان الزامی است." }).min(1, { message: "عنوان نمی‌تواند خالی باشد." }).max(255, { message: "عنوان باید کمتر از ۲۵۵ کاراکتر باشد." }),
+    slug: z.string().min(1, { message: "اسلاگ نمی‌تواند خالی باشد." }).max(255, { message: "اسلاگ باید کمتر از ۲۵۵ کاراکتر باشد." }).optional(),
+    description: z.string({ required_error: "وارد کردن توضیحات الزامی است." }).min(1, { message: "توضیحات نمی‌تواند خالی باشد." }).max(1024, { message: "توضیحات باید کمتر از ۱۰۲۴ کاراکتر باشد." }),
     cover: z
         .string({ required_error: "وارد کردن کاور الزامی است." })
         .min(1, { message: "کاور نمی‌تواند خالی باشد." })
@@ -22,7 +22,7 @@ export const CreateCourseSchema = z.object({
                 .regex(/^[\w-]+\.(mp4)$/, { message: "فرمت فایل ویدئو معتبر نیست." })
                 .trim()
                 .optional(),
-            content: z.string().min(1, { message: "محتوا نمی‌تواند خالی باشد." }).trim().optional(),
+            content: z.string().min(1, { message: "محتوا نمی‌تواند خالی باشد." }).optional(),
         })
         .optional(),
     metadata: z.object(
@@ -65,7 +65,7 @@ export const GetAllCoursesQuerySchema = PaginationQuerySchema.extend({
 export type GetAllCoursesQuerySchemaType = z.infer<typeof GetAllCoursesQuerySchema>;
 
 export const SearchCoursesQuerySchame = PaginationQuerySchema.extend({
-    q: z.string({ required_error: "وارد کردن مقدار 'q' الزامی است." }).min(1, { message: "'q' نمی‌تواند خالی باشد." }).trim(),
+    q: z.string({ required_error: "وارد کردن مقدار 'q' الزامی است." }).min(1, { message: "'q' نمی‌تواند خالی باشد." }),
 });
 
 export type SearchCoursesQuerySchameType = z.infer<typeof SearchCoursesQuerySchame>;

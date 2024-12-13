@@ -8,11 +8,11 @@ export const CreateNewsSchema = z.object({
         .min(1, { message: "کاور نمی‌تواند خالی باشد." })
         .regex(/^[\w-]+\.(jpg|jpeg|png|webp)$/, { message: "فرمت فایل کاور معتبر نیست." })
         .trim(),
-    title: z.string().min(1, { message: "عنوان نمی‌تواند خالی باشد." }).max(255, { message: "عنوان باید کمتر از ۲۵۵ کاراکتر باشد." }).trim().optional(),
-    description: z.string().min(1, { message: "توضیحات نمی‌تواند خالی باشد." }).max(255, { message: "توضیحات باید کمتر از ۲۵۵ کاراکتر باشد." }).trim().optional(),
+    title: z.string().min(1, { message: "عنوان نمی‌تواند خالی باشد." }).max(255, { message: "عنوان باید کمتر از ۲۵۵ کاراکتر باشد." }).optional(),
+    description: z.string().min(1, { message: "توضیحات نمی‌تواند خالی باشد." }).max(255, { message: "توضیحات باید کمتر از ۲۵۵ کاراکتر باشد." }).optional(),
     link: z
         .object({
-            text: z.string().min(1, { message: "متن لینک نمی‌تواند خالی باشد." }).max(255, { message: "متن لینک باید کمتر از ۲۵۵ کاراکتر باشد." }).trim().optional(),
+            text: z.string().min(1, { message: "متن لینک نمی‌تواند خالی باشد." }).max(255, { message: "متن لینک باید کمتر از ۲۵۵ کاراکتر باشد." }).optional(),
             url: z.string({ required_error: "وارد کردن آدرس لینک الزامی است." }).url({ message: "آدرس لینک معتبر نیست." }),
         })
         .optional(),
