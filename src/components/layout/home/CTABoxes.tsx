@@ -1,7 +1,7 @@
 import CTABox from "@/components/specific/home/CTABox";
 
 import Layers from "@/components/svgs/Layers";
-import Document from "@/components/svgs/Document";
+import Widgets from "@/components/svgs/Widgets";
 import PlayCircle from "@/components/svgs/PlayCircle";
 import MedalRibbon from "@/components/svgs/MedalRibbon";
 
@@ -12,7 +12,7 @@ function CTABoxes() {
                 <Layers className="w-10" />
             </CTABox>
             <CTABox href="#blog" title="مقالات تخصصی قرآنی" description="بهترین مقالات و تحلیل‌های قرآنی برای درک عمیق‌تر قرآن، از نکات تفسیری گرفته تا آشنایی با مفاهیم ارزشمند، همه در دسترس شماست">
-                <Document className="w-10" />
+                <Widgets className="w-10" />
             </CTABox>
             <CTABox href="#tv" title="ویدیوهای آموزشی رایگان" description="به مجموعه‌ای از ویدیوهای رایگان آموزشی دسترسی داشته باشید و قدم‌های اولیه برای یادگیری قرآن و معارف اسلامی را با کیفیت بالا تجربه کنید">
                 <PlayCircle className="w-10" />

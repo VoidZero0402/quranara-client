@@ -60,7 +60,7 @@ async function Blogs({ query }: BlogsProps) {
 function EmptyState({ query }: BlogsProps) {
     return (
         <div className="flex-center col-span-4 py-10">
-            <span className="font-pelak-medium text-lg text-gray-600 dark:text-gray-400">مقاله‌ای در نتیجه جستجو &quot;{query}&quot; پیدا نشد</span>
+            <span className="font-pelak-medium text-center text-lg text-gray-600 dark:text-gray-400 leading-8">مقاله‌ای در نتیجه جستجو &quot;{query}&quot; پیدا نشد</span>
         </div>
     );
 }

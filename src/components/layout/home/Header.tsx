@@ -14,7 +14,7 @@ function Header() {
                     <div className="flex flex-col gap-y-2 lg:w-1/2">
                         <span className="font-pelak-medium text-sm py-1 px-2.5 rounded-lg gray-light  w-max">به قرآن‌آرا خوش آمدید</span>
                         <h1 className="font-pelak-semibold text-3xl/[1.5] sm:text-4xl/[1.5] text-gray-800 dark:text-gray-200">قرآن‌آرا؛ پلی به سوی یادگیری و درک بهتر قرآن</h1>
-                        <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300">با قرآن‌آرا، دوره‌های متنوع روخوانی، روان‌خوانی و تفسیر قرآن را به زبانی روان و با کیفیت بالا بیاموزید</p>
+                        <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 leading-8 sm:leading-8">با قرآن‌آرا، دوره‌های متنوع روخوانی، روان‌خوانی و تفسیر قرآن را به زبانی روان و با کیفیت بالا بیاموزید</p>
                         <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-4 mt-4">
                             <Link href="/courses" className="flex">
                                 <Button size="lg" className="font-pelak-medium gap-x-2 w-full">

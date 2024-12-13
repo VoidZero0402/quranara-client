@@ -9,11 +9,15 @@ import { Question, LimitedQuestion } from "@/types/question.types";
 
 type QuestionsQueriesWithIdParams = { questionId: string };
 
-export function getQuestions(query: PaginationQuerySchemaType): Promise<Response<{ questions: Question[]; pagination: Pagination }>> {
+export function getQuestions(query: PaginationQuerySchemaType, cookie?: string): Promise<Response<{ questions: Question[]; pagination: Pagination }>> {
     const queryString = convertToQueryString(query);
     const url = `/questions?${queryString}`;
 
-    return Quranara.get(url);
+    return Quranara.get(url, {
+        headers: {
+            ...(cookie && { cookie }),
+        },
+    });
 }
 
 export function getQuestion(params: QuestionsQueriesWithIdParams): Promise<Response<{ question: Question }>> {

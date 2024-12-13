@@ -64,7 +64,7 @@ function MobileNavigation({ menus }: MobileNavigationProps) {
 function MobileNavigationItem({ text, Icon, href }: MobileNavigationItemProps) {
     return (
         <li>
-            <Link href={href} className="flex items-center gap-x-2 py-2.5 px-3 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg select-none transition-colors">
+            <Link href={href} className="flex items-center gap-x-2 py-3 px-4 font-pelak-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg select-none transition-colors">
                 <Icon />
                 {text}
             </Link>
@@ -77,7 +77,7 @@ function CollapsableMobileNavigationItem({ children, text, Icon, isActive, onAct
 
     return (
         <li>
-            <div className={cn("flex items-center justify-between w-full py-2.5 px-3 text-gray-800 dark:text-gray-200 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 select-none transition-colors", isActive && "bg-gray-50 dark:bg-gray-700")} onClick={onActive}>
+            <div className={cn("flex items-center justify-between w-full py-3 px-4 font-pelak-medium text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 select-none transition-colors", isActive && "bg-gray-50 dark:bg-gray-700")} onClick={onActive}>
                 <div className="flex items-center gap-x-2">
                     <Icon />
                     {text}

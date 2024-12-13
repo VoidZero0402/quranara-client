@@ -50,7 +50,7 @@ function QuestionsGrid() {
 function EmptyState() {
     return (
         <div className="flex-center col-span-4 py-10">
-            <span className="font-pelak-medium text-lg text-gray-600 dark:text-gray-400">هنوز سوالی رو نپرسیدی</span>
+            <span className="font-pelak-medium text-center text-lg text-gray-600 dark:text-gray-400 leading-8">هنوز سوالی رو نپرسیدی</span>
         </div>
     );
 }

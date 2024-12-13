@@ -102,7 +102,7 @@
     }
 
     .red-light {
-        @apply bg-red-50 dark:bg-red-500/10 text-red-500;
+        @apply bg-red-50 dark:bg-red-500/5 text-red-500 dark:text-red-400;
     }
 
     .teal-light {

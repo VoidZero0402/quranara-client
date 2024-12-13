@@ -71,7 +71,7 @@ function CoursesGrid({ updateCount }: CoursesGridProps) {
 function EmptyState() {
     return (
         <div className="flex-center col-span-4 py-10">
-            <span className="font-pelak-medium text-lg text-gray-600 dark:text-gray-400">دوره‌ای با این مشخصات پیدا نشد</span>
+            <span className="font-pelak-medium text-center text-lg text-gray-600 dark:text-gray-400 leading-8">دوره‌ای با این مشخصات پیدا نشد</span>
         </div>
     );
 }

@@ -20,7 +20,7 @@ function Blogs() {
         queryKey: ["saved-infinite-blogs"],
         queryFn: fetchBlogs,
         initialPageParam: 1,
-        getNextPageParam: (lastPage) => {            
+        getNextPageParam: (lastPage) => {
             const { page, pagesCount } = lastPage.data.pagination;
             return page < pagesCount ? page + 1 : undefined;
         },
@@ -58,7 +58,7 @@ function Blogs() {
 function EmptyState() {
     return (
         <div className="flex-center col-span-4 py-10">
-            <span className="font-pelak-medium text-lg text-gray-600 dark:text-gray-400">هنوز مقاله‌ای رو ذخیره نکردی</span>
+            <span className="font-pelak-medium text-center text-lg text-gray-600 dark:text-gray-400 leading-8">هنوز مقاله‌ای رو ذخیره نکردی</span>
         </div>
     );
 }

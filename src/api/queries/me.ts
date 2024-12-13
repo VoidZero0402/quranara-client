@@ -17,6 +17,14 @@ export function getMyCourses(cookie: string): Promise<Response<{ courses: Course
     });
 }
 
+export function getMyLastCourses(cookie: string): Promise<Response<{ courses: Course[] }>> {
+    return Quranara.get("/me/last-courses", {
+        headers: {
+            cookie,
+        },
+    });
+}
+
 export function getSavedBlog(query: PaginationQuerySchemaType): Promise<Response<{ saves: LimitedBlog[]; pagination: Pagination }>> {
     const queryString = convertToQueryString(query);
     const url = `/me/saved-blog?${queryString}`;
