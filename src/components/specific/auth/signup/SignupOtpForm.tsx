@@ -26,9 +26,9 @@ function SignupOtpForm() {
         onSettled(data) {
             if (data) {
                 statusHandler(data, SignupStatusOptions);
-            }
 
-            if (data?.status === 201) router.replace("/");
+                if (data.status === 201) router.replace("/");
+            }
         },
     });
 

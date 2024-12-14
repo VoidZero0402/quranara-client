@@ -1,10 +1,14 @@
+import { authenticate } from "@/libs/server/funcs";
+
 import Navigation from "@/components/layout/panel/shared/Navigation";
 
-function PanelLayout({
+async function PanelLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    await authenticate();
+
     return (
         <div className="lg:pr-72">
             <div className="flex flex-col gap-y-4 sm:p-4">

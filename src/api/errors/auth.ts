@@ -35,3 +35,10 @@ export const LoginWithOtpStatusOptions: ResponseStatusHandlerOptions = {
         "404": { status: "error", text: "اطلاعات نامعتبر", caption: "کاربری با این اطلاعات یافت نشد" },
     },
 };
+
+export const LogoutStatusOptions: ResponseStatusHandlerOptions = {
+    statuses: {
+        "200": { status: "success", text: "خروج موفقیت آمیز", caption: "با موفقیت از حسابت خارج شدی" },
+        "401": { status: "info", text: "لطفا ابتدا وارد شوید", caption: "ابتدا نیاز به ورود یا ثبت‌نام دارید" },
+    },
+};

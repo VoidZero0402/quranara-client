@@ -45,7 +45,7 @@ function Sidebar({ user }: SidebarProps) {
                 <HamburgerMenu className="w-8" />
             </Button>
             <div className={cn("fixed inset-0 lg:hidden w-full h-screen bg-backdrop invisible opacity-0 transition-all duration-300 z-20", isOpen && "visible opacity-100")} onClick={toggleOpen}></div>
-            <aside className={cn("flex flex-col gap-8 fixed top-0 bottom-0 -right-72 lg:right-0 w-72 h-screen p-4 bg-white dark:bg-gray-850 shadow-xl shadow-gray-100 dark:shadow-none transition-all duration-300 z-20", isOpen && "right-0")}>
+            <aside className={cn("flex flex-col gap-8 fixed top-0 bottom-0 -right-72 lg:right-0 w-72 h-screen p-4 bg-white dark:bg-gray-850 shadow-xl shadow-gray-100 dark:shadow-none overflow-auto with-custom-scroll transition-all duration-300 z-20", isOpen && "right-0")}>
                 <div className="flex lg:hidden gap-x-4 justify-end">
                     <Link href="/">
                         <Button variant="neutral-base" className="h-12">
@@ -68,7 +68,7 @@ function Sidebar({ user }: SidebarProps) {
                         <span className="text-sm text-gray-600 dark:text-gray-400">{user.phone}</span>
                     </div>
                 </div>
-                <div className="flex flex-col justify-between grow">
+                <div className="flex flex-col justify-between gap-8 grow">
                     <div className="flex flex-col gap-y-2">
                         <NavLink href="/panel">
                             <HomeAngle />
@@ -82,7 +82,7 @@ function Sidebar({ user }: SidebarProps) {
                             <Layers />
                             دوره‌های من
                         </NavLink>
-                        <NavLink href="/panel/tickets">
+                        <NavLink href="/panel/tickets" subs>
                             <ChatRoundLine />
                             تیکت‌های من
                         </NavLink>

@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext } from "react";
+import { createPortal } from "react-dom";
 import { useEventListener } from "usehooks-ts";
 
 import { cn } from "@/libs/cn";
@@ -12,7 +13,9 @@ type ModalContextProps = { onClose: () => void };
 
 const ModalContext = createContext<ModalContextProps>({ onClose: () => {} });
 
-type ModalProps = { isOpen: boolean; onClose: () => void } & React.ComponentProps<"div">;
+export type ModalInstanceProps = { isOpen: boolean; onClose: () => void };
+
+type ModalProps = ModalInstanceProps & React.ComponentProps<"div">;
 
 type ModalChildrensProps = React.ComponentProps<"div">;
 
@@ -21,12 +24,13 @@ function Modal({ children, isOpen, onClose, className }: ModalProps) {
         if (event.key === "Escape") onClose();
     });
 
-    return (
+    return createPortal(
         <div className={cn("flex-center fixed inset-0 size-full bg-backdrop invisible opacity-0 transition-all duration-300 z-20", isOpen && "visible opacity-100")}>
-            <div className={cn("p-4 space-y-4 rounded-xl bg-white dark:bg-gray-800", className)}>
+            <div className={cn("p-4 sm:p-8 space-y-4 sm:rounded-2xl bg-white dark:bg-gray-850", className)}>
                 <ModalContext.Provider value={{ onClose }}>{children}</ModalContext.Provider>
             </div>
-        </div>
+        </div>,
+        document.body
     );
 }
 
@@ -35,7 +39,7 @@ export function ModalHeader({ children, className }: ModalChildrensProps) {
 
     return (
         <div className={cn("flex items-center justify-between", className)}>
-            <span className="font-pelak-medium text-gray-800 dark:text-gray-200">{children}</span>
+            <div className="font-pelak-medium text-gray-800 dark:text-gray-200">{children}</div>
             <Button size="sm" variant="neutral-base" className="size-12" onClick={onClose}>
                 <XMark />
             </Button>

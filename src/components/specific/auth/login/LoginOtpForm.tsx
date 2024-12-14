@@ -26,9 +26,9 @@ function LoginOtpForm() {
         onSettled(data) {
             if (data) {
                 statusHandler(data, LoginWithOtpStatusOptions);
-            }
 
-            if (data?.status === 200) router.replace("/panel");
+                if (data.status === 200) router.replace("/panel");
+            }
         },
     });
 

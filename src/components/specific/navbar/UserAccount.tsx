@@ -5,6 +5,8 @@ import useToggle from "@/hooks/useToggle";
 
 import { OpacityAnimation } from "@/libs/motions";
 
+import Logout from "./Logout";
+
 import Button from "@/components/ui/Button";
 import Dropdown, { DropdownHeader, DropdownBody, DropdownFooter } from "@/components/ui/Dropdown";
 import Badge from "@/components/ui/Badge";
@@ -17,7 +19,6 @@ import Bag from "@/components/svgs/Bag";
 import Layers from "@/components/svgs/Layers";
 import ChatRoundLine from "@/components/svgs/ChatRoundLine";
 import QuestionCircle from "@/components/svgs/QuestionCircle";
-import Logout from "@/components/svgs/Logout";
 
 import { CookieUser } from "@/types/user.types";
 
@@ -47,37 +48,34 @@ function UserAccount({ user }: UserAccountProps) {
                 </DropdownHeader>
                 <Slice className="dark:opacity-50" />
                 <DropdownBody>
-                    <Link href="/panel" className="flex items-center gap-x-2 py-3 px-4 font-pelak-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-500/15 rounded-lg cursor-pointer transition-colors">
+                    <Link href="/panel" className="flex items-center gap-x-2 py-3 px-4 font-pelak-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-500/15 rounded-xl cursor-pointer transition-colors">
                         <HomeAngle />
                         پنل کاربری
                     </Link>
-                    <Link href="/panel/cart" className="flex items-center gap-x-2 py-3 px-4 font-pelak-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-500/15 rounded-lg cursor-pointer transition-colors">
+                    <Link href="/panel/cart" className="flex items-center gap-x-2 py-3 px-4 font-pelak-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-500/15 rounded-xl cursor-pointer transition-colors">
                         <Bag />
                         سبد خرید دوره‌ها
                     </Link>
-                    <Link href="/panel/courses" className="flex items-center gap-x-2 py-3 px-4 font-pelak-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-500/15 rounded-lg cursor-pointer transition-colors">
+                    <Link href="/panel/courses" className="flex items-center gap-x-2 py-3 px-4 font-pelak-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-500/15 rounded-xl cursor-pointer transition-colors">
                         <Layers />
                         دوره‌های من
                     </Link>
-                    <Link href="/panel/tickets" className="flex items-center gap-x-2 py-3 px-4 font-pelak-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-500/15 rounded-lg cursor-pointer transition-colors">
+                    <Link href="/panel/tickets" className="flex items-center gap-x-2 py-3 px-4 font-pelak-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-500/15 rounded-xl cursor-pointer transition-colors">
                         <ChatRoundLine />
                         تیکت‌های من
                     </Link>
-                    <Link href="/panel/questions" className="flex items-center gap-x-2 py-3 px-4 font-pelak-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-500/15 rounded-lg cursor-pointer transition-colors">
+                    <Link href="/panel/questions" className="flex items-center gap-x-2 py-3 px-4 font-pelak-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-500/15 rounded-xl cursor-pointer transition-colors">
                         <QuestionCircle />
                         پرسش‌های من
                     </Link>
-                    <Link href="/panel/account" className="flex items-center gap-x-2 py-3 px-4 font-pelak-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-500/15 rounded-lg cursor-pointer transition-colors">
+                    <Link href="/panel/account" className="flex items-center gap-x-2 py-3 px-4 font-pelak-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-500/15 rounded-xl cursor-pointer transition-colors">
                         <UserRounded />
                         جزئیات حساب کاربری
                     </Link>
                 </DropdownBody>
                 <Slice className="dark:opacity-50" />
                 <DropdownFooter>
-                    <button className="flex items-center gap-x-2 w-full py-3 px-4 font-pelak-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-500/15 rounded-lg cursor-pointer transition-colors">
-                        <Logout />
-                        خروج از حساب
-                    </button>
+                    <Logout />
                 </DropdownFooter>
             </Dropdown>
         </div>

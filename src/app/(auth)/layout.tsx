@@ -1,15 +1,14 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-import Quranara from "@/api/clients/Quranara";
+import { getMe } from "@/api/queries/auth";
 
 async function AuthLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const allCookies = (await cookies()).toString();
-    const { data } = await Quranara.get("/auth/me", { headers: { cookie: allCookies } });
+    const { data } = await getMe((await cookies()).toString());
 
     if (data.user) {
         redirect("/");
