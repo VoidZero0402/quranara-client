@@ -9,7 +9,7 @@ import { SvgComponentProps } from "@/types/component.types";
 import { Menus } from "@/types/ui.types";
 
 import ArrowDown from "@/components/svgs/ArrowDown";
-import Document from "@/components/svgs/Document";
+import Widgets from "@/components/svgs/Widgets";
 import HomeAngle from "@/components/svgs/HomeAngle";
 import Layers from "@/components/svgs/Layers";
 import PlayCircle from "@/components/svgs/PlayCircle";
@@ -44,7 +44,7 @@ function MobileNavigation({ menus }: MobileNavigationProps) {
                     <NavigationLink href="/courses" title="همه دوره‌ها" caption="مشاهده همه دوره‌های تخصصی قرآن آرا" />
                 </div>
             </CollapsableMobileNavigationItem>
-            <CollapsableMobileNavigationItem text="مقالات" Icon={Document} isActive={active === "blog"} onActive={onActive("blog")}>
+            <CollapsableMobileNavigationItem text="مقالات" Icon={Widgets} isActive={active === "blog"} onActive={onActive("blog")}>
                 <div className="w-full p-2">
                     {useMemo(() => menus.categories.blog.map((blog) => <NavigationLink key={blog._id} href={`#`} title={blog.title} caption={blog.caption} />), [])}
                     <NavigationLink href="/blog" title="همه مقالات" caption="مشاهده همه مقالات قرآن آرا" />

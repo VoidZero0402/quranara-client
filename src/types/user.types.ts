@@ -1,6 +1,6 @@
 import { ROLES } from "@/constants/comments";
 
-type Role = (typeof ROLES)[keyof typeof ROLES];
+export type Role = (typeof ROLES)[keyof typeof ROLES];
 
 export type User = {
     _id: string;

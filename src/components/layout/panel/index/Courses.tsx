@@ -10,7 +10,7 @@ import LongArrowLeft from "@/components/svgs/LongArrowLeft";
 
 function Courses() {
     return (
-        <section className="space-y-8 w-full p-8 bg-white dark:bg-gray-850 rounded-2xl">
+        <section className="space-y-8 w-full py-8 px-4 sm:p-8 bg-white dark:bg-gray-850 sm:rounded-2xl">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div className="flex flex-col items-center sm:items-start gap-y-2">
                     <span className="flex items-center gap-x-1 font-pelak-medium text-xl text-gray-700 dark:text-gray-300">

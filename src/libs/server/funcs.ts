@@ -6,7 +6,7 @@ import { cookies } from "next/headers";
 
 import { getMe } from "@/api/queries/auth";
 
-import { CookieUser } from "@/types/user.types";
+import { CookieUser, Role } from "@/types/user.types";
 
 export async function getUserFromCookies(): Promise<CookieUser | undefined> {
     const cookie = (await cookies()).get("_user")?.value;
@@ -34,10 +34,16 @@ export async function isAuthenticated(req: NextRequest): Promise<boolean> {
     return !!user && !!session;
 }
 
-export async function authenticate(): Promise<void> {
-    const { status } = await getMe((await cookies()).toString());
+export async function authenticate(role?: Role): Promise<void> {
+    const res = await getMe((await cookies()).toString());
 
-    if (status !== 200) {
+    if (res.status !== 200) {
         redirect("/login");
+    }
+
+    if (role) {
+        if (res.data.user.role !== role) {
+            redirect("/login");
+        }
     }
 }
