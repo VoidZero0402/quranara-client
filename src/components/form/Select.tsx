@@ -1,4 +1,4 @@
-import { createContext, useState, useContext, startTransition } from "react";
+import { createContext, useState, useEffect, useContext, startTransition } from "react";
 import { useController, Control, FieldValues, Path } from "react-hook-form";
 
 import { cn } from "@/libs/cn";
@@ -14,7 +14,7 @@ const SelectContext = createContext<SelectContextProps>({ handleSelect: () => {}
 interface SelectProps<T extends FieldValues> {
     name: keyof T;
     control: Control<T>;
-    label: string;
+    label?: string;
     defaultText?: string;
     placeholder?: string;
     caption?: string;
@@ -50,7 +50,7 @@ function Select<T extends FieldValues>({ children, name, control, defaultText = 
 
     return (
         <div ref={ref} className={cn("flex flex-col gap-y-2 relative font-pelak-medium", className)}>
-            <span className="text-sm text-gray-800 dark:text-gray-200">{label}</span>
+            {label && <span className="text-sm text-gray-800 dark:text-gray-200">{label}</span>}
             <div onClick={toggleOpen} className="flex items-center justify-between p-4 w-full bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border border-gray-100 dark:border-gray-800 hover:border-gray-200 dark:hover:border-gray-700 rounded-xl cursor-pointer transition-colors">
                 <span className="">{text || placeholder}</span>
                 <ArrowDown className="w-5" />

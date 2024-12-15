@@ -78,3 +78,20 @@ export function getTruthyValues(obj: Record<string, any>): Record<string, any> {
 
     return record;
 }
+
+export function calculatePaginationPages(pagesCount: number, current: number, limit = 6): { start: number[]; end: number[]; hasSeparator: boolean } {
+    if (limit >= pagesCount) {
+        const start = new Array(pagesCount).map((i) => i + 1);
+        return { start, end: [], hasSeparator: false };
+    }
+
+    if (limit >= pagesCount - current) {
+        const end = new Array(pagesCount - current).map((i) => current + i + 1);
+        return { start: [], end, hasSeparator: false };
+    }
+
+    const start = [current, current + 1, current + 2];
+    const end = [pagesCount - 2, pagesCount - 1, pagesCount];
+
+    return { start, end, hasSeparator: true };
+}

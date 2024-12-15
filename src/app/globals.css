@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+    :root {
+        --plyr-color-main: #fbbf24;
+    }
+
     * {
         @apply outline-none scroll-smooth;
     }
@@ -37,6 +41,10 @@
 
     .with-custom-scroll::-webkit-scrollbar {
         @apply w-1;
+    }
+
+    .with-custom-scroll--horizontal::-webkit-scrollbar {
+        @apply h-1 w-full
     }
 
     .with-custom-scroll::-webkit-scrollbar-track {
@@ -75,8 +83,45 @@
         @apply w-6 bg-blue-500 dark:bg-blue-500;
     }
 
-    :root {
-        --plyr-color-main: #fbbf24;
+    .table {
+        @apply w-full border-collapse border-spacing-0;
+    }
+
+    .table thead {
+        @apply bg-white dark:bg-gray-850;
+    }
+
+    .table tbody {
+        @apply bg-white dark:bg-gray-850;
+    }
+
+    .table th {
+        @apply text-gray-800 dark:text-gray-200 font-normal font-pelak-medium text-nowrap;
+    }
+
+    .table td {
+        @apply text-gray-700 dark:text-gray-300;
+    }
+
+    .table th,
+    .table td {
+        @apply px-8 py-4 text-start;
+    }
+
+    .table th:first-child {
+        @apply rounded-tr-xl;
+    }
+
+    .table th:last-child {
+        @apply rounded-tl-xl;
+    }
+
+    .table tr:last-child td:first-child {
+        @apply rounded-br-xl;
+    }
+
+    .table tr:last-child td:last-child {
+        @apply rounded-bl-xl;
     }
 }
 
