@@ -31,6 +31,7 @@ function DataTableSettingModal({ isOpen, onClose, entity }: DataTableSettingModa
     const saveChanges = () => {
         updateSetting("datatable", entity, { pages });
         showToast("success", "ذخیره تغییرات", "ذخیره تغییرات جدول با موفقیت انجام شد");
+        onClose();
         router.refresh();
     };
 

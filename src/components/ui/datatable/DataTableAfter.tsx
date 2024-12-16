@@ -20,13 +20,13 @@ function DataTableAfter({ pagesCount, current, entity }: DataTableAfterProps) {
     return (
         <div className="flex flex-col xl:flex-row items-center justify-between gap-8 w-full p-4 bg-white dark:bg-gray-850 sm:rounded-xl">
             <div className="flex gap-x-2 w-full sm:w-max">
-                <Link href={current !== pagesCount ? `${path}?page=${current + 1}` : ""} className="w-full sm:w-max">
+                <Link href={current !== pagesCount ? `${path}?page=${current + 1}` : ""} scroll={false} className="w-full sm:w-max">
                     <Button size="lg" variant="neutral-base" className="w-full sm:w-max" disabled={current === pagesCount}>
                         <LongArrowRight />
                         صفحه بعدی
                     </Button>
                 </Link>
-                <Link href={current !== 1 ? `${path}?page=${current - 1}` : ""} className="w-full sm:w-max">
+                <Link href={current !== 1 ? `${path}?page=${current - 1}` : ""} scroll={false} className="w-full sm:w-max">
                     <Button size="lg" variant="neutral-base" className="w-full sm:w-max" disabled={current === 1}>
                         صفحه قبلی
                         <LongArrowLeft />

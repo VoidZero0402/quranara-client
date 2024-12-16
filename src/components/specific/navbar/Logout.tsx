@@ -1,8 +1,10 @@
 "use client";
 
+import dynamic from "next/dynamic";
+
 import useToggleState from "@/hooks/useToggleState";
 
-import LogoutModal from "@/components/modal/LogoutModal";
+const LogoutModal = dynamic(() => import("@/components/modal/LogoutModal"), { ssr: false })
 
 import LogoutIcon from "@/components/svgs/Logout";
 

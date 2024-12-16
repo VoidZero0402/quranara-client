@@ -14,7 +14,7 @@ type PageProps = { page: number; current: number; href: string };
 function Pagination({ pagesCount, current }: PaginationProps) {
     const path = usePathname();
 
-    const { start, end, hasSeparator } = calculatePaginationPages(pagesCount, current);
+    const { start, end, hasSeparator } = calculatePaginationPages(pagesCount, current);    
 
     return (
         <div className="flex flex-row-reverse gap-x-2">
@@ -23,7 +23,7 @@ function Pagination({ pagesCount, current }: PaginationProps) {
             ))}
             {hasSeparator && <Separator />}
             {end.map((page) => (
-                <Page key={page} page={page} current={current} href={`${page}?page=${page}`} />
+                <Page key={page} page={page} current={current} href={`${path}?page=${page}`} />
             ))}
         </div>
     );
@@ -33,7 +33,7 @@ function Page({ page, current, href }: PageProps) {
     const isActive = page === current;
 
     return (
-        <Link href={href} className={`flex-center size-10 font-pelak-medium rounded-lg transition-all ${isActive ? "bg-blue-500 text-white" : "bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-500/15 disabled:bg-gray-200 dark:disabled:bg-gray-500/15"}`}>
+        <Link href={href} className={`flex-center size-10 font-pelak-medium rounded-lg transition-all ${isActive ? "bg-blue-500 text-white" : "bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-500/15 disabled:bg-gray-200 dark:disabled:bg-gray-500/15"}`} scroll={false}>
             {page}
         </Link>
     );

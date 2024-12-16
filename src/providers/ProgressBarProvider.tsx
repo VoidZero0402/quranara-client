@@ -10,7 +10,7 @@ function ProgressBarProvider({
     return (
         <>
             {children}
-            <ProgressBar color="#fbbf24" options={{ showSpinner: false }} shallowRouting />
+            <ProgressBar color="#fbbf24" options={{ showSpinner: false }} />
         </>
     );
 }

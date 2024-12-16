@@ -1,0 +1,28 @@
+import { cva, VariantProps } from "class-variance-authority";
+
+const iconButton = cva("peer text-gray-600 dark:text-gray-400 transition-all", {
+    variants: {
+        variant: {
+            primary: "hover:text-blue-500 dark:hover:text-blue-500",
+            secondary: "hover:text-amber-500 dark:hover:text-amber-400",
+            danger: "hover:text-red-500 dark:hover:text-red-500",
+            gray: "hover:text-gray-800 dark:hover:text-gray-200",
+        },
+    },
+    defaultVariants: {
+        variant: "gray",
+    },
+});
+
+type IconButtonProps = VariantProps<typeof iconButton> & { label: string } & React.ComponentProps<"div">;
+
+function IconButton({ children, label, variant = "gray" }: IconButtonProps) {
+    return (
+        <div className="flex-center relative size-8">
+            <button className={iconButton({ variant })}>{children}</button>
+            <div className="absolute -top-10 m-auto py-2.5 px-4 bg-white dark:bg-gray-850 font-pelak-medium text-xs rounded-lg opacity-0 peer-hover:opacity-100 transition-all">{label}</div>
+        </div>
+    );
+}
+
+export default IconButton;

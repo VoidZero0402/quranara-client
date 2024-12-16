@@ -1,8 +1,10 @@
 "use client";
 
+import dynamic from "next/dynamic";
+
 import useToggleState from "@/hooks/useToggleState";
 
-import DataTableSettingModal from "@/components/modal/DataTableSettingModal";
+const DataTableSettingModal = dynamic(() => import("@/components/modal/DataTableSettingModal"), { ssr: false })
 
 import Button from "../Button";
 

@@ -44,7 +44,7 @@
     }
 
     .with-custom-scroll--horizontal::-webkit-scrollbar {
-        @apply h-1 w-full
+        @apply h-1 w-full;
     }
 
     .with-custom-scroll::-webkit-scrollbar-track {
@@ -88,24 +88,28 @@
     }
 
     .table thead {
-        @apply bg-white dark:bg-gray-850;
+        @apply bg-white dark:bg-gray-850 border-b border-gray-200/75 dark:border-gray-700/75;
     }
 
     .table tbody {
-        @apply bg-white dark:bg-gray-850;
+        @apply bg-white dark:bg-gray-850 divide-y divide-gray-100 dark:divide-gray-800;
     }
 
     .table th {
-        @apply text-gray-800 dark:text-gray-200 font-normal font-pelak-medium text-nowrap;
+        @apply text-gray-800 dark:text-gray-200 font-normal font-pelak-semibold text-nowrap;
     }
 
     .table td {
-        @apply text-gray-700 dark:text-gray-300;
+        @apply text-gray-700 dark:text-gray-300 font-pelak-medium text-nowrap;
     }
 
     .table th,
     .table td {
-        @apply px-8 py-4 text-start;
+        @apply px-8 py-6 text-start;
+    }
+
+    .table tbody tr {
+        @apply transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-800;
     }
 
     .table th:first-child {

@@ -13,6 +13,9 @@ export function getAllUsers(query: GetAllUsersQuerySchemaType): Promise<Response
     const queryString = convertToQueryString(query);
     const url = `/users?${queryString}`;
 
+    console.log(url);
+    
+
     return Quranara.get(url);
 }
 
