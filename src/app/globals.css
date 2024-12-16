@@ -109,19 +109,19 @@
     }
 
     .table th:first-child {
-        @apply rounded-tr-xl;
+        @apply sm:rounded-tr-xl;
     }
 
     .table th:last-child {
-        @apply rounded-tl-xl;
+        @apply sm:rounded-tl-xl;
     }
 
     .table tr:last-child td:first-child {
-        @apply rounded-br-xl;
+        @apply sm:rounded-br-xl;
     }
 
     .table tr:last-child td:last-child {
-        @apply rounded-bl-xl;
+        @apply sm:rounded-bl-xl;
     }
 }
 

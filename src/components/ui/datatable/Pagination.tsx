@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import { calculatePaginationPages } from "@/libs/funcs";
 
-import HourGlass from "../../svgs/HourGlass";
+import LinkMinimize from "@/components/svgs/LinkMinimize";
 
 type PaginationProps = { pagesCount: number; current: number };
 
@@ -41,8 +41,8 @@ function Page({ page, current, href }: PageProps) {
 
 function Separator() {
     return (
-        <div className="flex-center size-10 text-gray-800 dark:text-gray-200">
-            <HourGlass />
+        <div className="flex-center size-10 text-gray-600 dark:text-gray-400">
+            <LinkMinimize />
         </div>
     );
 }

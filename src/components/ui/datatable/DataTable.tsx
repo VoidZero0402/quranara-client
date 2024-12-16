@@ -1,61 +1,31 @@
 import { cn } from "@/libs/cn";
 
-import DataTableFooter from "./DataTableFooter";
+import DataTableAfter from "./DataTableAfter";
 
-type DataTableProps = React.ComponentProps<"div">;
+import { Entities } from "@/types/entities.types";
+import { Pagination } from "@/types/response.types";
 
-function DataTable({ children, className }: DataTableProps) {
+type DataTableProps = { entity: Entities; pagination: Pagination } & React.ComponentProps<"div">;
+
+type DataTableChildrenProps = React.ComponentProps<"div">;
+
+function DataTable({ children, entity, pagination, className }: DataTableProps) {
     return (
         <div className="space-y-4">
             <div className={cn("w-full overflow-x-auto with-custom-scroll with-custom-scroll--horizontal", className)}>
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>
-                                <div>شناسه</div>
-                            </th>
-                            <th>نام و نام خانوادگی</th>
-                            <th>سن</th>
-                            <th>شهر محل زندگی</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>6730e55ad94153e62f852490</td>
-                            <td>اشرف الله عظیمی</td>
-                            <td>۳۴</td>
-                            <td>همدان</td>
-                        </tr>
-                        <tr>
-                            <td>6730e55ad94153e62f852490</td>
-                            <td>اشرف الله عظیمی</td>
-                            <td>۳۴</td>
-                            <td>همدان</td>
-                        </tr>
-                        <tr>
-                            <td>6730e55ad94153e62f852490</td>
-                            <td>اشرف الله عظیمی</td>
-                            <td>۳۴</td>
-                            <td>همدان</td>
-                        </tr>
-                        <tr>
-                            <td>6730e55ad94153e62f852490</td>
-                            <td>اشرف الله عظیمی</td>
-                            <td>۳۴</td>
-                            <td>همدان</td>
-                        </tr>
-                        <tr>
-                            <td>6730e55ad94153e62f852490</td>
-                            <td>اشرف الله عظیمی</td>
-                            <td>۳۴</td>
-                            <td>همدان</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <table className="table">{children}</table>
             </div>
-            <DataTableFooter pagesCount={10} current={2} entity="users" />
+            <DataTableAfter pagesCount={pagination.pagesCount} current={pagination.page} entity={entity} />
         </div>
     );
+}
+
+export function DataTableHead({ children }: DataTableChildrenProps) {
+    return <thead>{children}</thead>;
+}
+
+export function DataTableBody({ children }: DataTableChildrenProps) {
+    return <tbody>{children}</tbody>;
 }
 
 export default DataTable;

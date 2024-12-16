@@ -8,14 +8,16 @@ import Button from "../Button";
 
 import GearWheel from "@/components/svgs/GearWheel";
 
-type DataTableSettingProps = { entity: string };
+import { Entities } from "@/types/entities.types";
+
+type DataTableSettingProps = { entity: Entities };
 
 function DataTableSetting({ entity }: DataTableSettingProps) {
     const { isOpen, close, open } = useToggleState();
 
     return (
         <>
-            <Button size="lg" variant="neutral-base" onClick={open}>
+            <Button size="lg" variant="neutral-base" className="w-full sm:w-max" onClick={open}>
                 <GearWheel />
                 تنظیمات جدول
             </Button>

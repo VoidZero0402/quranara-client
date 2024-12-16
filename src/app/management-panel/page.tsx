@@ -1,12 +1,7 @@
-import DataTable from "@/components/ui/datatable/DataTable";
 import React from "react";
 
 function ManagementPanel() {
-    return (
-        <div>
-            <DataTable></DataTable>
-        </div>
-    );
+    return <div>ManagementPanel</div>;
 }
 
 export default ManagementPanel;
