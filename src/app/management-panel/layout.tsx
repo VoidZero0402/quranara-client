@@ -15,7 +15,7 @@ async function ManagementPanelLayout({
         <div className="lg:pr-72">
             <div className="flex flex-col gap-y-4 sm:p-4">
                 <Navigation />
-                <main className="mb-4 grow h-full sm:rounded-2xl">{children}</main>
+                <main className="my-4 grow h-full sm:rounded-2xl">{children}</main>
             </div>
         </div>
     );

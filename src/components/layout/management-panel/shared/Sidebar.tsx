@@ -78,7 +78,7 @@ function Sidebar({ user }: SidebarProps) {
                             <Setting />
                             پنل مدیریت
                         </NavLink>
-                        <NavLink href="/management-panel/users">
+                        <NavLink href="/management-panel/users" subs>
                             <UserGroup />
                             مدیریت کاربران
                         </NavLink>

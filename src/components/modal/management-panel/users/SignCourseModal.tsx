@@ -65,7 +65,7 @@ function SignCourseModal({ isOpen, onClose, user }: SignCourseModalProps) {
                     ))}
                 </Select>
                 {course && (
-                    <div className="font-pelak-medium text-gray-700 dark:text-gray-300 leading-7">
+                    <div className="font-pelak-medium text-gray-700 dark:text-gray-300 leading-8">
                         <span>
                             در صورتی که از اهدای دوره <span className="text-amber-400 underline">{course.title}</span> به کاربر <span className="text-blue-500 underline">{user.username}</span> اطمینان دارید روی دکمه <span className="underline">اهدای دوره مدنظر</span> کلیک نمایید
                         </span>
@@ -73,7 +73,7 @@ function SignCourseModal({ isOpen, onClose, user }: SignCourseModalProps) {
                 )}
             </ModalBody>
             <ModalFooter className="flex-col sm:flex-row gap-4">
-                <Button size="lg" variant="filled-primary" className="w-full" disabled={!course || isPending} onClick={() => sign()}>
+                <Button size="lg" className="w-full" disabled={!course || isPending} onClick={() => sign()}>
                     {isPending ? "در حال اهدای دوره" : "اهدای دوره مدنظر"}
                 </Button>
                 <Button size="lg" variant="neutral-base" className="w-full" onClick={handleClose}>

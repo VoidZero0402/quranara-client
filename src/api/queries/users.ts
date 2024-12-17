@@ -11,10 +11,7 @@ import { Ban } from "@/types/ban.types";
 
 export function getAllUsers(query: GetAllUsersQuerySchemaType): Promise<Response<{ users: User[]; pagination: Pagination }>> {
     const queryString = convertToQueryString(query);
-    const url = `/users?${queryString}`;
-
-    console.log(url);
-    
+    const url = `/users?${queryString}`;    
 
     return Quranara.get(url);
 }

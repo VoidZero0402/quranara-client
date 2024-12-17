@@ -1,5 +1,6 @@
 export const ENTITIES = {
     USERS: "users",
+    BAN_USERS: "ban_users",
     COURSES: "courses",
     BLOGS: "blogs",
     TVS: "tvs",

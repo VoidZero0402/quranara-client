@@ -44,7 +44,7 @@ function LogoutModal({ isOpen, onClose }: ModalInstanceProps) {
             </ModalHeader>
             <ModalBody className="space-y-4">
                 <div className="space-y-2">
-                    <span className="flex items-center gap-x-1 font-pelak-semibold text-red-500 leading-8">از خروج از حساب کاربری خود اطمینان دارید؟</span>
+                    <span className="font-pelak-semibold text-red-500 leading-8">از خروج از حساب کاربری خود اطمینان دارید؟</span>
                     <p className="text-gray-600 dark:text-gray-400 leading-8">با خروج از حساب کاربری خود، پنل کاربری شما در دسترس نخواهد بود و در صورت نیاز به دسترسی باید دوباره از بخش ورود به وبسایت اقدام کنید</p>
                 </div>
             </ModalBody>

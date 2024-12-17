@@ -13,7 +13,7 @@ function UsersHeader() {
                 <p className="text-sm text-gray-600 dark:text-gray-400 leading-7">کابران خودت رو مدیریت کن، سکان کشتی در دست توست!</p>
             </div>
             <div className="md:w-80">
-                <SearchBar query="search" placeholder="جستجو در بین کاربران قرآن‌آرا" className="p-4 h-14" />
+                <SearchBar query="search" placeholder="جستجو در بین کاربران قرآن‌آرا" className="p-4 h-14" empty />
             </div>
         </div>
     );

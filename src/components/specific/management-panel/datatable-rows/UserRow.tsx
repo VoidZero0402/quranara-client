@@ -12,9 +12,9 @@ import UserRounded from "@/components/svgs/UserRounded";
 
 import { User } from "@/types/user.types";
 
-type UserRowProps = { user: User; onDetails: (user: User) => void; onSignCourse: (data: { user: Pick<User, "_id" | "username"> }) => void; onSendNotification: (_id: string) => void };
+type UserRowProps = { user: User; onDetails: (user: User) => void; onSignCourse: (payload: { user: Pick<User, "_id" | "username"> }) => void; onSendNotification: (_id: string) => void; onBanUser: (payload: { user: Pick<User, "_id" | "username" | "phone"> }) => void };
 
-function UserRow({ user, onDetails, onSignCourse, onSendNotification }: UserRowProps) {
+function UserRow({ user, onDetails, onSignCourse, onSendNotification, onBanUser }: UserRowProps) {
     return (
         <tr>
             <td>
@@ -45,7 +45,7 @@ function UserRow({ user, onDetails, onSignCourse, onSendNotification }: UserRowP
                     <IconButton label="ارسال اعلان" onClick={() => onSendNotification(user._id)}>
                         <NotificationUnreadLines />
                     </IconButton>
-                    <IconButton label="مسدود کردن" variant="danger">
+                    <IconButton label="مسدود کردن" variant="danger" onClick={() => onBanUser({ user: { _id: user._id, username: user.username, phone: user.phone } })}>
                         <UserBlockRounded />
                     </IconButton>
                 </div>
