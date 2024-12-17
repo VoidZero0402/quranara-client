@@ -12,29 +12,22 @@ import LongArrowRight from "../../svgs/LongArrowRight";
 
 import { Entities } from "@/types/entities.types";
 
-type DataTableAfterProps = { pagesCount: number; current: number; entity: Entities };
+type DataTableAfterProps = { count: number; pagesCount: number; current: number; entity: Entities };
 
-function DataTableAfter({ pagesCount, current, entity }: DataTableAfterProps) {
+function DataTableAfter({ count, pagesCount, current, entity }: DataTableAfterProps) {
     const path = usePathname();
 
     return (
-        <div className="flex flex-col xl:flex-row items-center justify-between gap-8 w-full p-4 bg-white dark:bg-gray-850 sm:rounded-xl">
-            <div className="flex gap-x-2 w-full sm:w-max">
-                <Link href={current !== pagesCount ? `${path}?page=${current + 1}` : ""} scroll={false} className="w-full sm:w-max">
-                    <Button size="lg" variant="neutral-base" className="w-full sm:w-max" disabled={current === pagesCount}>
-                        <LongArrowRight />
-                        صفحه بعدی
-                    </Button>
-                </Link>
-                <Link href={current !== 1 ? `${path}?page=${current - 1}` : ""} scroll={false} className="w-full sm:w-max">
-                    <Button size="lg" variant="neutral-base" className="w-full sm:w-max" disabled={current === 1}>
-                        صفحه قبلی
-                        <LongArrowLeft />
-                    </Button>
-                </Link>
+        <div className="sm:space-y-4">
+            <div className="flex-center w-full p-4 bg-white dark:bg-gray-850 sm:rounded-xl">
+                <Pagination pagesCount={pagesCount} current={current} />
             </div>
-            <Pagination pagesCount={pagesCount} current={current} />
-            <DataTableSetting entity={entity} />
+            <div className="flex flex-col sm:flex-row justify-between gap-4 p-4 sm:p-0">
+                <span className="font-pelak-medium text-gray-800 dark:text-gray-200">
+                    {pagesCount} صفحه، {count.toLocaleString()} موجودیت
+                </span>
+                <DataTableSetting entity={entity} />
+            </div>
         </div>
     );
 }

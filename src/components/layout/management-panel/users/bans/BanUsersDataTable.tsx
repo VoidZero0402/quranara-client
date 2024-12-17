@@ -12,7 +12,34 @@ import { ENTITIES } from "@/constants/entities";
 
 import BanUserRow from "@/components/specific/management-panel/datatable-rows/BanUserRow";
 
-import DataTable, { DataTableHead, DataTableBody } from "@/components/ui/datatable/DataTable";
+import DataTable, { DataTableBody, Column } from "@/components/ui/datatable/DataTable";
+
+const columns: Column[] = [
+    {
+        key: "profile",
+        text: "نمایه کاربر",
+    },
+    {
+        key: "phone",
+        text: "شماره موبایل",
+    },
+    {
+        key: "fullname",
+        text: "نام کامل",
+    },
+    {
+        key: "createdAt",
+        text: "تاریخ عضویت",
+    },
+    {
+        key: "bannedAt",
+        text: "تاریخ مسدودیت",
+    },
+    {
+        key: "actions",
+        text: "گزینه‌های پیشرفته",
+    },
+];
 
 import { Ban } from "@/types/ban.types";
 import { Pagination } from "@/types/response.types";
@@ -40,17 +67,7 @@ function BanUsersDataTable({ bans, pagination }: BanUsersDataTableProps) {
 
     return (
         <section>
-            <DataTable entity={ENTITIES.BAN_USERS} pagination={pagination}>
-                <DataTableHead>
-                    <tr>
-                        <th>نمایه کاربر</th>
-                        <th>شماره موبایل</th>
-                        <th>نام کامل</th>
-                        <th>تاریخ عضویت</th>
-                        <th>تاریخ مسدودیت</th>
-                        <th className="shadow-white">گزینه‌های پیشرفته</th>
-                    </tr>
-                </DataTableHead>
+            <DataTable entity={ENTITIES.BAN_USERS} columns={columns} pagination={pagination}>
                 <DataTableBody>
                     {bans.map((ban) => (
                         <BanUserRow key={ban._id} ban={ban} onUnbanUser={onUnbanUser as any} />

@@ -3,47 +3,84 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-import { calculatePaginationPages } from "@/libs/funcs";
+import { getPagination } from "@/libs/funcs";
 
-import LinkMinimize from "@/components/svgs/LinkMinimize";
+import ArrowLeft from "@/components/svgs/ArrowLeft";
+import ArrowRight from "@/components/svgs/ArrowRight";
+import DoubleArrowLeft from "@/components/svgs/DoubleArrowLeft";
+import DoubleArrowRight from "@/components/svgs/DoubleArrowRight";
 
 type PaginationProps = { pagesCount: number; current: number };
 
-type PageProps = { page: number; current: number; href: string };
+type PageProps = { isActive?: boolean; href: string } & React.ComponentProps<"a">;
+
+type ButtonProps = { href: string } & React.ComponentProps<"a">;
 
 function Pagination({ pagesCount, current }: PaginationProps) {
     const path = usePathname();
 
-    const { start, end, hasSeparator } = calculatePaginationPages(pagesCount, current);    
+    const { pagination } = getPagination(pagesCount, current);
 
     return (
-        <div className="flex flex-row-reverse gap-x-2">
-            {start.map((page) => (
-                <Page key={page} page={page} current={current} href={`${path}?page=${page}`} />
-            ))}
-            {hasSeparator && <Separator />}
-            {end.map((page) => (
-                <Page key={page} page={page} current={current} href={`${path}?page=${page}`} />
-            ))}
+        <div className="space-y-2">
+            <div className="flex flex-row-reverse gap-x-2">
+                <div className="hidden sm:flex flex-row-reverse gap-x-2">
+                    <LinkButton href={`${path}?page=${1}`}>
+                        <DoubleArrowLeft />
+                    </LinkButton>
+                    <LinkButton href={current !== 1 ? ` ${path}?page=${current - 1}` : ""}>
+                        <ArrowLeft />
+                    </LinkButton>
+                </div>
+                {pagination.map((page) => (
+                    <Page key={page} isActive={page === current} href={`${path}?page=${page}`}>
+                        {page}
+                    </Page>
+                ))}
+                <div className="hidden sm:flex flex-row-reverse gap-x-2">
+                    <LinkButton href={current !== pagesCount ? `${path}?page=${current + 1}` : ""}>
+                        <ArrowRight />
+                    </LinkButton>
+                    <LinkButton href={`${path}?page=${pagesCount}`}>
+                        <DoubleArrowRight />
+                    </LinkButton>
+                </div>
+            </div>
+            <div className="flex sm:hidden flex-row-reverse justify-between">
+                <div className="flex flex-row-reverse gap-x-2">
+                    <LinkButton href={`${path}?page=${1}`}>
+                        <DoubleArrowLeft />
+                    </LinkButton>
+                    <LinkButton href={current !== 1 ? ` ${path}?page=${current - 1}` : ""}>
+                        <ArrowLeft />
+                    </LinkButton>
+                </div>
+                <div className="flex flex-row-reverse gap-x-2">
+                    <LinkButton href={current !== pagesCount ? `${path}?page=${current + 1}` : ""}>
+                        <ArrowRight />
+                    </LinkButton>
+                    <LinkButton href={`${path}?page=${pagesCount}`}>
+                        <DoubleArrowRight />
+                    </LinkButton>
+                </div>
+            </div>
         </div>
     );
 }
 
-function Page({ page, current, href }: PageProps) {
-    const isActive = page === current;
-
+function Page({ children, isActive, href }: PageProps) {
     return (
-        <Link href={href} className={`flex-center size-10 font-pelak-medium rounded-lg transition-all ${isActive ? "bg-blue-500 text-white" : "bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-500/15 disabled:bg-gray-200 dark:disabled:bg-gray-500/15"}`} scroll={false}>
-            {page}
+        <Link href={href} className={`flex-center size-12 font-pelak-medium rounded-xl transition-all ${isActive ? "bg-amber-400 text-white" : "bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-500/15 disabled:bg-gray-200 dark:disabled:bg-gray-500/15"}`} scroll={false}>
+            {children}
         </Link>
     );
 }
 
-function Separator() {
+function LinkButton({ children, href }: ButtonProps) {
     return (
-        <div className="flex-center size-10 text-gray-600 dark:text-gray-400">
-            <LinkMinimize />
-        </div>
+        <Link href={href} className="flex-center size-12 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition-all" scroll={false}>
+            {children}
+        </Link>
     );
 }
 

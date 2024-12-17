@@ -79,22 +79,30 @@ export function getTruthyValues(obj: Record<string, any>): Record<string, any> {
     return record;
 }
 
-export function calculatePaginationPages(pagesCount: number, current: number, limit = 6): { start: number[]; end: number[]; hasSeparator: boolean } {
+export function getPagination(pagesCount: number, current: number, limit = 5): { pagination: number[] } {
+    const pagination: number[] = [];
+
     if (limit >= pagesCount) {
-        const start = new Array(pagesCount).fill(0).map((_, i) => i + 1);
+        for (let i = 1; i <= pagesCount; i++) {
+            pagination.push(i);
+        }
 
-        return { start, end: [], hasSeparator: false };
+        return { pagination };
     }
 
-    if (limit >= pagesCount - current) {
-        const end = new Array(limit / 2).fill(0).map((_, i) =>  i + 1);
-        const start = [1, 2, 3];
+    const halfLimit = Math.ceil(limit / 2);
 
-        return { start, end, hasSeparator: true };
+    const max = pagesCount - halfLimit + 1;
+
+    const middle = Math.min(Math.max(halfLimit, current), max);
+
+    for (let i = middle - halfLimit + 1; i < middle; i++) {
+        pagination.push(i);
     }
 
-    const start = [current, current + 1, current + 2];
-    const end = [pagesCount - 2, pagesCount - 1, pagesCount];
+    for (let i = middle; i < middle + halfLimit; i++) {
+        pagination.push(i);
+    }
 
-    return { start, end, hasSeparator: true };
+    return { pagination };
 }

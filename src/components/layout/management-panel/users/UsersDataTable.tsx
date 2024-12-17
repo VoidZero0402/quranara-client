@@ -14,7 +14,31 @@ const SignCourseModal = dynamic(() => import("@/components/modal/management-pane
 const SendUserNotificationModal = dynamic(() => import("@/components/modal/management-panel/users/SendUserNotificationModal"), { ssr: false });
 const BanUserModal = dynamic(() => import("@/components/modal/management-panel/users/BanUserModal"), { ssr: false });
 
-import DataTable, { DataTableHead, DataTableBody } from "@/components/ui/datatable/DataTable";
+import DataTable, { DataTableBody, Column } from "@/components/ui/datatable/DataTable";
+
+const columns: Column[] = [
+    {
+        key: "profile",
+        text: "نمایه کاربر",
+    },
+    {
+        key: "phone",
+        text: "شماره موبایل",
+    },
+    {
+        key: "fullname",
+        text: "نام کامل",
+    },
+    {
+        key: "createdAt",
+        text: "تاریخ عضویت",
+    },
+    {
+        key: "actions",
+        text: "گزینه‌های پیشرفته",
+    },
+];
+
 
 import { User } from "@/types/user.types";
 import { Pagination } from "@/types/response.types";
@@ -48,16 +72,7 @@ function UsersDataTable({ users, pagination }: UsersDataTableProps) {
 
     return (
         <section>
-            <DataTable entity={ENTITIES.USERS} pagination={pagination}>
-                <DataTableHead>
-                    <tr>
-                        <th>نمایه کاربر</th>
-                        <th>شماره موبایل</th>
-                        <th>نام کامل</th>
-                        <th>تاریخ عضویت</th>
-                        <th className="shadow-white">گزینه‌های پیشرفته</th>
-                    </tr>
-                </DataTableHead>
+            <DataTable entity={ENTITIES.USERS} columns={columns} pagination={pagination}>
                 <DataTableBody>
                     {users.map((user) => (
                         <UserRow key={user._id} user={user} onDetails={onDetails} onSignCourse={onSignCourse} onSendNotification={onSendNotification} onBanUser={onBanUser} />
