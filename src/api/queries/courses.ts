@@ -8,7 +8,7 @@ import { PaginationQuerySchemaType } from "@/validators/pagination";
 import { convertToQueryString } from "@/libs/funcs";
 
 import { Response, Pagination } from "@/types/response.types";
-import { Course, LimitedCourse } from "@/types/course.types";
+import { Course, LimitedCourse, SummaryCourse } from "@/types/course.types";
 import { Topic } from "@/types/topic.types";
 import { Comment } from "@/types/comment.types";
 
@@ -32,6 +32,15 @@ export function getCourses(query: GetAllCoursesQuerySchemaType): Promise<Respons
     const url = `/courses?${queryString}`;
 
     return Quranara.get(url);
+}
+
+export function getCoursesSummary(): Promise<Response<{ courses: SummaryCourse[]; pagination: Pagination }>> {
+    return Quranara.get("/courses/summary", {
+        cache: "force-cache",
+        next: {
+            tags: [courses.default],
+        },
+    });
 }
 
 export function searchInCourses(query: SearchCoursesQuerySchameType): Promise<Response<{ courses: LimitedCourse[]; pagination: Pagination }>> {

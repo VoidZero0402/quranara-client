@@ -26,6 +26,10 @@ export const courses = {
     },
 };
 
+export const category = {
+    default: "category",
+};
+
 export const news = {
     default: "news",
 };
@@ -51,4 +55,3 @@ export const tv = {
 export const ui = {
     menus: "menus",
 };
-

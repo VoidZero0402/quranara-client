@@ -3,6 +3,11 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
+import { createComment, replyComment } from "@/api/mutations/comments";
+import { CreateCommentStatusOptions } from "@/api/errors/comments";
+
+import { statusHandler } from "@/libs/responses";
+
 import { ReplyCommentSchema, ReplyCommentSchemaType } from "@/validators/comments";
 
 import TextArea from "../TextArea";
@@ -10,9 +15,6 @@ import TextArea from "../TextArea";
 import Button from "@/components/ui/Button";
 
 import NotificationUnreadLines from "@/components/svgs/NotificationUnreadLines";
-import { createComment, replyComment } from "@/api/mutations/comments";
-import { statusHandler } from "@/libs/responses";
-import { CreateCommentStatusOptions } from "@/api/errors/comments";
 
 type CommentFormProps = { entity: { name: string; _id: string }; replyTo?: { commentId: string; username: string } | null };
 

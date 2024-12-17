@@ -7,3 +7,11 @@ export const SeenNotificationStatusOptions: ResponseStatusHandlerOptions = {
         "404": { status: "error", text: "مشکل در سرور", caption: "بنظر میرسه مشکلی در سرور پیش اومده" },
     },
 };
+
+export const SendNotificationOneStatusOptions: ResponseStatusHandlerOptions = {
+    statuses: {
+        "201": { status: "success", text: "ارسال اعلان", caption: "ارسال اعلان با موفقیت انجام شد" },
+        "401": { status: "error", text: "عدم دسترسی", caption: "شما به این عملکرد دسترسی ندارید" },
+        "400-validation": { status: "info", text: "اطلاعات نامعتبر", caption: "لطفا اطلاعات معتبر را وارد کنید" },
+    },
+};

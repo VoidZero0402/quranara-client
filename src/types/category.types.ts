@@ -11,4 +11,6 @@ export type Category = {
 
 export type PopulatedCategory = Pick<Category, "_id" | "title">;
 
+export type SummaryCategory = Pick<Category, "_id" | "title">
+
 export type Refrences = (typeof REFERENCES)[keyof typeof REFERENCES];

@@ -14,12 +14,14 @@ const iconButton = cva("peer text-gray-600 dark:text-gray-400 transition-all", {
     },
 });
 
-type IconButtonProps = VariantProps<typeof iconButton> & { label: string } & React.ComponentProps<"div">;
+type IconButtonProps = VariantProps<typeof iconButton> & { label: string } & React.ComponentProps<"button">;
 
-function IconButton({ children, label, variant = "gray" }: IconButtonProps) {
+function IconButton({ children, label, variant = "gray", ...props }: IconButtonProps) {
     return (
         <div className="flex-center relative size-8">
-            <button className={iconButton({ variant })}>{children}</button>
+            <button className={iconButton({ variant })} {...props}>
+                {children}
+            </button>
             <div className="absolute -top-10 m-auto py-2.5 px-4 bg-white dark:bg-gray-850 font-pelak-medium text-xs rounded-lg opacity-0 peer-hover:opacity-100 transition-all">{label}</div>
         </div>
     );

@@ -10,10 +10,13 @@ import { SeenNotificationStatusOptions } from "@/api/errors/notifications";
 import { statusHandler } from "@/libs/responses";
 
 import Button from "@/components/ui/Button";
+import { useRouter } from "next/navigation";
 
 type SeenNotificationButtonProps = { identifier: string };
 
 function SeenNotificationButton({ identifier }: SeenNotificationButtonProps) {
+    const router = useRouter();
+
     const queryClient = useQueryClient();
 
     const { mutate: seen, isPending } = useMutation({
@@ -31,6 +34,8 @@ function SeenNotificationButton({ identifier }: SeenNotificationButtonProps) {
                     queryClient.invalidateQueries({
                         queryKey: [`notifications-${MODE.READ}`],
                     });
+
+                    router.refresh();
                 }
             }
         },

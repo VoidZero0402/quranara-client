@@ -1,24 +1,24 @@
 import { Suspense } from "react";
 
+import { getAllUsers } from "@/api/queries/users";
+
+import { ENTITIES } from "@/constants/entities";
+
+import { getDatatableItemsPerPage } from "@/libs/server/cookies";
+
 import UsersDataTable from "@/components/layout/management-panel/users/UsersDataTable";
+import UsersHeader from "@/components/layout/management-panel/users/UsersHeader";
 
-import UserGroup from "@/components/svgs/UserGroup";
+async function Users({ searchParams }: { searchParams: Promise<{ page: string; search: string }> }) {
+    const { page = 1, search } = await searchParams;
+    const limit = await getDatatableItemsPerPage(ENTITIES.USERS);
 
-function Users({ searchParams }: { searchParams: Promise<{ page: string; search: string }> }) {
+    const { data } = await getAllUsers({ page: +page, limit, ...(search && { search }) });
+
     return (
-        <div className="mt-4">
-            <section className="space-y-8">
-                <div className="space-y-2">
-                    <span className="flex items-center gap-x-1 font-pelak-medium text-xl text-gray-700 dark:text-gray-300">
-                        <UserGroup className="w-8" />
-                        مدیریت کاربران
-                    </span>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 leading-7">کابران خودت رو مدیریت کن، سکان کشتی در دست توست!</p>
-                </div>
-                <Suspense>
-                    <UsersDataTable searchParams={searchParams} />
-                </Suspense>
-            </section>
+        <div className="space-y-4 mt-4">
+            <UsersHeader />
+            <UsersDataTable users={data.users} pagination={data.pagination} />
         </div>
     );
 }

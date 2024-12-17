@@ -1,28 +1,48 @@
-import { getAllUsers } from "@/api/queries/users";
+"use client";
+
+import { useCallback } from "react";
+import dynamic from "next/dynamic";
+
+import useToggleState from "@/hooks/useToggleState";
 
 import { ENTITIES } from "@/constants/entities";
 
-import { getDatatableItemsPerPage } from "@/libs/server/cookies";
-
 import UserRow from "@/components/specific/management-panel/datatable-rows/UserRow";
 
+const UserDetailsModal = dynamic(() => import("@/components/modal/management-panel/users/UserDetailsModal"), { ssr: false });
+const SignCourseModal = dynamic(() => import("@/components/modal/management-panel/users/SignCourseModal"), { ssr: false });
+const SendUserNotificationModal = dynamic(() => import("@/components/modal/management-panel/users/SendUserNotificationModal"), { ssr: false });
+
 import DataTable, { DataTableHead, DataTableBody } from "@/components/ui/datatable/DataTable";
-import SearchBar from "@/components/ui/SearchBar";
 
-type UsersDataTableProps = { searchParams: Promise<{ page: string; search: string }> };
+import { User } from "@/types/user.types";
+import { Pagination } from "@/types/response.types";
 
-async function UsersDataTable({ searchParams }: UsersDataTableProps) {
-    const { page = 1, search } = await searchParams;
-    const limit = await getDatatableItemsPerPage(ENTITIES.USERS);
+type UsersDataTableProps = {
+    users: User[];
+    pagination: Pagination;
+};
 
-    const { data } = await getAllUsers({ page: +page, limit, ...(search && { search }) });
+function UsersDataTable({ users, pagination }: UsersDataTableProps) {
+    const { isOpen: isOpenDetailsModal, open: openDetailsModal, close: closeDetailsModal, props: detailsModalProps } = useToggleState<{ user: User }>();
+    const { isOpen: isOpenSignCourseModal, open: openSignCourseModal, close: closeSignCourseModal, props: signCourseModalProps } = useToggleState<{ user: Pick<User, "_id" | "username"> }>();
+    const { isOpen: isOpenNotificationModal, open: openNotificationModal, close: closeNotificationModal, props: notificationModalProps } = useToggleState<{ _id: string }>();
+
+    const onDetails = useCallback((user: User) => {
+        openDetailsModal({ user });
+    }, []);
+
+    const onSignCourse = useCallback((data: { user: Pick<User, "_id" | "username"> }) => {
+        openSignCourseModal(data);
+    }, []);
+
+    const onSendNotification = useCallback((_id: string) => {
+        openNotificationModal({ _id });
+    }, []);
 
     return (
-        <div className="space-y-8">
-            <div className="flex items-center justify-between gap-8">
-                <SearchBar query="search" className="w-72" placeholder="جستجو در کاربران قرآن‌آرا" />
-            </div>
-            <DataTable entity={ENTITIES.USERS} pagination={data.pagination}>
+        <section className="space-y-8">
+            <DataTable entity={ENTITIES.USERS} pagination={pagination}>
                 <DataTableHead>
                     <tr>
                         <th>نمایه کاربر</th>
@@ -33,12 +53,15 @@ async function UsersDataTable({ searchParams }: UsersDataTableProps) {
                     </tr>
                 </DataTableHead>
                 <DataTableBody>
-                    {data.users.map((user) => (
-                        <UserRow key={user._id} {...user} />
+                    {users.map((user) => (
+                        <UserRow key={user._id} user={user} onDetails={onDetails} onSignCourse={onSignCourse} onSendNotification={onSendNotification} />
                     ))}
                 </DataTableBody>
             </DataTable>
-        </div>
+            <UserDetailsModal isOpen={isOpenDetailsModal} onClose={closeDetailsModal} {...detailsModalProps} />
+            <SignCourseModal isOpen={isOpenSignCourseModal} onClose={closeSignCourseModal} {...signCourseModalProps} />
+            <SendUserNotificationModal isOpen={isOpenNotificationModal} onClose={closeNotificationModal} {...notificationModalProps} />
+        </section>
     );
 }
 

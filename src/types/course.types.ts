@@ -37,4 +37,6 @@ export type LimitedCourse = Omit<Course, "introduction">;
 
 export type RelatedCourse = Pick<Course, "_id" | "title" | "slug" | "description" | "status" | "metadata">
 
+export type SummaryCourse = Pick<Course, "_id" | "title">
+
 export type Sorting = (typeof SORTING)[keyof typeof SORTING];
