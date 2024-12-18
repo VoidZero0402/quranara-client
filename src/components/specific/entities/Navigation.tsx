@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback, startTransition } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import { SORTING } from "@/constants/courses";
 
@@ -22,25 +22,19 @@ type NavigationProps = { entity: string };
 
 function Navigation({ entity }: NavigationProps) {
     const router = useRouter();
-    const path = usePathname();
     const searchParams = useSearchParams();
 
     const [sort, setSort] = useState(searchParams.get("sort") ?? SORTING.DEFAULT);
 
-    const route = `${path}?${searchParams.toString()}`;
+    const updateSort = useCallback((sort: string) => {
+        const updatedURL = updateURLSearchParams("sort", sort);
 
-    const updateSort = useCallback(
-        (sort: string) => {
-            const updatedURL = updateURLSearchParams(route, "sort", sort);
+        startTransition(() => {
+            setSort(sort);
+        });
 
-            startTransition(() => {
-                setSort(sort);
-            });
-
-            router.push(updatedURL, { scroll: false });
-        },
-        [router, route]
-    );
+        router.push(updatedURL, { scroll: false });
+    }, []);
 
     return (
         <div className="flex flex-col-reverse xl:flex-row items-center gap-4 md:gap-8 xl:p-6 xl:bg-white xl:dark:bg-gray-850 rounded-2xl">
@@ -70,7 +64,7 @@ function Navigation({ entity }: NavigationProps) {
             </div>
             <NavigationDrawer entity={entity} sort={sort} onChange={updateSort} />
             <div className="grow w-full xl:w-min p-4 md:p-6 xl:p-0 bg-white dark:bg-gray-850 rounded-2xl xl:rounded-none">
-                <SearchBar route={route} query="search" placeholder={`در ${entity} جستجو کنید`} empty />
+                <SearchBar query="search" placeholder={`در ${entity} جستجو کنید`} empty />
             </div>
         </div>
     );

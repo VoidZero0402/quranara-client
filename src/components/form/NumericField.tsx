@@ -19,7 +19,7 @@ interface TextFieldProps<T extends FieldValues> {
 
 const regex = /0-9\u06F0-\u06F9/;
 
-function TextField<T extends FieldValues>({ children, name, control, label, placeholder, caption, className, inputClassName }: TextFieldProps<T>) {
+function NumericField<T extends FieldValues>({ children, name, control, label, placeholder, caption, className, inputClassName }: TextFieldProps<T>) {
     const {
         field,
         fieldState: { error },
@@ -46,7 +46,7 @@ function TextField<T extends FieldValues>({ children, name, control, label, plac
                 {label}
             </label>
             <div className="relative text-gray-500">
-                <input {...field} onChange={onChange} type="text" placeholder={placeholder} id={name as string} className={cn("p-4 w-full bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-200 border border-gray-100 dark:border-gray-800 focus:border-gray-200 dark:focus:border-gray-700 rounded-xl placeholder:text-gray-500 dark:placeholder:text-gray-400 placeholder:text-sm transition-colors", inputClassName)} />
+                <input {...field} onChange={onChange} type="text" placeholder={placeholder} id={name as string} className={cn("p-4 w-full bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-200 border border-gray-100 dark:border-gray-800 focus:border-gray-200 dark:focus:border-gray-700 rounded-xl placeholder:text-gray-500 dark:placeholder:text-gray-400  transition-colors", inputClassName)} />
                 <div className="flex-center absolute left-4 top-0 bottom-0 m-auto">{children}</div>
             </div>
             <FormDetails error={error} caption={caption} />
@@ -54,4 +54,4 @@ function TextField<T extends FieldValues>({ children, name, control, label, plac
     );
 }
 
-export default TextField;
+export default NumericField;

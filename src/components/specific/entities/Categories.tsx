@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback, startTransition } from "react";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useSuspenseQuery } from "@tanstack/react-query";
 
 import { getCategories } from "@/api/queries/categories";
@@ -24,25 +24,19 @@ function Categories({ reference }: CategoriesProps) {
     });
 
     const router = useRouter();
-    const path = usePathname();
     const searchParams = useSearchParams();
 
     const [category, setCategory] = useState(searchParams.get("category") ?? "all");
 
-    const updateCategory = useCallback(
-        (category: string) => {
-            const route = `${path}?${searchParams.toString()}`;
+    const updateCategory = useCallback((category: string) => {
+        const updatedParams = updateURLSearchParams("category", category);
 
-            const updatedParams = updateURLSearchParams(route, "category", category);
+        startTransition(() => {
+            setCategory(category);
+        });
 
-            startTransition(() => {
-                setCategory(category);
-            });
-
-            router.push(updatedParams, { scroll: false });
-        },
-        [category, searchParams]
-    );
+        router.push(updatedParams, { scroll: false });
+    }, []);
 
     return (
         <>

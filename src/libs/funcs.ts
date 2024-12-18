@@ -14,8 +14,8 @@ export function convertToQueryString(params: Record<string, any | string[]>) {
     return searchParams.toString();
 }
 
-export function updateURLSearchParams(route: string, key: string, value: string) {
-    const url = new URL(route, window.location.origin);
+export function updateURLSearchParams(key: string, value: string) {
+    const url = new URL(window.location.href, window.location.origin);
 
     url.searchParams.set(key, value);
 

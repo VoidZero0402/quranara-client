@@ -1,5 +1,3 @@
-import { Suspense } from "react";
-
 import { getAllUsers } from "@/api/queries/users";
 
 import { ENTITIES } from "@/constants/entities";
@@ -20,9 +18,7 @@ async function Users({ searchParams }: { searchParams: Promise<{ page: string; s
         <div className="space-y-8">
             <div className="space-y-4">
                 <UsersHeader />
-                <Suspense>
-                    <UsersDataTable users={data.users} pagination={data.pagination} />
-                </Suspense>
+                <UsersDataTable users={data.users} pagination={data.pagination} />
             </div>
             <RelatedLinks />
         </div>

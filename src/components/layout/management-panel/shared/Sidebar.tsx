@@ -20,6 +20,7 @@ import UserGroup from "@/components/svgs/UserGroup";
 import Layers from "@/components/svgs/Layers";
 import Widgets from "@/components/svgs/Widgets";
 import PlayCircle from "@/components/svgs/PlayCircle";
+import Graph from "@/components/svgs/Graph";
 import Document from "@/components/svgs/Document";
 import NotificationUnreadLines from "@/components/svgs/NotificationUnreadLines";
 import ChatRoundLine from "@/components/svgs/ChatRoundLine";
@@ -93,6 +94,10 @@ function Sidebar({ user }: SidebarProps) {
                         <NavLink href="/management-panel/tvs">
                             <PlayCircle />
                             آموزش‌های رایگان
+                        </NavLink>
+                        <NavLink href="/management-panel/categories">
+                            <Graph />
+                            دسته‌بندی ها
                         </NavLink>
                         <NavLink href="/management-panel/news">
                             <Document />
