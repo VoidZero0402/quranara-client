@@ -8,9 +8,9 @@ import { updateURLSearchParams } from "@/libs/funcs";
 
 import Magnifer from "../svgs/Magnifer";
 
-type SearchBarProps = { query: string; wrapperCalssName?: string; empty?: boolean } & React.ComponentProps<"input">;
+type SearchBarProps = { route?: string; query: string; wrapperCalssName?: string; empty?: boolean } & React.ComponentProps<"input">;
 
-function SearchBar({ query, wrapperCalssName, empty = false, className, id, placeholder }: SearchBarProps) {
+function SearchBar({ route, query, wrapperCalssName, empty = false, className, id, placeholder }: SearchBarProps) {
     const router = useRouter();
     const searchParams = useSearchParams();
 
@@ -25,7 +25,7 @@ function SearchBar({ query, wrapperCalssName, empty = false, className, id, plac
             return;
         }
 
-        const url = updateURLSearchParams(query, search);
+        const url = updateURLSearchParams(query, search, route);
 
         router.push(url, { scroll: false });
     };

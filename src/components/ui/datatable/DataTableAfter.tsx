@@ -1,22 +1,13 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-import Link from "next/link";
-
 import Pagination from "./Pagination";
 import DataTableSetting from "./DataTableSetting";
-import Button from "../Button";
-
-import LongArrowLeft from "../../svgs/LongArrowLeft";
-import LongArrowRight from "../../svgs/LongArrowRight";
 
 import { Entities } from "@/types/entities.types";
 
 type DataTableAfterProps = { count: number; pagesCount: number; current: number; entity: Entities };
 
 function DataTableAfter({ count, pagesCount, current, entity }: DataTableAfterProps) {
-    const path = usePathname();
-
     return (
         <div className="sm:space-y-4">
             <div className="flex-center w-full p-4 bg-white dark:bg-gray-850 sm:rounded-xl">

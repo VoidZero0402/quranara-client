@@ -4,6 +4,7 @@ export const ENTITIES = {
     COURSES: "courses",
     BLOGS: "blogs",
     TVS: "tvs",
+    CATEGORIES: "categories",
     NEWS: "news",
     NOTIFICATIONS: "notifications",
     TICKETS: "tickets",

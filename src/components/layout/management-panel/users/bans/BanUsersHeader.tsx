@@ -1,5 +1,3 @@
-import SearchBar from "@/components/ui/SearchBar";
-
 import UserBlockRounded from "@/components/svgs/UserBlockRounded";
 
 function BanUsersHeader() {

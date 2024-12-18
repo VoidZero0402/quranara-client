@@ -3,7 +3,6 @@ import { MODE } from "@/constants/notifications";
 import SeenNotificationButton from "@/components/specific/panel/notifications/SeenNotificationButton";
 
 import Skeleton, { SkeletonFrame } from "@/components/ui/Skeleton";
-import Button from "@/components/ui/Button";
 
 import BellOff from "@/components/svgs/BellOff";
 

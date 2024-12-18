@@ -38,6 +38,8 @@ function Categories({ reference }: CategoriesProps) {
         router.push(updatedParams, { scroll: false });
     }, []);
 
+    console.log(data.data.categories);
+
     return (
         <>
             <div className="hidden md:flex items-center gap-x-4">

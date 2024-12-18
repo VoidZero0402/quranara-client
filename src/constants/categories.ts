@@ -11,3 +11,10 @@ export const SOURCES = {
 };
 
 export const FILTER__SOURCES = Object.keys(SOURCES);
+
+export const RefrencesText = {
+    [REFERENCES.BLOG]: "مقالات",
+    [REFERENCES.COURSE]: "دوره‌ها",
+    [REFERENCES.TV]: "آموزش‌ها",
+    [REFERENCES.DISCUSSION]: "بحث و گفتگو",
+};

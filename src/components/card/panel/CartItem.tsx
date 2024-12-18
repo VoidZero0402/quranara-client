@@ -4,7 +4,6 @@ import RemoveFromBasketButton from "@/components/specific/panel/cart/RemoveFromB
 
 import Placeholder from "@/components/ui/Placeholder";
 import Skeleton, { SkeletonFrame } from "@/components/ui/Skeleton";
-import Image from "@/components/ui/Image";
 
 import { type CartItem } from "@/types/cart.types";
 
@@ -13,8 +12,7 @@ function CartItem({ _id, title, description, slug, price, discount }: CartItem) 
     return (
         <div className="flex flex-col md:flex-row md:items-center gap-4 relative">
             <Link href={`/courses/${slug}`} className="md:w-1/4 shrink-0 overflow-hidden">
-                {/* <Placeholder className="aspect-video rounded-xl" type="image" /> */}
-                <Image src="/webpack-1-768x432.webp" alt="cover" width={400} height={220} className="rounded-xl" />
+                <Placeholder className="aspect-video rounded-xl" type="image" />
             </Link>
             <div className="md:w-1/2 space-y-2">
                 <h3 className="font-pelak-medium text-lg text-gray-800 dark:text-gray-200 line-clamp-1">

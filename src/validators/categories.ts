@@ -15,7 +15,7 @@ export const UpdateCategorySchema = CreateCategorySchema.omit({ ref: true });
 export type UpdateCategorySchemaType = z.infer<typeof UpdateCategorySchema>;
 
 export const GetAllCategoriesQuerySchema = PaginationQuerySchema.extend({
-    ref: z.enum([REFERENCES.BLOG, REFERENCES.TV, REFERENCES.COURSE, REFERENCES.DISCUSSION], { message: "لطفا یک منبع را انتخاب کنید" }).default(REFERENCES.BLOG),
+    ref: z.enum([REFERENCES.BLOG, REFERENCES.TV, REFERENCES.COURSE, REFERENCES.DISCUSSION], { message: "لطفا یک منبع را انتخاب کنید" }).optional(),
 });
 
 export type GetAllCategoriesQuerySchemaType = z.infer<typeof GetAllCategoriesQuerySchema>;
