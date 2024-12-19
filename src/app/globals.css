@@ -63,6 +63,10 @@
         scrollbar-gutter: stable;
     }
 
+    .with-custom-scroll--padding {
+        padding-left: .5rem;
+    }
+
     .hidden-scroll::-webkit-scrollbar {
         @apply hidden;
     }
