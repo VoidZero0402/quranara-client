@@ -1,4 +1,4 @@
-import { getAllNews } from "@/api/queries/news";
+import { getAllShownNews } from "@/api/queries/news";
 
 import NewsSlides from "@/components/specific/home/NewsSlides";
 
@@ -9,7 +9,7 @@ import ArrowLeft from "@/components/svgs/ArrowLeft";
 import ArrowRight from "@/components/svgs/ArrowRight";
 
 async function News() {
-    const { data } = await getAllNews();
+    const { data } = await getAllShownNews();
 
     return (
         <section className="space-y-8">

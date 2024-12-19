@@ -12,7 +12,7 @@ type SelectContextProps = { handleSelect: (value: string, text: string) => void 
 const SelectContext = createContext<SelectContextProps>({ handleSelect: () => {} });
 
 interface SelectProps<T extends FieldValues> {
-    name: keyof T;
+    name: Path<T>;
     control: Control<T>;
     label?: string;
     defaultText?: string;

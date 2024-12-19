@@ -99,7 +99,7 @@ function Sidebar({ user }: SidebarProps) {
                             <Graph />
                             دسته‌بندی ها
                         </NavLink>
-                        <NavLink href="/management-panel/news">
+                        <NavLink href="/management-panel/news" subs>
                             <Document />
                             تازه‌ترین اخبار
                         </NavLink>

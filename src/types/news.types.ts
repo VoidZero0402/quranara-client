@@ -3,8 +3,10 @@ export type News = {
     cover: string;
     title: string;
     description: string;
+    shown: boolean;
     link?: {
         text: string;
         url: string;
     };
+    createdAt: number
 };

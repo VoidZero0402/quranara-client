@@ -4,7 +4,7 @@ import { cn } from "@/libs/cn";
 import FormDetails from "./FormDetails";
 
 interface CheckboxProps<T extends FieldValues> {
-    name: keyof T;
+    name: Path<T>;
     control: Control<T>;
     label: string;
     caption?: string;

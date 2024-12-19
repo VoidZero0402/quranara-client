@@ -6,9 +6,7 @@ import CreateNewCategoryForm from "@/components/form/template/management-panel/C
 
 import Graph from "@/components/svgs/Graph";
 
-type CreateNewCategoryModalProps = ModalInstanceProps;
-
-function CreateNewCategoryModal({ isOpen, onClose }: CreateNewCategoryModalProps) {
+function CreateNewCategoryModal({ isOpen, onClose }: ModalInstanceProps) {
     return (
         <Modal isOpen={isOpen} onClose={onClose} className="max-w-[640px] w-full">
             <ModalHeader>

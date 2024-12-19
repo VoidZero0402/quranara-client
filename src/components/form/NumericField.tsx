@@ -7,7 +7,7 @@ import { persianToEnglish } from "@/libs/funcs";
 import FormDetails from "./FormDetails";
 
 interface TextFieldProps<T extends FieldValues> {
-    name: keyof T;
+    name: Path<T>;
     control: Control<T>;
     label: string;
     placeholder?: string;

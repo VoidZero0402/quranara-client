@@ -5,7 +5,7 @@ import { cn } from "@/libs/cn";
 import FormDetails from "./FormDetails";
 
 interface TextAreaProps<T extends FieldValues> {
-    name: keyof T;
+    name: Path<T>;
     control: Control<T>;
     label: string;
     placeholder?: string;

@@ -106,3 +106,8 @@ export function getPagination(pagesCount: number, current: number, limit = 5): {
 
     return { pagination };
 }
+
+export function limitStringLength(str: string, limit: number): string {
+    const limited = `${str.slice(0, limit)}${limit < str.length ? "..." : ""}`;
+    return limited;
+}
