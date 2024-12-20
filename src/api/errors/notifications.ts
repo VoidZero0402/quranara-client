@@ -8,7 +8,7 @@ export const SeenNotificationStatusOptions: ResponseStatusHandlerOptions = {
     },
 };
 
-export const SendNotificationOneStatusOptions: ResponseStatusHandlerOptions = {
+export const SendNotificationStatusOptions: ResponseStatusHandlerOptions = {
     statuses: {
         "201": { status: "success", text: "ارسال اعلان", caption: "ارسال اعلان با موفقیت انجام شد" },
         "401": { status: "error", text: "عدم دسترسی", caption: "شما به این عملکرد دسترسی ندارید" },

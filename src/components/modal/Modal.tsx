@@ -17,6 +17,8 @@ export type ModalInstanceProps = { isOpen: boolean; onClose: () => void };
 
 type ModalProps = ModalInstanceProps & React.ComponentProps<"div">;
 
+type ModalBodyProps = { scrollable?: boolean } & React.ComponentProps<"div">;
+
 type ModalChildrensProps = React.ComponentProps<"div">;
 
 function Modal({ children, isOpen, onClose, className }: ModalProps) {
@@ -47,8 +49,8 @@ export function ModalHeader({ children, className }: ModalChildrensProps) {
     );
 }
 
-export function ModalBody({ children, className }: ModalChildrensProps) {
-    return <div className={cn("max-h-[500px] overflow-auto with-custom-scroll with-custom-scroll--padding", className)}>{children}</div>;
+export function ModalBody({ children, className, scrollable }: ModalBodyProps) {
+    return <div className={cn(scrollable && "max-h-[500px] overflow-auto with-custom-scroll with-custom-scroll--padding", className)}>{children}</div>;
 }
 
 export function ModalFooter({ children, className }: ModalChildrensProps) {

@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import { formatDate, limitStringLength } from "@/libs/funcs";
 
 import Placeholder from "@/components/ui/Placeholder";
@@ -13,7 +15,6 @@ import SquareBottomTop from "@/components/svgs/SquareBottomTop";
 import Trash from "@/components/svgs/Trash";
 
 import { News } from "@/types/news.types";
-import Link from "next/link";
 
 type NewsRowProps = { news: News; onPreview: (news: News) => void; onRemove: (payload: Pick<News, "_id" | "title">) => void; onShown: (_id: string) => void; onUnshown: (_is: string) => void };
 
@@ -32,7 +33,7 @@ function NewsRow({ news, onPreview, onRemove, onShown, onUnshown }: NewsRowProps
             <td>{formatDate(new Date(news.createdAt ?? Date.now()))}</td>
             <td>
                 <div className="flex gap-x-2">
-                    <IconButton label="پیش نمایش" onClick={() => onPreview(news)}>
+                    <IconButton label="پیش نمایش" variant="teal" onClick={() => onPreview(news)}>
                         <Eye />
                     </IconButton>
                     <Link href={`news/${news._id}/update`}>
@@ -49,7 +50,7 @@ function NewsRow({ news, onPreview, onRemove, onShown, onUnshown }: NewsRowProps
                             <SquareBottomTop />
                         </IconButton>
                     )}
-                    <IconButton label="حذف دائمی" onClick={() => onRemove({ _id: news._id, title: news.title })}>
+                    <IconButton label="حذف دائمی" variant="danger" onClick={() => onRemove({ _id: news._id, title: news.title })}>
                         <Trash />
                     </IconButton>
                 </div>

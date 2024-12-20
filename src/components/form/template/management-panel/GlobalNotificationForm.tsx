@@ -1,9 +1,10 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { sendNotificationOne } from "@/api/mutations/notifications";
+import { sendNotificationAll } from "@/api/mutations/notifications";
 import { SendNotificationStatusOptions } from "@/api/errors/notifications";
 
 import { statusHandler } from "@/libs/responses";
@@ -14,9 +15,11 @@ import TextArea from "../../TextArea";
 
 import Button from "@/components/ui/Button";
 
-type NotificationFormProps = { userId: string; onClose: () => void };
+type GlobalNotificationFormProps = { onClose: () => void };
 
-function UserNotificationForm({ userId, onClose }: NotificationFormProps) {
+function GlobalNotificationForm({ onClose }: GlobalNotificationFormProps) {
+    const router = useRouter();
+
     const {
         control,
         handleSubmit,
@@ -31,13 +34,14 @@ function UserNotificationForm({ userId, onClose }: NotificationFormProps) {
     });
 
     const submitHandler = async (data: CreateNotificationSchemaType) => {
-        const res = await sendNotificationOne({ ...data, user: userId });
+        const res = await sendNotificationAll(data);
 
         statusHandler(res, SendNotificationStatusOptions);
 
         if (res.status === 201) {
             onClose();
             reset();
+            router.refresh();
         }
     };
 
@@ -47,7 +51,7 @@ function UserNotificationForm({ userId, onClose }: NotificationFormProps) {
             <TextArea control={control} name="description" label="توضیحات اعلان" placeholder="توضیحات اعلان را وارد کنید" />
             <div className="flex flex-col sm:flex-row gap-4 mt-4">
                 <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
-                    {isSubmitting ? "در حال ارسال اعلان" : "ارسال اعلان"}
+                    {isSubmitting ? "در حال ارسال اعلان همگانی" : "ارسال اعلان همگانی"}
                 </Button>
                 <Button type="button" size="lg" variant="neutral-base" className="w-full" onClick={onClose}>
                     انصراف از عملیات
@@ -57,4 +61,4 @@ function UserNotificationForm({ userId, onClose }: NotificationFormProps) {
     );
 }
 
-export default UserNotificationForm;
+export default GlobalNotificationForm;

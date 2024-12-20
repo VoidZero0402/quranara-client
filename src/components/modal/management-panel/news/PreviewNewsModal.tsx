@@ -21,7 +21,7 @@ function PreviewNewsModal({ isOpen, onClose, news }: PreviewNewsModalProps) {
                     پیش نمایش خبر
                 </div>
             </ModalHeader>
-            <ModalBody className="min-h-72">
+            <ModalBody className="min-h-72" scrollable>
                 <News {...news} />
             </ModalBody>
             <ModalFooter>
