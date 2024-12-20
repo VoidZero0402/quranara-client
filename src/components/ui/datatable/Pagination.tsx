@@ -23,7 +23,7 @@ function Pagination({ pagesCount, current }: PaginationProps) {
 
     return (
         <div className="space-y-2">
-            <div className="flex flex-row-reverse gap-x-2">
+            <div className="flex flex-row-reverse justify-center gap-x-2">
                 <div className="hidden sm:flex flex-row-reverse gap-x-2">
                     <LinkButton href={`${path}?page=${1}`}>
                         <DoubleArrowLeft />

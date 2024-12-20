@@ -20,9 +20,9 @@ import Button from "@/components/ui/Button";
 
 import { Category } from "@/types/category.types";
 
-type EditCategoryFormProps = { category: Category; onClose: () => void };
+type UpdateCategoryFormProps = { category: Category; onClose: () => void };
 
-function EditCategoryForm({ category, onClose }: EditCategoryFormProps) {
+function UpdateCategoryForm({ category, onClose }: UpdateCategoryFormProps) {
     const router = useRouter();
 
     const {
@@ -67,4 +67,4 @@ function EditCategoryForm({ category, onClose }: EditCategoryFormProps) {
     );
 }
 
-export default EditCategoryForm;
+export default UpdateCategoryForm;

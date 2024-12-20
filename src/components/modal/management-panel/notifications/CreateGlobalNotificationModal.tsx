@@ -4,8 +4,9 @@ import Modal, { ModalBody, ModalHeader, ModalInstanceProps } from "../../Modal";
 
 import GlobalNotificationForm from "@/components/form/template/management-panel/GlobalNotificationForm";
 
-import NotificationUnreadLines from "@/components/svgs/NotificationUnreadLines";
 import Point from "@/components/ui/Point";
+
+import NotificationUnreadLines from "@/components/svgs/NotificationUnreadLines";
 
 function CreateGlobalNotificationModal({ isOpen, onClose }: ModalInstanceProps) {
     return (

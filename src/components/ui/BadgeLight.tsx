@@ -27,7 +27,7 @@ const varients: Record<Varients, Field> = {
         background: "bg-teal-50 dark:bg-teal-500/10",
         ball: "bg-teal-500",
         text: "text-teal-500",
-    }
+    },
 };
 
 type BadgeLightProps = { varient?: Varients } & React.ComponentProps<"div">;

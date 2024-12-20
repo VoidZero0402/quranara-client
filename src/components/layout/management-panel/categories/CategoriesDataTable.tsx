@@ -9,7 +9,7 @@ import { ENTITIES } from "@/constants/entities";
 
 import CategoryRow from "@/components/specific/management-panel/datatable-rows/CategoryRow";
 
-const EditCategoryModal = dynamic(() => import("@/components/modal/management-panel/categories/EditCategoryModal"), { ssr: false });
+const UpdateCategoryModal = dynamic(() => import("@/components/modal/management-panel/categories/UpdateCategoryModal"), { ssr: false });
 
 import DataTable, { DataTableBody, Column } from "@/components/ui/datatable/DataTable";
 
@@ -45,10 +45,10 @@ type CategoriesDataTableProps = {
 };
 
 function CategoriesDataTable({ categories, pagination }: CategoriesDataTableProps) {
-    const { isOpen: isOpenEditModal, open: openEditModal, close: closeEditModal, props: editModalProps } = useToggleState<{ category: Category }>();
+    const { isOpen: isOpenUpdateModal, open: openUpdateModal, close: closeUpdateModal, props: updateModalProps } = useToggleState<{ category: Category }>();
 
-    const onEdit = useCallback((category: Category) => {
-        openEditModal({ category });
+    const onUpdate = useCallback((category: Category) => {
+        openUpdateModal({ category });
     }, []);
 
     return (
@@ -56,11 +56,11 @@ function CategoriesDataTable({ categories, pagination }: CategoriesDataTableProp
             <DataTable entity={ENTITIES.CATEGORIES} columns={columns} pagination={pagination}>
                 <DataTableBody>
                     {categories.map((category) => (
-                        <CategoryRow key={category._id} category={category} onEdit={onEdit} />
+                        <CategoryRow key={category._id} category={category} onUpdate={onUpdate} />
                     ))}
                 </DataTableBody>
             </DataTable>
-            <EditCategoryModal isOpen={isOpenEditModal} onClose={closeEditModal} {...editModalProps} />
+            <UpdateCategoryModal isOpen={isOpenUpdateModal} onClose={closeUpdateModal} {...updateModalProps} />
         </section>
     );
 }

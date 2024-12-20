@@ -2,15 +2,15 @@
 
 import Modal, { ModalBody, ModalHeader, ModalInstanceProps } from "../../Modal";
 
-import EditCategoryForm from "@/components/form/template/management-panel/EditCategoryForm";
+import UpdateCategoryForm from "@/components/form/template/management-panel/UpdateCategoryForm";
 
 import PenSquare from "@/components/svgs/PenSquare";
 
 import { Category } from "@/types/category.types";
 
-type EditCategoryModalProps = ModalInstanceProps & { category: Category };
+type UpdateCategoryModalProps = ModalInstanceProps & { category: Category };
 
-function EditCategoryModal({ isOpen, onClose, category }: EditCategoryModalProps) {
+function UpdateCategoryModal({ isOpen, onClose, category }: UpdateCategoryModalProps) {
     return (
         <Modal isOpen={isOpen} onClose={onClose} className="max-w-[640px] w-full">
             <ModalHeader>
@@ -20,10 +20,10 @@ function EditCategoryModal({ isOpen, onClose, category }: EditCategoryModalProps
                 </div>
             </ModalHeader>
             <ModalBody className="min-h-72">
-                <EditCategoryForm category={category} onClose={onClose} />
+                <UpdateCategoryForm category={category} onClose={onClose} />
             </ModalBody>
         </Modal>
     );
 }
 
-export default EditCategoryModal;
+export default UpdateCategoryModal;

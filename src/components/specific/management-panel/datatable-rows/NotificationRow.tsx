@@ -19,9 +19,9 @@ const TypesVarient = {
 
 import { Notification } from "@/types/notification.types";
 
-type NotificationRowProps = { notification: Notification };
+type NotificationRowProps = { notification: Notification; onPreview: (notification: Notification) => void; onUpdate: (notification: Notification) => void; onRemove: (notification: Pick<Notification, "_id" | "title">) => void };
 
-function NotificationRow({ notification }: NotificationRowProps) {
+function NotificationRow({ notification, onPreview, onUpdate, onRemove }: NotificationRowProps) {
     return (
         <tr>
             <td>{limitStringLength(notification.title, 48)}</td>
@@ -31,13 +31,13 @@ function NotificationRow({ notification }: NotificationRowProps) {
             <td>{formatDate(new Date(notification.createdAt ?? Date.now()))}</td>
             <td>
                 <div className="flex gap-x-2">
-                    <IconButton label="پیش نمایش" variant="teal">
+                    <IconButton label="پیش نمایش" variant="teal" onClick={() => onPreview(notification)}>
                         <Eye />
                     </IconButton>
-                    <IconButton label="ویرایش">
+                    <IconButton label="ویرایش" onClick={() => onUpdate(notification)}>
                         <PenSquare />
                     </IconButton>
-                    <IconButton label="حذف دائمی" variant="danger">
+                    <IconButton label="حذف دائمی" variant="danger" onClick={() => onRemove({ _id: notification._id, title: notification.title })}>
                         <Trash />
                     </IconButton>
                 </div>

@@ -11,7 +11,24 @@ export const SeenNotificationStatusOptions: ResponseStatusHandlerOptions = {
 export const SendNotificationStatusOptions: ResponseStatusHandlerOptions = {
     statuses: {
         "201": { status: "success", text: "ارسال اعلان", caption: "ارسال اعلان با موفقیت انجام شد" },
-        "401": { status: "error", text: "عدم دسترسی", caption: "شما به این عملکرد دسترسی ندارید" },
         "400-validation": { status: "info", text: "اطلاعات نامعتبر", caption: "لطفا اطلاعات معتبر را وارد کنید" },
+        "401": { status: "error", text: "عدم دسترسی", caption: "شما به این عملکرد دسترسی ندارید" },
+    },
+};
+
+export const UpdateNotificationStatusOptions: ResponseStatusHandlerOptions = {
+    statuses: {
+        "200": { status: "success", text: "ویرایش موفق", caption: "اعلان با موفقیت ویرایش شد" },
+        "400-validation": { status: "info", text: "اطلاعات نامعتبر", caption: "لطفا اطلاعات معتبر را وارد کنید" },
+        "401": { status: "error", text: "عدم دسترسی", caption: "شما به این عملکرد دسترسی ندارید" },
+        "404": { status: "error", text: "مشکل در سرور", caption: "بنظر میرسه مشکلی در سرور پیش اومده" },
+    },
+};
+
+export const RemoveNotificationStatusOptions: ResponseStatusHandlerOptions = {
+    statuses: {
+        "200": { status: "success", text: "حذف اعلان", caption: "اعلان با موفقیت حذف شد" },
+        "401": { status: "error", text: "عدم دسترسی", caption: "شما به این عملکرد دسترسی ندارید" },
+        "404": { status: "error", text: "مشکل در سرور", caption: "بنظر میرسه مشکلی در سرور پیش اومده" },
     },
 };
