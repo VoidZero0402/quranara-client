@@ -16,7 +16,7 @@ export type TicketMessage = {
         type: AttachedType;
         url: string;
     };
-    createdAt: string
+    createdAt: number
 };
 
 type PopulatedUser = Pick<User, "_id" | "username" | "role" | "profile">

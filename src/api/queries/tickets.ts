@@ -31,7 +31,7 @@ export function getTicket(params: TicketsQueriesWithIdParams, cookie: string): P
     });
 }
 
-export function getAllTickets(query: GetAllTicketsQuerySchemaType): Promise<Response<{ tickets: LimitedTicket[]; pagination: Pagination }>> {
+export function getAllTickets(query: GetAllTicketsQuerySchemaType): Promise<Response<{ tickets: Ticket[]; pagination: Pagination }>> {
     const queryString = convertToQueryString(query);
     const url = `/tickets/all?${queryString}`;    
 

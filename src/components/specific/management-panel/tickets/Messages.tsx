@@ -8,9 +8,9 @@ type MessagesProps = { messages: TicketMessage[] };
 
 function Messages({ messages }: MessagesProps) {
     return (
-        <div className="space-y-4">
-            {messages.map((message) => (
-                <Message key={message.createdAt} {...message} isAnswer={message.user.role === ROLES.MANAGER} />
+        <div className="flex flex-col gap-4">
+            {messages?.map((message) => (
+                <Message key={message.createdAt} {...message} isAnswer={message.user.role === ROLES.USER} />
             ))}
         </div>
     );

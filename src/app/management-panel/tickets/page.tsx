@@ -17,7 +17,7 @@ async function Tickets({ searchParams }: { searchParams: Promise<{ page: string;
 
     const status = (FILTER__STATUSES.includes(statusParam) && statusParam) as any;
 
-    const { data } = await getAllTickets({ page: +page, limit, ...(status && { status }) });
+    const { data } = await getAllTickets({ page: +page, limit, ...(status && { status }) });    
 
     return (
         <div className="space-y-4">

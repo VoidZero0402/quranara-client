@@ -12,6 +12,5 @@ export const TYPE = {
 
 export const ROLES = {
     USER: "USER",
-    STUDENT: "STUDENT",
     MANAGER: "MANAGER",
 } as const;

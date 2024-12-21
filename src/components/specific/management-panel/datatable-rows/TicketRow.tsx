@@ -16,11 +16,11 @@ const StatusVarients = {
     [STATUS.COLSED]: "danger",
 };
 
-import { LimitedTicket } from "@/types/ticket.types";
+import { Ticket } from "@/types/ticket.types";
 
-type TicketRowProps = { ticket: LimitedTicket };
+type TicketRowProps = { ticket: Ticket; onChat: (ticket: Ticket) => void; onClose: (_id: string) => void };
 
-function TicketRow({ ticket }: TicketRowProps) {
+function TicketRow({ ticket, onChat, onClose }: TicketRowProps) {
     return (
         <tr>
             <td>{limitStringLength(ticket.title, 40)}</td>
@@ -36,12 +36,14 @@ function TicketRow({ ticket }: TicketRowProps) {
             <td>{formatDate(new Date(ticket.updatedAt ?? Date.now()))}</td>
             <td>
                 <div className="flex gap-x-2">
-                    <IconButton label="گفتگو" variant="teal">
+                    <IconButton label="گفتگو" variant="teal" onClick={() => onChat(ticket)}>
                         <ChatRoundLine />
                     </IconButton>
-                    <IconButton label="بستن تیکت" variant="danger">
-                        <SquareTopUp />
-                    </IconButton>
+                    {ticket.status !== STATUS.COLSED && (
+                        <IconButton label="بستن تیکت" variant="danger" onClick={() => onClose(ticket._id)}>
+                            <SquareTopUp />
+                        </IconButton>
+                    )}
                 </div>
             </td>
         </tr>

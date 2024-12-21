@@ -1,4 +1,4 @@
-import { ROLES } from "@/constants/roles";
+import { ROLES, RolesText } from "@/constants/roles";
 
 import { formatDate } from "@/libs/funcs";
 
@@ -8,17 +8,17 @@ import Slice from "@/components/ui/Slice";
 
 import { TicketMessage } from "@/types/ticket.types";
 
-function Message({ content, user, createdAt, attached }: TicketMessage) {
-    const isAnswer = user.role === ROLES.MANAGER;
+type MessageProps = { isAnswer: boolean } & TicketMessage;
 
+function Message({ content, user, createdAt, attached, isAnswer }: MessageProps) {
     return (
-        <div className={`space-y-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-xl md:w-1/2 ${isAnswer ? "mr-auto" : ""}`}>
+        <div className={`space-y-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-xl md:w-1/2 ${isAnswer ? "md:mr-auto" : ""}`}>
             {isAnswer && (
                 <div className="flex items-center gap-x-2">
                     <Avatar src={user.profile} className="size-14" />
                     <div className="space-y-2 font-pelak-medium text-gray-800 dark:text-gray-200">
                         <span className="block">{user.username}</span>
-                        <span className="block text-sm text-gray-600 dark:text-gray-400">مدیریت قرآن‌آرا</span>
+                        <span className="block text-sm text-gray-600 dark:text-gray-400">{RolesText[user.role]} قرآن‌آرا</span>
                     </div>
                 </div>
             )}

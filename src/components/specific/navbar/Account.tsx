@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { ROLES } from "@/constants/roles";
 
 import { OpacityAnimation } from "@/libs/motions";
+import { getCookieUser } from "@/libs/apis";
 
 import UserAccount from "./UserAccount";
 
@@ -18,15 +19,8 @@ import Setting from "@/components/svgs/Setting";
 
 import { CookieUser } from "@/types/user.types";
 
-async function fetchCookieUser(): Promise<{ value: CookieUser | undefined }> {
-    const response = await fetch("/api/cookies?key=_user");
-    return await response.json();
-}
-
 function Account() {
-    const {
-        data: { value: user },
-    } = useSuspenseQuery({ queryKey: ["cookie-user"], queryFn: fetchCookieUser });
+    const { data: user } = useSuspenseQuery({ queryKey: ["cookie-user"], queryFn: getCookieUser });
 
     if (!user) {
         return (
