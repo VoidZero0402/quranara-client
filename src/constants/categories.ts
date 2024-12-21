@@ -5,12 +5,7 @@ export const REFERENCES = {
     DISCUSSION: "DISCUSSION",
 } as const;
 
-export const SOURCES = {
-    ALL: "ALL",
-    ...REFERENCES,
-};
-
-export const FILTER__SOURCES = Object.keys(SOURCES);
+export const FILTER__SOURCES = Object.keys(REFERENCES);
 
 export const RefrencesText = {
     [REFERENCES.BLOG]: "مقالات",

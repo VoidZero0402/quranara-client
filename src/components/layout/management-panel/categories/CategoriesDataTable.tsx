@@ -15,15 +15,15 @@ import DataTable, { DataTableBody, Column } from "@/components/ui/datatable/Data
 
 const columns: Column[] = [
     {
-        key: "profile",
+        key: "title",
         text: "عنوان",
     },
     {
-        key: "phone",
+        key: "description",
         text: "توضیحات",
     },
     {
-        key: "fullname",
+        key: "source",
         text: "منبع",
     },
     {

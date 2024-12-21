@@ -4,7 +4,7 @@ import { Course } from "./course.types";
 import { User } from "./user.types";
 import { AttachedType } from "./attached.types";
 
-type Status = (typeof STATUS)[keyof typeof STATUS];
+export type Status = (typeof STATUS)[keyof typeof STATUS];
 type TicketType = (typeof TYPE)[keyof typeof TYPE];
 
 type TicketCourse = Pick<Course, "_id" | "title">;
@@ -31,7 +31,8 @@ export type Ticket = {
     type: TicketType;
     shortId: string;
     messages: TicketMessage[];
-    createdAt: string
+    createdAt: number
+    updatedAt: number
 };
 
 export type LimitedTicket = Omit<Ticket, "messages">

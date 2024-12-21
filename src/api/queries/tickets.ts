@@ -1,5 +1,6 @@
 import Quranara from "../clients/Quranara";
 
+import { GetAllTicketsQuerySchemaType } from "@/validators/tickets";
 import { PaginationQuerySchemaType } from "@/validators/pagination";
 
 import { convertToQueryString } from "@/libs/funcs";
@@ -30,9 +31,9 @@ export function getTicket(params: TicketsQueriesWithIdParams, cookie: string): P
     });
 }
 
-export function getAllTickets(query: PaginationQuerySchemaType): Promise<Response<{ tickets: LimitedTicket[]; pagination: Pagination }>> {
+export function getAllTickets(query: GetAllTicketsQuerySchemaType): Promise<Response<{ tickets: LimitedTicket[]; pagination: Pagination }>> {
     const queryString = convertToQueryString(query);
-    const url = `/tickets/all?${queryString}`;
+    const url = `/tickets/all?${queryString}`;    
 
     return Quranara.get(url);
 }

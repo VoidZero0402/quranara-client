@@ -3,12 +3,12 @@
 import { useState, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-import { FILTER__SOURCES } from "@/constants/categories";
+import { FILTER__STATUSES } from "@/constants/tickets";
 import { ALL } from "@/constants/global";
 
 import { updateURLSearchParams } from "@/libs/funcs";
 
-import SourceFilter from "@/components/specific/management-panel/categories/SourceFilter";
+import StatusFilter from "@/components/specific/management-panel/tickets/StatusFilter";
 
 import Modal, { ModalBody, ModalFooter, ModalHeader, ModalInstanceProps } from "../../Modal";
 
@@ -16,25 +16,25 @@ import Button from "@/components/ui/Button";
 
 import Filter from "@/components/svgs/Filter";
 
-function FilterCategoriesModal({ isOpen, onClose }: ModalInstanceProps) {
+function FilterTicketsModal({ isOpen, onClose }: ModalInstanceProps) {
     const router = useRouter();
 
     const searchParams = useSearchParams();
 
-    const sourceParams = searchParams.get("source") ?? ALL;
+    const statusParams = searchParams.get("status") ?? ALL;
 
-    const [source, setSource] = useState<string>(FILTER__SOURCES.includes(sourceParams) ? sourceParams : ALL);
+    const [status, setStatus] = useState<string>(FILTER__STATUSES.includes(statusParams) ? statusParams : ALL);
 
     const onChange = useCallback(
-        (source: string) => () => {
-            setSource(source);
+        (status: string) => () => {
+            setStatus(status);
         },
         []
     );
 
     const applyFilters = () => {
         onClose();
-        const url = updateURLSearchParams("source", source === ALL ? "" : source);
+        const url = updateURLSearchParams("status", status === ALL ? "" : status);
         router.push(url, { scroll: false });
     };
 
@@ -43,11 +43,11 @@ function FilterCategoriesModal({ isOpen, onClose }: ModalInstanceProps) {
             <ModalHeader>
                 <div className="flex items-center gap-x-1">
                     <Filter />
-                    فیلتر دسته‌بندی ها
+                    فیلتر تیکت‌ها
                 </div>
             </ModalHeader>
             <ModalBody className="min-h-72">
-                <SourceFilter source={source} onChange={onChange} />
+                <StatusFilter status={status} onChange={onChange} />
             </ModalBody>
             <ModalFooter className="flex-col sm:flex-row gap-4">
                 <Button size="lg" className="w-full" onClick={applyFilters}>
@@ -61,4 +61,4 @@ function FilterCategoriesModal({ isOpen, onClose }: ModalInstanceProps) {
     );
 }
 
-export default FilterCategoriesModal;
+export default FilterTicketsModal;

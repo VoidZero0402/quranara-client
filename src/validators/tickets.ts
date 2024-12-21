@@ -23,7 +23,7 @@ export const AnswerTicketSchema = CreateTicketSchema.pick({ content: true, attac
 export type AnswerTicketSchemaType = z.infer<typeof AnswerTicketSchema>;
 
 export const GetAllTicketsQuerySchema = PaginationQuerySchema.extend({
-    status: z.enum([STATUS.ACTIVE, STATUS.SLEEP, STATUS.COLSED], { message: "وضعیت فقط می‌تواند ACTIVE، SLEEP یا CLOSED باشد." }).default(STATUS.ACTIVE),
+    status: z.enum([STATUS.ACTIVE, STATUS.SLEEP, STATUS.COLSED], { message: "وضعیت فقط می‌تواند ACTIVE، SLEEP یا CLOSED باشد." }).optional(),
 });
 
 export type GetAllTicketsQuerySchemaType = z.infer<typeof GetAllTicketsQuerySchema>;
