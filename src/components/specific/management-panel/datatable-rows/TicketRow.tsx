@@ -23,7 +23,7 @@ type TicketRowProps = { ticket: Ticket; onChat: (ticket: Ticket) => void; onClos
 function TicketRow({ ticket, onChat, onClose }: TicketRowProps) {
     return (
         <tr>
-            <td>{limitStringLength(ticket.title, 40)}</td>
+            <td>{limitStringLength(ticket.title, 24)}</td>
             <td>
                 <span className="underline text-amber-400">{ticket.user.username}</span>
             </td>

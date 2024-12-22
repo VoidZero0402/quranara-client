@@ -50,7 +50,7 @@ export function ModalHeader({ children, className }: ModalChildrensProps) {
 }
 
 export function ModalBody({ children, className, scrollable }: ModalBodyProps) {
-    return <div className={cn(scrollable && "max-h-[500px] overflow-auto with-custom-scroll with-custom-scroll--padding", className)}>{children}</div>;
+    return <div className={cn(scrollable && "max-h-[500px] overflow-auto with-custom-scroll", className)}>{children}</div>;
 }
 
 export function ModalFooter({ children, className }: ModalChildrensProps) {

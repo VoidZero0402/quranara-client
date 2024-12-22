@@ -24,7 +24,7 @@ function ResetDiscounts() {
     return (
         <div className="space-y-4 bg-gray-50 dark:bg-gray-800 p-4 rounded-xl">
             <div className="space-y-2">
-                <div className="flex items-center gap-x-1">
+                <div className="flex items-center gap-x-1 font-pelak-medium text-gray-800 dark:text-gray-200">
                     <Refresh />
                     حذف تمامی تخفیفات
                 </div>

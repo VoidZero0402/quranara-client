@@ -24,12 +24,8 @@ const columns: Column[] = [
         text: "میزان تخفیف",
     },
     {
-        key: "max",
-        text: "حداکثر استفاده",
-    },
-    {
-        key: "uses",
-        text: "میزان استفاده",
+        key: "max-uses",
+        text: "حداکثر - میزان استفاده",
     },
     {
         key: "createdAt",

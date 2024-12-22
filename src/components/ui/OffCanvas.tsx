@@ -39,7 +39,7 @@ export function OffCanvasHeader({ children, className }: OffCanvasHeaderProps) {
     const { onClose } = useContext(OffCanvasContext);
 
     return (
-        <div className={cn("flex items-center justify-between", className)}>
+        <div className={cn("flex items-center justify-between gap-4", className)}>
             <div className="font-pelak-medium text-gray-800 dark:text-gray-200">{children}</div>
             <Button size="sm" variant="neutral-base" className="size-12" onClick={onClose}>
                 <XMark />

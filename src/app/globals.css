@@ -70,11 +70,11 @@
     }
 
     .with-custom-scroll {
-        scrollbar-gutter: stable;
+        scrollbar-gutter: stable both-edges;
     }
 
     .with-custom-scroll--padding {
-        padding-left: .5rem;
+        padding-left: 1rem;
     }
 
     .hidden-scroll::-webkit-scrollbar {

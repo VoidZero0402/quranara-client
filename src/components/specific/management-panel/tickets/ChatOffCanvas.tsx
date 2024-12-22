@@ -49,9 +49,9 @@ function ChatOffCanvas({ isOpen, onClose, ticket }: ChatOffCanvasProps) {
     return (
         <OffCanvas isOpen={isOpen} onClose={onClose}>
             <OffCanvasHeader>
-                <div className="flex items-center gap-x-1">
-                    <ChatRoundLine />
-                    گفتگو در تیکت
+                <div className="flex items-center gap-x-2">
+                    <ChatRoundLine className="w-6 shrink-0" />
+                    <span className="leading-7">{ticket?.title}</span>
                 </div>
             </OffCanvasHeader>
             {ticket && (

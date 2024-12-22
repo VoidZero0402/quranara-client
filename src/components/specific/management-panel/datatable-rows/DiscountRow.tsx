@@ -22,10 +22,9 @@ function DiscountRow({ discount, onRemove, onUpdate }: DiscountRowProps) {
                 <BadgeLight varient="gray">{discount.percent} درصد</BadgeLight>
             </td>
             <td>
-                <span className="underline">{discount.max} مرتبه</span>
-            </td>
-            <td>
-                <span className="underline">{discount.uses} مرتبه</span>
+                <span className="underline">
+                    {discount.max} - {discount.uses} مرتبه
+                </span>
             </td>
             <td>{formatDate(new Date(discount.createdAt ?? Date.now()))}</td>
             <td>{formatDate(new Date(discount.expireAt ?? Date.now()))}</td>
