@@ -5,10 +5,10 @@ import { PaginationQuerySchemaType } from "@/validators/pagination";
 
 import { convertToQueryString } from "@/libs/funcs";
 
-import { Response } from "@/types/response.types";
+import { Pagination, Response } from "@/types/response.types";
 import { Discount } from "@/types/discount.types";
 
-export function getAllDiscounts(query: PaginationQuerySchemaType): Promise<Response<{ discount: Discount }>> {
+export function getAllDiscounts(query: PaginationQuerySchemaType): Promise<Response<{ discounts: Discount[], pagination: Pagination }>> {
     const queryString = convertToQueryString(query);
     const url = `/discounts?${queryString}`;
 

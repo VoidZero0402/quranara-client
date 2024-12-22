@@ -113,7 +113,7 @@ export function limitStringLength(str: string, limit: number): string {
 }
 
 export function getDateAfterHours(hours: number): number {
-    const milliSeconds = hours * 24 * 60 * 1000;
+    const milliSeconds = hours * 60 * 60 * 1000;
     const date = Date.now() + milliSeconds;
 
     return date;

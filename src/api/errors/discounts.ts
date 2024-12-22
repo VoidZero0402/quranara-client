@@ -33,3 +33,21 @@ export const ApplyDiscountAllStatusOptions: ResponseStatusHandlerOptions = {
         "401": { status: "error", text: "عدم دسترسی", caption: "شما به این عملکرد دسترسی ندارید" },
     },
 };
+
+export const UpdateDiscountStatusOptions: ResponseStatusHandlerOptions = {
+    statuses: {
+        "200": { status: "success", text: "ویرایش کد تخفیف", caption: "کد تخفیف با موفقیت ویرایش شد" },
+        "400-validation": { status: "info", text: "اطلاعات نامعتبر", caption: "لطفا اطلاعات معتبر را وارد کنید" },
+        "401": { status: "error", text: "عدم دسترسی", caption: "شما به این عملکرد دسترسی ندارید" },
+        "404": { status: "error", text: "مشکل در سرور", caption: "بنظر میرسه مشکلی در سرور پیش اومده" },
+        "409": { status: "error", text: "تناقض در سرور", caption: "بنظر میرسه کد تخفیف از قبل وجود داره" },
+    },
+};
+
+export const RemoveDiscountStatusOptions: ResponseStatusHandlerOptions = {
+    statuses: {
+        "200": { status: "success", text: "حذف کد تخفیف", caption: "کد تخفیف با موفقیت حذف شد" },
+        "401": { status: "error", text: "عدم دسترسی", caption: "شما به این عملکرد دسترسی ندارید" },
+        "404": { status: "error", text: "مشکل در سرور", caption: "بنظر میرسه مشکلی در سرور پیش اومده" },
+    },
+};

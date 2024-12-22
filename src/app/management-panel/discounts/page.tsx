@@ -5,6 +5,7 @@ import { ENTITIES } from "@/constants/entities";
 import { getDatatableItemsPerPage } from "@/libs/server/cookies";
 
 import DiscountsHeader from "@/components/layout/management-panel/discounts/DiscountsHeader";
+import DiscountsDataTable from "@/components/layout/management-panel/discounts/DiscountsDataTable";
 
 async function Discounts({ searchParams }: { searchParams: Promise<{ page: string }> }) {
     const { page = 1 } = await searchParams;
@@ -15,6 +16,7 @@ async function Discounts({ searchParams }: { searchParams: Promise<{ page: strin
     return (
         <div className="space-y-4">
             <DiscountsHeader />
+            <DiscountsDataTable discounts={data.discounts} pagination={data.pagination} />
         </div>
     );
 }

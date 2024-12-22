@@ -1,6 +1,6 @@
 import Quranara from "../clients/Quranara";
 
-import { CreateDiscountSchemaType } from "@/validators/discounts";
+import { CreateDiscountSchemaType, UpdateDiscountSchemaType } from "@/validators/discounts";
 
 import { MessageResponse } from "@/types/response.types";
 
@@ -12,10 +12,10 @@ export function createDiscount(data: CreateDiscountSchemaType): MessageResponse 
     });
 }
 
-export function updateDiscount(params: DiscountsMutationsWithIdParams, data: CreateDiscountSchemaType): MessageResponse {
+export function updateDiscount(params: DiscountsMutationsWithIdParams, data: UpdateDiscountSchemaType): MessageResponse {
     const url = `/discounts/${params.discountId}`;
 
-    return Quranara.post(url, {
+    return Quranara.put(url, {
         body: JSON.stringify(data),
     });
 }

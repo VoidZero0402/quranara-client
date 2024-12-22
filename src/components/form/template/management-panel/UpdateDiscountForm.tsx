@@ -4,48 +4,47 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { createDiscount } from "@/api/mutations/discounts";
-import { CreateDiscountStatusOptions } from "@/api/errors/discounts";
+import { updateDiscount } from "@/api/mutations/discounts";
+import { UpdateDiscountStatusOptions } from "@/api/errors/discounts";
 
 import { statusHandler } from "@/libs/responses";
 import { getDateAfterHours } from "@/libs/funcs";
 
-import { CreateDiscountSchema, CreateDiscountSchemaType } from "@/validators/discounts";
+import { UpdateDiscountSchema, UpdateDiscountSchemaType } from "@/validators/discounts";
 
 import TextField from "../../TextField";
 import NumericField from "../../NumericField";
 
 import Button from "@/components/ui/Button";
+import { Discount } from "@/types/discount.types";
 
-type CreateDiscountFormProps = { onClose: () => void };
+type UpdateDiscountFormProps = { discount: Discount; onClose: () => void };
 
-function CreateDiscountForm({ onClose }: CreateDiscountFormProps) {
+function UpdateDiscountForm({ discount, onClose }: UpdateDiscountFormProps) {
     const router = useRouter();
 
     const {
         control,
         handleSubmit,
         formState: { isSubmitting },
-        reset,
-    } = useForm<CreateDiscountSchemaType>({
-        defaultValues: {
-            code: "",
-            percent: "" as any,
-            max: "" as any,
+    } = useForm<UpdateDiscountSchemaType>({
+        values: {
+            code: discount?.code ?? "",
+            percent: discount?.percent ?? "",
+            max: discount?.max ?? "",
             expireAtTime: "" as any,
         },
-        resolver: zodResolver(CreateDiscountSchema),
+        resolver: zodResolver(UpdateDiscountSchema),
     });
 
-    const submitHandler = async (data: CreateDiscountSchemaType) => {
-        const expireAtTime = getDateAfterHours(data.expireAtTime);
+    const submitHandler = async (data: UpdateDiscountSchemaType) => {
+        const expireAtTime = data.expireAtTime && getDateAfterHours(data.expireAtTime);
 
-        const res = await createDiscount({ ...data, expireAtTime });
+        const res = await updateDiscount({ discountId: discount._id }, { ...data, expireAtTime });
 
-        statusHandler(res, CreateDiscountStatusOptions);
+        statusHandler(res, UpdateDiscountStatusOptions);
 
-        if (res.status === 201) {
-            reset();
+        if (res.status === 200) {
             onClose();
             router.refresh();
         }
@@ -58,10 +57,10 @@ function CreateDiscountForm({ onClose }: CreateDiscountFormProps) {
                 <NumericField control={control} name="percent" label="درصد تخفیف" placeholder="درصد تخفیف را وارد کنید" className="w-full" />
                 <NumericField control={control} name="max" label="تعداد قابل استفاده" placeholder="تعداد قابل استفاده را وارد کنید" className="w-full" />
             </div>
-            <NumericField control={control} name="expireAtTime" label="تاریخ انقضا" placeholder="مقدار زمانی که کد قابل مصرف است" caption="مقدار این فیلد بر اساس ساعت محاسبه می‌شود" />
+            <NumericField control={control} name="expireAtTime" label="تاریخ انقضا" placeholder="مقدار زمانی که کد قابل مصرف است" caption="مقدار این فیلد بر اساس ساعت محاسبه می‌شود، دقت کنید این زمان از زمان حال محاسبه می‌شود" />
             <div className="flex flex-col sm:flex-row gap-4 mt-4">
                 <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
-                    {isSubmitting ? "در حال ایجاد کد تخفیف" : "ایجاد کد تخفیف"}
+                    {isSubmitting ? "در حال ویرایش کد تخفیف" : "ویرایش کد تخفیف"}
                 </Button>
                 <Button type="button" size="lg" variant="neutral-base" className="w-full" onClick={onClose}>
                     انصراف از عملیات
@@ -71,4 +70,4 @@ function CreateDiscountForm({ onClose }: CreateDiscountFormProps) {
     );
 }
 
-export default CreateDiscountForm;
+export default UpdateDiscountForm;
