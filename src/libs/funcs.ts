@@ -111,3 +111,10 @@ export function limitStringLength(str: string, limit: number): string {
     const limited = `${str.slice(0, limit)}${limit < str.length ? "..." : ""}`;
     return limited;
 }
+
+export function getDateAfterHours(hours: number): number {
+    const milliSeconds = hours * 24 * 60 * 1000;
+    const date = Date.now() + milliSeconds;
+
+    return date;
+}

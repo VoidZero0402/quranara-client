@@ -9,3 +9,27 @@ export const AvailableDiscountStatusOptions: ResponseStatusHandlerOptions = {
         "403": { status: "error", text: "کد تخفیف منقضی", caption: "کد تخفیف به حداکثر میزان استفاده رسیده" },
     },
 };
+
+export const CreateDiscountStatusOptions: ResponseStatusHandlerOptions = {
+    statuses: {
+        "201": { status: "success", text: "ایجاد کد تخفیف", caption: "کد  تخفیف جدید با موفقیت ایجاد شد" },
+        "400-validation": { status: "info", text: "اطلاعات نامعتبر", caption: "لطفا اطلاعات معتبر را وارد کنید" },
+        "401": { status: "error", text: "عدم دسترسی", caption: "شما به این عملکرد دسترسی ندارید" },
+        "409": { status: "error", text: "تناقض در سرور", caption: "بنظر میرسه کد تخفیف از قبل وجود داره" },
+    },
+};
+
+export const RemoveDiscountAllStatusOptions: ResponseStatusHandlerOptions = {
+    statuses: {
+        "200": { status: "success", text: "حذف تخفیفات", caption: "تخفیفات تمام دوره‌ها با موفقیت حذف شد" },
+        "401": { status: "error", text: "عدم دسترسی", caption: "شما به این عملکرد دسترسی ندارید" },
+    },
+};
+
+export const ApplyDiscountAllStatusOptions: ResponseStatusHandlerOptions = {
+    statuses: {
+        "200": { status: "success", text: "اعمال تخفیف همگانی", caption: "تخفیف همگانی با موفقیت اعمال شد" },
+        "400-validation": { status: "info", text: "اطلاعات نامعتبر", caption: "لطفا اطلاعات معتبر را وارد کنید" },
+        "401": { status: "error", text: "عدم دسترسی", caption: "شما به این عملکرد دسترسی ندارید" },
+    },
+};

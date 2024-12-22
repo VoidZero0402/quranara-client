@@ -39,6 +39,16 @@
         @apply tracking-normal;
     }
 
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+
     .with-custom-scroll::-webkit-scrollbar {
         @apply w-1;
     }
