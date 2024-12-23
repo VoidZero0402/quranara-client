@@ -19,9 +19,9 @@ const varients: Record<Varients, Field> = {
         text: "text-amber-400",
     },
     danger: {
-        background: "bg-red-50 dark:bg-red-500/5",
-        ball: "bg-red-500 dark:bg-red-400",
-        text: "text-red-500 dark:text-red-400",
+        background: "bg-red-50 dark:bg-red-500/10",
+        ball: "bg-red-500",
+        text: "text-red-500",
     },
     teal: {
         background: "bg-teal-50 dark:bg-teal-500/10",

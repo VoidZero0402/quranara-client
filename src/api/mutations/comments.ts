@@ -55,3 +55,9 @@ export function unpinComment(params: CommentsQueriesWithIdParams): MessageRespon
 
     return Quranara.patch(url);
 }
+
+export function checkReplies(params: CommentsQueriesWithIdParams): MessageResponse {
+    const url = `/comments/${params.commentId}/check-replies`;
+
+    return Quranara.patch(url);
+}

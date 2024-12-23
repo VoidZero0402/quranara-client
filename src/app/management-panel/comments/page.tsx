@@ -16,8 +16,6 @@ async function Comments({ searchParams }: { searchParams: Promise<{ page: string
 
     const { data } = await getAllComments({ page: +page, limit, source, ...(status && { status }) });
 
-    console.log(data);
-
     return (
         <div className="space-y-4">
             <CommentsHeader />

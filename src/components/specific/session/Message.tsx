@@ -1,6 +1,7 @@
 import Attached from "@/components/ui/Attached";
 import Avatar from "@/components/ui/Avatar";
 import Slice from "@/components/ui/Slice";
+import { formateDateObject } from "@/libs/funcs";
 
 import { QuestionMessage } from "@/types/question.types";
 
@@ -11,7 +12,7 @@ function Message({ content, user, createdAt, attached }: QuestionMessage) {
                 <Avatar src={user.profile} />
                 <div className="space-y-2 font-pelak-medium text-gray-800 dark:text-gray-200">
                     <span className="block">{user.username}</span>
-                    <span className="block text-sm text-gray-600 dark:text-gray-400">{new Date(createdAt).toLocaleString("fa", { dateStyle: "medium", timeStyle: "short" })}</span>
+                    <span className="block text-sm text-gray-600 dark:text-gray-400">{formateDateObject(createdAt)}</span>
                 </div>
             </div>
             <Slice />

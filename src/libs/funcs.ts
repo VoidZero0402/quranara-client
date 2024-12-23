@@ -53,6 +53,11 @@ export function getUploadType(type: string): UploadFileType {
     return UploadPrefixes[prefix];
 }
 
+export function formateDateObject(data: Date | number): string {
+    const localDateString = new Date(data).toLocaleString("fa", { dateStyle: "medium", timeStyle: "short" });
+    return localDateString;
+}
+
 const formatter = new Intl.DateTimeFormat("fa-IR", {
     weekday: "long",
     day: "numeric",

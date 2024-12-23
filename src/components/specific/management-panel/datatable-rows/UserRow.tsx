@@ -31,8 +31,12 @@ function UserRow({ user, onDetails, onSignCourse, onSendNotification, onBanUser 
                     </div>
                 </div>
             </td>
-            <td>{user.phone}</td>
-            <td>{user.fullname}</td>
+            <td>
+                <span className="underline">{user.phone}</span>
+            </td>
+            <td>
+                <span className="underline">{user.fullname}</span>
+            </td>
             <td>{formatDate(new Date(user.createdAt ?? Date.now()))}</td>
             <td>
                 <div className="flex gap-x-2">

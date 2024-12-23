@@ -1,3 +1,5 @@
+import { formateDateObject } from "@/libs/funcs";
+
 import Avatar from "./Avatar";
 import Button from "./Button";
 import Slice from "./Slice";
@@ -16,7 +18,7 @@ function Comment({ _id, content, pin, user, replies, createdAt, onReply }: Comme
                     <Avatar src={user.profile} />
                     <div className="space-y-2 font-pelak-medium text-gray-800 dark:text-gray-200">
                         <span className="block">{user.username}</span>
-                        <span className="block text-sm text-gray-600 dark:text-gray-400">{new Date(createdAt).toLocaleString("fa", { dateStyle: "medium", timeStyle: "short" })}</span>
+                        <span className="block text-sm text-gray-600 dark:text-gray-400">{formateDateObject(createdAt)}</span>
                     </div>
                 </div>
                 <div className="flex gap-x-2">
@@ -50,7 +52,7 @@ function ReplyComment({ content, user, createdAt }: ReplyType) {
                 <Avatar src={user.profile} />
                 <div className="space-y-2 font-pelak-medium text-gray-800 dark:text-gray-200">
                     <span className="block">{user.username}</span>
-                    <span className="block text-sm text-gray-600 dark:text-gray-400">{new Date(createdAt).toLocaleString("fa", { dateStyle: "medium", timeStyle: "short" })}</span>
+                    <span className="block text-sm text-gray-600 dark:text-gray-400">{formateDateObject(createdAt)}</span>
                 </div>
             </div>
             <Slice className="opacity-50" />

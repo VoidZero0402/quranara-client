@@ -1,3 +1,5 @@
+import { formateDateObject } from "@/libs/funcs";
+
 import Message from "./Message";
 
 import Slice from "@/components/ui/Slice";
@@ -22,7 +24,7 @@ function QuestionChat({ messages, status }: QuestionChatProps) {
                                 <QuestionCircle />
                                 سوال شما
                             </span>
-                            <span className="font-pelak-medium text-sm text-gray-800 dark:text-gray-200">{new Date(messages[0].createdAt).toLocaleString("fa", { dateStyle: "medium", timeStyle: "short" })}</span>
+                            <span className="font-pelak-medium text-sm text-gray-800 dark:text-gray-200">{formateDateObject(messages[0].createdAt)}</span>
                         </div>
                         <p className="text-gray-600 dark:text-gray-400 whitespace-pre-line leading-8">{messages[0].content}</p>
                         {messages[0].attached && <Attached {...messages[0].attached} />}

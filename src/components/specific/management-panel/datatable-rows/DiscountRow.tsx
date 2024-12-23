@@ -1,6 +1,6 @@
 "use client";
 
-import { formatDate } from "@/libs/funcs";
+import { formateDateObject } from "@/libs/funcs";
 
 import BadgeLight from "@/components/ui/BadgeLight";
 import IconButton from "@/components/ui/IconButton";
@@ -26,8 +26,8 @@ function DiscountRow({ discount, onRemove, onUpdate }: DiscountRowProps) {
                     {discount.max} - {discount.uses} مرتبه
                 </span>
             </td>
-            <td>{formatDate(new Date(discount.createdAt ?? Date.now()))}</td>
-            <td>{formatDate(new Date(discount.expireAt ?? Date.now()))}</td>
+            <td>{formateDateObject(discount.createdAt ?? Date.now())}</td>
+            <td>{formateDateObject(discount.expireAt ?? Date.now())}</td>
             <td>
                 <div className="flex gap-x-2">
                     <IconButton label="ویرایش" onClick={() => onUpdate(discount)}>

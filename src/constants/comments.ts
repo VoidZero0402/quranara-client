@@ -10,6 +10,11 @@ export const SOURCE = {
     COURSE: "COURSE",
 } as const;
 
+export const REPLIES_STATUS = {
+    NONE: "NONE",
+    PENDING: "PENDING",
+} as const;
+
 export const ROLES = {
     USER: "USER",
     MANAGER: "MANAGER",

@@ -1,8 +1,8 @@
 "use client";
 
-import { STATUS, StatusText } from "@/constants/comments";
+import { STATUS, StatusText, REPLIES_STATUS } from "@/constants/comments";
 
-import { formatDate, limitStringLength } from "@/libs/funcs";
+import { formateDateObject, limitStringLength } from "@/libs/funcs";
 
 import BadgeLight from "@/components/ui/BadgeLight";
 import IconButton from "@/components/ui/IconButton";
@@ -22,9 +22,9 @@ const StatusesVarient = {
 
 import { Comment, FieldSource } from "@/types/comment.types";
 
-type CommentRowProps = { comment: Comment; field: FieldSource };
+type CommentRowProps = { comment: Comment; field: FieldSource; onPreviewAnswer: (comment: Comment) => void; onManageReplies: (comment: Comment) => void; onAccept: (_id: string) => void; onReject: (_id: string) => void; onPin: (_id: string) => void; onUnpin: (_id: string) => void };
 
-function CommentRow({ comment, field }: CommentRowProps) {
+function CommentRow({ comment, field, onPreviewAnswer, onManageReplies, onAccept, onReject, onPin, onUnpin }: CommentRowProps) {
     return (
         <tr>
             <td>{limitStringLength(comment[field]?.title ?? "", 25)}</td>
@@ -32,37 +32,46 @@ function CommentRow({ comment, field }: CommentRowProps) {
                 <span className="underline text-amber-400">{comment.user.username}</span>
             </td>
             <td>
-                <BadgeLight varient={StatusesVarient[comment.status] as any}>{StatusText[comment.status]}</BadgeLight>
+                <BadgeLight varient={StatusesVarient[comment.status] as any}>{comment.repliesStatus === REPLIES_STATUS.PENDING ? "دارای پاسخ جدید" : StatusText[comment.status]}</BadgeLight>
             </td>
             <td>{comment.pin ? <BadgeLight varient="secondary">پین شده</BadgeLight> : <BadgeLight>پین نشده</BadgeLight>}</td>
-            <td>{formatDate(new Date(comment.createdAt ?? Date.now()))}</td>
+            <td>{formateDateObject(comment.createdAt ?? Date.now())}</td>
             <td>
                 <div className="flex gap-x-2">
-                    <IconButton label="مشاهده و پاسخ" variant="teal">
+                    <IconButton label="مشاهده و پاسخ" variant="teal" onClick={() => onPreviewAnswer(comment)}>
                         <ChatRoundDots />
                     </IconButton>
                     {comment.status !== STATUS.REJECTED && (
-                        <IconButton label="مدیریت پاسخ‌ها">
+                        <IconButton label="مدیریت پاسخ‌ها" onClick={() => onManageReplies(comment)}>
                             <Reply />
                         </IconButton>
                     )}
-                    {comment.status === STATUS.PENDING ? (
-                        <IconButton label="تایید نظر" variant="teal">
-                            <DoubleCheck />
+                    {comment.status === STATUS.ACCEPTED ? (
+                        <IconButton label="رد کردن نظر" variant="danger" onClick={() => onReject(comment._id)}>
+                            <DangerCircle />
                         </IconButton>
                     ) : (
-                        <IconButton label="رد کردن نظر" variant="danger">
+                        <IconButton label="تایید نظر" variant="teal" onClick={() => onAccept(comment._id)}>
+                            <DoubleCheck />
+                        </IconButton>
+                    )}
+                    {comment.status === STATUS.PENDING && (
+                        <IconButton label="رد کردن نظر" variant="danger" onClick={() => onReject(comment._id)}>
                             <DangerCircle />
                         </IconButton>
                     )}
-                    {comment.pin ? (
-                        <IconButton label="برداشتن پین" variant="secondary">
-                            <CircleTopDown />
-                        </IconButton>
-                    ) : (
-                        <IconButton label="پین کردن" variant="secondary">
-                            <CircleTopUp />
-                        </IconButton>
+                    {comment.status === STATUS.ACCEPTED && (
+                        <>
+                            {comment.pin ? (
+                                <IconButton label="برداشتن پین" variant="secondary" onClick={() => onUnpin(comment._id)}>
+                                    <CircleTopDown />
+                                </IconButton>
+                            ) : (
+                                <IconButton label="پین کردن" variant="secondary" onClick={() => onPin(comment._id)}>
+                                    <CircleTopUp />
+                                </IconButton>
+                            )}
+                        </>
                     )}
                 </div>
             </td>

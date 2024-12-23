@@ -3,6 +3,8 @@
 import { memo, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
+import { formateDateObject } from "@/libs/funcs";
+
 import DetailBox from "@/components/specific/course/DetailBox";
 
 import CircleTopDown from "@/components/svgs/CircleTopDown";
@@ -46,7 +48,7 @@ function Details({ time, metadata, updatedAt, onInView }: DetailsProps) {
                 <DetailBox text="نحوه ارائه" caption={metadata.present}>
                     <PlayCircle className="w-8" />
                 </DetailBox>
-                <DetailBox text="آخرین بروزرسانی" caption={new Date(updatedAt).toLocaleString("fa", { dateStyle: "medium", timeStyle: "short" })}>
+                <DetailBox text="آخرین بروزرسانی" caption={formateDateObject(updatedAt)}>
                     <Graph className="w-8" />
                 </DetailBox>
             </div>

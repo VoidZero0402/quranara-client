@@ -1,22 +1,29 @@
 "use client";
 
 import { useCallback, useMemo } from "react";
+import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
+import { useMutation } from "@tanstack/react-query";
+
+import { acceptComment, pinComment, rejectComment, unpinComment } from "@/api/mutations/comments";
+import { AcceptCommentStatusOptions, PinCommentStatusOptions, RejectCommentStatusOptions, UnpinCommentStatusOptions } from "@/api/errors/comments";
+
+import { statusHandler } from "@/libs/responses";
 
 import useToggleState from "@/hooks/useToggleState";
 
 import { ENTITIES } from "@/constants/entities";
 import { SourceText } from "@/constants/comments";
 
-import CategoryRow from "@/components/specific/management-panel/datatable-rows/CategoryRow";
+import CommentRow from "@/components/specific/management-panel/datatable-rows/CommentRow";
 
-// const UpdateCategoryModal = dynamic(() => import("@/components/modal/management-panel/categories/UpdateCategoryModal"), { ssr: false });
+const PreviewAndAnswerCommentModal = dynamic(() => import("@/components/modal/management-panel/comments/PreviewAndAnswerCommentModal"), { ssr: false });
+const RepliesOffCanvas = dynamic(() => import("@/components/specific/management-panel/comments/RepliesOffCanvas"), { ssr: false });
 
 import DataTable, { DataTableBody, Column } from "@/components/ui/datatable/DataTable";
 
 import { Comment, FieldSource, Source } from "@/types/comment.types";
 import { Pagination } from "@/types/response.types";
-import CommentRow from "@/components/specific/management-panel/datatable-rows/CommentRow";
 
 type CommentsDataTableProps = {
     comments: Comment[];
@@ -25,6 +32,78 @@ type CommentsDataTableProps = {
 };
 
 function CommentsDataTable({ comments, pagination, source }: CommentsDataTableProps) {
+    const router = useRouter();
+
+    const { isOpen: isOpenPreviewAndAnswerModal, open: openPreviewAndAnswerModal, close: closePreviewAndAnswerModal, props: previewAndAnswerModalProps } = useToggleState<{ comment: Comment; source: Source }>();
+    const { isOpen: isOpenRepliesOffCanvas, open: openRepliesOffCanvas, close: closeRepliesOffCanvas, props: repliesOffCanvasProps } = useToggleState<{ comment: Comment }>();
+
+    const onPreviewAnswer = useCallback(
+        (comment: Comment) => {
+            openPreviewAndAnswerModal({ comment, source });
+        },
+        [source]
+    );
+
+    const onManageReplies = useCallback((comment: Comment) => {
+        openRepliesOffCanvas({ comment });
+    }, []);
+
+    const { mutate: accept } = useMutation({
+        mutationFn: (_id: string) => acceptComment({ commentId: _id }, { isReply: "0" }),
+        async onSettled(data) {
+            if (data) {
+                statusHandler(data, AcceptCommentStatusOptions);
+
+                if (data.success) {
+                    router.refresh();
+                    // TODO: Revalidation
+                }
+            }
+        },
+    });
+
+    const { mutate: reject } = useMutation({
+        mutationFn: (_id: string) => rejectComment({ commentId: _id }, { isReply: "0" }),
+        async onSettled(data) {
+            if (data) {
+                statusHandler(data, RejectCommentStatusOptions);
+
+                if (data.success) {
+                    router.refresh();
+                    // TODO: Revalidation
+                }
+            }
+        },
+    });
+
+    const { mutate: pin } = useMutation({
+        mutationFn: (_id: string) => pinComment({ commentId: _id }),
+        async onSettled(data) {
+            if (data) {
+                statusHandler(data, PinCommentStatusOptions);
+
+                if (data.success) {
+                    router.refresh();
+                    // TODO: Revalidation
+                }
+            }
+        },
+    });
+
+    const { mutate: unpin } = useMutation({
+        mutationFn: (_id: string) => unpinComment({ commentId: _id }),
+        async onSettled(data) {
+            if (data) {
+                statusHandler(data, UnpinCommentStatusOptions);
+
+                if (data.success) {
+                    router.refresh();
+                    // TODO: Revalidation
+                }
+            }
+        },
+    });
+
     const columns: Column[] = useMemo(
         () => [
             {
@@ -45,7 +124,7 @@ function CommentsDataTable({ comments, pagination, source }: CommentsDataTablePr
             },
             {
                 key: "createdAt",
-                text: "تاریخ ایجاد",
+                text: "زمان ایجاد",
             },
             {
                 key: "actions",
@@ -58,13 +137,17 @@ function CommentsDataTable({ comments, pagination, source }: CommentsDataTablePr
     const field = source.toLowerCase() as FieldSource;
 
     return (
-        <DataTable entity={ENTITIES.COMMENTS} columns={columns} pagination={pagination}>
-            <DataTableBody>
-                {comments.map((comment) => (
-                    <CommentRow key={comment._id} comment={comment} field={field} />
-                ))}
-            </DataTableBody>
-        </DataTable>
+        <section>
+            <DataTable entity={ENTITIES.COMMENTS} columns={columns} pagination={pagination}>
+                <DataTableBody>
+                    {comments.map((comment) => (
+                        <CommentRow key={comment._id} comment={comment} field={field} onPreviewAnswer={onPreviewAnswer} onManageReplies={onManageReplies} onAccept={accept} onReject={reject} onPin={pin} onUnpin={unpin} />
+                    ))}
+                </DataTableBody>
+            </DataTable>
+            <PreviewAndAnswerCommentModal isOpen={isOpenPreviewAndAnswerModal} onClose={closePreviewAndAnswerModal} {...previewAndAnswerModalProps} />
+            <RepliesOffCanvas isOpen={isOpenRepliesOffCanvas} onClose={closeRepliesOffCanvas} {...repliesOffCanvasProps} />
+        </section>
     );
 }
 
