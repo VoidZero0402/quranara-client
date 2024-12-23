@@ -22,6 +22,16 @@ export function updateURLSearchParams(key: string, value: string, route?: string
     return url.toString();
 }
 
+export function updateMultipleURLSearchParams(params: Record<string, string>, route?: string) {
+    const url = new URL(route ?? window.location.href, window.location.origin);
+
+    for (const param in params) {
+        url.searchParams.set(param, params[param]);
+    }
+
+    return url.toString();
+}
+
 export const persianToEnglish = (value: string) => {
     const persian = "۰۱۲۳۴۵۶۷۸۹";
     const english = "0123456789";
