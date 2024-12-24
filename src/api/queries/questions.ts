@@ -1,5 +1,6 @@
 import Quranara from "../clients/Quranara";
 
+import { GetAllQuestionsQuerySchemaType } from "@/validators/questions";
 import { PaginationQuerySchemaType } from "@/validators/pagination";
 
 import { convertToQueryString } from "@/libs/funcs";
@@ -26,7 +27,7 @@ export function getQuestion(params: QuestionsQueriesWithIdParams): Promise<Respo
     return Quranara.get(url);
 }
 
-export function getAllQuestions(query: PaginationQuerySchemaType): Promise<Response<{ questions: LimitedQuestion[]; pagination: Pagination }>> {
+export function getAllQuestions(query: GetAllQuestionsQuerySchemaType): Promise<Response<{ questions: Question[]; pagination: Pagination }>> {
     const queryString = convertToQueryString(query);
     const url = `/questions/all?${queryString}`;
 

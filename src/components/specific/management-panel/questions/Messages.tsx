@@ -2,9 +2,9 @@ import { ROLES } from "@/constants/comments";
 
 import Message from "@/components/ui/Message";
 
-import { TicketMessage } from "@/types/ticket.types";
+import { QuestionMessage } from "@/types/question.types";
 
-type MessagesProps = { messages: TicketMessage[] };
+type MessagesProps = { messages: QuestionMessage[] };
 
 function Messages({ messages }: MessagesProps) {
     return (

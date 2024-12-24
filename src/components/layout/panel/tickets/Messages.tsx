@@ -1,6 +1,6 @@
 import { ROLES } from "@/constants/comments";
 
-import Message from "@/components/specific/panel/tickets/Message";
+import Message from "@/components/ui/Message";
 
 import { TicketMessage } from "@/types/ticket.types";
 

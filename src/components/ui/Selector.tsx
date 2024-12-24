@@ -10,7 +10,7 @@ function Selector({ children, className }: SelectorProps) {
 
 export function SelectorItem({ children, isActive, onSelect }: SelectorItemProps) {
     return (
-        <div className={`p-4 text-center w-full rounded-xl transition-all ${isActive ? "amber-light" : "gray-light cursor-pointer"}`} {...(!isActive && { onClick: onSelect })}>
+        <div className={`p-4 text-center w-full rounded-xl select-none transition-all ${isActive ? "amber-light" : "gray-light cursor-pointer"}`} {...(!isActive && { onClick: onSelect })}>
             {children}
         </div>
     );

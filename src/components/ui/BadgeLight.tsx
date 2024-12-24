@@ -33,10 +33,10 @@ const varients: Record<Varients, Field> = {
 type BadgeLightProps = { varient?: Varients } & React.ComponentProps<"div">;
 
 function BadgeLight({ children, varient = "gray" }: BadgeLightProps) {
-    const { background, ball, text } = varients[varient];
+    const { ball, text } = varients[varient];
 
     return (
-        <div className={`flex items-center gap-x-2 w-max py-2.5 px-4 rounded-xl ${background}`}>
+        <div className="flex items-center gap-x-2 w-max">
             <div className={`size-1.5 rounded-full ${ball}`}>
                 <div className="size-full bg-inherit rounded-full animate-ping"></div>
             </div>

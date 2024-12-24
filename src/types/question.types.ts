@@ -1,6 +1,6 @@
 import { STATUS } from "@/constants/questions";
 
-import { PopulatedUser } from "./user.types";
+import { User } from "./user.types";
 import { Session } from "./session.types";
 import { AttachedType } from "./attached.types";
 
@@ -18,6 +18,8 @@ export type QuestionMessage = {
 
 type QuestionSession = Pick<Session, "_id" | "slug">;
 
+type PopulatedUser = Pick<User, "_id" | "username" | "role" | "profile">
+
 export type Question = {
     _id: string;
     title: string;
@@ -27,6 +29,7 @@ export type Question = {
     status: Status;
     messages: QuestionMessage[];
     createdAt: number;
+    updatedAt: number;
 };
 
 export type LimitedQuestion = Omit<Question, "messages">;

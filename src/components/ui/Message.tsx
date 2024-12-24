@@ -1,4 +1,4 @@
-import { ROLES, RolesText } from "@/constants/roles";
+import { RolesText } from "@/constants/roles";
 
 import { formatDate } from "@/libs/funcs";
 

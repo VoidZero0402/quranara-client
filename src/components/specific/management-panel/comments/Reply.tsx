@@ -20,7 +20,7 @@ type ReplyProps = Reply & { onAccept: (_id: string) => void; onReject: (_id: str
 
 function Reply({ _id, content, user, status, onAccept, onReject }: ReplyProps) {
     return (
-        <div className="md:space-y-4 p-6 sm:p-8 bg-gray-50 dark:bg-gray-800 rounded-2xl">
+        <div className="md:space-y-4 p-6 bg-gray-50 dark:bg-gray-800 rounded-2xl">
             <div className="space-y-2">
                 <div className="flex items-center justify-between font-pelak-medium">
                     <div className="flex items-center gap-x-1 text-gray-800 dark:text-gray-200">
@@ -29,7 +29,7 @@ function Reply({ _id, content, user, status, onAccept, onReject }: ReplyProps) {
                     </div>
                     <span className="underline text-amber-400">{user.username}</span>
                 </div>
-                <p className="text-gray-600 dark:text-gray-400 leading-8">{content}</p>
+                <p className="text-gray-800 dark:text-gray-200 leading-8">{content}</p>
             </div>
             <div className="flex flex-col-reverse md:flex-row items-end justify-between gap-4">
                 <div className="flex flex-col sm:flex-row gap-4 w-full md:w-max">

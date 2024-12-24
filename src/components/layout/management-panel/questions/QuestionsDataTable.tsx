@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import { useMutation } from "@tanstack/react-query";
 
-import { closeTicket } from "@/api/mutations/tickets";
-import { CloseTicketStatusOptions } from "@/api/errors/tickets";
+import { closeQuestion } from "@/api/mutations/questions";
+import { CloseQuestionStatusOptions } from "@/api/errors/questions";
 
 import { statusHandler } from "@/libs/responses";
 
@@ -14,9 +14,9 @@ import useToggleState from "@/hooks/useToggleState";
 
 import { ENTITIES } from "@/constants/entities";
 
-import TicketRow from "@/components/specific/management-panel/datatable-rows/TicketRow";
+import QuestionRow from "@/components/specific/management-panel/datatable-rows/QuestionRow";
 
-const ChatOffCanvas = dynamic(() => import("@/components/specific/management-panel/tickets/ChatOffCanvas"), { ssr: false });
+const ChatOffCanvas = dynamic(() => import("@/components/specific/management-panel/questions/ChatOffCanvas"), { ssr: false });
 
 import DataTable, { DataTableBody, Column } from "@/components/ui/datatable/DataTable";
 
@@ -28,10 +28,6 @@ const columns: Column[] = [
     {
         key: "user",
         text: "کاربر",
-    },
-    {
-        key: "type",
-        text: "نوع تیکت",
     },
     {
         key: "status",
@@ -47,28 +43,28 @@ const columns: Column[] = [
     },
 ];
 
-import { Ticket } from "@/types/ticket.types";
+import { Question } from "@/types/question.types";
 import { Pagination } from "@/types/response.types";
 
-type TicketsDataTableProps = {
-    tickets: Ticket[];
+type QuestionsDataTableProps = {
+    questions: Question[];
     pagination: Pagination;
 };
 
-function TicketsDataTable({ tickets, pagination }: TicketsDataTableProps) {
+function QuestionsDataTable({ questions, pagination }: QuestionsDataTableProps) {
     const router = useRouter();
 
-    const { isOpen: isOpenChatOffCanvas, open: openChatOffCanvas, close: closeChatOffCanvas, props: chatOffCanvasProps } = useToggleState<{ ticket: Ticket }>();
+    const { isOpen: isOpenChatOffCanvas, open: openChatOffCanvas, close: closeChatOffCanvas, props: chatOffCanvasProps } = useToggleState<{ question: Question }>();
 
-    const onChat = useCallback((ticket: Ticket) => {
-        openChatOffCanvas({ ticket });
+    const onChat = useCallback((question: Question) => {
+        openChatOffCanvas({ question });
     }, []);
 
     const { mutate: close } = useMutation({
-        mutationFn: (_id: string) => closeTicket({ ticketId: _id }),
+        mutationFn: (_id: string) => closeQuestion({ questionId: _id }),
         onSettled(data) {
             if (data) {
-                statusHandler(data, CloseTicketStatusOptions);
+                statusHandler(data, CloseQuestionStatusOptions);
 
                 if (data.success) {
                     router.refresh();
@@ -79,10 +75,10 @@ function TicketsDataTable({ tickets, pagination }: TicketsDataTableProps) {
 
     return (
         <section>
-            <DataTable entity={ENTITIES.TICKETS} columns={columns} pagination={pagination}>
+            <DataTable entity={ENTITIES.QUESTIONS} columns={columns} pagination={pagination}>
                 <DataTableBody>
-                    {tickets.map((ticket) => (
-                        <TicketRow key={ticket._id} ticket={ticket} onChat={onChat} onClose={close} />
+                    {questions.map((question) => (
+                        <QuestionRow key={question._id} question={question} onChat={onChat} onClose={close} />
                     ))}
                 </DataTableBody>
             </DataTable>
@@ -91,4 +87,4 @@ function TicketsDataTable({ tickets, pagination }: TicketsDataTableProps) {
     );
 }
 
-export default TicketsDataTable;
+export default QuestionsDataTable;
