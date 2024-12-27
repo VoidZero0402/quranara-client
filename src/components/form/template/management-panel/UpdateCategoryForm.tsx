@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { ui } from "@/api/cache/tags";
+import { category as categoryCache, ui } from "@/api/cache/tags";
 import { updateCategory } from "@/api/mutations/categories";
 import { UpdateCategoryStatusOptions } from "@/api/errors/categories";
 
@@ -44,7 +44,7 @@ function UpdateCategoryForm({ category, onClose }: UpdateCategoryFormProps) {
         statusHandler(res, UpdateCategoryStatusOptions);
 
         if (res.success) {
-            await revalidate(ui.menus);
+            await revalidate(categoryCache.default, ui.menus);
             reset();
             onClose();
             router.refresh();

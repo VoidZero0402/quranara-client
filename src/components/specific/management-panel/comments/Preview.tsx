@@ -1,5 +1,4 @@
 import ChatRoundDots from "@/components/svgs/ChatRoundDots";
-import Plain from "@/components/svgs/Plain";
 
 type PreviewProps = {
     source: {

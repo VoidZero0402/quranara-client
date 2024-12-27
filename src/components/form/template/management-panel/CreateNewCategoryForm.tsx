@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { ui } from "@/api/cache/tags";
+import { category, ui } from "@/api/cache/tags";
 import { createCategory } from "@/api/mutations/categories";
 import { CreateCategoryStatusOptions } from "@/api/errors/categories";
 
@@ -45,7 +45,7 @@ function CreateNewCategoryForm({ onClose }: CreateNewCategoryFormProps) {
         statusHandler(res, CreateCategoryStatusOptions);
 
         if (res.success) {
-            await revalidate(ui.menus);
+            await revalidate(category.default, ui.menus);
             reset();
             onClose();
             router.refresh();

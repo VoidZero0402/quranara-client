@@ -1,4 +1,4 @@
-"use cleint";
+"use client";
 
 import { useCallback, useEffect, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
@@ -55,11 +55,11 @@ function ChatOffCanvas({ isOpen, onClose, ticket }: ChatOffCanvasProps) {
                 </div>
             </OffCanvasHeader>
             {ticket && (
-                <div className="h-full flex flex-col">
+                <div className="h-[calc(100%-48px)] flex flex-col">
                     <div ref={messagesRef} className="grow overflow-auto with-custom-scroll with-custom-scroll--padding">
                         <Messages messages={messages} />
                     </div>
-                    <div className="min-h-[280px] sm:min-h-48 shrink-0 p-4 bg-white dark:bg-gray-850">
+                    <div className="pt-4 px-4 bg-white dark:bg-gray-850">
                         <AnswerTicketForm ticketId={ticket._id} onMessage={onMessage} />
                     </div>
                 </div>

@@ -29,7 +29,6 @@ function UpdateNewsForm({ news }: UpdateNewsFormProps) {
         control,
         handleSubmit,
         formState: { isSubmitting },
-        reset,
     } = useForm<UpdateNewsSchemaType>({
         defaultValues: {
             title: news.title,

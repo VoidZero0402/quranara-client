@@ -17,8 +17,6 @@ import Skeleton, { SkeletonFrame } from "@/components/ui/Skeleton";
 import UserRounded from "@/components/svgs/UserRounded";
 import Setting from "@/components/svgs/Setting";
 
-import { CookieUser } from "@/types/user.types";
-
 function Account() {
     const { data: user } = useSuspenseQuery({ queryKey: ["cookie-user"], queryFn: getCookieUser });
 

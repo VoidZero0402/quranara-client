@@ -61,7 +61,7 @@ function TvGrid({ updateCount }: TvGridProps) {
             {hasNextPage && (
                 <div className="flex-center mt-12">
                     <Button size="lg" disabled={isFetchingNextPage} onClick={() => fetchNextPage()}>
-                        {isFetchingNextPage ? "در حال بروزرسانی آموزش‌ها" : "مشاهده آموزش‌ها بیشتر"}
+                        {isFetchingNextPage ? "در حال بروزرسانی آموزش‌ها" : "مشاهده آموزش‌های بیشتر"}
                     </Button>
                 </div>
             )}

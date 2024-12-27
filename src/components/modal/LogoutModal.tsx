@@ -12,8 +12,6 @@ import Modal, { ModalBody, ModalFooter, ModalHeader, ModalInstanceProps } from "
 
 import Button from "../ui/Button";
 
-import HomeAngle from "../svgs/HomeAngle";
-
 import LogoutIcon from "@/components/svgs/Logout";
 
 function LogoutModal({ isOpen, onClose }: ModalInstanceProps) {
@@ -45,7 +43,7 @@ function LogoutModal({ isOpen, onClose }: ModalInstanceProps) {
             <ModalBody className="space-y-4">
                 <div className="space-y-2">
                     <span className="font-pelak-semibold text-red-500 leading-8">از خروج از حساب کاربری خود اطمینان دارید؟</span>
-                    <p className="text-gray-600 dark:text-gray-400 leading-8">با خروج از حساب کاربری خود، پنل کاربری شما در دسترس نخواهد بود و در صورت نیاز به دسترسی باید دوباره از بخش ورود به وبسایت اقدام کنید</p>
+                    <p className="text-gray-600 dark:text-gray-400 leading-8">با خروج از حساب کاربری خود، پنل شما در دسترس نخواهد بود و در صورت نیاز به دسترسی باید دوباره از بخش ورود به وبسایت اقدام کنید</p>
                 </div>
             </ModalBody>
             <ModalFooter className="flex-col sm:flex-row gap-4">
@@ -54,8 +52,7 @@ function LogoutModal({ isOpen, onClose }: ModalInstanceProps) {
                     {isPending ? "در حال خروج از حساب" : "خروج از حساب کاربری"}
                 </Button>
                 <Button size="lg" variant="neutral-base" className="w-full" onClick={onClose}>
-                    <HomeAngle />
-                    بازگشت به پنل کاربری
+                    انصراف از عملیات
                 </Button>
             </ModalFooter>
         </Modal>

@@ -6,7 +6,7 @@ import { PaginationQuerySchemaType } from "@/validators/pagination";
 import { convertToQueryString } from "@/libs/funcs";
 
 import { Pagination, Response } from "@/types/response.types";
-import { Question, LimitedQuestion } from "@/types/question.types";
+import { Question } from "@/types/question.types";
 
 type QuestionsQueriesWithIdParams = { questionId: string };
 

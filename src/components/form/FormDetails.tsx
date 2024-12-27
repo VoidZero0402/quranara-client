@@ -1,7 +1,5 @@
 import { FieldError } from "react-hook-form";
 
-import InfoCircle from "../svgs/InfoCircle";
-
 type DetailsProps = { error: FieldError | undefined; caption?: string };
 
 function FormDetails({ error, caption }: DetailsProps) {

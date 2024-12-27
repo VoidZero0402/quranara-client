@@ -9,11 +9,12 @@ import { getCategories } from "@/api/queries/categories";
 import { updateURLSearchParams } from "@/libs/funcs";
 
 import CategoriesDrawer from "./CategoriesDrawer";
+import Category from "./Category";
 
-import Button from "@/components/ui/Button";
 import Skeleton, { SkeletonFrame } from "@/components/ui/Skeleton";
 
 import { Refrences } from "@/types/category.types";
+import Tabs, { TabsItem } from "@/components/ui/Tabs";
 
 type CategoriesProps = { reference: Refrences };
 
@@ -38,22 +39,19 @@ function Categories({ reference }: CategoriesProps) {
         router.push(updatedParams, { scroll: false });
     }, []);
 
-    console.log(data.data.categories);
-
     return (
         <>
-            <div className="hidden md:flex items-center gap-x-4">
-                <span className="shrink-0 hidden xl:block font-pelak-medium text-lg text-gray-800 dark:text-gray-200">دسته‌بندی مقالات</span>
-                <div className="flex flex-wrap gap-4">
-                    <Button variant={category === "all" ? "neutral-secondary" : "neutral-base"} onClick={() => updateCategory("all")}>
+            <div className="hidden md:block">
+                <Tabs defaultValue={category} onChangeTab={updateCategory} className="flex flex-wrap gap-4">
+                    <TabsItem value="all" unactiveTabClassName="bg-gray-100 dark:bg-gray-500/10 text-gray-600 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-500/15" activeTabClassName="blue-light dark:amber-light">
                         همه دسته‌بندی‌ها
-                    </Button>
+                    </TabsItem>
                     {data.data.categories.map((item) => (
-                        <Button key={item._id} variant={category === item._id ? "neutral-secondary" : "neutral-base"} onClick={() => updateCategory(item._id)}>
+                        <TabsItem key={item._id} value={item._id} unactiveTabClassName="bg-gray-100 dark:bg-gray-500/10 text-gray-600 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-500/15" activeTabClassName="blue-light dark:amber-light">
                             {item.title}
-                        </Button>
+                        </TabsItem>
                     ))}
-                </div>
+                </Tabs>
             </div>
             <CategoriesDrawer categories={data.data.categories} category={category} onChange={updateCategory} />
         </>
@@ -63,26 +61,25 @@ function Categories({ reference }: CategoriesProps) {
 export function CategoriesLoading() {
     return (
         <>
-            <div className="hidden md:flex items-center gap-x-4">
-                <span className="shrink-0 hidden xl:block font-pelak-medium text-lg text-gray-800 dark:text-gray-200">دسته‌بندی مقالات</span>
+            <div className="hidden md:block">
                 <div className="flex flex-wrap gap-4">
                     <Skeleton className="size-max">
-                        <SkeletonFrame className="h-11 w-32 rounded-2xl"></SkeletonFrame>
+                        <SkeletonFrame className="h-12 w-32 rounded-xl"></SkeletonFrame>
                     </Skeleton>
                     <Skeleton className="size-max">
-                        <SkeletonFrame className="h-11 w-32 rounded-2xl"></SkeletonFrame>
+                        <SkeletonFrame className="h-12 w-32 rounded-xl"></SkeletonFrame>
                     </Skeleton>
                     <Skeleton className="size-max">
-                        <SkeletonFrame className="h-11 w-32 rounded-2xl"></SkeletonFrame>
+                        <SkeletonFrame className="h-12 w-32 rounded-xl"></SkeletonFrame>
                     </Skeleton>
                     <Skeleton className="size-max">
-                        <SkeletonFrame className="h-11 w-32 rounded-2xl"></SkeletonFrame>
+                        <SkeletonFrame className="h-12 w-32 rounded-xl"></SkeletonFrame>
                     </Skeleton>
                     <Skeleton className="size-max">
-                        <SkeletonFrame className="h-11 w-32 rounded-2xl"></SkeletonFrame>
+                        <SkeletonFrame className="h-12 w-32 rounded-xl"></SkeletonFrame>
                     </Skeleton>
                     <Skeleton className="size-max">
-                        <SkeletonFrame className="h-11 w-32 rounded-2xl"></SkeletonFrame>
+                        <SkeletonFrame className="h-12 w-32 rounded-xl"></SkeletonFrame>
                     </Skeleton>
                 </div>
             </div>

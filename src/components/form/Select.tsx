@@ -55,7 +55,7 @@ function Select<T extends FieldValues>({ children, name, control, defaultText = 
                 <span className="font-pelak text-gray-600 dark:text-gray-200">{text || placeholder}</span>
                 <ArrowDown className="w-5" />
             </div>
-            <div className={cn("absolute top-full flex flex-col gap-y-1 p-2 w-full max-h-64 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700/50 rounded-xl overflow-auto with-custom-scroll invisible opacity-0 mt-4 transition-all duration-300 z-20", selectClassName, isOpen && "visible opacity-100 mt-2")}>
+            <div className={cn("absolute top-full flex flex-col gap-y-1 py-2 px-1 w-full max-h-64 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700/50 rounded-xl overflow-auto with-custom-scroll invisible opacity-0 mt-4 transition-all duration-300 z-20", selectClassName, isOpen && "visible opacity-100 mt-2")}>
                 <SelectContext.Provider value={{ handleSelect }}>{children}</SelectContext.Provider>
             </div>
             <FormDetails error={error} caption={caption} />
@@ -67,7 +67,7 @@ export function SelectItem({ children, className, value, text }: SelectItemProps
     const { handleSelect } = useContext(SelectContext);
 
     return (
-        <div onClick={() => handleSelect(value, text)} className={cn("flex items-center gap-x-2 p-4 text-gray-700 dark:text-gray-300 hover:gray-light dark:hover:gray-light rounded-lg cursor-pointer transition-colors duration-300", className)}>
+        <div onClick={() => handleSelect(value, text)} className={cn("flex items-center gap-x-2 p-4 text-gray-700 dark:text-gray-300 hover:gray-light dark:hover:gray-light rounded-xl cursor-pointer transition-colors duration-300", className)}>
             {children}
         </div>
     );

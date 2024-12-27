@@ -35,12 +35,12 @@ function NewsSlide({ cover, title, description, link }: News) {
     return (
         <div className="flex flex-col-reverse lg:flex-row items-center gap-8">
             <div className="lg:w-1/2 space-y-4">
-                <h3 className="font-pelak-semibold text-2xl sm:text-3xl text-gray-800 dark:text-gray-200">{title}</h3>
-                <p className="sm:text-lg text-gray-600 dark:text-gray-400 leading-7">{description}</p>
+                <h3 className="font-pelak-semibold text-2xl/[1.5] sm:text-3xl/[1.5] text-gray-800 dark:text-gray-200">{title}</h3>
+                <p className="sm:text-lg text-gray-600 dark:text-gray-400 leading-8">{description}</p>
                 {link && (
                     <div>
                         <Link href={link.url}>
-                            <Button>
+                            <Button size="lg">
                                 <LinkCircle />
                                 {link.text}
                             </Button>

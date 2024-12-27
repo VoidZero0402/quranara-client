@@ -8,7 +8,7 @@ const button = cva("flex-center gap-x-1 font-pelak-medium child:shrink-0 select-
             "filled-primary": "bg-blue-500 text-white hover:bg-blue-600 disabled:bg-blue-400",
             "filled-secondary": "bg-amber-400 text-white hover:bg-amber-500 disabled:bg-amber-300",
             "filled-danger": "bg-red-500 text-white hover:bg-red-600 disabled:bg-red-400",
-            "filled-teal": "bg-teal-600 text-white hover:bg-teal-700 disabled:bg-teal-500",
+            "filled-teal": "bg-teal-500 text-white hover:bg-teal-600 disabled:bg-teal-400",
             "text-primary": "text-blue-500 hover:bg-blue-500 hover:text-white",
             "text-secondary": "text-amber-400 hover:bg-amber-400 hover:text-white",
             "neutral-primary": "bg-blue-50 dark:bg-blue-500/10 text-blue-500 hover:bg-blue-100 dark:hover:bg-blue-500/15 disabled:bg-blue-100 dark:disabled:bg-blue-500/15",

@@ -26,7 +26,6 @@ function UpdateNotificationForm({ onClose, notification }: UpdateNotificationFor
         control,
         handleSubmit,
         formState: { isSubmitting },
-        reset,
     } = useForm<CreateNotificationSchemaType>({
         values: {
             title: notification?.title,

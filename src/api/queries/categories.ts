@@ -1,5 +1,7 @@
 import Quranara from "../clients/Quranara";
 
+import { category } from "../cache/tags";
+
 import { GetAllCategoriesQuerySchemaType, GetCategoriesSummarySchemaType } from "@/validators/categories";
 
 import { convertToQueryString } from "@/libs/funcs";
@@ -11,7 +13,12 @@ export function getCategories(query: GetAllCategoriesQuerySchemaType): Promise<R
     const queryString = convertToQueryString(query);
     const url = `/categories?${queryString}`;
 
-    return Quranara.get(url);
+    return Quranara.get(url, {
+        cache: "force-cache",
+        next: {
+            tags: [category.default, url],
+        },
+    });
 }
 
 export function getCategoriesSummary(query: GetCategoriesSummarySchemaType): Promise<Response<{ categories: SummaryCategory[]; pagination: Pagination }>> {

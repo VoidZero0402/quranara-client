@@ -12,7 +12,7 @@ const TabsContenxt = createContext<TabsContextProps>({ active: "", onTab: () => 
 
 type TabsProps<T> = { defaultValue: T; onChangeTab: (tab: T) => void } & React.ComponentProps<"div">;
 
-type TabsItemProps = { value: string; activeTabClassName?: string } & React.ComponentProps<"div">;
+type TabsItemProps = { value: string; activeTabClassName?: string; unactiveTabClassName?: string } & React.ComponentProps<"div">;
 
 function Tabs<T = string>({ children, defaultValue, onChangeTab = () => {}, className }: TabsProps<T>) {
     const [tab, setTab] = useEffectState<T>(defaultValue);
@@ -31,13 +31,13 @@ function Tabs<T = string>({ children, defaultValue, onChangeTab = () => {}, clas
     );
 }
 
-export function TabsItem({ children, value, className, activeTabClassName = "bg-gray-100 dark:bg-gray-500/10" }: TabsItemProps) {
+export function TabsItem({ children, value, className, activeTabClassName = "bg-gray-100 dark:bg-gray-500/10", unactiveTabClassName = "" }: TabsItemProps) {
     const { active, onTab } = useContext(TabsContenxt);
 
     const isActive = active === value;
 
     return (
-        <div role="tab" onClick={() => onTab(value)} className={cn("py-3 px-4 font-pelak-medium text-center text-gray-800 dark:text-gray-200 rounded-xl cursor-pointer transition-colors", className, isActive && activeTabClassName)}>
+        <div role="tab" onClick={() => onTab(value)} className={cn("py-3 px-4 font-pelak-medium text-center text-gray-800 dark:text-gray-200 rounded-xl cursor-pointer select-none transition-colors", className, isActive ? activeTabClassName : unactiveTabClassName)}>
             {children}
         </div>
     );

@@ -44,19 +44,19 @@ function Navigation({ entity }: NavigationProps) {
                     مرتب‌سازی {entity}
                 </span>
                 <Tabs defaultValue={sort} onChangeTab={updateSort}>
-                    <TabsItem value={SORTING.DEFAULT} className="flex items-center gap-x-1 font-pelak-medium hover:text-blue-500 dark:hover:text-amber-400 rounded-2xl" activeTabClassName="blue-light dark:amber-light">
+                    <TabsItem value={SORTING.DEFAULT} className="flex items-center gap-x-1 font-pelak-medium hover:text-blue-500 dark:hover:text-amber-400 rounded-xl" activeTabClassName="blue-light dark:amber-light">
                         <Sort />
                         پیش فرض
                     </TabsItem>
-                    <TabsItem value={SORTING.NEWSET} className="flex items-center gap-x-1 font-pelak-medium hover:text-blue-500 dark:hover:text-amber-400 rounded-2xl" activeTabClassName="blue-light dark:amber-light">
+                    <TabsItem value={SORTING.NEWSET} className="flex items-center gap-x-1 font-pelak-medium hover:text-blue-500 dark:hover:text-amber-400 rounded-xl" activeTabClassName="blue-light dark:amber-light">
                         <SortUp />
                         جدید ترین
                     </TabsItem>
-                    <TabsItem value={SORTING.OLDEST} className="flex items-center gap-x-1 font-pelak-medium hover:text-blue-500 dark:hover:text-amber-400 rounded-2xl" activeTabClassName="blue-light dark:amber-light">
+                    <TabsItem value={SORTING.OLDEST} className="flex items-center gap-x-1 font-pelak-medium hover:text-blue-500 dark:hover:text-amber-400 rounded-xl" activeTabClassName="blue-light dark:amber-light">
                         <SortDown />
                         قدیمی ترین
                     </TabsItem>
-                    <TabsItem value={SORTING.POPULAR} className="flex items-center gap-x-1 font-pelak-medium hover:text-blue-500 dark:hover:text-amber-400 rounded-2xl" activeTabClassName="blue-light dark:amber-light">
+                    <TabsItem value={SORTING.POPULAR} className="flex items-center gap-x-1 font-pelak-medium hover:text-blue-500 dark:hover:text-amber-400 rounded-xl" activeTabClassName="blue-light dark:amber-light">
                         <MedalRibbon />
                         محبوب ترین
                     </TabsItem>
