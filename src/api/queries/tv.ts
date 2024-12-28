@@ -22,8 +22,14 @@ export function getLastTvs(): Promise<Response<{ tvs: LimitedTv[]; pagination: P
     });
 }
 
-export function getAllTvs(query: GetAllTvsQuerySchemaType): Promise<Response<{ tvs: LimitedTv[]; pagination: Pagination }>> {
+export function getTvs(query: GetAllTvsQuerySchemaType): Promise<Response<{ tvs: LimitedTv[]; pagination: Pagination }>> {
     return Quranara.get("/tv", {
+        query,
+    });
+}
+
+export function getAllTvs(query: GetAllTvsQuerySchemaType): Promise<Response<{ tvs: LimitedTv[]; pagination: Pagination }>> {
+    return Quranara.get("/tv/all", {
         query,
     });
 }

@@ -10,11 +10,13 @@ export type Tv = {
     category: PopulatedCategory;
     cover: string;
     video: string;
+    shown: boolean;
     attached?: string;
     content: string;
     views: number;
     likes: number;
-    createdAt: string;
+    createdAt: number;
+    updatedAt: number;
 };
 
 export type LimitedTv = Omit<Tv, "video" | "attached" | "content">;

@@ -5,6 +5,7 @@ import { ENTITIES } from "@/constants/entities";
 import { getDatatableItemsPerPage } from "@/libs/server/cookies";
 
 import TvsHeader from "@/components/layout/management-panel/tvs/TvsHeader";
+import TvsDataTable from "@/components/layout/management-panel/tvs/TvsDataTable";
 
 async function Tvs({ searchParams }: { searchParams: Promise<{ page: string }> }) {
     const { page = 1 } = await searchParams;
@@ -15,6 +16,7 @@ async function Tvs({ searchParams }: { searchParams: Promise<{ page: string }> }
     return (
         <div className="space-y-4">
             <TvsHeader />
+            <TvsDataTable tvs={data.tvs} pagination={data.pagination} />
         </div>
     );
 }

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { getAllTvs } from "@/api/queries/tv";
+import { getTvs } from "@/api/queries/tv";
 
 import Tv, { TvLoading } from "@/components/card/Tv";
 
@@ -13,7 +13,7 @@ import Magnifer from "@/components/svgs/Magnifer";
 type TvsProps = { query: string };
 
 async function Tvs({ query }: TvsProps) {
-    const { data } = await getAllTvs({ page: 1, limit: 8, sort: "default", search: query });
+    const { data } = await getTvs({ page: 1, limit: 8, sort: "default", search: query });
 
     return (
         <section className="space-y-8" id="tv">

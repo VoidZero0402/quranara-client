@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { useSuspenseInfiniteQuery } from "@tanstack/react-query";
 
-import { getAllTvs } from "@/api/queries/tv";
+import { getTvs } from "@/api/queries/tv";
 
 import { SORTING } from "@/constants/blog";
 
@@ -25,7 +25,7 @@ function TvGrid({ updateCount }: TvGridProps) {
         const search = searchParams.get("search");
         const category = searchParams.get("category");
 
-        return await getAllTvs({ page: pageParam, limit: 8, sort, ...(search && { search }), ...(category && category !== "all" && { category }) });
+        return await getTvs({ page: pageParam, limit: 8, sort, ...(search && { search }), ...(category && category !== "all" && { category }) });
     };
 
     const { data, fetchNextPage, hasNextPage, isFetchingNextPage, refetch, isFetching } = useSuspenseInfiniteQuery({

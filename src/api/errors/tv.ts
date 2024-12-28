@@ -9,6 +9,22 @@ export const CreateTvStatusOptions: ResponseStatusHandlerOptions = {
     },
 };
 
+export const ShownTvStatusOptions: ResponseStatusHandlerOptions = {
+    statuses: {
+        "200": { status: "success", text: "تغییر وضعیت موفق", caption: "آموزش با موفقیت به وضعیت نمایش درآمد" },
+        "401": { status: "error", text: "عدم دسترسی", caption: "شما به این عملکرد دسترسی ندارید" },
+        "404": { status: "error", text: "مشکل در سرور", caption: "بنظر میرسه مشکلی در سرور پیش اومده" },
+    },
+};
+
+export const UnshownTvStatusOptions: ResponseStatusHandlerOptions = {
+    statuses: {
+        "200": { status: "success", text: "تغییر وضعیت موفق", caption: "آموزش با موفقیت به وضعیت عدم نمایش درآمد" },
+        "401": { status: "error", text: "عدم دسترسی", caption: "شما به این عملکرد دسترسی ندارید" },
+        "404": { status: "error", text: "مشکل در سرور", caption: "بنظر میرسه مشکلی در سرور پیش اومده" },
+    },
+};
+
 export const LikeTvStatusOptions: ResponseStatusHandlerOptions = {
     statuses: {
         "201": { status: "success", text: "عملیات موفقیت آمیز", caption: "آموزش به لیست پسندیده‌های شما اضافه شد" },
