@@ -5,7 +5,7 @@ import { PaginationQuerySchema } from "./pagination";
 export const CreateBlogSchema = z.object({
     title: z.string({ required_error: "عنوان الزامی است" }).min(1, { message: "عنوان نباید خالی باشد" }).max(255, { message: "عنوان نباید بیشتر از 255 کاراکتر باشد" }),
     description: z.string({ required_error: "توضیحات الزامی است" }).min(1, { message: "توضیحات نباید خالی باشد" }).max(1024, { message: "توضیحات نباید بیشتر از 1024 کاراکتر باشد" }),
-    slug: z.string().min(1, { message: "لینک نباید خالی باشد" }).max(255, { message: "لینک نباید بیشتر از 255 کاراکتر باشد" }).optional(),
+    slug: z.string().min(1, { message: "شناسه نباید خالی باشد" }).max(255, { message: "شناسه باید کمتر از 255 کاراکتر باشد" }),
     category: z.string({ required_error: "دسته‌بندی الزامی است" }),
     cover: z
         .string({ required_error: "تصویر الزامی است" })

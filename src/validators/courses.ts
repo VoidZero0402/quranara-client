@@ -4,7 +4,7 @@ import { PaginationQuerySchema } from "./pagination";
 
 export const CreateCourseSchema = z.object({
     title: z.string({ required_error: "وارد کردن عنوان الزامی است." }).min(1, { message: "عنوان نمی‌تواند خالی باشد." }).max(255, { message: "عنوان باید کمتر از ۲۵۵ کاراکتر باشد." }),
-    slug: z.string().min(1, { message: "اسلاگ نمی‌تواند خالی باشد." }).max(255, { message: "اسلاگ باید کمتر از ۲۵۵ کاراکتر باشد." }).optional(),
+    slug: z.string().min(1, { message: "شناسه نباید خالی باشد" }).max(255, { message: "شناسه باید کمتر از 255 کاراکتر باشد" }),
     description: z.string({ required_error: "وارد کردن توضیحات الزامی است." }).min(1, { message: "توضیحات نمی‌تواند خالی باشد." }).max(1024, { message: "توضیحات باید کمتر از ۱۰۲۴ کاراکتر باشد." }),
     cover: z
         .string({ required_error: "وارد کردن کاور الزامی است." })

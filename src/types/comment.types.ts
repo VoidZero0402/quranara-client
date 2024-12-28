@@ -26,9 +26,9 @@ export type Comment = {
     status: Status;
     replies: Reply[];
     _replies: Reply[];
-    course?: Pick<Course, "_id" | "title">;
-    blog?: Pick<Blog, "_id" | "title">;
-    tv?: Pick<Tv, "_id" | "title">;
+    course?: Pick<Course, "_id" | "title" | "slug">;
+    blog?: Pick<Blog, "_id" | "title" | "slug">;
+    tv?: Pick<Tv, "_id" | "title" | "slug">;
     repliesStatus: ReplyStatus;
     createdAt: number;
 };

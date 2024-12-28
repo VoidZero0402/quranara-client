@@ -48,7 +48,7 @@ function CommentForm({ entity, replyTo }: CommentFormProps) {
     };
 
     return (
-        <form className="space-y-4 md:space-y-8 p-4 sm:p-6 bg-gray-50 dark:bg-gray-800 rounded-xl" onSubmit={handleSubmit(submitHandler)}>
+        <form className="space-y-4" onSubmit={handleSubmit(submitHandler)}>
             <div className="flex items-start justify-between">
                 <div className="flex flex-col gap-y-2">
                     <span className="flex items-center gap-x-2 font-pelak-medium">
@@ -60,7 +60,7 @@ function CommentForm({ entity, replyTo }: CommentFormProps) {
                 </div>
                 {replyTo && <span className="hidden md:block py-2.5 px-4 font-pelak-medium text-sm gray-light dark:teal-light rounded-xl">در پاسخ به {replyTo.username}</span>}
             </div>
-            <TextArea control={control} name="content" label="دیدگاه شما" placeholder="دیدگاه خود را بنویسید..." textAreaClassName="dark:bg-gray-850" />
+            <TextArea control={control} name="content" label="دیدگاه شما" placeholder="دیدگاه خود را بنویسید..." />
             <div className="flex gap-x-2 justify-end">
                 <Button size="lg" disabled={isSubmitting}>
                     {isSubmitting ? "در حال ثبت دیدگاه" : "ثبت دیدگاه جدید"}

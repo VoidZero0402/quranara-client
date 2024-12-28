@@ -86,7 +86,7 @@ export function getTruthyValues(obj: Record<string, any>): Record<string, any> {
     const record: Record<string, any> = {};
 
     for (const prop in obj) {
-        if (obj[prop]) {
+        if (obj[prop] || typeof obj[prop] === "boolean") {
             record[prop] = obj[prop];
         }
     }

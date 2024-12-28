@@ -83,15 +83,15 @@ function Sidebar({ user }: SidebarProps) {
                             <UserGroup />
                             مدیریت کاربران
                         </NavLink>
-                        <NavLink href="/management-panel/courses">
+                        <NavLink href="/management-panel/courses" subs>
                             <Layers />
                             دوره‌های تخصصی
                         </NavLink>
-                        <NavLink href="/management-panel/blogs">
+                        <NavLink href="/management-panel/blogs" subs>
                             <Widgets />
                             مقالات تخصصی
                         </NavLink>
-                        <NavLink href="/management-panel/tvs">
+                        <NavLink href="/management-panel/tvs" subs>
                             <PlayCircle />
                             آموزش‌های رایگان
                         </NavLink>
