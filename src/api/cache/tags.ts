@@ -1,8 +1,12 @@
 export const blog = {
-    default: "blogs",
+    default: "last-blogs",
 
     getOne(slug: string) {
         return `blog-${slug}`;
+    },
+
+    getRelated(slug: string) {
+        return `blog-${slug}-related`;
     },
 
     getComments(slug: string) {
@@ -11,7 +15,9 @@ export const blog = {
 };
 
 export const courses = {
-    default: "courses",
+    default: "last-courses",
+
+    summary: "courses-summary",
 
     getOne(slug: string) {
         return `course-${slug}`;
@@ -41,10 +47,14 @@ export const polls = {
 };
 
 export const tv = {
-    default: "tv",
+    default: "last-tv",
 
     getOne(slug: string) {
         return `tv-${slug}`;
+    },
+
+    getRelated(slug: string) {
+        return `tv-${slug}-related`;
     },
 
     getComments(slug: string) {

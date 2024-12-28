@@ -3,18 +3,14 @@ import Quranara from "../clients/Quranara";
 import { GetAllQuestionsQuerySchemaType } from "@/validators/questions";
 import { PaginationQuerySchemaType } from "@/validators/pagination";
 
-import { convertToQueryString } from "@/libs/funcs";
-
 import { Pagination, Response } from "@/types/response.types";
 import { Question } from "@/types/question.types";
 
 type QuestionsQueriesWithIdParams = { questionId: string };
 
 export function getQuestions(query: PaginationQuerySchemaType, cookie?: string): Promise<Response<{ questions: Question[]; pagination: Pagination }>> {
-    const queryString = convertToQueryString(query);
-    const url = `/questions?${queryString}`;
-
-    return Quranara.get(url, {
+    return Quranara.get("/questions", {
+        query,
         headers: {
             ...(cookie && { cookie }),
         },
@@ -28,8 +24,7 @@ export function getQuestion(params: QuestionsQueriesWithIdParams): Promise<Respo
 }
 
 export function getAllQuestions(query: GetAllQuestionsQuerySchemaType): Promise<Response<{ questions: Question[]; pagination: Pagination }>> {
-    const queryString = convertToQueryString(query);
-    const url = `/questions/all?${queryString}`;
-
-    return Quranara.get(url);
+    return Quranara.get("/questions/all", {
+        query,
+    });
 }

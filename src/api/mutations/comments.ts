@@ -2,8 +2,6 @@ import Quranara from "../clients/Quranara";
 
 import { CreateCommentSchemaType, ReplyCommentSchemaType, ActionsQuerySchemaType } from "@/validators/comments";
 
-import { convertToQueryString } from "@/libs/funcs";
-
 import { MessageResponse } from "@/types/response.types";
 
 type CommentsQueriesWithIdParams = { commentId: string };
@@ -31,17 +29,19 @@ export function answerComment(params: CommentsQueriesWithIdParams, data: ReplyCo
 }
 
 export function acceptComment(params: CommentsQueriesWithIdParams, query: ActionsQuerySchemaType): MessageResponse {
-    const queryString = convertToQueryString(query);
-    const url = `/comments/${params.commentId}/accept?${queryString}`;
+    const url = `/comments/${params.commentId}/accept`;
 
-    return Quranara.patch(url);
+    return Quranara.patch(url, {
+        query,
+    });
 }
 
 export function rejectComment(params: CommentsQueriesWithIdParams, query: ActionsQuerySchemaType): MessageResponse {
-    const queryString = convertToQueryString(query);
-    const url = `/comments/${params.commentId}/reject?${queryString}`;
+    const url = `/comments/${params.commentId}/reject`;
 
-    return Quranara.patch(url);
+    return Quranara.patch(url, {
+        query,
+    });
 }
 
 export function pinComment(params: CommentsQueriesWithIdParams): MessageResponse {

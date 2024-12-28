@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { getAllCourses } from "@/api/queries/courses";
+import { getLastCourses } from "@/api/queries/courses";
 
 import Course from "@/components/card/Course";
 
@@ -10,7 +10,7 @@ import Layers from "@/components/svgs/Layers";
 import LongArrowLeft from "@/components/svgs/LongArrowLeft";
 
 async function Courses() {
-    const { data } = await getAllCourses({ page: 1, limit: 8 });
+    const { data } = await getLastCourses();
 
     return (
         <section className="space-y-8" id="courses">

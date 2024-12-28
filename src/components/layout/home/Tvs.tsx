@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { getAllTvs } from "@/api/queries/tv";
+import { getLastTvs } from "@/api/queries/tv";
 
 import Tv from "@/components/card/Tv";
 
@@ -10,7 +10,7 @@ import LongArrowLeft from "@/components/svgs/LongArrowLeft";
 import PlayCircle from "@/components/svgs/PlayCircle";
 
 async function Tvs() {
-    const { data } = await getAllTvs({ page: 1, limit: 4 });
+    const { data } = await getLastTvs();
 
     return (
         <section className="space-y-8" id="tv">

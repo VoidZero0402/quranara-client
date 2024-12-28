@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { getCourses } from "@/api/queries/courses";
+import { getAllCourses } from "@/api/queries/courses";
 
 import Course, { CourseLoading } from "@/components/card/Course";
 
@@ -13,7 +13,7 @@ import Magnifer from "@/components/svgs/Magnifer";
 type CoursesProps = { query: string };
 
 async function Courses({ query }: CoursesProps) {
-    const { data } = await getCourses({ page: 1, limit: 8, sort: "default", search: query });
+    const { data } = await getAllCourses({ page: 1, limit: 8, sort: "default", search: query });
 
     return (
         <section className="space-y-8">

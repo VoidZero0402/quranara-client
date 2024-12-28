@@ -5,8 +5,6 @@ import { courses } from "../cache/tags";
 import { GetAllCoursesQuerySchemaType, SearchCoursesQuerySchameType } from "@/validators/courses";
 import { PaginationQuerySchemaType } from "@/validators/pagination";
 
-import { convertToQueryString } from "@/libs/funcs";
-
 import { Response, Pagination } from "@/types/response.types";
 import { Course, LimitedCourse, SummaryCourse } from "@/types/course.types";
 import { Topic } from "@/types/topic.types";
@@ -15,11 +13,9 @@ import { Comment } from "@/types/comment.types";
 type CoursesQueriesWithSlugParams = { slug: string };
 type CoursesQueriesWithIdParams = { courseId: string };
 
-export function getAllCourses(query: PaginationQuerySchemaType): Promise<Response<{ courses: LimitedCourse[]; pagination: Pagination }>> {
-    const queryString = convertToQueryString(query);
-    const url = `/courses?${queryString}`;
-
-    return Quranara.get(url, {
+export function getLastCourses(): Promise<Response<{ courses: LimitedCourse[]; pagination: Pagination }>> {
+    return Quranara.get("/courses", {
+        query: { page: 1, limit: 8 },
         cache: "force-cache",
         next: {
             tags: [courses.default],
@@ -27,27 +23,25 @@ export function getAllCourses(query: PaginationQuerySchemaType): Promise<Respons
     });
 }
 
-export function getCourses(query: GetAllCoursesQuerySchemaType): Promise<Response<{ courses: LimitedCourse[]; pagination: Pagination }>> {
-    const queryString = convertToQueryString(query);
-    const url = `/courses?${queryString}`;
-
-    return Quranara.get(url);
+export function getAllCourses(query: GetAllCoursesQuerySchemaType): Promise<Response<{ courses: LimitedCourse[]; pagination: Pagination }>> {
+    return Quranara.get("/courses", {
+        query,
+    });
 }
 
 export function getCoursesSummary(): Promise<Response<{ courses: SummaryCourse[]; pagination: Pagination }>> {
     return Quranara.get("/courses/summary", {
         cache: "force-cache",
         next: {
-            tags: [courses.default],
+            tags: [courses.summary],
         },
     });
 }
 
 export function searchInCourses(query: SearchCoursesQuerySchameType): Promise<Response<{ courses: LimitedCourse[]; pagination: Pagination }>> {
-    const queryString = convertToQueryString(query);
-    const url = `/courses/search?${queryString}`;
-
-    return Quranara.get(url);
+    return Quranara.get("/courses/search", {
+        query,
+    });
 }
 
 export function getCourse(params: CoursesQueriesWithSlugParams): Promise<Response<{ course: Course }>> {
@@ -62,14 +56,16 @@ export function getCourse(params: CoursesQueriesWithSlugParams): Promise<Respons
 }
 
 export function getCourseComments(params: CoursesQueriesWithSlugParams, query: PaginationQuerySchemaType): Promise<Response<{ comments: Comment[]; pagination: Pagination }>> {
-    const queryString = convertToQueryString(query);
-    const url = `/courses/${params.slug}/comments?${queryString}`;
+    const url = `/courses/${params.slug}/comments`;
 
     return Quranara.get(url, {
-        cache: "force-cache",
-        next: {
-            tags: [courses.getComments(params.slug)],
-        },
+        query,
+        ...(query.page === 1 && {
+            cache: "force-cache",
+            next: {
+                tags: [courses.getComments(params.slug)],
+            },
+        }),
     });
 }
 

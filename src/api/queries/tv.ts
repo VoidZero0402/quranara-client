@@ -5,8 +5,6 @@ import { tv } from "../cache/tags";
 import { GetAllTvsQuerySchemaType, SearchTvsQuerySchameType } from "@/validators/tv";
 import { PaginationQuerySchemaType } from "@/validators/pagination";
 
-import { convertToQueryString } from "@/libs/funcs";
-
 import { Response, Pagination } from "@/types/response.types";
 import { Tv, LimitedTv } from "@/types/tv.types";
 import { Comment } from "@/types/comment.types";
@@ -14,11 +12,9 @@ import { Comment } from "@/types/comment.types";
 type TvsQueriesWithSlugParams = { slug: string };
 type TvsQueriesWithIdParams = { tvId: string };
 
-export function getAllTvs(query: PaginationQuerySchemaType): Promise<Response<{ tvs: LimitedTv[]; pagination: Pagination }>> {
-    const queryString = convertToQueryString(query);
-    const url = `/tv?${queryString}`;
-
-    return Quranara.get(url, {
+export function getLastTvs(): Promise<Response<{ tvs: LimitedTv[]; pagination: Pagination }>> {
+    return Quranara.get("/tv", {
+        query: { page: 1, limit: 4 },
         cache: "force-cache",
         next: {
             tags: [tv.default],
@@ -26,18 +22,16 @@ export function getAllTvs(query: PaginationQuerySchemaType): Promise<Response<{ 
     });
 }
 
-export function getTvs(query: GetAllTvsQuerySchemaType): Promise<Response<{ tvs: LimitedTv[]; pagination: Pagination }>> {
-    const queryString = convertToQueryString(query);
-    const url = `/tv?${queryString}`;
-
-    return Quranara.get(url);
+export function getAllTvs(query: GetAllTvsQuerySchemaType): Promise<Response<{ tvs: LimitedTv[]; pagination: Pagination }>> {
+    return Quranara.get("/tv", {
+        query,
+    });
 }
 
 export function searchInTvs(query: SearchTvsQuerySchameType): Promise<Response<{ tvs: LimitedTv[]; pagination: Pagination }>> {
-    const queryString = convertToQueryString(query);
-    const url = `/tv/search?${queryString}`;
-
-    return Quranara.get(url);
+    return Quranara.get("/tv/search", {
+        query,
+    });
 }
 
 export function getTv(params: TvsQueriesWithSlugParams): Promise<Response<{ tv: Tv }>> {
@@ -63,19 +57,21 @@ export function getRelatedTvs(params: TvsQueriesWithSlugParams): Promise<Respons
     return Quranara.get(url, {
         cache: "force-cache",
         next: {
-            tags: [tv.getOne(params.slug)],
+            tags: [tv.getRelated(params.slug)],
         },
     });
 }
 
 export function getTvComments(params: TvsQueriesWithSlugParams, query: PaginationQuerySchemaType): Promise<Response<{ comments: Comment[]; pagination: Pagination }>> {
-    const queryString = convertToQueryString(query);
-    const url = `/tv/${params.slug}/comments?${queryString}`;
+    const url = `/tv/${params.slug}/comments`;
 
     return Quranara.get(url, {
-        cache: "force-cache",
-        next: {
-            tags: [tv.getComments(params.slug)],
-        },
+        query,
+        ...(query.page === 1 && {
+            cache: "force-cache",
+            next: {
+                tags: [tv.getComments(params.slug)],
+            },
+        }),
     });
 }

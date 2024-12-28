@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { getBlogs } from "@/api/queries/blog";
+import { getAllBlogs } from "@/api/queries/blog";
 
 import Blog, { BlogLoading } from "@/components/card/Blog";
 
@@ -13,7 +13,7 @@ import Magnifer from "@/components/svgs/Magnifer";
 type BlogsProps = { query: string };
 
 async function Blogs({ query }: BlogsProps) {
-    const { data } = await getBlogs({ page: 1, limit: 8, sort: "default", search: query });
+    const { data } = await getAllBlogs({ page: 1, limit: 8, sort: "default", search: query });
 
     return (
         <section className="space-y-8" id="blog">

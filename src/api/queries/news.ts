@@ -4,8 +4,6 @@ import { news } from "../cache/tags";
 
 import { PaginationQuerySchemaType } from "@/validators/pagination";
 
-import { convertToQueryString } from "@/libs/funcs";
-
 import { Response, Pagination } from "@/types/response.types";
 import { News } from "@/types/news.types";
 
@@ -21,10 +19,9 @@ export function getAllShownNews(): Promise<Response<{ news: News[] }>> {
 }
 
 export function getAllNews(query: PaginationQuerySchemaType): Promise<Response<{ news: News[]; pagination: Pagination }>> {
-    const queryString = convertToQueryString(query);
-    const url = `/news/all?${queryString}`;
-
-    return Quranara.get(url);
+    return Quranara.get("/news/all", {
+        query,
+    });
 }
 
 export function getNews(params: NewsQueriesWithIdParams): Promise<Response<{ news: News }>> {

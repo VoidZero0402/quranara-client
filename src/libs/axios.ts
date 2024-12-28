@@ -1,6 +1,6 @@
 type AxiosConfigRequestOptions = Omit<RequestInit, "method" | "headers" | "body" | "next">;
 
-type RequestOptions = Omit<RequestInit, "method">;
+type RequestOptions = Omit<RequestInit, "method"> & { query?: Record<string, any | string[]> };
 
 type AxiosConfig = {
     baseURL?: string;
@@ -20,8 +20,8 @@ class Axios {
     }
 
     private async resolve(method: string, url: string, options?: RequestOptions) {
-        try {            
-            const response = await fetch(`${this.baseURL}${url}`, {
+        try {
+            const response = await fetch(this.getRequestURL(url, options?.query), {
                 method,
                 ...this.requestOptions,
                 ...options,
@@ -29,7 +29,7 @@ class Axios {
             });
 
             return await this.parseResponseToJSON(response);
-        } catch (err) {            
+        } catch (err) {
             return { success: false, status: 500, data: { error: err } };
         }
     }
@@ -37,6 +37,31 @@ class Axios {
     private async parseResponseToJSON(response: Response) {
         const data = await response.json();
         return data;
+    }
+
+    private getRequestURL(url: string, query?: Record<string, any | string[]>) {
+        const requestURL = `${this.baseURL}${url}`;
+
+        if (query) {
+            const queryString = this.convertToQueryString(query);
+            return requestURL.concat(queryString);
+        }
+
+        return requestURL;
+    }
+
+    private convertToQueryString(params: Record<string, any | string[]>) {
+        const searchParams = new URLSearchParams();
+
+        for (const key in params) {
+            if (Array.isArray(params[key])) {
+                params[key] = params[key].join(",");
+            }
+
+            searchParams.set(key, params[key]);
+        }
+
+        return `?${searchParams.toString()}`;
     }
 
     async get(url: string, options?: RequestOptions) {

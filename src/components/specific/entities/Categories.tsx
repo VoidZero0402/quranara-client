@@ -9,7 +9,6 @@ import { getCategories } from "@/api/queries/categories";
 import { updateURLSearchParams } from "@/libs/funcs";
 
 import CategoriesDrawer from "./CategoriesDrawer";
-import Category from "./Category";
 
 import Skeleton, { SkeletonFrame } from "@/components/ui/Skeleton";
 

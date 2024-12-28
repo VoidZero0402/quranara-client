@@ -46,14 +46,14 @@ function Details({ _id, title, description, video, category, attached }: Details
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div className="flex flex-wrap gap-4">
                     <a href={video} download data-disable-nprogress={true} className="grow">
-                        <Button className="w-full">
+                        <Button size="lg" className="w-full">
                             <PlayCircle />
                             دانلود ویدیو
                         </Button>
                     </a>
                     {attached && (
                         <a href={attached} download data-disable-nprogress={true} className="grow">
-                            <Button variant="filled-secondary" className="w-full">
+                            <Button size="lg" variant="filled-secondary" className="w-full">
                                 <Copy />
                                 دانلود پیوست
                             </Button>

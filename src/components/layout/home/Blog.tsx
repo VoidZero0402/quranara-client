@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { getAllBlogs } from "@/api/queries/blog";
+import { getLastBlogs } from "@/api/queries/blog";
 
 import BlogSlides from "@/components/specific/home/BlogSlides"; 
 
@@ -10,7 +10,7 @@ import LongArrowLeft from "@/components/svgs/LongArrowLeft";
 import Widgets from "@/components/svgs/Widgets";
 
 async function Blog() {
-    const { data } = await getAllBlogs({ page: 1, limit: 8 });
+    const { data } = await getLastBlogs();
 
     return (
         <section className="space-y-8" id="blog">
