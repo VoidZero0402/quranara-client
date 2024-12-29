@@ -51,6 +51,12 @@ export function getTv(params: TvsQueriesWithSlugParams): Promise<Response<{ tv: 
     });
 }
 
+export function getRawTv(params: TvsQueriesWithIdParams): Promise<Response<{ tv: Tv }>> {
+    const url = `/tv/${params.tvId}/raw`;
+
+    return Quranara.get(url);
+}
+
 export function getDetails(params: TvsQueriesWithIdParams): Promise<Response<{ isLiked: boolean; isSaved: boolean; disabled: boolean }>> {
     const url = `/tv/${params.tvId}/details`;
 

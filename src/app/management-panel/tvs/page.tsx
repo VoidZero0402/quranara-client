@@ -11,7 +11,7 @@ async function Tvs({ searchParams }: { searchParams: Promise<{ page: string }> }
     const { page = 1 } = await searchParams;
     const limit = await getDatatableItemsPerPage(ENTITIES.TVS);
 
-    const { data } = await getAllTvs({ page: +page, limit, sort: "default" });
+    const { data } = await getAllTvs({ page: +page, limit, sort: "newest" });
 
     return (
         <div className="space-y-4">

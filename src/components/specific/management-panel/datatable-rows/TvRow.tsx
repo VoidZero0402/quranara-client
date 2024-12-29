@@ -35,7 +35,7 @@ function TvRow({ tv, onShown, onUnshown }: TvRowProps) {
                             <Eye />
                         </IconButton>
                     </Link>
-                    <Link href={`news/${tv._id}/update`}>
+                    <Link href={`tvs/${tv._id}/update`}>
                         <IconButton label="ویرایش">
                             <PenSquare />
                         </IconButton>
