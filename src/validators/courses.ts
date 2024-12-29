@@ -11,18 +11,18 @@ export const CreateCourseSchema = z.object({
         .min(1, { message: "کاور نمی‌تواند خالی باشد." })
         .regex(/^[\w-]+\.(jpg|jpeg|png|webp)$/, { message: "فرمت فایل کاور معتبر نیست." })
         .trim(),
-    price: z.number({ required_error: "وارد کردن قیمت الزامی است." }).min(0, { message: "قیمت نمی‌تواند منفی باشد." }),
+    price: z.coerce.number({ required_error: "وارد کردن قیمت الزامی است." }).min(0, { message: "حداقل میزان قیمت ۰ است" }),
     status: z.enum([STATUS.PRE_SELL, STATUS.ON_PERFORMING, STATUS.REACHED], { message: "وضعیت فقط می‌تواند یکی از PRE_SELL، ON_PERFORMING یا REACHED باشد." }).default(STATUS.PRE_SELL),
     shown: z.boolean({ required_error: "مشخص کردن وضعیت نمایش الزامی است." }),
     introduction: z
         .object({
             video: z
                 .string()
-                .min(1, { message: "ویدئو نمی‌تواند خالی باشد." })
-                .regex(/^[\w-]+\.(mp4)$/, { message: "فرمت فایل ویدئو معتبر نیست." })
-                .trim()
+                .refine((value) => value === "" || /^[\w-]+\.(mp4)$/.test(value), {
+                    message: "فرمت فایل ویدئو معتبر نیست.",
+                })
                 .optional(),
-            content: z.string().min(1, { message: "محتوا نمی‌تواند خالی باشد." }).optional(),
+            content: z.string().optional(),
         })
         .optional(),
     metadata: z.object(
@@ -30,7 +30,7 @@ export const CreateCourseSchema = z.object({
             support: z.string({ required_error: "وارد کردن پشتیبانی الزامی است." }).min(1, { message: "پشتیبانی نمی‌تواند خالی باشد." }),
             preRequisite: z.string({ required_error: "وارد کردن پیش‌نیاز الزامی است." }).min(1, { message: "پیش‌نیاز نمی‌تواند خالی باشد." }),
             present: z.string({ required_error: "وارد کردن ارائه‌کننده الزامی است." }).min(1, { message: "ارائه‌کننده نمی‌تواند خالی باشد." }),
-            hours: z.number({ required_error: "وارد کردن ساعت الزامی است." }).positive({ message: "ساعت نمی‌تواند منفی باشد." }),
+            hours: z.coerce.number({ required_error: "وارد کردن ساعت الزامی است." }).positive({ message: "ساعت نمی‌تواند منفی باشد." }),
         },
         { required_error: "وارد کردن اطلاعات متادیتا الزامی است." }
     ),

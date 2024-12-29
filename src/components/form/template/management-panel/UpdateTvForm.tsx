@@ -36,7 +36,6 @@ function UpdateTvForm({ tv }: UpdateTvFormProps) {
         control,
         handleSubmit,
         formState: { isSubmitting },
-        reset,
     } = useForm<CreateTvSchemaType>({
         defaultValues: {
             title: tv.title,

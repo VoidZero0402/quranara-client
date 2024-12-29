@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { useSuspenseInfiniteQuery } from "@tanstack/react-query";
 
-import { getAllCourses } from "@/api/queries/courses";
+import { getCourses } from "@/api/queries/courses";
 
 import { SORTING } from "@/constants/courses";
 
@@ -24,7 +24,7 @@ function CoursesGrid({ updateCount }: CoursesGridProps) {
         const sort = (searchParams.get("sort") ?? SORTING.DEFAULT) as Sorting;
         const search = searchParams.get("search");
 
-        return await getAllCourses({ page: pageParam, limit: 8, sort, ...(search && { search }) });
+        return await getCourses({ page: pageParam, limit: 8, sort, ...(search && { search }) });
     };
 
     const { data, fetchNextPage, hasNextPage, isFetchingNextPage, refetch, isFetching } = useSuspenseInfiniteQuery({

@@ -5,6 +5,7 @@
 @layer base {
     :root {
         --plyr-color-main: #fbbf24;
+        scrollbar-gutter: stable both-edges;
     }
 
     * {
@@ -47,6 +48,21 @@
 
     input[type="number"] {
         -moz-appearance: textfield;
+    }
+
+    ::-webkit-scrollbar {
+        @apply w-1.5;
+    }
+    ::-webkit-scrollbar-track {
+        @apply bg-gray-200 dark:bg-gray-800;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        @apply bg-gray-300 dark:bg-gray-700;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        @apply bg-gray-400 dark:bg-gray-600;
     }
 
     .with-custom-scroll::-webkit-scrollbar {
@@ -110,7 +126,7 @@
     }
 
     .table th {
-        @apply text-gray-800 dark:text-gray-200 font-normal font-pelak-semibold text-nowrap;
+        @apply text-gray-800 dark:text-gray-200 font-normal font-pelak-medium text-nowrap;
     }
 
     .table td {

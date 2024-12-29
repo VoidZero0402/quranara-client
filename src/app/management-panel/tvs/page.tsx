@@ -6,8 +6,8 @@ import { getDatatableItemsPerPage } from "@/libs/server/cookies";
 
 import TvsHeader from "@/components/layout/management-panel/tvs/TvsHeader";
 import TvsDataTable from "@/components/layout/management-panel/tvs/TvsDataTable";
-
-async function Tvs({ searchParams }: { searchParams: Promise<{ page: string }> }) {
+ 
+async function Tvs({ searchParams }: { searchParams: Promise<{ page: string }> }){
     const { page = 1 } = await searchParams;
     const limit = await getDatatableItemsPerPage(ENTITIES.TVS);
 

@@ -133,3 +133,9 @@ export function getDateAfterHours(hours: number): number {
 
     return date;
 }
+
+export function formatPrice(price: string) {
+    const number = Number(price);
+    
+    return number ? `${number.toLocaleString()} تومان` : "دوره رایگان!";
+}

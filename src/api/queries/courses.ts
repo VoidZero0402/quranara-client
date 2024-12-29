@@ -23,8 +23,14 @@ export function getLastCourses(): Promise<Response<{ courses: LimitedCourse[]; p
     });
 }
 
-export function getAllCourses(query: GetAllCoursesQuerySchemaType): Promise<Response<{ courses: LimitedCourse[]; pagination: Pagination }>> {
+export function getCourses(query: GetAllCoursesQuerySchemaType): Promise<Response<{ courses: LimitedCourse[]; pagination: Pagination }>> {
     return Quranara.get("/courses", {
+        query,
+    });
+}
+
+export function getAllCourses(query: GetAllCoursesQuerySchemaType): Promise<Response<{ courses: LimitedCourse[]; pagination: Pagination }>> {
+    return Quranara.get("/courses/all", {
         query,
     });
 }
