@@ -86,6 +86,11 @@ export function getTruthyValues(obj: Record<string, any>): Record<string, any> {
     const record: Record<string, any> = {};
 
     for (const prop in obj) {
+        if (typeof obj[prop] === "object") {
+            record[prop] = getTruthyValues(obj[prop]);
+            continue;
+        }
+
         if (obj[prop] || typeof obj[prop] === "boolean") {
             record[prop] = obj[prop];
         }
@@ -136,6 +141,6 @@ export function getDateAfterHours(hours: number): number {
 
 export function formatPrice(price: string) {
     const number = Number(price);
-    
+
     return number ? `${number.toLocaleString()} تومان` : "دوره رایگان!";
 }

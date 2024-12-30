@@ -21,8 +21,9 @@ export type Course = {
     cover: string;
     price: number;
     status: Status;
-    discount: string;
+    discount: number;
     teacher: PopulatedUser;
+    shown: boolean;
     time: [number, number];
     progress: number;
     introduction: {
@@ -30,13 +31,14 @@ export type Course = {
         content: string;
     };
     metadata: CourseMetadata;
-    updatedAt: Date
+    createdAt: Date;
+    updatedAt: Date;
 };
 
 export type LimitedCourse = Omit<Course, "introduction">;
 
-export type RelatedCourse = Pick<Course, "_id" | "title" | "slug" | "description" | "status" | "metadata">
+export type RelatedCourse = Pick<Course, "_id" | "title" | "slug" | "description" | "status" | "metadata">;
 
-export type SummaryCourse = Pick<Course, "_id" | "title">
+export type SummaryCourse = Pick<Course, "_id" | "title">;
 
 export type Sorting = (typeof SORTING)[keyof typeof SORTING];

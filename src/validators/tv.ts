@@ -10,11 +10,11 @@ export const CreateTvSchema = z.object({
     cover: z
         .string({ required_error: "تصویر کاور الزامی است" })
         .min(1, { message: "تصویر کاور نباید خالی باشد" })
-        .regex(/^[\w-]+\.(jpg|jpeg|png|webp)$/, { message: "تصویر کاور فرمت نامعتبر است" }),
+        .regex(/^[\w-\/\:\.]+\.(jpg|jpeg|png|webp)$/, { message: "تصویر کاور فرمت نامعتبر است" }),
     video: z
         .string({ required_error: "ویدیو الزامی است" })
         .min(1, { message: "ویدیو نباید خالی باشد" })
-        .regex(/^[\w-]+\.(mp4)$/, { message: "فرمت ویدیو نامعتبر است" }),
+        .regex(/^[\w-\/\:\.]+\.(mp4)$/, { message: "فرمت ویدیو نامعتبر است" }),
     attached: z.string().optional(),
     content: z.string().optional(),
     shown: z.boolean({ required_error: "مشخص کردن وضعیت نمایش الزامی است." }),

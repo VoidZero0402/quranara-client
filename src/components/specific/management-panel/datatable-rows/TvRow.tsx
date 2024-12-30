@@ -14,7 +14,7 @@ import SquareBottomTop from "@/components/svgs/SquareBottomTop";
 
 import { LimitedTv } from "@/types/tv.types";
 
-type TvRowProps = { tv: LimitedTv; onShown: (_id: string) => void; onUnshown: (_is: string) => void };
+type TvRowProps = { tv: LimitedTv; onShown: (_id: string) => void; onUnshown: (_id: string) => void };
 
 function TvRow({ tv, onShown, onUnshown }: TvRowProps) {
     return (

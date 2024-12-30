@@ -8,7 +8,7 @@ export const CreateSessionSchema = z.object({
     video: z
         .string({ required_error: "وارد کردن ویدیو الزامی است." })
         .min(1, { message: "ویدیو نمی‌تواند خالی باشد." })
-        .regex(/^[\w-]+\.(mp4)$/, { message: "فرمت ویدیو معتبر نیست." })
+        .regex(/^[\w-\/\:\.]+\.(mp4)$/, { message: "فرمت ویدیو معتبر نیست." })
         .trim(),
     time: z
         .string({ required_error: "وارد کردن زمان ویدیو الزامی است." })

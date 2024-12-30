@@ -15,7 +15,7 @@ export function createCourse(data: CreateCourseSchemaType): MessageResponse {
 export function updateCourse(params: CoursesMutationsWithIdParams, data: UpdateCourseSchemaType): MessageResponse {
     const url = `/courses/${params.courseId}`;
 
-    return Quranara.post(url, {
+    return Quranara.put(url, {
         body: JSON.stringify(data),
     });
 }

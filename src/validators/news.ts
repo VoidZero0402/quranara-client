@@ -4,7 +4,7 @@ export const CreateNewsSchema = z.object({
     cover: z
         .string({ required_error: "وارد کردن کاور الزامی است." })
         .min(1, { message: "کاور نمی‌تواند خالی باشد." })
-        .regex(/^[\w-]+\.(jpg|jpeg|png|webp)$/, { message: "فرمت فایل کاور معتبر نیست." })
+        .regex(/^[\w-\/\:\.]+\.(jpg|jpeg|png|webp)$/, { message: "فرمت فایل کاور معتبر نیست." })
         .trim(),
     title: z.string().min(1, { message: "عنوان نمی‌تواند خالی باشد." }).max(255, { message: "عنوان باید کمتر از ۲۵۵ کاراکتر باشد." }),
     description: z.string().min(1, { message: "توضیحات نمی‌تواند خالی باشد." }).max(2048, { message: "توضیحات باید کمتر از ۲۰۴۸ کاراکتر باشد." }),

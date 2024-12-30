@@ -10,7 +10,7 @@ export const CreateBlogSchema = z.object({
     cover: z
         .string({ required_error: "تصویر الزامی است" })
         .min(1, { message: "تصویر نباید خالی باشد" })
-        .regex(/^[\w-]+\.(jpg|jpeg|png|webp)$/, { message: "فرمت تصویر نامعتبر است" })
+        .regex(/^[\w-\/\:\.]+\.(jpg|jpeg|png|webp)$/, { message: "فرمت تصویر نامعتبر است" })
         .trim(),
     content: z.string({ required_error: "محتوا الزامی است" }).min(1, { message: "محتوا نباید خالی باشد" }),
     tags: z.array(z.string().min(1, { message: "برچسب نباید خالی باشد" }), { invalid_type_error: "برچسب‌ها باید آرایه‌ای از رشته‌ها باشند" }).optional(),

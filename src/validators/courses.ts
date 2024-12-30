@@ -9,7 +9,7 @@ export const CreateCourseSchema = z.object({
     cover: z
         .string({ required_error: "وارد کردن کاور الزامی است." })
         .min(1, { message: "کاور نمی‌تواند خالی باشد." })
-        .regex(/^[\w-]+\.(jpg|jpeg|png|webp)$/, { message: "فرمت فایل کاور معتبر نیست." })
+        .regex(/^[\w-\/\:\.]+\.(jpg|jpeg|png|webp)$/, { message: "فرمت فایل کاور معتبر نیست." })
         .trim(),
     price: z.coerce.number({ required_error: "وارد کردن قیمت الزامی است." }).min(0, { message: "حداقل میزان قیمت ۰ است" }),
     status: z.enum([STATUS.PRE_SELL, STATUS.ON_PERFORMING, STATUS.REACHED], { message: "وضعیت فقط می‌تواند یکی از PRE_SELL، ON_PERFORMING یا REACHED باشد." }).default(STATUS.PRE_SELL),
@@ -18,7 +18,7 @@ export const CreateCourseSchema = z.object({
         .object({
             video: z
                 .string()
-                .refine((value) => value === "" || /^[\w-]+\.(mp4)$/.test(value), {
+                .refine((value) => value === "" || /^[\w-\/\:\.]+\.(mp4)$/.test(value), {
                     message: "فرمت فایل ویدئو معتبر نیست.",
                 })
                 .optional(),
@@ -38,8 +38,8 @@ export const CreateCourseSchema = z.object({
 
 export type CreateCourseSchemaType = z.infer<typeof CreateCourseSchema> & { slug: string };
 
-export const UpdateCourseSchema = CreateCourseSchema.omit({ shown: true }).extend({
-    discount: z.number().min(0, { message: "تخفیف نمی‌تواند منفی باشد." }).max(100, { message: "تخفیف نمی‌تواند بیشتر از ۱۰۰ درصد باشد." }).optional(),
+export const UpdateCourseSchema = CreateCourseSchema.extend({
+    discount: z.coerce.number().min(0, { message: "تخفیف نمی‌تواند منفی باشد." }).max(100, { message: "تخفیف نمی‌تواند بیشتر از ۱۰۰ درصد باشد." }).optional(),
 });
 
 export type UpdateCourseSchemaType = z.infer<typeof UpdateCourseSchema>;

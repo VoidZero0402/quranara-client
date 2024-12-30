@@ -61,6 +61,12 @@ export function getCourse(params: CoursesQueriesWithSlugParams): Promise<Respons
     });
 }
 
+export function getRawCourse(params: CoursesQueriesWithIdParams): Promise<Response<{ course: Course }>> {
+    const url = `/courses/${params.courseId}/raw`;
+
+    return Quranara.get(url);
+}
+
 export function getCourseComments(params: CoursesQueriesWithSlugParams, query: PaginationQuerySchemaType): Promise<Response<{ comments: Comment[]; pagination: Pagination }>> {
     const url = `/courses/${params.slug}/comments`;
 
