@@ -43,7 +43,7 @@ const columns: Column[] = [
     },
 ];
 
-import { LimitedCourse } from "@/types/course.types";
+import { LimitedCourse, LimitedCourseCourseIdentifiers } from "@/types/course.types";
 import { Pagination } from "@/types/response.types";
 
 type CoursesDataTableProps = {
@@ -55,7 +55,7 @@ function CoursesDataTable({ courses, pagination }: CoursesDataTableProps) {
     const router = useRouter();
 
     const { mutate: shown } = useMutation({
-        mutationFn: (course: Pick<LimitedCourse, "_id" | "slug">) => shownCourse({ courseId: course._id }),
+        mutationFn: (course: LimitedCourseCourseIdentifiers) => shownCourse({ courseId: course._id }),
         async onSettled(data, _, variables) {
             if (data) {
                 statusHandler(data, ShownCourseStatusOptions);
@@ -69,7 +69,7 @@ function CoursesDataTable({ courses, pagination }: CoursesDataTableProps) {
     });
 
     const { mutate: unshown } = useMutation({
-        mutationFn: (course: Pick<LimitedCourse, "_id" | "slug">) => unshownCourse({ courseId: course._id }),
+        mutationFn: (course: LimitedCourseCourseIdentifiers) => unshownCourse({ courseId: course._id }),
         async onSettled(data, _, variables) {
             if (data) {
                 statusHandler(data, UnshownCourseStatusOptions);

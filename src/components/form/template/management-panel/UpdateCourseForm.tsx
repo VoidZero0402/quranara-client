@@ -36,7 +36,6 @@ function UpdateCourseForm({ course }: UpdateCourseFormProps) {
         handleSubmit,
         formState: { isSubmitting },
         watch,
-        reset,
     } = useForm<UpdateCourseSchemaType>({
         defaultValues: {
             title: course.title,

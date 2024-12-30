@@ -15,4 +15,4 @@ export type Session = {
     course: Pick<Course, "_id" | "title" | "slug" | "cover">;
 };
 
-export type PopulatedSession = Pick<Session, "_id" | "title" | "slug" | "time" | "isPublic" | "order">;
+export type PopulatedSession = Pick<Session, "_id" | "title" | "slug" | "time" | "isPublic" | "order" | "video" | "attached">;

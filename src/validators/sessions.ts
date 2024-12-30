@@ -4,7 +4,7 @@ export const CreateSessionSchema = z.object({
     title: z.string({ required_error: "وارد کردن عنوان الزامی است." }).min(1, { message: "عنوان نمی‌تواند خالی باشد." }).max(255, { message: "عنوان باید کمتر از ۲۵۵ کاراکتر باشد." }),
     course: z.string({ required_error: "وارد کردن دوره الزامی است." }),
     topic: z.string({ required_error: "وارد کردن موضوع الزامی است." }),
-    isPublic: z.boolean().default(false),
+    isPublic: z.boolean(),
     video: z
         .string({ required_error: "وارد کردن ویدیو الزامی است." })
         .min(1, { message: "ویدیو نمی‌تواند خالی باشد." })
@@ -14,7 +14,7 @@ export const CreateSessionSchema = z.object({
         .string({ required_error: "وارد کردن زمان ویدیو الزامی است." })
         .trim()
         .regex(/^(\d{1,2}):([0-5]\d):([0-5]\d)$|^([0-5]?\d):([0-5]\d)$/, { message: "فرمت زمان معتبر نیست." }),
-    attached: z.string().min(1, { message: "فایل پیوست نمی‌تواند خالی باشد." }).optional(),
+    attached: z.string().optional(),
 });
 
 export type CreateSessionSchemaType = z.infer<typeof CreateSessionSchema>;

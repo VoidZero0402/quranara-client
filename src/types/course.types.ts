@@ -41,4 +41,8 @@ export type RelatedCourse = Pick<Course, "_id" | "title" | "slug" | "description
 
 export type SummaryCourse = Pick<Course, "_id" | "title">;
 
+export type CourseIdentifiers = Pick<Course, "_id" | "slug">
+
+export type LimitedCourseCourseIdentifiers = Pick<LimitedCourse, "_id" | "slug">
+
 export type Sorting = (typeof SORTING)[keyof typeof SORTING];

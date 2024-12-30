@@ -16,7 +16,7 @@ type TopicsProps = { _id: string; onInView: (section: string) => void };
 
 function Topics({ _id, onInView }: TopicsProps) {
     const { slug } = useParams<{ slug: string }>();
-    const [ref, inView] = useInView({ threshold: .5 });
+    const [ref, inView] = useInView({ threshold: 0.5 });
 
     useEffect(() => {
         if (inView) onInView("topics");
@@ -42,7 +42,7 @@ function Topics({ _id, onInView }: TopicsProps) {
                 <Layers className="w-8" />
                 سرفصل‌های دوره
             </h3>
-            <div className="space-y-2">
+            <div className="space-y-4">
                 {data.topics.map((topic) => (
                     <Topic key={topic._id} {...topic} hasAccess={user.hasAccess} />
                 ))}

@@ -15,7 +15,7 @@ export function createTopic(data: CreateTopicSchemaType): MessageResponse {
 export function updateTopic(params: TopicsMutationsWithidParams, data: UpdateTopicSchemaType): MessageResponse {
     const url = `/topics/${params.topicId}`;
 
-    return Quranara.put(url, {
+    return Quranara.patch(url, {
         body: JSON.stringify(data),
     });
 }

@@ -41,7 +41,7 @@ function Course({ title, description, slug, status, price, discount, metadata }:
                         </div>
                     </div>
                     <div className="flex items-center gap-x-1">
-                        <span className="font-pelak-medium text-xl text-gray-700 dark:text-gray-300" title={discount}>
+                        <span className="font-pelak-medium text-xl text-gray-700 dark:text-gray-300" title={String(discount)}>
                             {price.toLocaleString()}
                         </span>
                         <span className="text-xs text-gray-500">تومان</span>

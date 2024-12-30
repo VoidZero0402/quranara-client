@@ -5,7 +5,7 @@
 @layer base {
     :root {
         --plyr-color-main: #fbbf24;
-        scrollbar-gutter: stable both-edges;
+        scrollbar-gutter: stable;
     }
 
     * {

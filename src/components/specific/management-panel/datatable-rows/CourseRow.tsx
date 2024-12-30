@@ -20,10 +20,10 @@ const StatusVarients = {
     [STATUS.REACHED]: "teal",
 };
 
-import { LimitedCourse } from "@/types/course.types";
+import { LimitedCourse, LimitedCourseCourseIdentifiers } from "@/types/course.types";
 import Layers from "@/components/svgs/Layers";
 
-type CourseRowProps = { course: LimitedCourse; onShown: (course: Pick<LimitedCourse, "_id" | "slug">) => void; onUnshown: (course: Pick<LimitedCourse, "_id" | "slug">) => void };
+type CourseRowProps = { course: LimitedCourse; onShown: (course: LimitedCourseCourseIdentifiers) => void; onUnshown: (course: LimitedCourseCourseIdentifiers) => void };
 
 function CourseRow({ course, onShown, onUnshown }: CourseRowProps) {
     return (
@@ -44,7 +44,7 @@ function CourseRow({ course, onShown, onUnshown }: CourseRowProps) {
                             <Eye />
                         </IconButton>
                     </Link>
-                    <Link href="#">
+                    <Link href={`courses/${course._id}/manage`}>
                         <IconButton label="مدیریت سرفصل‌ها و جلسات">
                             <Layers />
                         </IconButton>
