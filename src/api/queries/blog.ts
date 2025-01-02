@@ -22,8 +22,14 @@ export function getLastBlogs(): Promise<Response<{ blogs: LimitedBlog[]; paginat
     });
 }
 
-export function getAllBlogs(query: GetAllBlogsQuerySchemaType): Promise<Response<{ blogs: LimitedBlog[]; pagination: Pagination }>> {
+export function getBlogs(query: GetAllBlogsQuerySchemaType): Promise<Response<{ blogs: LimitedBlog[]; pagination: Pagination }>> {
     return Quranara.get("/blog", {
+        query,
+    });
+}
+
+export function getAllBlogs(query: GetAllBlogsQuerySchemaType): Promise<Response<{ blogs: LimitedBlog[]; pagination: Pagination }>> {
+    return Quranara.get("/blog/all", {
         query,
     });
 }
@@ -43,6 +49,12 @@ export function getBlog(params: BlogsQueriesWithSlugParams): Promise<Response<{ 
             tags: [blog.getOne(params.slug)],
         },
     });
+}
+
+export function getRawBlog(params: BlogsQueriesWithIdParams): Promise<Response<{ blog: Blog }>> {
+    const url = `/blog/${params.blogId}/raw`;
+
+    return Quranara.get(url);
 }
 
 export function getDetails(params: BlogsQueriesWithIdParams): Promise<Response<{ isLiked: boolean; isSaved: boolean; disabled: boolean }>> {

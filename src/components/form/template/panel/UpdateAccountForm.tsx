@@ -80,19 +80,19 @@ function UpdateAccountForm({ user }: UpdateAccountFormProps) {
 
     return (
         <form className="grid md:grid-cols-2 gap-8" onSubmit={handleSubmit(submitHandler)}>
-            <TextField control={control} name="fullname" label="نام و نام خانوادگی" placeholder="نام و نام خانوادگیت رو وارد کن" inputClassName="dark:bg-gray-850">
+            <TextField control={control} name="fullname" label="نام و نام خانوادگی" placeholder="نام و نام خانوادگیت رو وارد کن">
                 <UserRounded />
             </TextField>
-            <TextField control={control} name="username" label="نام کاربری" placeholder="نام کاربری خودت رو وارد کن" inputClassName="dark:bg-gray-850">
+            <TextField control={control} name="username" label="نام کاربری" placeholder="نام کاربری خودت رو وارد کن">
                 <UserSpeak />
             </TextField>
-            <NumericField control={control} name="age" label="سن شما" placeholder="سن خودت رو به عدد وارد کن" inputClassName="dark:bg-gray-850">
+            <NumericField control={control} name="age" label="سن شما" placeholder="سن خودت رو به عدد وارد کن">
                 <Calendar />
             </NumericField>
-            <TextField control={control} name="city" label="شهر محل سکونت" placeholder="شهر محل سکونتت رو وارد کن" inputClassName="dark:bg-gray-850">
+            <TextField control={control} name="city" label="شهر محل سکونت" placeholder="شهر محل سکونتت رو وارد کن">
                 <HomeAngle />
             </TextField>
-            <UnchangeableField value={user.phone} label="شماره موبایل" filedClassName="dark:bg-gray-850">
+            <UnchangeableField value={user.phone} label="شماره موبایل">
                 <SmartPhone />
             </UnchangeableField>
             <ImageUploader className="self-end" entity="تصویر پروفایل" isUploaded={isUploaded} onUpload={onUpload} onCancel={onCancelUpload} />

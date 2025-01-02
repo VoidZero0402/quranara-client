@@ -13,12 +13,12 @@ function Session({ title, slug, time, isPublic, order }: SessionProps) {
     return (
         <div className="group flex items-center justify-between p-4 h-[76px] font-pelak-medium text-gray-700 dark:text-gray-200 bg-gray-50 dark:bg-gray-800 rounded-xl">
             <div className="flex items-center gap-x-2 group-hover:text-blue-500 dark:group-hover:text-amber-400 transition-all">
-                <span className="flex-center size-8 text-sm gray-light group-hover:blue-light dark:group-hover:amber-light rounded-md transition-all">{order}</span>
+                <span className="flex-center shrink-0 size-8 text-sm gray-light group-hover:blue-light dark:group-hover:amber-light rounded-md transition-all">{order}</span>
                 <Link href={isPublic ? `/sessions/${slug}` : ""} className={`text-sm sm:text-base ${isPublic ? "" : "pointer-events-none"}`}>
                     {title}
                 </Link>
             </div>
-            <div className="flex items-center gap-x-4">
+            <div className="flex items-center gap-x-4 shrink-0">
                 <div className="hidden sm:block">
                     {isPublic ? (
                         <Link href={`/sessions/${slug}`}>
@@ -30,8 +30,8 @@ function Session({ title, slug, time, isPublic, order }: SessionProps) {
                         <Lock />
                     )}
                 </div>
-                <div className="flex items-center gap-x-2 w-20">
-                    {time}
+                <div className="flex items-center justify-end gap-x-2 w-20">
+                    <span className="h-5">{time}</span>
                     <PlaybackSpeed className="w-6 shrink-0 hidden sm:block" />
                     <div className="sm:hidden">{isPublic ? <PlaybackSpeed className="w-6 shrink-0" /> : <Lock />}</div>
                 </div>

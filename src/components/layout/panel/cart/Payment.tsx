@@ -20,7 +20,7 @@ function Payment({ totalPrice, discount, payableAmount }: PaymentProps) {
 
     return (
         <div className="space-y-8 min-[1480px]:w-1/3 h-max">
-            <aside className="space-y-8 p-4 sm:p-8 bg-gray-50 dark:bg-gray-800 rounded-xl">
+            <aside className="space-y-8 p-4 sm:p-8 bg-gray-50 dark:bg-gray-800/50 rounded-xl">
                 <div className="space-y-2">
                     <span className="flex items-center gap-x-1 font-pelak-medium text-xl text-gray-600 dark:text-gray-300">
                         <Card className="w-8" />
@@ -74,7 +74,7 @@ function Payment({ totalPrice, discount, payableAmount }: PaymentProps) {
 
 export function PaymentLoading() {
     return (
-        <aside className="space-y-8 min-[1480px]:w-1/3 h-max p-4 sm:p-8 bg-gray-50 dark:bg-gray-800 rounded-xl">
+        <aside className="space-y-8 min-[1480px]:w-1/3 h-max p-4 sm:p-8 bg-gray-50 dark:bg-gray-800/50 rounded-xl">
             <div className="space-y-2">
                 <span className="flex items-center gap-x-1 font-pelak-medium text-xl text-gray-600 dark:text-gray-300">
                     <Card className="w-8" />

@@ -22,7 +22,7 @@ function CartItem({ _id, title, description, slug, price, discount }: CartItem) 
             </div>
             <div className="flex items-center justify-between md:w-1/4 shrink-0">
                 <div>
-                    {discount && <span className="text-xs text-teal-500">( {discount}% تخفیف )</span>}
+                    {!!discount && <span className="text-xs text-teal-500">( {discount}% تخفیف )</span>}
                     <div className="flex items-center gap-x-1">
                         <span className="font-pelak-semibold text-2xl text-gray-600 dark:text-gray-300">{price.toLocaleString()}</span>
                         <span className="text-xs text-gray-600 dark:text-gray-400">تومان</span>

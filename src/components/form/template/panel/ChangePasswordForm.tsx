@@ -41,10 +41,10 @@ function ChangePasswordForm() {
 
     return (
         <form className="space-y-8" onSubmit={handleSubmit(submitHandler)}>
-            <TextField control={control} name="past" type="password" label="رمز عبور فعلی" placeholder="رمز عبور فعلیت رو وارد کن" inputClassName="dark:bg-gray-850">
+            <TextField control={control} name="past" type="password" label="رمز عبور فعلی" placeholder="رمز عبور فعلیت رو وارد کن">
                 <Lock />
             </TextField>
-            <TextField control={control} name="new" type="password" label="رمز عبور جدید" placeholder="رمز عبور جدیدت رو وارد کن" inputClassName="dark:bg-gray-850">
+            <TextField control={control} name="new" type="password" label="رمز عبور جدید" placeholder="رمز عبور جدیدت رو وارد کن">
                 <Lock />
             </TextField>
             <Button size="lg" disabled={!isDirty || isSubmitting}>

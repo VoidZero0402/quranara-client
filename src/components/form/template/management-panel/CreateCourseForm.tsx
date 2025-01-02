@@ -73,7 +73,7 @@ function CreateCourseForm() {
             <TextField control={control} name="title" label="عنوان دوره" placeholder="عنوان دوره را وارد کنید" />
             <TextArea control={control} name="description" label="توضیحات کوتاه دوره" placeholder="توضیحات کوتاه دوره را وارد کنید" />
             <div className="flex flex-col sm:flex-row gap-8">
-                <TextField control={control} name="cover" label="آدرس کاور دوره" placeholder="آدرس کاور دوره را وارد کنید" className="w-full" />
+                <TextField control={control} name="slug" label="شناسه دوره" placeholder="شناسه دوره را وارد کنید" className="w-full" caption="برای ایجاد شناسه از حروف لاتین استفاده کنید" />
                 <Select control={control} name="status" label="وضعیت دوره" defaultText={StatusText[STATUS.PRE_SELL]} className="w-full">
                     <SelectItem value={STATUS.ON_PERFORMING} text={StatusText[STATUS.ON_PERFORMING]}>
                         {StatusText[STATUS.ON_PERFORMING]}
@@ -87,7 +87,8 @@ function CreateCourseForm() {
                 </Select>
             </div>
             <div className="flex flex-col sm:flex-row gap-8">
-                <TextField control={control} name="slug" label="شناسه دوره" placeholder="شناسه دوره را وارد کنید" className="w-full" caption="برای ایجاد شناسه از حروف لاتین استفاده کنید" />
+                <TextField control={control} name="cover" label="آدرس کاور دوره" placeholder="آدرس کاور دوره را وارد کنید" className="w-full" />
+
                 <NumericField control={control} name="price" label="قیمت دوره" placeholder="قیمت دوره را وارد کنید" className="w-full" caption={formatPrice(price as any)} />
             </div>
             <div className="flex flex-col sm:flex-row gap-8">

@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { getCourse } from "@/api/queries/courses";
+import { getCourse, getCourseTopics } from "@/api/queries/courses";
 
 import Header from "@/components/layout/course/Header";
 import Main from "@/components/layout/course/Main";
@@ -10,10 +10,15 @@ import Progress from "@/components/layout/course/Progress";
 async function page({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
 
-    const {
-        data: { course },
-        status,
-    } = await getCourse({ slug });
+    const [
+        {
+            data: { course },
+            status,
+        },
+        {
+            data: { topics },
+        },
+    ] = await Promise.all([getCourse({ slug }), getCourseTopics({ slug })]);
 
     if (status === 404) {
         notFound();
@@ -24,7 +29,7 @@ async function page({ params }: { params: Promise<{ slug: string }> }) {
             <Header _id={course._id} title={course.title} description={course.description} price={course.price} status={course.status} cover={course.cover} video={course.introduction?.video} />
             <div className="container">
                 <div className="flex flex-col-reverse xl:flex-row gap-8 my-12">
-                    <Main _id={course._id} slug={slug} content={course.introduction?.content} time={course.time} metadata={course.metadata} updatedAt={course.updatedAt} />
+                    <Main _id={course._id} topics={topics} slug={slug} content={course.introduction?.content} time={course.time} metadata={course.metadata} updatedAt={course.updatedAt} />
                     <aside className="flex flex-col md:flex-row xl:flex-col gap-8 w-full xl:w-[30%]">
                         <Teacher />
                         <Progress progress={course.progress} hours={course.time[0]} />

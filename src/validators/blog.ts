@@ -6,7 +6,7 @@ export const CreateBlogSchema = z.object({
     title: z.string({ required_error: "عنوان الزامی است" }).min(1, { message: "عنوان نباید خالی باشد" }).max(255, { message: "عنوان نباید بیشتر از 255 کاراکتر باشد" }),
     description: z.string({ required_error: "توضیحات الزامی است" }).min(1, { message: "توضیحات نباید خالی باشد" }).max(1024, { message: "توضیحات نباید بیشتر از 1024 کاراکتر باشد" }),
     slug: z.string().min(1, { message: "شناسه نباید خالی باشد" }).max(255, { message: "شناسه باید کمتر از 255 کاراکتر باشد" }),
-    category: z.string({ required_error: "دسته‌بندی الزامی است" }),
+    category: z.string({ required_error: "دسته‌بندی الزامی است" }).min(1, { message: "دسته‌بندی را انتخاب کنید" }),
     cover: z
         .string({ required_error: "تصویر الزامی است" })
         .min(1, { message: "تصویر نباید خالی باشد" })
@@ -15,6 +15,7 @@ export const CreateBlogSchema = z.object({
     content: z.string({ required_error: "محتوا الزامی است" }).min(1, { message: "محتوا نباید خالی باشد" }),
     tags: z.array(z.string().min(1, { message: "برچسب نباید خالی باشد" }), { invalid_type_error: "برچسب‌ها باید آرایه‌ای از رشته‌ها باشند" }).optional(),
     relatedCourses: z.array(z.string({ required_error: "دوره الزامی است" }), { message: "دوره‌های مرتبط باید آرایه‌ای از شناسه‌های دوره باشند" }).optional(),
+    shown: z.boolean({ required_error: "مشخص کردن وضعیت نمایش الزامی است." }),
 });
 
 export type CreateBlogSchemaType = z.infer<typeof CreateBlogSchema> & { slug: string };

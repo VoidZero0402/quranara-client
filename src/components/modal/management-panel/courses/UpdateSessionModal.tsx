@@ -2,7 +2,6 @@
 
 import Modal, { ModalBody, ModalHeader, ModalInstanceProps } from "../../Modal";
 
-import CreateSessionForm from "@/components/form/template/management-panel/CreateSessionForm";
 import UpdateSessionForm from "@/components/form/template/management-panel/UpdateSessionForm";
 
 import PlaybackSpeed from "@/components/svgs/PlaybackSpeed";

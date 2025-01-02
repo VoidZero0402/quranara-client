@@ -3,9 +3,11 @@ import { useController, Control, FieldValues, Path } from "react-hook-form";
 
 import { cn } from "@/libs/cn";
 
-import FormDetails from "./FormDetails";
-import ArrowDown from "../svgs/ArrowDown";
 import useToggle from "@/hooks/useToggle";
+
+import FormDetails from "./FormDetails";
+
+import ArrowDown from "../svgs/ArrowDown";
 
 type SelectContextProps = { handleSelect: (value: string, text: string) => void };
 

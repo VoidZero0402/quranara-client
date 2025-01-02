@@ -10,10 +10,11 @@ import Topics, { TopicsLoading } from "./Topics";
 import Comments from "./CourseComments";
 
 import { Course } from "@/types/course.types";
+import { Topic } from "@/types/topic.types";
 
-type MainProps = Pick<Course, "_id" | "slug" | "time" | "metadata" | "updatedAt"> & { content: string };
+type MainProps = Pick<Course, "_id" | "slug" | "time" | "metadata" | "updatedAt"> & { content: string; topics: Topic[] };
 
-function Main({ _id, slug, time, metadata, updatedAt }: MainProps) {
+function Main({ _id, topics, slug, time, metadata, updatedAt }: MainProps) {
     const [section, setSection] = useState("details");
 
     const onInView = useCallback((section: string) => setSection(section), []);
@@ -24,7 +25,7 @@ function Main({ _id, slug, time, metadata, updatedAt }: MainProps) {
             <Details time={time} metadata={metadata} updatedAt={updatedAt} onInView={onInView} />
             <IntroContent onInView={onInView} />
             <Suspense fallback={<TopicsLoading />}>
-                <Topics _id={_id} onInView={onInView} />
+                <Topics _id={_id} topics={topics} onInView={onInView} />
             </Suspense>
             <Comments _id={_id} slug={slug} onInView={onInView} />
         </main>

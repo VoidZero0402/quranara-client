@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { useSuspenseInfiniteQuery } from "@tanstack/react-query";
 
-import { getAllBlogs } from "@/api/queries/blog";
+import { getBlogs } from "@/api/queries/blog";
 
 import { SORTING } from "@/constants/blog";
 
@@ -25,7 +25,7 @@ function BlogGrid({ updateCount }: BlogGridProps) {
         const search = searchParams.get("search");
         const category = searchParams.get("category");
 
-        return await getAllBlogs({ page: pageParam, limit: 8, sort, ...(search && { search }), ...(category && category !== "all" && { category }) });
+        return await getBlogs({ page: pageParam, limit: 8, sort, ...(search && { search }), ...(category && category !== "all" && { category }) });
     };
 
     const { data, fetchNextPage, hasNextPage, isFetchingNextPage, refetch, isFetching } = useSuspenseInfiniteQuery({

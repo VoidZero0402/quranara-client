@@ -1,5 +1,5 @@
-import UpdateAccount from "@/components/specific/panel/account/UpdateAccount";
-import ChangePassword from "@/components/specific/panel/account/ChangePassword";
+import UpdateAccount from "@/components/layout/panel/account/UpdateAccount";
+import ChangePassword from "@/components/layout/panel/account/ChangePassword";
 
 import UserRounded from "@/components/svgs/UserRounded";
 

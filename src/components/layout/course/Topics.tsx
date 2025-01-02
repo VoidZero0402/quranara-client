@@ -2,7 +2,7 @@
 
 import { memo, useEffect } from "react";
 import { useParams } from "next/navigation";
-import { useSuspenseQueries } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 
 import { checkAccess, getCourseTopics } from "@/api/queries/courses";
@@ -12,9 +12,11 @@ import Topic from "@/components/specific/course/Topic";
 import Layers from "@/components/svgs/Layers";
 import Skeleton, { SkeletonFrame } from "@/components/ui/Skeleton";
 
-type TopicsProps = { _id: string; onInView: (section: string) => void };
+import { Topic as TopicType } from "@/types/topic.types";
 
-function Topics({ _id, onInView }: TopicsProps) {
+type TopicsProps = { _id: string; topics: TopicType[]; onInView: (section: string) => void };
+
+function Topics({ _id, topics, onInView }: TopicsProps) {
     const { slug } = useParams<{ slug: string }>();
     const [ref, inView] = useInView({ threshold: 0.5 });
 
@@ -22,19 +24,9 @@ function Topics({ _id, onInView }: TopicsProps) {
         if (inView) onInView("topics");
     }, [inView]);
 
-    const [
-        {
-            data: { data },
-        },
-        {
-            data: { data: user },
-        },
-    ] = useSuspenseQueries({
-        queries: [
-            { queryKey: [`course-topics-${slug}`], queryFn: () => getCourseTopics({ slug }) },
-            { queryKey: [`check-course-access-${_id}`], queryFn: () => checkAccess({ courseId: _id }) },
-        ],
-    });
+    const {
+        data: { data: user },
+    } = useSuspenseQuery({ queryKey: [`check-course-access-${_id}`], queryFn: () => checkAccess({ courseId: _id }) });
 
     return (
         <section ref={ref} className="space-y-8 p-6 bg-white dark:bg-gray-850 rounded-2xl" id="topics">
@@ -43,7 +35,7 @@ function Topics({ _id, onInView }: TopicsProps) {
                 سرفصل‌های دوره
             </h3>
             <div className="space-y-4">
-                {data.topics.map((topic) => (
+                {topics.map((topic) => (
                     <Topic key={topic._id} {...topic} hasAccess={user.hasAccess} />
                 ))}
             </div>
