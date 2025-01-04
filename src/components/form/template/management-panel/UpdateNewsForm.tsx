@@ -23,8 +23,6 @@ import { useRouter } from "next/navigation";
 type UpdateNewsFormProps = { news: News };
 
 function UpdateNewsForm({ news }: UpdateNewsFormProps) {
-    const router = useRouter();
-
     const {
         control,
         handleSubmit,
@@ -49,7 +47,6 @@ function UpdateNewsForm({ news }: UpdateNewsFormProps) {
 
         if (res.success) {
             await revalidate(newsCache.default);
-            router.push("/management-panel/news");
         }
     };
 

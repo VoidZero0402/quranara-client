@@ -2,10 +2,11 @@
 
 import { STATUS, StatusText } from "@/constants/questions";
 
-import { formateDateObject, limitStringLength } from "@/libs/funcs";
+import { formateDateObject } from "@/libs/funcs";
 
 import BadgeLight from "@/components/ui/BadgeLight";
 import IconButton from "@/components/ui/IconButton";
+import LimitedString from "@/components/ui/LimitedString";
 
 import ChatRoundLine from "@/components/svgs/ChatRoundLine";
 import SquareTopUp from "@/components/svgs/SquareTopUp";
@@ -23,8 +24,8 @@ type QuestionRowProps = { question: Question; onChat: (question: Question) => vo
 function QuestionRow({ question, onChat, onClose }: QuestionRowProps) {
     return (
         <tr>
-            <td>{limitStringLength(question.title, 40)}</td>
             <td>
+                <LimitedString text={question.title} limit={40} />
                 <span className="underline text-amber-400">{question.user.username}</span>
             </td>
             <td>

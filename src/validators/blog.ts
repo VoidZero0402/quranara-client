@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { SORTING, STATUS } from "@/constants/blog";
+import { SORTING } from "@/constants/blog";
 import { PaginationQuerySchema } from "./pagination";
 
 export const CreateBlogSchema = z.object({
@@ -13,18 +13,11 @@ export const CreateBlogSchema = z.object({
         .regex(/^[\w-\/\:\.]+\.(jpg|jpeg|png|webp)$/, { message: "فرمت تصویر نامعتبر است" })
         .trim(),
     content: z.string({ required_error: "محتوا الزامی است" }).min(1, { message: "محتوا نباید خالی باشد" }),
-    tags: z.array(z.string().min(1, { message: "برچسب نباید خالی باشد" }), { invalid_type_error: "برچسب‌ها باید آرایه‌ای از رشته‌ها باشند" }).optional(),
     relatedCourses: z.array(z.string({ required_error: "دوره الزامی است" }), { message: "دوره‌های مرتبط باید آرایه‌ای از شناسه‌های دوره باشند" }).optional(),
     shown: z.boolean({ required_error: "مشخص کردن وضعیت نمایش الزامی است." }),
 });
 
 export type CreateBlogSchemaType = z.infer<typeof CreateBlogSchema> & { slug: string };
-
-export const CreateBlogQuerySchema = z.object({
-    status: z.enum([STATUS.DRAFTED, STATUS.PUBLISHED], { message: "وضعیت فقط می‌تواند DRAFTED یا PUBLISHED باشد" }).default(STATUS.DRAFTED),
-});
-
-export type CreateBlogQuerySchemaType = z.infer<typeof CreateBlogQuerySchema>;
 
 export const GetAllBlogsQuerySchema = PaginationQuerySchema.extend({
     category: z

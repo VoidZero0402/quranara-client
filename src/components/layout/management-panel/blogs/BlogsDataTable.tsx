@@ -3,16 +3,16 @@
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 
-import { tv } from "@/api/cache/tags";
-import { shownTv, unshownTv } from "@/api/mutations/tv";
-import { ShownTvStatusOptions, UnshownTvStatusOptions } from "@/api/errors/tv";
+import { blog } from "@/api/cache/tags";
+import { shownBlog, unshownBlog } from "@/api/mutations/blog";
+import { ShownBlogStatusOptions, UnshownBlogStatusOptions } from "@/api/errors/blog";
 
 import { revalidate } from "@/libs/revalidate";
 import { statusHandler } from "@/libs/responses";
 
 import { ENTITIES } from "@/constants/entities";
 
-import TvRow from "@/components/specific/management-panel/datatable-rows/TvRow";
+import BlogRow from "@/components/specific/management-panel/datatable-rows/BlogRow";
 
 import DataTable, { DataTableBody, Column } from "@/components/ui/datatable/DataTable";
 
@@ -43,25 +43,25 @@ const columns: Column[] = [
     },
 ];
 
-import { LimitedTv, TvIdentifiers } from "@/types/tv.types";
+import { LimitedBlog, BlogIdentifiers } from "@/types/blog.types";
 import { Pagination } from "@/types/response.types";
 
-type TvsDataTableProps = {
-    tvs: LimitedTv[];
+type BlogsDataTableProps = {
+    blogs: LimitedBlog[];
     pagination: Pagination;
 };
 
-function TvsDataTable({ tvs, pagination }: TvsDataTableProps) {
+function BlogsDataTable({ blogs, pagination }: BlogsDataTableProps) {
     const router = useRouter();
 
     const { mutate: shown } = useMutation({
-        mutationFn: (tv: TvIdentifiers) => shownTv({ tvId: tv._id }),
-        async onSettled(data, _, variables) {
+        mutationFn: (blog: BlogIdentifiers) => shownBlog({ blogId: blog._id }),
+        async onSettled(data,  _, variables) {
             if (data) {
-                statusHandler(data, ShownTvStatusOptions);
+                statusHandler(data, ShownBlogStatusOptions);
 
                 if (data.success) {
-                    await revalidate(tv.default, tv.getOne(variables.slug));
+                    await revalidate(blog.default, blog.getOne(variables.slug));
                     router.refresh();
                 }
             }
@@ -69,13 +69,13 @@ function TvsDataTable({ tvs, pagination }: TvsDataTableProps) {
     });
 
     const { mutate: unshown } = useMutation({
-        mutationFn: (tv: TvIdentifiers) => unshownTv({ tvId: tv._id }),
-        async onSettled(data, _, variables) {
+        mutationFn: (blog: BlogIdentifiers) => unshownBlog({ blogId: blog._id }),
+        async onSettled(data,  _, variables) {
             if (data) {
-                statusHandler(data, UnshownTvStatusOptions);
+                statusHandler(data, UnshownBlogStatusOptions);
 
                 if (data.success) {
-                    await revalidate(tv.default, tv.getOne(variables.slug));
+                    await revalidate(blog.default, blog.getOne(variables.slug));
                     router.refresh();
                 }
             }
@@ -84,10 +84,10 @@ function TvsDataTable({ tvs, pagination }: TvsDataTableProps) {
 
     return (
         <section>
-            <DataTable entity={ENTITIES.TVS} columns={columns} pagination={pagination}>
+            <DataTable entity={ENTITIES.BLOGS} columns={columns} pagination={pagination}>
                 <DataTableBody>
-                    {tvs.map((tv) => (
-                        <TvRow key={tv._id} tv={tv} onShown={shown} onUnshown={unshown} />
+                    {blogs.map((blog) => (
+                        <BlogRow key={blog._id} blog={blog} onShown={shown} onUnshown={unshown} />
                     ))}
                 </DataTableBody>
             </DataTable>
@@ -95,4 +95,4 @@ function TvsDataTable({ tvs, pagination }: TvsDataTableProps) {
     );
 }
 
-export default TvsDataTable;
+export default BlogsDataTable;

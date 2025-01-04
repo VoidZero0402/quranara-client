@@ -17,7 +17,6 @@ import { Topic as TopicType } from "@/types/topic.types";
 type TopicsProps = { _id: string; topics: TopicType[]; onInView: (section: string) => void };
 
 function Topics({ _id, topics, onInView }: TopicsProps) {
-    const { slug } = useParams<{ slug: string }>();
     const [ref, inView] = useInView({ threshold: 0.5 });
 
     useEffect(() => {

@@ -2,10 +2,11 @@
 
 import { STATUS, StatusText, REPLIES_STATUS } from "@/constants/comments";
 
-import { formateDateObject, limitStringLength } from "@/libs/funcs";
+import { formateDateObject } from "@/libs/funcs";
 
 import BadgeLight from "@/components/ui/BadgeLight";
 import IconButton from "@/components/ui/IconButton";
+import LimitedString from "@/components/ui/LimitedString";
 
 import ChatRoundDots from "@/components/svgs/ChatRoundDots";
 import DoubleCheck from "@/components/svgs/DoubleCheck";
@@ -27,7 +28,7 @@ type CommentRowProps = { comment: Comment; field: FieldSource; onPreviewAnswer: 
 function CommentRow({ comment, field, onPreviewAnswer, onManageReplies, onAccept, onReject, onPin, onUnpin }: CommentRowProps) {
     return (
         <tr>
-            <td>{limitStringLength(comment[field]?.title ?? "", 25)}</td>
+            <td><LimitedString text={comment[field]?.title ?? ""} limit={25} /></td>
             <td>
                 <span className="underline text-amber-400">{comment.user.username}</span>
             </td>

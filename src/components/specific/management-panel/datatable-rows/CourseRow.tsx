@@ -4,10 +4,11 @@ import Link from "next/link";
 
 import { STATUS, StatusText } from "@/constants/courses";
 
-import { formateDateObject, limitStringLength } from "@/libs/funcs";
+import { formateDateObject } from "@/libs/funcs";
 
 import BadgeLight from "@/components/ui/BadgeLight";
 import IconButton from "@/components/ui/IconButton";
+import LimitedString from "@/components/ui/LimitedString";
 
 import Eye from "@/components/svgs/Eye";
 import PenSquare from "@/components/svgs/PenSquare";
@@ -28,7 +29,9 @@ type CourseRowProps = { course: LimitedCourse; onShown: (course: LimitedCourseCo
 function CourseRow({ course, onShown, onUnshown }: CourseRowProps) {
     return (
         <tr>
-            <td>{limitStringLength(course.title, 25)}</td>
+            <td>
+                <LimitedString text={course.title} limit={25} />
+            </td>
             <td>
                 <BadgeLight varient={StatusVarients[course.status] as any}>{StatusText[course.status]}</BadgeLight>
             </td>

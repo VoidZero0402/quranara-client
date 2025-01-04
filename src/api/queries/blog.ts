@@ -87,15 +87,3 @@ export function getBlogComments(params: BlogsQueriesWithSlugParams, query: Pagin
         }),
     });
 }
-
-export function getDraftedBlogs(query: PaginationQuerySchemaType): Promise<Response<{ blogs: LimitedBlog[]; pagination: Pagination }>> {
-    return Quranara.get("/blog/drafted", {
-        query,
-    });
-}
-
-export function getOneDraftedBlog(params: BlogsQueriesWithIdParams): Promise<Response<{ blog: Partial<Blog> }>> {
-    const url = `/blog/drafted/${params.blogId}`;
-
-    return Quranara.get(url);
-}

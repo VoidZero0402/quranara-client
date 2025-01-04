@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useQuery } from "@tanstack/react-query";
@@ -30,8 +29,6 @@ import { Tv } from "@/types/tv.types";
 type UpdateTvFormProps = { tv: Tv };
 
 function UpdateTvForm({ tv }: UpdateTvFormProps) {
-    const router = useRouter();
-
     const {
         control,
         handleSubmit,
@@ -64,7 +61,6 @@ function UpdateTvForm({ tv }: UpdateTvFormProps) {
 
         if (res.success) {
             await revalidate(tvCache.default, tvCache.getOne(tv.slug), tvCache.getRelated(tv.slug));
-            router.push("/management-panel/tvs");
         }
     };
 

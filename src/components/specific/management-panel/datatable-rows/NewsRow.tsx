@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 
-import { formatDate, limitStringLength } from "@/libs/funcs";
+import { formatDate } from "@/libs/funcs";
 
 import Placeholder from "@/components/ui/Placeholder";
 import BadgeLight from "@/components/ui/BadgeLight";
 import IconButton from "@/components/ui/IconButton";
+import LimitedString from "@/components/ui/LimitedString";
 
 import Eye from "@/components/svgs/Eye";
 import PenSquare from "@/components/svgs/PenSquare";
@@ -27,7 +28,7 @@ function NewsRow({ news, onPreview, onRemove, onShown, onUnshown }: NewsRowProps
                 </div>
             </td>
             <td>
-                <span>{limitStringLength(news.title, 25)}</span>
+                <LimitedString text={news.title} limit={25} />
             </td>
             <td>{news.shown ? <BadgeLight varient="teal">در حال نمایش</BadgeLight> : <BadgeLight varient="gray">عدم نمایش</BadgeLight>}</td>
             <td>{formatDate(new Date(news.createdAt ?? Date.now()))}</td>

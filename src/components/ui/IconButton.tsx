@@ -23,7 +23,7 @@ function IconButton({ children, label, variant = "gray", ...props }: IconButtonP
             <button className={iconButton({ variant })} {...props}>
                 {children}
             </button>
-            <div className="absolute -top-10 m-auto w-max py-2.5 px-4 bg-white dark:bg-gray-850 font-pelak-medium text-xs rounded-lg opacity-0 peer-hover:opacity-100 transition-all">{label}</div>
+            <div className="absolute -top-10 m-auto w-max py-2.5 px-4 bg-white dark:bg-gray-850 font-pelak-medium text-xs text-gray-800 dark:text-gray-200 border border-gray-100 dark:border-gray-800 rounded-lg opacity-0 peer-hover:opacity-100 transition-all">{label}</div>
         </div>
     );
 }

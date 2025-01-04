@@ -2,10 +2,11 @@
 
 import { STATUS, StatusText, TypeText } from "@/constants/tickets";
 
-import { formatDate, limitStringLength } from "@/libs/funcs";
+import { formatDate } from "@/libs/funcs";
 
 import BadgeLight from "@/components/ui/BadgeLight";
 import IconButton from "@/components/ui/IconButton";
+import LimitedString from "@/components/ui/LimitedString";
 
 import ChatRoundLine from "@/components/svgs/ChatRoundLine";
 import SquareTopUp from "@/components/svgs/SquareTopUp";
@@ -23,7 +24,9 @@ type TicketRowProps = { ticket: Ticket; onChat: (ticket: Ticket) => void; onClos
 function TicketRow({ ticket, onChat, onClose }: TicketRowProps) {
     return (
         <tr>
-            <td>{limitStringLength(ticket.title, 24)}</td>
+            <td>
+                <LimitedString text={ticket.title} limit={24} />
+            </td>
             <td>
                 <span className="underline text-amber-400">{ticket.user.username}</span>
             </td>

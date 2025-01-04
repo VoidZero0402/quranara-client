@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -29,8 +28,6 @@ import { Course } from "@/types/course.types";
 type UpdateCourseFormProps = { course: Course };
 
 function UpdateCourseForm({ course }: UpdateCourseFormProps) {
-    const router = useRouter();
-
     const {
         control,
         handleSubmit,
@@ -61,7 +58,6 @@ function UpdateCourseForm({ course }: UpdateCourseFormProps) {
 
         if (res.success) {
             await revalidate(coursesCache.default, coursesCache.getOne(course.slug));
-            router.push("/management-panel/courses");
         }
     };
 

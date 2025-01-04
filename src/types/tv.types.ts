@@ -20,3 +20,5 @@ export type Tv = {
 };
 
 export type LimitedTv = Omit<Tv, "video" | "attached" | "content">;
+
+export type TvIdentifiers = Pick<Tv, "_id" | "slug">;

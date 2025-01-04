@@ -2,10 +2,11 @@
 
 import { TYPES, TypesText } from "@/constants/notifications";
 
-import { formatDate, limitStringLength } from "@/libs/funcs";
+import { formatDate } from "@/libs/funcs";
 
 import BadgeLight from "@/components/ui/BadgeLight";
 import IconButton from "@/components/ui/IconButton";
+import LimitedString from "@/components/ui/LimitedString";
 
 import Eye from "@/components/svgs/Eye";
 import PenSquare from "@/components/svgs/PenSquare";
@@ -24,7 +25,9 @@ type NotificationRowProps = { notification: Notification; onPreview: (notificati
 function NotificationRow({ notification, onPreview, onUpdate, onRemove }: NotificationRowProps) {
     return (
         <tr>
-            <td>{limitStringLength(notification.title, 48)}</td>
+            <td>
+                <LimitedString text={notification.title} limit={48} />
+            </td>
             <td>
                 <BadgeLight varient={TypesVarient[notification.type] as any}>{TypesText[notification.type]}</BadgeLight>
             </td>

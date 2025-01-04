@@ -1,6 +1,6 @@
 import Quranara from "../clients/Quranara";
 
-import { CreateBlogSchemaType, CreateBlogQuerySchemaType } from "@/validators/blog";
+import { CreateBlogSchemaType } from "@/validators/blog";
 
 import { MessageResponse } from "@/types/response.types";
 
@@ -12,11 +12,10 @@ export function createBlog(data: CreateBlogSchemaType): MessageResponse {
     });
 }
 
-export function updateBlog(params: BlogsMutationsWithIdParams, query: CreateBlogQuerySchemaType, data: CreateBlogSchemaType): MessageResponse {
+export function updateBlog(params: BlogsMutationsWithIdParams, data: CreateBlogSchemaType): MessageResponse {
     const url = `/blog/${params.blogId}`;
 
     return Quranara.put(url, {
-        query,
         body: JSON.stringify(data),
     });
 }
