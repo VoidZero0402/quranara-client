@@ -50,7 +50,7 @@ function PaymentButton({ discount }: PaymentButtonProps) {
         <form className="space-y-4" onSubmit={handleSubmit(handleOrder)}>
             <div className="flex items-center gap-1">
                 <Checkbox control={control} name="terms" label="با قوانین قرآن‌آرا موافقم" checkboxClassName="dark:bg-gray-850" />
-                <Link href="#" className="font-pelak-semibold text-xs text-blue-500">
+                <Link href="/terms" target="_blank" className="font-pelak-semibold text-xs text-blue-500">
                     ( مشاهده قوانین )
                 </Link>
             </div>

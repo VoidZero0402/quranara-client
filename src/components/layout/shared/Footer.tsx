@@ -47,9 +47,9 @@ function Footer() {
                                     <span className="w-3 h-1 bg-gray-300 dark:bg-gray-700 rounded-full"></span>
                                     درباره قرآن‌آرا
                                 </Link>
-                                <Link href="/about-us#faq" className="flex items-center gap-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-all">
+                                <Link href="/terms" className="flex items-center gap-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-all">
                                     <span className="w-3 h-1 bg-gray-300 dark:bg-gray-700 rounded-full"></span>
-                                    سوالات متداول
+                                    قوانین و مقررات
                                 </Link>
                             </div>
                         </div>
