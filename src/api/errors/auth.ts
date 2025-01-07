@@ -13,6 +13,7 @@ export const SignupStatusOptions: ResponseStatusHandlerOptions = {
 
 export const SendOtpStatusOptions: ResponseStatusHandlerOptions = {
     statuses: {
+        "200": { status: "success", text: "کد تایید ارسال شد", caption: "لطفا کد تایید ۵ رقمی را وارد کنید" },
         "403": { status: "error", text: "شماره موبایل محدود شده", caption: "شماره موبایل شما توسط مدیریت محدود شده" },
         "409": { status: "info", text: "کد تایید ارسال شده", caption: "کد تایید برای شما ارسال شده و هنوز منقضی نشده" },
     },

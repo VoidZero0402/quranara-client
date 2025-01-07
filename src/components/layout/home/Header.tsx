@@ -17,13 +17,13 @@ function Header() {
                         <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 leading-8 sm:leading-8">با قرآن‌آرا، دوره‌های متنوع روخوانی، روان‌خوانی و تفسیر قرآن را به زبانی روان و با کیفیت بالا بیاموزید</p>
                         <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-4 mt-4">
                             <Link href="/courses" className="flex">
-                                <Button size="lg" className="font-pelak-medium gap-x-2 w-full">
+                                <Button size="lg" className="gap-x-2 w-full">
                                     <Layers />
                                     دوره‌های تخصصی قرآن‌آرا
                                 </Button>
                             </Link>
                             <Link href="/tv" className="flex">
-                                <Button size="lg" variant="neutral-base" className="font-pelak-medium gap-x-2 w-full">
+                                <Button size="lg" variant="neutral-base" className="gap-x-2 w-full">
                                     <PlayCircle />
                                     آموزش‌های رایگان قرآن‌آرا
                                 </Button>

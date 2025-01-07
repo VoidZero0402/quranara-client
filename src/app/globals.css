@@ -9,7 +9,7 @@
     }
 
     * {
-        @apply outline-none scroll-smooth;
+        @apply outline-none scroll-smooth scroll-m-16;
     }
 
     input:-webkit-autofill,

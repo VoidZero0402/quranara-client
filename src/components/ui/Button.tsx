@@ -24,7 +24,7 @@ const button = cva("flex-center gap-x-1 font-pelak-medium child:shrink-0 select-
         },
 
         rounded: {
-            base: "rounded-lg",
+            base: "rounded-xl",
             lg: "rounded-2xl",
             full: "rounded-full",
         },

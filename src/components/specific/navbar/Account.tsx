@@ -26,7 +26,7 @@ function Account() {
                 <Link href="/login">
                     <Button className="size-12 sm:h-12 sm:w-40">
                         <UserRounded className="w-7" />
-                        <span className="hidden sm:inline-block"> ورود | ثبت نام</span>
+                        <span className="hidden sm:inline-block">ورود | ثبت نام</span>
                     </Button>
                 </Link>
             </motion.div>

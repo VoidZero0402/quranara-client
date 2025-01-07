@@ -6,8 +6,6 @@ import useLoginStore from "@/store/login";
 
 import SendOtpAgainTimer from "../SendOtpAgainTimer";
 
-import Button from "@/components/ui/Button";
-
 function LoginSendOtpAgain() {
     const { user, TTL, resetTTL, getOtp } = useLoginStore();
     const [disabled, toggleDisabled] = useToggle(true);
@@ -20,9 +18,9 @@ function LoginSendOtpAgain() {
     return (
         <div className="flex items-center justify-between">
             <SendOtpAgainTimer seconds={TTL} onEndCountdown={toggleDisabled} reset={resetTTL} />
-            <Button size="sm" variant="neutral-base" onClick={sendAgain} disabled={disabled}>
+            <button className="font-pelak-medium text-sm text-gray-800 dark:text-gray-200 cursor-pointer disabled:opacity-50 disabled:cursor-default" onClick={sendAgain} disabled={disabled}>
                 ارسال دوباره کد
-            </Button>
+            </button>
         </div>
     );
 }

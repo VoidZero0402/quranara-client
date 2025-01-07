@@ -64,7 +64,7 @@ function Navigation({ entity }: NavigationProps) {
             </div>
             <NavigationDrawer entity={entity} sort={sort} onChange={updateSort} />
             <div className="grow w-full xl:w-min p-4 md:p-6 xl:p-0 bg-white dark:bg-gray-850 rounded-2xl xl:rounded-none">
-                <SearchBar query="search" placeholder={`در ${entity} جستجو کنید`} empty />
+                <SearchBar query="search" placeholder={`در ${entity} جستجو کنید`} empty className="rounded-xl"/>
             </div>
         </div>
     );
