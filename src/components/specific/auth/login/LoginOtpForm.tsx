@@ -7,6 +7,8 @@ import { useMutation } from "@tanstack/react-query";
 import { loginWithOtp } from "@/api/mutations/auth";
 import { LoginWithOtpStatusOptions } from "@/api/errors/auth";
 
+import { ROLES } from "@/constants/roles";
+
 import useLoginStore from "@/store/login";
 
 import { statusHandler } from "@/libs/responses";
@@ -27,7 +29,7 @@ function LoginOtpForm() {
             if (data) {
                 statusHandler(data, LoginWithOtpStatusOptions);
 
-                if (data.status === 200) router.replace("/panel");
+                if (data.status === 200) router.replace(data.data.role === ROLES.MANAGER ? "/management-panel" : "/panel");
             }
         },
     });

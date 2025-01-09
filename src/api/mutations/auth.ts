@@ -4,7 +4,7 @@ import { SignupShcemaType, SendOtpSchemaType, LoginWithOtpSchemaType, LoginWithP
 
 import { Response, MessageResponse } from "@/types/response.types";
 
-export function signup(data: SignupShcemaType): Promise<Response<{ message: string; username: string }>> {
+export function signup(data: SignupShcemaType): Promise<Response<{ message: string }>> {
     return Quranara.post("/auth/signup", {
         body: JSON.stringify(data),
     });
@@ -16,13 +16,13 @@ export function sendOtp(data: SendOtpSchemaType): Promise<Response<{ message: st
     });
 }
 
-export function loginWithOtp(data: LoginWithOtpSchemaType): Promise<Response<{ message: string; username: string }>> {
+export function loginWithOtp(data: LoginWithOtpSchemaType): Promise<Response<{ message: string; role: string }>> {
     return Quranara.post("/auth/login/with-otp", {
         body: JSON.stringify(data),
     });
 }
 
-export function loginWithPassword(data: LoginWithPasswordchemaType): Promise<Response<{ message: string; username: string }>> {
+export function loginWithPassword(data: LoginWithPasswordchemaType): Promise<Response<{ message: string; role: string }>> {
     return Quranara.post("/auth/login/with-password", {
         body: JSON.stringify(data),
     });

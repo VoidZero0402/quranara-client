@@ -11,7 +11,8 @@ export type User = {
     profile?: string;
     age?: number;
     city?: string;
-    createdAt: number
+    createdAt: number;
+    updatedAt: number;
 };
 
 export type CookieUser = Omit<User, "_id">;

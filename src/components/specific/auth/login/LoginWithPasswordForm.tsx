@@ -10,6 +10,8 @@ import { LoginWithPasswordStatusOptions } from "@/api/errors/auth";
 
 import { LoginWithPasswordchema, LoginWithPasswordchemaType } from "@/validators/auth";
 
+import { ROLES } from "@/constants/roles";
+
 import { statusHandler } from "@/libs/responses";
 
 import TextField from "@/components/form/TextField";
@@ -35,9 +37,9 @@ function LoginWithPasswordForm() {
         onSettled(data) {
             if (data) {
                 statusHandler(data, LoginWithPasswordStatusOptions);
-            }
 
-            if (data?.status === 200) router.replace("/panel");
+                if (data.status === 200) router.replace(data.data.role === ROLES.MANAGER ? "/management-panel" : "/panel");
+            }
         },
     });
 
