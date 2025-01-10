@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 
 import { getTv } from "@/api/queries/tv";
 
+import { increaseViews } from "@/libs/redis";
+
 import Header from "@/components/layout/tv/Header";
 import RelatedTvs from "@/components/layout/tv/RelatedTvs";
 import Details from "@/components/layout/tv/Details";
@@ -19,6 +21,8 @@ async function Tv({ params }: { params: Promise<{ slug: string }> }) {
     if (status === 404) {
         notFound();
     }
+
+    increaseViews("tv", tv._id);
 
     return (
         <div className="my-8">

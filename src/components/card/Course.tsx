@@ -41,16 +41,14 @@ function Course({ title, description, slug, status, price, discount, metadata }:
                         </div>
                     </div>
                     <div className="flex items-center gap-x-1">
-                        <span className="font-pelak-medium text-xl text-gray-700 dark:text-gray-300" title={String(discount)}>
-                            {price.toLocaleString()}
-                        </span>
-                        <span className="text-xs text-gray-500">تومان</span>
+                        <span className="font-pelak-semibold text-xl text-gray-700 dark:text-gray-300">{price}</span>
+                        <span className="f text-xs text-gray-600 dark:text-gray-400">تومان</span>
                     </div>
                 </div>
             </div>
             <Slice className="mx-4 dark:bg-gray-800" />
             <div className="p-4">
-                <Link href={`/courses/${slug}`} className="flex items-center gap-x-2 w-max m-auto font-pelak-medium text-gray-500 hover:text-amber-400 transition-colors">
+                <Link href={`/courses/${slug}`} className="flex items-center gap-x-2 w-max m-auto font-pelak-medium text-gray-600 dark:text-gray-400 hover:text-amber-400 dark:hover:text-amber-400 transition-colors">
                     مشاهده جزئیات دوره
                     <LongArrowLeft className="w-6" strokeWidth={1.5} />
                 </Link>

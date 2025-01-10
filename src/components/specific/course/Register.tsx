@@ -46,7 +46,7 @@ function Register({ _id }: RegisterProps) {
                     شما دانشجوی دوره هستید
                 </div>
             ) : (
-                <Button size="lg" className="w-full h-14" disabled={isPending} onClick={() => register()}>
+                <Button size="lg" className="w-full h-14" disabled={isPending} onClick={register as any}>
                     <AcademicCap />
                     ثبت‌نام و دسترسی به دوره
                 </Button>

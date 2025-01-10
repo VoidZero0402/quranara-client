@@ -55,7 +55,7 @@ function BanUserModal({ isOpen, onClose, user }: BanUserModalProps) {
                 )}
             </ModalBody>
             <ModalFooter className="flex-col sm:flex-row gap-4">
-                <Button size="lg" variant="filled-danger" className="w-full" disabled={isPending} onClick={() => ban()}>
+                <Button size="lg" variant="filled-danger" className="w-full" disabled={isPending} onClick={ban as any}>
                     {isPending ? "در حال مسدودیت" : "مسدود کردن کاربر"}
                 </Button>
                 <Button size="lg" variant="neutral-base" className="w-full" onClick={onClose}>

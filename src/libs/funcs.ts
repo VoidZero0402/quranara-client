@@ -141,6 +141,10 @@ export function getDateAfterHours(hours: number): number {
 
 export function formatPrice(price: string) {
     const number = Number(price);
-
     return number ? `${number.toLocaleString()} تومان` : "دوره رایگان!";
+}
+
+export function getDiscountedPrice(price: number, discount: number) {
+    const discountedPrice = price - (price * discount) / 100;
+    return discountedPrice.toLocaleString();
 }

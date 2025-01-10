@@ -1,6 +1,13 @@
+import path from "path";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+    webpack: (config, { isServer }) => {
+        if (!isServer) {
+            config.resolve.alias["yjs"] = path.resolve(__dirname, "node_modules/yjs");
+        }
+        return config;
+    },
     images: {
         remotePatterns: [
             {
@@ -10,9 +17,9 @@ const nextConfig: NextConfig = {
     },
     logging: {
         fetches: {
-            fullUrl: true
-        }
-    }
+            fullUrl: true,
+        },
+    },
 };
 
 export default nextConfig;

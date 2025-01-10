@@ -42,7 +42,7 @@ function SeenNotificationButton({ identifier }: SeenNotificationButtonProps) {
     });
 
     return (
-        <Button size="lg" variant="neutral-base" className="shrink-0" disabled={isPending} onClick={() => seen()}>
+        <Button size="lg" variant="neutral-base" className="shrink-0" disabled={isPending} onClick={seen as any}>
             دریافت شد
         </Button>
     );

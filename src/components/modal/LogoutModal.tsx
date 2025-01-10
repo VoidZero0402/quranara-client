@@ -47,7 +47,7 @@ function LogoutModal({ isOpen, onClose }: ModalInstanceProps) {
                 </div>
             </ModalBody>
             <ModalFooter className="flex-col sm:flex-row gap-4">
-                <Button size="lg" className="w-full" disabled={isPending} onClick={() => handleLogout()}>
+                <Button size="lg" className="w-full" disabled={isPending} onClick={handleLogout as any}>
                     <LogoutIcon />
                     {isPending ? "در حال خروج از حساب" : "خروج از حساب کاربری"}
                 </Button>

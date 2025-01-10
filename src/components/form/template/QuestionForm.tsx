@@ -20,11 +20,14 @@ import TextArea from "../TextArea";
 import Button from "@/components/ui/Button";
 
 import Uploader from "@/components/ui/Uploader";
+import { useQueryClient } from "@tanstack/react-query";
 
 type QuestionFormProps = { sessionId: string; questionId?: string };
 
 function QuestionForm({ sessionId, questionId }: QuestionFormProps) {
     const router = useRouter();
+
+    const queryClient = useQueryClient();
 
     const {
         control,
@@ -73,6 +76,7 @@ function QuestionForm({ sessionId, questionId }: QuestionFormProps) {
         if (res.success) {
             reset();
             router.refresh();
+            queryClient.invalidateQueries({ queryKey: ["infinite-questions"], exact: true, refetchType: "all" });
         }
     };
 

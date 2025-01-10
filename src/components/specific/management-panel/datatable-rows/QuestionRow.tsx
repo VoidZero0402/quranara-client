@@ -26,6 +26,8 @@ function QuestionRow({ question, onChat, onClose }: QuestionRowProps) {
         <tr>
             <td>
                 <LimitedString text={question.title} limit={40} />
+            </td>
+            <td>
                 <span className="underline text-amber-400">{question.user.username}</span>
             </td>
             <td>

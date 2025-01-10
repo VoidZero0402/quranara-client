@@ -2,6 +2,7 @@
 
 import { useCallback } from "react";
 import { useRouter } from "next/navigation";
+import { useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -26,6 +27,8 @@ type TrackingTicketFormProps = { _id: string };
 
 function TrackingTicketForm({ _id }: TrackingTicketFormProps) {
     const router = useRouter();
+
+    const queryClient = useQueryClient();
 
     const {
         control,
@@ -68,6 +71,7 @@ function TrackingTicketForm({ _id }: TrackingTicketFormProps) {
         if (res.success) {
             reset();
             router.refresh();
+            queryClient.invalidateQueries({ queryKey: ["infinite-tickets"], exact: true, refetchType: "all" });
         }
     };
 

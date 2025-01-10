@@ -2,6 +2,7 @@
 
 import { useCallback } from "react";
 import { useRouter } from "next/navigation";
+import { useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -27,6 +28,8 @@ import Plain from "@/components/svgs/Plain";
 
 function NewTicketForm() {
     const router = useRouter();
+
+    const queryClient = useQueryClient();
 
     const {
         control,
@@ -68,6 +71,7 @@ function NewTicketForm() {
         statusHandler(res, CreateTicketStatusOptions);
 
         if (res.success) {
+            queryClient.invalidateQueries({ queryKey: ["infinite-tickets"], exact: true, refetchType: "all" });
             router.push("/panel/tickets");
         }
     };

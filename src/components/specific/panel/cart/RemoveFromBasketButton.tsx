@@ -28,7 +28,7 @@ function RemoveFromBasketButton({ _id }: RemoveFromBasketButtonProps) {
     });
 
     return (
-        <button className="md:absolute top-0 left-0 font-pelak-medium text-xs text-red-500" onClick={() => remove()} disabled={isPending}>
+        <button className="md:absolute top-0 left-0 font-pelak-medium text-xs text-red-500" onClick={remove as any} disabled={isPending}>
             حذف از سبد خرید
         </button>
     );

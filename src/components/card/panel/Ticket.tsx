@@ -14,7 +14,7 @@ import { LimitedTicket } from "@/types/ticket.types";
 function Ticket({ _id, title, description, shortId, status, createdAt }: LimitedTicket) {
     return (
         <div className="space-y-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-2xl">
-            <Link href={`/panel/tickets/${_id}/tracking`} className="font-pelak-medium sm:text-lg text-gray-800 dark:text-gray-200 hover:text-blue-500 dark:hover:text-amber-400 line-clamp-2 leading-8 transition-all">
+            <Link href={`/panel/tickets/${_id}/tracking`} className="font-pelak-medium sm:text-lg text-gray-800 dark:text-gray-200 hover:text-blue-500 dark:hover:text-amber-400 md:line-clamp-1 leading-8 transition-all">
                 {title}
             </Link>
             <div className="space-y-2">

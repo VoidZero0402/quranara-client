@@ -73,7 +73,7 @@ function SignCourseModal({ isOpen, onClose, user }: SignCourseModalProps) {
                 )}
             </ModalBody>
             <ModalFooter className="flex-col sm:flex-row gap-4">
-                <Button size="lg" className="w-full" disabled={!course || isPending} onClick={() => sign()}>
+                <Button size="lg" className="w-full" disabled={!course || isPending} onClick={sign as any}>
                     {isPending ? "در حال اهدای دوره" : "اهدای دوره مدنظر"}
                 </Button>
                 <Button size="lg" variant="neutral-base" className="w-full" onClick={handleClose}>

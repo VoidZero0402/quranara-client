@@ -82,20 +82,20 @@ function Actions({ _id }: ActionsProps) {
     return (
         <div className="flex items-center gap-x-4">
             {details?.isLiked ? (
-                <button className="flex-center size-12 font-pelak-medium bg-red-500 text-white disabled:bg-red-400 rounded-xl transition-all duration-300" disabled={isPendingDislike} onClick={() => dislike()}>
+                <button className="flex-center size-12 font-pelak-medium bg-red-500 text-white disabled:bg-red-400 rounded-xl transition-all duration-300" disabled={isPendingDislike} onClick={dislike as any}>
                     <Heart />
                 </button>
             ) : (
-                <button className="flex-center size-12 font-pelak-medium red-light disabled:bg-red-100 dark:disabled:bg-red-500/15 rounded-xl transition-all duration-300" disabled={isPendingLike} onClick={() => like()}>
+                <button className="flex-center size-12 font-pelak-medium red-light disabled:bg-red-100 dark:disabled:bg-red-500/15 rounded-xl transition-all duration-300" disabled={isPendingLike} onClick={like as any}>
                     <Heart />
                 </button>
             )}
             {details?.isSaved ? (
-                <button className="flex-center size-12 font-pelak-medium bg-blue-500 text-white disabled:bg-blue-400 rounded-xl transition-all duration-300" disabled={isPendingUnsave} onClick={() => unsave()}>
+                <button className="flex-center size-12 font-pelak-medium bg-blue-500 text-white disabled:bg-blue-400 rounded-xl transition-all duration-300" disabled={isPendingUnsave} onClick={unsave as any}>
                     <Bookmark />
                 </button>
             ) : (
-                <button className="flex-center size-12 font-pelak-medium blue-light disabled:bg-blue-100 dark:disabled:bg-blue-500/15 rounded-xl transition-all duration-300" disabled={isPendingSave} onClick={() => save()}>
+                <button className="flex-center size-12 font-pelak-medium blue-light disabled:bg-blue-100 dark:disabled:bg-blue-500/15 rounded-xl transition-all duration-300" disabled={isPendingSave} onClick={save as any}>
                     <Bookmark />
                 </button>
             )}

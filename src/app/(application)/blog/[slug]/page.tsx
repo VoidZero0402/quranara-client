@@ -4,6 +4,9 @@ import { notFound } from "next/navigation";
 import { getBlog } from "@/api/queries/blog";
 
 import Header from "@/components/layout/blog/Header";
+
+import { increaseViews } from "@/libs/redis";
+
 import Details from "@/components/layout/blog/Details";
 import Headings from "@/components/layout/blog/Headings";
 import Content from "@/components/layout/content/Content";
@@ -27,6 +30,8 @@ async function Blog({ params }: { params: Promise<{ slug: string }> }) {
     if (status === 404) {
         notFound();
     }
+
+    increaseViews("blog", blog._id);
 
     return (
         <div className="my-8">
