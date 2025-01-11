@@ -4,7 +4,7 @@ export const SignupStatusOptions: ResponseStatusHandlerOptions = {
     statuses: {
         "201": { status: "success", text: "ثبت‌نام موفقیت آمیز", caption: "به خانواده قرآن‌آرا خوش اومدی" },
         "409-otp": { status: "error", text: "کد تایید منقضی شده", caption: "کد تایید شما منقضی شده، دوباره تلاش کنید" },
-        "409-duplicate": { status: "info", text: "شماره موبایل نامعتبر", caption: "این شماره موبایل از قبل حساب کاربری دارد" },
+        "409-duplicate": { status: "error", text: "شماره موبایل نامعتبر", caption: "این شماره موبایل از قبل حساب کاربری دارد" },
         "400-otp": { status: "error", text: "کد تایید نامعتبر", caption: "کد تایید شما معتبر نیست" },
         "400-validation": { status: "error", text: "اطلاعات نامعتبر", caption: "اطلاعات شما معتبر است" },
         "403": { status: "error", text: "شماره موبایل محدود شده", caption: "شماره موبایل شما توسط مدیریت محدود شده" },

@@ -1,10 +1,10 @@
 import Quranara from "../clients/Quranara";
 
-import { SignupShcemaType, SendOtpSchemaType, LoginWithOtpSchemaType, LoginWithPasswordchemaType } from "@/validators/auth";
+import { SignupSchemaType, SendOtpSchemaType, LoginWithOtpSchemaType, LoginWithPasswordchemaType } from "@/validators/auth";
 
 import { Response, MessageResponse } from "@/types/response.types";
 
-export function signup(data: SignupShcemaType): Promise<Response<{ message: string }>> {
+export function signup(data: SignupSchemaType): Promise<Response<{ message: string }>> {
     return Quranara.post("/auth/signup", {
         body: JSON.stringify(data),
     });

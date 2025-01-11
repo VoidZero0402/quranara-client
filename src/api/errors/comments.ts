@@ -3,7 +3,7 @@ import { ResponseStatusHandlerOptions } from "@/libs/responses";
 export const CreateCommentStatusOptions: ResponseStatusHandlerOptions = {
     statuses: {
         "201": { status: "success", text: "ثبت دیدگاه جدید", caption: "دیدگاه شما با موفقیت ثبت شد" },
-        "400-validation": { status: "info", text: "اطلاعات نامعتبر", caption: "لطفا اطلاعات معتبر را وارد کنید" },
+        "400-validation": { status: "error", text: "اطلاعات نامعتبر", caption: "لطفا اطلاعات معتبر را وارد کنید" },
         "401": { status: "info", text: "لطفا ابتدا وارد شوید", caption: "ابتدا نیاز به ورود یا ثبت‌نام دارید" },
     },
 };
@@ -11,7 +11,7 @@ export const CreateCommentStatusOptions: ResponseStatusHandlerOptions = {
 export const AnswerCommentStatusOptions: ResponseStatusHandlerOptions = {
     statuses: {
         "201": { status: "success", text: "ثبت پاسخ", caption: "پاسخ شما با موفقیت ثبت شد" },
-        "400-validation": { status: "info", text: "اطلاعات نامعتبر", caption: "لطفا اطلاعات معتبر را وارد کنید" },
+        "400-validation": { status: "error", text: "اطلاعات نامعتبر", caption: "لطفا اطلاعات معتبر را وارد کنید" },
         "401": { status: "error", text: "عدم دسترسی", caption: "شما به این عملکرد دسترسی ندارید" },
     },
 };
@@ -19,7 +19,7 @@ export const AnswerCommentStatusOptions: ResponseStatusHandlerOptions = {
 export const AcceptCommentStatusOptions: ResponseStatusHandlerOptions = {
     statuses: {
         "200": { status: "success", text: "تایید دیدگاه", caption: "دیدگاه با موفقیت تایید شد" },
-        "400-validation": { status: "info", text: "اطلاعات نامعتبر", caption: "لطفا اطلاعات معتبر را وارد کنید" },
+        "400-validation": { status: "error", text: "اطلاعات نامعتبر", caption: "لطفا اطلاعات معتبر را وارد کنید" },
         "401": { status: "error", text: "عدم دسترسی", caption: "شما به این عملکرد دسترسی ندارید" },
         "404": { status: "error", text: "مشکل در سرور", caption: "بنظر میرسه مشکلی در سرور پیش اومده" },
     },
@@ -28,7 +28,7 @@ export const AcceptCommentStatusOptions: ResponseStatusHandlerOptions = {
 export const RejectCommentStatusOptions: ResponseStatusHandlerOptions = {
     statuses: {
         "200": { status: "success", text: "رد دیدگاه", caption: "دیدگاه با موفقیت رد شد" },
-        "400-validation": { status: "info", text: "اطلاعات نامعتبر", caption: "لطفا اطلاعات معتبر را وارد کنید" },
+        "400-validation": { status: "error", text: "اطلاعات نامعتبر", caption: "لطفا اطلاعات معتبر را وارد کنید" },
         "401": { status: "error", text: "عدم دسترسی", caption: "شما به این عملکرد دسترسی ندارید" },
         "404": { status: "error", text: "مشکل در سرور", caption: "بنظر میرسه مشکلی در سرور پیش اومده" },
     },

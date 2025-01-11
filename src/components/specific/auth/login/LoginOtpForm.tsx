@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 
@@ -13,6 +13,8 @@ import useLoginStore from "@/store/login";
 
 import { statusHandler } from "@/libs/responses";
 
+import useOTPCredential from "@/hooks/useOTPCredential";
+
 import Button from "@/components/ui/Button";
 
 function LoginOtpForm() {
@@ -22,6 +24,12 @@ function LoginOtpForm() {
     const { user } = useLoginStore();
 
     const router = useRouter();
+
+    const setOTPCredential = useCallback((code: string) => {
+        setOtp(code.split(""));
+    }, []);
+
+    useOTPCredential(setOTPCredential);
 
     const { mutate, isPending } = useMutation({
         mutationFn: loginWithOtp,
