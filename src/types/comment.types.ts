@@ -32,3 +32,5 @@ export type Comment = {
     repliesStatus: ReplyStatus;
     createdAt: number;
 };
+
+export type CommentIdentifiers = Pick<Comment, "_id" | "course" | "blog" | "tv">;

@@ -79,11 +79,5 @@ export function getTvComments(params: TvsQueriesWithSlugParams, query: Paginatio
 
     return Quranara.get(url, {
         query,
-        ...(query.page === 1 && {
-            cache: "force-cache",
-            next: {
-                tags: [tv.getComments(params.slug)],
-            },
-        }),
     });
 }

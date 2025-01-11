@@ -21,14 +21,16 @@ const StatusesVarient = {
     [STATUS.REJECTED]: "danger",
 };
 
-import { Comment, FieldSource } from "@/types/comment.types";
+import { Comment, CommentIdentifiers, FieldSource } from "@/types/comment.types";
 
-type CommentRowProps = { comment: Comment; field: FieldSource; onPreviewAnswer: (comment: Comment) => void; onManageReplies: (comment: Comment) => void; onAccept: (_id: string) => void; onReject: (_id: string) => void; onPin: (_id: string) => void; onUnpin: (_id: string) => void };
+type CommentRowProps = { comment: Comment; field: FieldSource; onPreviewAnswer: (comment: Comment) => void; onManageReplies: (comment: Comment) => void; onAccept: (comment: CommentIdentifiers) => void; onReject: (comment: CommentIdentifiers) => void; onPin: (comment: CommentIdentifiers) => void; onUnpin: (comment: CommentIdentifiers) => void };
 
 function CommentRow({ comment, field, onPreviewAnswer, onManageReplies, onAccept, onReject, onPin, onUnpin }: CommentRowProps) {
     return (
         <tr>
-            <td><LimitedString text={comment[field]?.title ?? ""} limit={25} /></td>
+            <td>
+                <LimitedString text={comment[field]?.title ?? ""} limit={25} />
+            </td>
             <td>
                 <span className="underline text-amber-400">{comment.user.username}</span>
             </td>
@@ -48,27 +50,27 @@ function CommentRow({ comment, field, onPreviewAnswer, onManageReplies, onAccept
                         </IconButton>
                     )}
                     {comment.status === STATUS.ACCEPTED ? (
-                        <IconButton label="رد کردن نظر" variant="danger" onClick={() => onReject(comment._id)}>
+                        <IconButton label="رد کردن نظر" variant="danger" onClick={() => onReject({ _id: comment._id, course: comment.course, blog: comment.blog, tv: comment.tv })}>
                             <DangerCircle />
                         </IconButton>
                     ) : (
-                        <IconButton label="تایید نظر" variant="teal" onClick={() => onAccept(comment._id)}>
+                        <IconButton label="تایید نظر" variant="teal" onClick={() => onAccept({ _id: comment._id, course: comment.course, blog: comment.blog, tv: comment.tv })}>
                             <DoubleCheck />
                         </IconButton>
                     )}
                     {comment.status === STATUS.PENDING && (
-                        <IconButton label="رد کردن نظر" variant="danger" onClick={() => onReject(comment._id)}>
+                        <IconButton label="رد کردن نظر" variant="danger" onClick={() => onReject({ _id: comment._id, course: comment.course, blog: comment.blog, tv: comment.tv })}>
                             <DangerCircle />
                         </IconButton>
                     )}
                     {comment.status === STATUS.ACCEPTED && (
                         <>
                             {comment.pin ? (
-                                <IconButton label="برداشتن پین" variant="secondary" onClick={() => onUnpin(comment._id)}>
+                                <IconButton label="برداشتن پین" variant="secondary" onClick={() => onUnpin({ _id: comment._id, course: comment.course, blog: comment.blog, tv: comment.tv })}>
                                     <CircleTopDown />
                                 </IconButton>
                             ) : (
-                                <IconButton label="پین کردن" variant="secondary" onClick={() => onPin(comment._id)}>
+                                <IconButton label="پین کردن" variant="secondary" onClick={() => onPin({ _id: comment._id, course: comment.course, blog: comment.blog, tv: comment.tv })}>
                                     <CircleTopUp />
                                 </IconButton>
                             )}

@@ -57,7 +57,7 @@ function CreateTvForm() {
         statusHandler(res, CreateTvStatusOptions);
 
         if (res.success) {
-            await revalidate(tv.default);
+            revalidate(tv.default);
             reset();
         }
     };

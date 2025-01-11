@@ -52,7 +52,7 @@ function CreateSessionForm({ topic, slug, onClose }: CreateSessionFormProps) {
         statusHandler(res, CreateSessionStatusOptions);
 
         if (res.success) {
-            await revalidate(coursesCache.getOne(slug), coursesCache.getTopics(slug));
+            revalidate(coursesCache.getOne(slug), coursesCache.getTopics(slug));
             onClose();
             reset();
             router.refresh();

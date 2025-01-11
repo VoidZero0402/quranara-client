@@ -61,7 +61,7 @@ function CreateCourseForm() {
         statusHandler(res, CreateCourseStatusOptions);
 
         if (res.success) {
-            await revalidate(courses.default);
+            revalidate(courses.default);
             reset();
         }
     };

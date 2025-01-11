@@ -69,7 +69,7 @@ function UpdateBlogForm({ blog }: UpdateBlogFormProps) {
         statusHandler(res, UpdateBlogStatusOptions);
 
         if (res.success) {
-            await revalidate(blogCache.default, blogCache.getOne(blog.slug));
+            revalidate(blogCache.default, blogCache.getOne(blog.slug), blogCache.getRelated(blog.slug));
         }
     };
 

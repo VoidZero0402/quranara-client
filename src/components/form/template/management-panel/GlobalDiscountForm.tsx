@@ -7,6 +7,7 @@ import { applyDiscountAll } from "@/api/mutations/courses";
 import { ApplyDiscountAllStatusOptions } from "@/api/errors/discounts";
 
 import { statusHandler } from "@/libs/responses";
+import { revalidateCoursesCache } from "@/libs/apis";
 
 import { DiscountAllSchema, DiscountAllSchemaType } from "@/validators/courses";
 
@@ -35,10 +36,9 @@ function GlobalDiscountForm({ onClose }: GlobalDiscountFormProps) {
         statusHandler(res, ApplyDiscountAllStatusOptions);
 
         if (res.success) {
-            onClose();
+            revalidateCoursesCache();
             reset();
-
-            // TODO: Revalidation Courses
+            onClose();
         }
     };
 

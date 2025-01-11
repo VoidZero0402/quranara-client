@@ -26,12 +26,12 @@ function RemoveNewsModal({ isOpen, onClose, news }: RemoveNewsModalProps) {
 
     const { mutate: remove, isPending } = useMutation({
         mutationFn: () => removeNews({ newsId: news._id }),
-        async onSettled(data) {
+        onSettled(data) {
             if (data) {
                 statusHandler(data, RemoveNewsStatusOptions);
 
                 if (data.success) {
-                    await revalidate(newsCache.default);
+                    revalidate(newsCache.default);
                     onClose();
                     router.refresh();
                 }

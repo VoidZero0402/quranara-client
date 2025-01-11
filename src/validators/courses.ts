@@ -71,7 +71,7 @@ export const SearchCoursesQuerySchame = PaginationQuerySchema.extend({
 export type SearchCoursesQuerySchameType = z.infer<typeof SearchCoursesQuerySchame>;
 
 export const DiscountAllSchema = z.object({
-    discount: z.coerce.number().min(0, { message: "تخفیف نمی‌تواند منفی باشد." }).max(100, { message: "تخفیف نمی‌تواند بیشتر از ۱۰۰ درصد باشد." }),
+    discount: z.coerce.number().min(1, { message: "حداقل میزان تخفیف ۱ درصد است" }).max(100, { message: "حداکثر میزان تخفیف ۱۰۰ درصد است" }),
 });
 
 export type DiscountAllSchemaType = z.infer<typeof DiscountAllSchema>;

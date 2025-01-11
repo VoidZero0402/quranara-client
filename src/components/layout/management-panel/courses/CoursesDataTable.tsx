@@ -43,7 +43,7 @@ const columns: Column[] = [
     },
 ];
 
-import { LimitedCourse, LimitedCourseCourseIdentifiers } from "@/types/course.types";
+import { LimitedCourse, CourseIdentifiers } from "@/types/course.types";
 import { Pagination } from "@/types/response.types";
 
 type CoursesDataTableProps = {
@@ -55,13 +55,13 @@ function CoursesDataTable({ courses, pagination }: CoursesDataTableProps) {
     const router = useRouter();
 
     const { mutate: shown } = useMutation({
-        mutationFn: (course: LimitedCourseCourseIdentifiers) => shownCourse({ courseId: course._id }),
-        async onSettled(data, _, variables) {
+        mutationFn: (course: CourseIdentifiers) => shownCourse({ courseId: course._id }),
+        onSettled(data, _, variables) {
             if (data) {
                 statusHandler(data, ShownCourseStatusOptions);
 
                 if (data.success) {
-                    await revalidate(coursesCache.default, coursesCache.getOne(variables.slug));
+                    revalidate(coursesCache.default, coursesCache.getOne(variables.slug));
                     router.refresh();
                 }
             }
@@ -69,13 +69,13 @@ function CoursesDataTable({ courses, pagination }: CoursesDataTableProps) {
     });
 
     const { mutate: unshown } = useMutation({
-        mutationFn: (course: LimitedCourseCourseIdentifiers) => unshownCourse({ courseId: course._id }),
-        async onSettled(data, _, variables) {
+        mutationFn: (course: CourseIdentifiers) => unshownCourse({ courseId: course._id }),
+        onSettled(data, _, variables) {
             if (data) {
                 statusHandler(data, UnshownCourseStatusOptions);
 
                 if (data.success) {
-                    await revalidate(coursesCache.default, coursesCache.getOne(variables.slug));
+                    revalidate(coursesCache.default, coursesCache.getOne(variables.slug));
                     router.refresh();
                 }
             }

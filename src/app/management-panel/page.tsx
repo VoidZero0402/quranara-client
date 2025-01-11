@@ -9,8 +9,6 @@ import Latests from "@/components/layout/management-panel/index/Latests";
 async function ManagementPanel() {
     const { data } = await getManagementPanelDatas((await cookies()).toString());
 
-    console.log(data);
-
     return (
         <div className="space-y-8">
             <Statistics usersCount={data.usersCount} coursesCount={data.coursesCount} blogsCount={data.blogsCount} tvsCount={data.tvsCount} />

@@ -1,4 +1,4 @@
-import { courses, blog, tv } from "@/api/cache/tags";
+import { courses as coursesCache, blog as blogCache, tv as tvCache } from "@/api/cache/tags";
 
 import { revalidate } from "./revalidate";
 
@@ -6,6 +6,7 @@ import { SOURCE } from "@/constants/comments";
 
 import { Source } from "@/types/comment.types";
 import { CookieUser } from "@/types/user.types";
+import { getCoursesSummary } from "@/api/queries/courses";
 
 export async function getCookieUser(): Promise<CookieUser | null> {
     const response = await fetch("/api/cookies?key=_user");
@@ -14,12 +15,10 @@ export async function getCookieUser(): Promise<CookieUser | null> {
     return value ?? null;
 }
 
-const CommentCache = {
-    [SOURCE.COURSE]: courses,
-    [SOURCE.BLOG]: blog,
-    [SOURCE.TV]: tv,
-};
+export async function revalidateCoursesCache() {
+    const { data } = await getCoursesSummary();
 
-export async function revalidateCommentsCache(source: Source, slug: string) {
-    await revalidate(CommentCache[source].getComments(slug));
+    const tags = [coursesCache.default, ...data.courses.map((course) => coursesCache.getOne(course.slug))];
+
+    await revalidate(...tags);
 }

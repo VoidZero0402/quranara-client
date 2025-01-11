@@ -22,15 +22,15 @@ function Comment({ _id, content, pin, user, replies, createdAt, onReply }: Comme
                     </div>
                 </div>
                 <div className="flex gap-x-2">
-                    {pin && <div className="hidden md:flex-center py-2.5 px-4 h-11 font-pelak-medium text-sm amber-light rounded-2xl">دیدگاه پین شده</div>}
-                    <Button size="sm" className="size-12 sm:size-max" onClick={() => onReply(_id, user.username)}>
+                    {pin && <div className="hidden md:flex-center py-2.5 px-4 h-11 font-pelak-medium text-sm gray-light rounded-xl">دیدگاه پین شده</div>}
+                    <Button size="sm" rounded="base" className="size-12 sm:size-max" onClick={() => onReply(_id, user.username)}>
                         <Reply />
                         <span className="hidden sm:block">پاسخ به دیدگاه</span>
                     </Button>
                 </div>
             </div>
             <Slice className="opacity-50" />
-            {pin && <div className="flex-center md:hidden w-max p-2 font-pelak-medium text-xs amber-light rounded-lg">دیدگاه پین شده</div>}
+            {pin && <div className="flex-center md:hidden w-max py-2 px-4 font-pelak-medium text-xs gray-light rounded-lg">دیدگاه پین شده</div>}
             <div className="space-y-4">
                 <p className="text-gray-800 dark:text-gray-200 whitespace-pre-line leading-8">{content}</p>
                 {!!replies.length && (
@@ -56,7 +56,7 @@ function ReplyComment({ content, user, createdAt }: ReplyType) {
                 </div>
             </div>
             <Slice className="opacity-50" />
-            <p className="text-gray-800 dark:text-gray-200 whitespace-pre-line leading-8">{content}</p>
+            <p className="text-sm sm:text-base text-gray-800 dark:text-gray-200 whitespace-pre-line sm:leading-8 leading-8">{content}</p>
         </div>
     );
 }

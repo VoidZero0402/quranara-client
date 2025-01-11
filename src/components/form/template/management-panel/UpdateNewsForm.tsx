@@ -18,7 +18,6 @@ import TextField from "../../TextField";
 import Button from "@/components/ui/Button";
 
 import { News } from "@/types/news.types";
-import { useRouter } from "next/navigation";
 
 type UpdateNewsFormProps = { news: News };
 
@@ -46,7 +45,7 @@ function UpdateNewsForm({ news }: UpdateNewsFormProps) {
         statusHandler(res, UpdateNewsStatusOptions);
 
         if (res.success) {
-            await revalidate(newsCache.default);
+            revalidate(newsCache.default);
         }
     };
 

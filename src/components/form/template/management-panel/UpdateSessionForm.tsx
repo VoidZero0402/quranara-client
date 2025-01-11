@@ -49,7 +49,7 @@ function UpdateSessionForm({ session, slug, onClose }: UpdateSessionFormProps) {
         statusHandler(res, UpdateSessionStatusOptions);
 
         if (res.success) {
-            await revalidate(coursesCache.getOne(slug), coursesCache.getTopics(slug));
+            revalidate(coursesCache.getOne(slug), coursesCache.getTopics(slug));
             onClose();
             router.refresh();
         }

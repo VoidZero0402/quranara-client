@@ -39,7 +39,7 @@ export type LimitedCourse = Omit<Course, "introduction">;
 
 export type RelatedCourse = Pick<Course, "_id" | "title" | "slug" | "description" | "status" | "metadata">;
 
-export type SummaryCourse = Pick<Course, "_id" | "title">;
+export type SummaryCourse = Pick<Course, "_id" | "title" | "slug">;
 
 export type CourseIdentifiers = Pick<Course, "_id" | "slug">
 

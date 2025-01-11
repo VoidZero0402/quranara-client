@@ -70,8 +70,6 @@ function RepliesOffCanvas({ isOpen, onClose, comment }: RepliesOffCanvasProps) {
             }
 
             router.refresh();
-
-            // TODO: Revalidation
         }
     };
 

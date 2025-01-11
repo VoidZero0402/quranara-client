@@ -79,11 +79,5 @@ export function getBlogComments(params: BlogsQueriesWithSlugParams, query: Pagin
 
     return Quranara.get(url, {
         query,
-        ...(query.page === 1 && {
-            cache: "force-cache",
-            next: {
-                tags: [blog.getComments(params.slug)],
-            },
-        }),
     });
 }

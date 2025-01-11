@@ -6,6 +6,7 @@ import { removeDiscountAll } from "@/api/mutations/courses";
 import { RemoveDiscountAllStatusOptions } from "@/api/errors/discounts";
 
 import { statusHandler } from "@/libs/responses";
+import { revalidateCoursesCache } from "@/libs/apis";
 
 import Button from "@/components/ui/Button";
 
@@ -17,6 +18,7 @@ function ResetDiscounts() {
         onSettled(data) {
             if (data) {
                 statusHandler(data, RemoveDiscountAllStatusOptions);
+                revalidateCoursesCache();
             }
         },
     });

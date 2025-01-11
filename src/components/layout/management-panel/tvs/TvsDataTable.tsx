@@ -56,12 +56,12 @@ function TvsDataTable({ tvs, pagination }: TvsDataTableProps) {
 
     const { mutate: shown } = useMutation({
         mutationFn: (tv: TvIdentifiers) => shownTv({ tvId: tv._id }),
-        async onSettled(data, _, variables) {
+        onSettled(data, _, variables) {
             if (data) {
                 statusHandler(data, ShownTvStatusOptions);
 
                 if (data.success) {
-                    await revalidate(tv.default, tv.getOne(variables.slug));
+                    revalidate(tv.default, tv.getOne(variables.slug));
                     router.refresh();
                 }
             }
@@ -70,12 +70,12 @@ function TvsDataTable({ tvs, pagination }: TvsDataTableProps) {
 
     const { mutate: unshown } = useMutation({
         mutationFn: (tv: TvIdentifiers) => unshownTv({ tvId: tv._id }),
-        async onSettled(data, _, variables) {
+        onSettled(data, _, variables) {
             if (data) {
                 statusHandler(data, UnshownTvStatusOptions);
 
                 if (data.success) {
-                    await revalidate(tv.default, tv.getOne(variables.slug));
+                    revalidate(tv.default, tv.getOne(variables.slug));
                     router.refresh();
                 }
             }

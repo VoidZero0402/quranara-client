@@ -60,7 +60,7 @@ function UpdateTvForm({ tv }: UpdateTvFormProps) {
         statusHandler(res, UpdateTvStatusOptions);
 
         if (res.success) {
-            await revalidate(tvCache.default, tvCache.getOne(tv.slug), tvCache.getRelated(tv.slug));
+            revalidate(tvCache.default, tvCache.getOne(tv.slug), tvCache.getRelated(tv.slug));
         }
     };
 

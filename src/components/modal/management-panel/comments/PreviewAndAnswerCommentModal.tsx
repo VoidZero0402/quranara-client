@@ -11,11 +11,9 @@ import ChatRoundDots from "@/components/svgs/ChatRoundDots";
 import { Comment, FieldSource, Source } from "@/types/comment.types";
 import AnswerCommentForm from "@/components/form/template/management-panel/AnswerCommentForm";
 
-type PreviewNewsModalPropsProps = ModalInstanceProps & { comment: Comment; source: Source };
+type PreviewNewsModalPropsProps = ModalInstanceProps & { comment: Comment; source: Source; field: FieldSource };
 
-function PreviewAndAnswerCommentModal({ isOpen, onClose, comment, source }: PreviewNewsModalPropsProps) {
-    const field = source?.toLowerCase() as FieldSource;
-
+function PreviewAndAnswerCommentModal({ isOpen, onClose, comment, source, field }: PreviewNewsModalPropsProps) {
     return (
         <Modal isOpen={isOpen} onClose={onClose} className="max-w-[768px] w-full">
             <ModalHeader>
@@ -26,7 +24,7 @@ function PreviewAndAnswerCommentModal({ isOpen, onClose, comment, source }: Prev
             </ModalHeader>
             <ModalBody className="space-y-8 min-h-72" scrollable>
                 <Preview message={comment?.content} source={{ text: SourceText[source], title: comment ? (comment[field]?.title as string) : "" }} />
-                <AnswerCommentForm _id={comment?._id} onClose={onClose} />
+                <AnswerCommentForm comment={{ _id: comment?._id, course: comment?.course, blog: comment?.blog, tv: comment?.tv }} onClose={onClose} />
             </ModalBody>
         </Modal>
     );

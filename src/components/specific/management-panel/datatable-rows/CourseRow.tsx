@@ -21,10 +21,10 @@ const StatusVarients = {
     [STATUS.REACHED]: "teal",
 };
 
-import { LimitedCourse, LimitedCourseCourseIdentifiers } from "@/types/course.types";
+import { LimitedCourse, CourseIdentifiers } from "@/types/course.types";
 import Layers from "@/components/svgs/Layers";
 
-type CourseRowProps = { course: LimitedCourse; onShown: (course: LimitedCourseCourseIdentifiers) => void; onUnshown: (course: LimitedCourseCourseIdentifiers) => void };
+type CourseRowProps = { course: LimitedCourse; onShown: (course: CourseIdentifiers) => void; onUnshown: (course: CourseIdentifiers) => void };
 
 function CourseRow({ course, onShown, onUnshown }: CourseRowProps) {
     return (

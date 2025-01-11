@@ -42,9 +42,9 @@ function UpdateTopicForm({ topic, slug, onClose }: UpdateTopicFormProps) {
         statusHandler(res, UpdateTopicStatusOptions);
 
         if (res.success) {
-            await revalidate(coursesCache.getTopics(slug));
-            onClose();
+            revalidate(coursesCache.getTopics(slug));
             reset();
+            onClose();
             router.refresh();
         }
     };

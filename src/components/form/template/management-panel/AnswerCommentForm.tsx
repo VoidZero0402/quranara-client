@@ -15,9 +15,11 @@ import TextArea from "../../TextArea";
 
 import Button from "@/components/ui/Button";
 
-type AnswerCommentFormProps = { _id: string; onClose: () => void };
+import { CommentIdentifiers } from "@/types/comment.types";
 
-function AnswerCommentForm({ _id, onClose }: AnswerCommentFormProps) {
+type AnswerCommentFormProps = { comment: CommentIdentifiers; onClose: () => void };
+
+function AnswerCommentForm({ comment, onClose }: AnswerCommentFormProps) {
     const router = useRouter();
 
     const {
@@ -33,12 +35,11 @@ function AnswerCommentForm({ _id, onClose }: AnswerCommentFormProps) {
     });
 
     const submitHandler = async (data: ReplyCommentSchemaType) => {
-        const res = await answerComment({ commentId: _id }, data);
+        const res = await answerComment({ commentId: comment._id }, data);
 
         statusHandler(res, AnswerCommentStatusOptions);
 
         if (res.success) {
-            // TODO: revalidation
             reset();
             onClose();
             router.refresh();

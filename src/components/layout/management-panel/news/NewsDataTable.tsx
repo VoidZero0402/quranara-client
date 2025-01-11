@@ -71,12 +71,12 @@ function NewsDataTable({ newses, pagination }: NewsDataTableProps) {
 
     const { mutate: shown } = useMutation({
         mutationFn: (_id: string) => shownNews({ newsId: _id }),
-        async onSettled(data) {
+        onSettled(data) {
             if (data) {
                 statusHandler(data, ShownNewsStatusOptions);
 
                 if (data.success) {
-                    await revalidate(news.default);
+                    revalidate(news.default);
                     router.refresh();
                 }
             }
@@ -85,12 +85,12 @@ function NewsDataTable({ newses, pagination }: NewsDataTableProps) {
 
     const { mutate: unshown } = useMutation({
         mutationFn: (_id: string) => unshownNews({ newsId: _id }),
-        async onSettled(data) {
+        onSettled(data) {
             if (data) {
                 statusHandler(data, UnshownNewsStatusOptions);
 
                 if (data.success) {
-                    await revalidate(news.default);
+                    revalidate(news.default);
                     router.refresh();
                 }
             }

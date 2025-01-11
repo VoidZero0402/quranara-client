@@ -36,12 +36,7 @@ export function getAllCourses(query: GetAllCoursesQuerySchemaType): Promise<Resp
 }
 
 export function getCoursesSummary(): Promise<Response<{ courses: SummaryCourse[]; pagination: Pagination }>> {
-    return Quranara.get("/courses/summary", {
-        cache: "force-cache",
-        next: {
-            tags: [courses.summary],
-        },
-    });
+    return Quranara.get("/courses/summary");
 }
 
 export function searchInCourses(query: SearchCoursesQuerySchameType): Promise<Response<{ courses: LimitedCourse[]; pagination: Pagination }>> {
@@ -72,12 +67,6 @@ export function getCourseComments(params: CoursesQueriesWithSlugParams, query: P
 
     return Quranara.get(url, {
         query,
-        ...(query.page === 1 && {
-            cache: "force-cache",
-            next: {
-                tags: [courses.getComments(params.slug)],
-            },
-        }),
     });
 }
 

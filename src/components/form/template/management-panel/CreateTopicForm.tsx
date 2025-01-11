@@ -43,7 +43,7 @@ function CreateTopicForm({ course, onClose }: CreateTopicFormProps) {
         statusHandler(res, CreateTopicStatusOptions);
 
         if (res.status === 201) {
-            await revalidate(coursesCache.getTopics(course.slug));
+            revalidate(coursesCache.getTopics(course.slug));
             onClose();
             reset();
             router.refresh();

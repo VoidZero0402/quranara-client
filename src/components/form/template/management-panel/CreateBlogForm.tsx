@@ -64,7 +64,7 @@ function CreateBlogForm() {
         statusHandler(res, CreateBlogStatusOptions);
 
         if (res.success) {
-            await revalidate(blog.default);
+            revalidate(blog.default);
             reset();
         }
     };

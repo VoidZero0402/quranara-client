@@ -44,7 +44,7 @@ function CreateNewsForm() {
         statusHandler(res, CreateNewsStatusOptions);
 
         if (res.success) {
-            await revalidate(news.default);
+            revalidate(news.default);
             reset();
         }
     };

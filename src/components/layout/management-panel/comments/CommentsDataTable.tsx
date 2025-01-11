@@ -22,7 +22,7 @@ const RepliesOffCanvas = dynamic(() => import("@/components/specific/management-
 
 import DataTable, { DataTableBody, Column } from "@/components/ui/datatable/DataTable";
 
-import { Comment, FieldSource, Source } from "@/types/comment.types";
+import { Comment, CommentIdentifiers, FieldSource, Source } from "@/types/comment.types";
 import { Pagination } from "@/types/response.types";
 
 type CommentsDataTableProps = {
@@ -34,12 +34,14 @@ type CommentsDataTableProps = {
 function CommentsDataTable({ comments, pagination, source }: CommentsDataTableProps) {
     const router = useRouter();
 
-    const { isOpen: isOpenPreviewAndAnswerModal, open: openPreviewAndAnswerModal, close: closePreviewAndAnswerModal, props: previewAndAnswerModalProps } = useToggleState<{ comment: Comment; source: Source }>();
+    const { isOpen: isOpenPreviewAndAnswerModal, open: openPreviewAndAnswerModal, close: closePreviewAndAnswerModal, props: previewAndAnswerModalProps } = useToggleState<{ comment: Comment; source: Source; field: FieldSource }>();
     const { isOpen: isOpenRepliesOffCanvas, open: openRepliesOffCanvas, close: closeRepliesOffCanvas, props: repliesOffCanvasProps } = useToggleState<{ comment: Comment }>();
+
+    const field = source.toLowerCase() as FieldSource;
 
     const onPreviewAnswer = useCallback(
         (comment: Comment) => {
-            openPreviewAndAnswerModal({ comment, source });
+            openPreviewAndAnswerModal({ comment, source, field });
         },
         [source]
     );
@@ -49,56 +51,52 @@ function CommentsDataTable({ comments, pagination, source }: CommentsDataTablePr
     }, []);
 
     const { mutate: accept } = useMutation({
-        mutationFn: (_id: string) => acceptComment({ commentId: _id }, { isReply: "0" }),
-        async onSettled(data) {
+        mutationFn: (comment: CommentIdentifiers) => acceptComment({ commentId: comment._id }, { isReply: "0" }),
+        onSettled(data) {
             if (data) {
                 statusHandler(data, AcceptCommentStatusOptions);
 
                 if (data.success) {
                     router.refresh();
-                    // TODO: Revalidation
                 }
             }
         },
     });
 
     const { mutate: reject } = useMutation({
-        mutationFn: (_id: string) => rejectComment({ commentId: _id }, { isReply: "0" }),
-        async onSettled(data) {
+        mutationFn: (comment: CommentIdentifiers) => rejectComment({ commentId: comment._id }, { isReply: "0" }),
+        onSettled(data) {
             if (data) {
                 statusHandler(data, RejectCommentStatusOptions);
 
                 if (data.success) {
                     router.refresh();
-                    // TODO: Revalidation
                 }
             }
         },
     });
 
     const { mutate: pin } = useMutation({
-        mutationFn: (_id: string) => pinComment({ commentId: _id }),
-        async onSettled(data) {
+        mutationFn: (comment: CommentIdentifiers) => pinComment({ commentId: comment._id }),
+        onSettled(data) {
             if (data) {
                 statusHandler(data, PinCommentStatusOptions);
 
                 if (data.success) {
                     router.refresh();
-                    // TODO: Revalidation
                 }
             }
         },
     });
 
     const { mutate: unpin } = useMutation({
-        mutationFn: (_id: string) => unpinComment({ commentId: _id }),
-        async onSettled(data) {
+        mutationFn: (comment: CommentIdentifiers) => unpinComment({ commentId: comment._id }),
+        onSettled(data) {
             if (data) {
                 statusHandler(data, UnpinCommentStatusOptions);
 
                 if (data.success) {
                     router.refresh();
-                    // TODO: Revalidation
                 }
             }
         },
@@ -133,8 +131,6 @@ function CommentsDataTable({ comments, pagination, source }: CommentsDataTablePr
         ],
         [source]
     );
-
-    const field = source.toLowerCase() as FieldSource;
 
     return (
         <section>

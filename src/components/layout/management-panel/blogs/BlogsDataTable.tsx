@@ -56,13 +56,13 @@ function BlogsDataTable({ blogs, pagination }: BlogsDataTableProps) {
 
     const { mutate: shown } = useMutation({
         mutationFn: (blog: BlogIdentifiers) => shownBlog({ blogId: blog._id }),
-        async onSettled(data,  _, variables) {
+        async onSettled(data, _, variables) {
             if (data) {
                 statusHandler(data, ShownBlogStatusOptions);
 
                 if (data.success) {
-                    await revalidate(blog.default, blog.getOne(variables.slug));
                     router.refresh();
+                    revalidate(blog.default, blog.getOne(variables.slug));
                 }
             }
         },
@@ -70,13 +70,13 @@ function BlogsDataTable({ blogs, pagination }: BlogsDataTableProps) {
 
     const { mutate: unshown } = useMutation({
         mutationFn: (blog: BlogIdentifiers) => unshownBlog({ blogId: blog._id }),
-        async onSettled(data,  _, variables) {
+        async onSettled(data, _, variables) {
             if (data) {
                 statusHandler(data, UnshownBlogStatusOptions);
 
                 if (data.success) {
-                    await revalidate(blog.default, blog.getOne(variables.slug));
                     router.refresh();
+                    revalidate(blog.default, blog.getOne(variables.slug));
                 }
             }
         },

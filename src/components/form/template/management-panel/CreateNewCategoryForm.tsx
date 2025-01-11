@@ -45,7 +45,7 @@ function CreateNewCategoryForm({ onClose }: CreateNewCategoryFormProps) {
         statusHandler(res, CreateCategoryStatusOptions);
 
         if (res.success) {
-            await revalidate(category.default, ui.menus);
+            revalidate(category.default, ui.menus);
             reset();
             onClose();
             router.refresh();

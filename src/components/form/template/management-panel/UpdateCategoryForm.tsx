@@ -44,7 +44,7 @@ function UpdateCategoryForm({ category, onClose }: UpdateCategoryFormProps) {
         statusHandler(res, UpdateCategoryStatusOptions);
 
         if (res.success) {
-            await revalidate(categoryCache.default, ui.menus);
+            revalidate(categoryCache.default, ui.menus);
             reset();
             onClose();
             router.refresh();

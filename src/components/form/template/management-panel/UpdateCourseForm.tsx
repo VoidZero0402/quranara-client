@@ -57,7 +57,7 @@ function UpdateCourseForm({ course }: UpdateCourseFormProps) {
         statusHandler(res, UpdateCourseStatusOptions);
 
         if (res.success) {
-            await revalidate(coursesCache.default, coursesCache.getOne(course.slug));
+            revalidate(coursesCache.default, coursesCache.getOne(course.slug));
         }
     };
 
