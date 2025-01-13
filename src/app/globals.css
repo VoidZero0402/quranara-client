@@ -194,6 +194,58 @@
     height: 100%;
 }
 
+.tiptap h2 {
+    @apply my-2 font-pelak-semibold text-2xl text-gray-800 dark:text-gray-200 leading-10;
+}
+
+.tiptap h3 {
+    @apply my-2 font-pelak-semibold text-xl text-gray-800 dark:text-gray-200 leading-9;
+}
+
+.tiptap h4 {
+    @apply my-2 font-pelak-semibold text-lg text-gray-800 dark:text-gray-200 leading-8;
+}
+
+.tiptap p {
+    @apply text-gray-600 dark:text-gray-400 whitespace-pre-line leading-8;
+}
+
+.tiptap strong {
+    @apply font-normal font-pelak-medium;
+}
+
+.tiptap ul {
+    @apply my-2 space-y-2;
+}
+
+.tiptap ul li {
+    @apply relative pr-3.5;
+}
+
+.tiptap ul li p {
+    @apply font-pelak-medium text-lg text-gray-800 dark:text-gray-200;
+}
+
+.tiptap ul li::before {
+    @apply content-[''] absolute right-0 top-0 bottom-0 m-auto size-1.5 bg-amber-400 rounded-sm;
+}
+
+.tiptap a {
+    @apply font-pelak-medium text-blue-500 dark:text-blue-400 underline cursor-pointer;
+}
+
+.tiptap img {
+    @apply aspect-video sm:aspect-[21/9] object-cover rounded-xl;
+}
+
+.tiptap .special-paragraph {
+    @apply relative my-2 h-max p-6 gray-light font-pelak-medium leading-8 rounded-xl;
+}
+
+.tiptap .special-paragraph::before {
+    @apply content-[''] absolute right-0 top-0 bottom-0 h-4/5 w-1 m-auto bg-amber-400 rounded-full;
+}
+
 @media (max-width: 640px) {
     .plyr__progress__container {
         position: absolute;
