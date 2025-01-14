@@ -194,48 +194,36 @@
     height: 100%;
 }
 
-.tiptap h2 {
-    @apply my-2 font-pelak-semibold text-2xl text-gray-800 dark:text-gray-200 leading-10;
-}
-
-.tiptap h3 {
-    @apply my-2 font-pelak-semibold text-xl text-gray-800 dark:text-gray-200 leading-9;
-}
-
-.tiptap h4 {
-    @apply my-2 font-pelak-semibold text-lg text-gray-800 dark:text-gray-200 leading-8;
-}
-
-.tiptap p {
-    @apply text-gray-600 dark:text-gray-400 whitespace-pre-line leading-8;
+.tiptap {
+    @apply p-4 w-full min-h-40 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-800 focus:border-gray-200 dark:focus:border-gray-700 rounded-xl transition-all;
 }
 
 .tiptap strong {
-    @apply font-normal font-pelak-medium;
+    @apply font-normal font-pelak-medium text-gray-800 dark:text-gray-200;
 }
 
-.tiptap ul {
-    @apply my-2 space-y-2;
-}
-
-.tiptap ul li {
-    @apply relative pr-3.5;
-}
-
-.tiptap ul li p {
-    @apply font-pelak-medium text-lg text-gray-800 dark:text-gray-200;
-}
-
-.tiptap ul li::before {
-    @apply content-[''] absolute right-0 top-0 bottom-0 m-auto size-1.5 bg-amber-400 rounded-sm;
+.tiptap em {
+    @apply font-normal font-pelak-medium text-gray-800 dark:text-gray-200;
 }
 
 .tiptap a {
     @apply font-pelak-medium text-blue-500 dark:text-blue-400 underline cursor-pointer;
 }
 
-.tiptap img {
-    @apply aspect-video sm:aspect-[21/9] object-cover rounded-xl;
+.tiptap h2 {
+    @apply my-4 font-pelak-semibold text-2xl text-gray-800 dark:text-gray-200 leading-10;
+}
+
+.tiptap h3 {
+    @apply my-4 font-pelak-semibold text-xl text-gray-800 dark:text-gray-200 leading-9;
+}
+
+.tiptap h4 {
+    @apply my-4 font-pelak-semibold text-lg text-gray-800 dark:text-gray-200 leading-8;
+}
+
+.tiptap p {
+    @apply text-gray-700 dark:text-gray-300 whitespace-pre-line leading-8;
 }
 
 .tiptap .special-paragraph {
@@ -246,7 +234,31 @@
     @apply content-[''] absolute right-0 top-0 bottom-0 h-4/5 w-1 m-auto bg-amber-400 rounded-full;
 }
 
+.tiptap ul {
+    @apply my-2 space-y-2;
+}
+
+.tiptap ul li {
+    @apply relative pr-3.5;
+}
+
+.tiptap ul li::before {
+    @apply content-[''] absolute right-0 top-0 bottom-0 m-auto size-1.5 bg-amber-400 rounded-sm;
+}
+
+.tiptap ul li p {
+    @apply font-pelak-medium text-lg text-gray-800 dark:text-gray-200;
+}
+
+.tiptap img {
+    @apply aspect-video sm:aspect-[21/9] object-cover rounded-xl;
+}
+
 @media (max-width: 640px) {
+    * {
+        @apply !cursor-none;
+    }
+
     .plyr__progress__container {
         position: absolute;
         bottom: 2.5rem;

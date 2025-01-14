@@ -1,11 +1,10 @@
 "use client";
 
 import { memo, useEffect } from "react";
-import { useParams } from "next/navigation";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 
-import { checkAccess, getCourseTopics } from "@/api/queries/courses";
+import { checkAccess } from "@/api/queries/courses";
 
 import Topic from "@/components/specific/course/Topic";
 

@@ -50,6 +50,8 @@ function UpdateAccountForm({ user }: UpdateAccountFormProps) {
         resolver: zodResolver(UpdateAccountSchema),
     });
 
+    console.log(watch());
+
     const submitHandler = async (data: UpdateAccountSchemaType) => {
         const body = getTruthyValues(data) as UpdateAccountSchemaType;
 

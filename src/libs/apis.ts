@@ -1,10 +1,7 @@
-import { courses as coursesCache, blog as blogCache, tv as tvCache } from "@/api/cache/tags";
+import { courses as coursesCache} from "@/api/cache/tags";
 
 import { revalidate } from "./revalidate";
 
-import { SOURCE } from "@/constants/comments";
-
-import { Source } from "@/types/comment.types";
 import { CookieUser } from "@/types/user.types";
 import { getCoursesSummary } from "@/api/queries/courses";
 

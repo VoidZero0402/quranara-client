@@ -4,7 +4,11 @@ import { SignupSchema } from "./auth";
 export const UpdateAccountSchema = SignupSchema.pick({ fullname: true }).extend({
     username: z.string({ required_error: "وارد کردن نام کاربری الزامی است." }).min(3, { message: "نام کاربری باید حداقل ۳ کاراکتر باشد." }).max(255, { message: "نام کاربری نمی‌تواند بیشتر از ۲۵۵ کاراکتر باشد." }),
     profile: z.string().optional(),
-    age: z.coerce.number().min(2, { message: "سن باید حداقل ۲ سال باشد." }).max(100, { message: "سن نمی‌تواند بیشتر از ۱۰۰ سال باشد." }).optional(),
+    age: z
+        .string()
+        .transform((val) => (val === "" ? undefined : Number(val)))
+        .optional()
+        .pipe(z.number().min(2, { message: "سن باید حداقل ۲ سال باشد." }).max(100, { message: "سن نمی‌تواند بیشتر از ۱۰۰ سال باشد." }).optional()),
     city: z.string().optional(),
 });
 

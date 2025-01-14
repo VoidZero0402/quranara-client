@@ -12,7 +12,7 @@ import LongArrowLeft from "../svgs/LongArrowLeft";
 
 import { LimitedCourse } from "@/types/course.types";
 
-function Course({ title, description, slug, status, price, discount, metadata }: LimitedCourse) {
+function Course({ title, description, slug, status, price, metadata }: LimitedCourse) {
     return (
         <div className="bg-white dark:bg-gray-850 rounded-2xl overflow-hidden">
             <Link href={`/courses/${slug}`} className="overflow-hidden">

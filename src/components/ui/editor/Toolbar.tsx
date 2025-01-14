@@ -13,7 +13,7 @@ import Heading3 from "@/components/svgs/editor/Heading3";
 import Heading4 from "@/components/svgs/editor/Heading4";
 import Link from "@/components/svgs/editor/Link";
 import List from "@/components/svgs/editor/List";
-import Image from "@/components/svgs/editor/Image";
+import ImageIcon from "@/components/svgs/editor/Image";
 import Poll from "@/components/svgs/editor/Poll";
 import Undo from "@/components/svgs/editor/Undo";
 import Redo from "@/components/svgs/editor/Redo";
@@ -22,7 +22,7 @@ type ToolbarProps = { editor: Editor; setLink: () => void; setImage: () => void 
 
 function Toolbar({ editor, setLink, setImage }: ToolbarProps) {
     return (
-        <div className="flex items-center gap-2 sm:gap-4 flex-wrap">
+        <div className="flex items-center gap-2 sm:gap-4 flex-wrap p-2 rounded-xl bg-gray-50 dark:bg-gray-800">
             <div className="flex gap-x-2">
                 <Action isActive={editor.isActive("bold")} label="نوشته ضخیم" onClick={() => editor.chain().focus().toggleBold().run()}>
                     <Bold />
@@ -61,7 +61,7 @@ function Toolbar({ editor, setLink, setImage }: ToolbarProps) {
                     <List />
                 </Action>
                 <Action isActive={editor.isActive("image")} label="اضافه کردن تصویر" onClick={setImage}>
-                    <Image />
+                    <ImageIcon />
                 </Action>
                 <Action isActive={false} label="نظرسنجی">
                     <Poll />
