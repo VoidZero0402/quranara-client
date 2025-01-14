@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
     images: {
         remotePatterns: [
             {
-                hostname: "c655003.parspack.net",
+                hostname: "rahequran.com",
             },
         ],
     },

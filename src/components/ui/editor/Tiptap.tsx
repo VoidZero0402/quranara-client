@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback } from "react";
-import { useEditor, EditorContent, Editor, Content } from "@tiptap/react";
+import { useEditor, EditorContent, Editor, JSONContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 
 import Underline from "@tiptap/extension-underline";
@@ -13,7 +13,7 @@ import { Color } from "@tiptap/extension-color";
 import { SpecialParagraph } from "@/libs/tiptap";
 
 import useToggleState from "@/hooks/useToggleState";
-import useTiptabStore from "@/hooks/useTiptabStore";
+import useTiptapStore from "@/hooks/useTiptapStore";
 
 import Toolbar from "./Toolbar";
 
@@ -23,10 +23,11 @@ import TiptapSetImageModal from "@/components/modal/TiptapSetImageModal";
 import Button from "../Button";
 
 type TiptapProps = {
-    onSave: (content: Content) => void;
+    onSave: (content: JSONContent | null) => void;
     store?: {
         key: string;
-        intervalMs: number;
+        intervalMs?: number;
+        loadContent?: boolean;
     };
 };
 
@@ -53,7 +54,7 @@ function Tiptap({ onSave, store }: TiptapProps) {
         ],
     });
 
-    useTiptabStore(editor, store?.key, store?.intervalMs);
+    useTiptapStore(editor, store);
 
     const { isOpen: isOpenLinkModal, open: openLinkModal, close: closeLinkModal, props: linkModalProps } = useToggleState<{ editor: Editor }>();
     const { isOpen: isOpenImageModal, open: openImageModal, close: closeImageModal, props: imageModalProps } = useToggleState<{ editor: Editor }>();
@@ -68,7 +69,7 @@ function Tiptap({ onSave, store }: TiptapProps) {
 
     const onSaveContent = useCallback(() => {
         if (store?.key) {
-            localStorage.setItem(store.key, (editor as Editor).getHTML());
+            localStorage.setItem(store.key, JSON.stringify((editor as Editor).getJSON()));
         }
 
         const content = !(editor as Editor).isEmpty ? (editor as Editor).getJSON() : null;
@@ -90,13 +91,5 @@ function Tiptap({ onSave, store }: TiptapProps) {
         </div>
     );
 }
-
-/*
-
-tasks
-
-8. render engine
-
-*/
 
 export default Tiptap;

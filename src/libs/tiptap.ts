@@ -1,5 +1,7 @@
 import { Node } from "@tiptap/core";
-import { mergeAttributes } from "@tiptap/react";
+import { mergeAttributes, JSONContent } from "@tiptap/react";
+
+import TiptapRenderEngine from "./tiptapRenderEngine";
 
 interface SpecialParagraphOptions {
     HTMLAttributes: Record<string, any>;
@@ -41,3 +43,13 @@ export const SpecialParagraph = Node.create<SpecialParagraphOptions>({
         };
     },
 });
+
+const engine = new TiptapRenderEngine();
+
+export function renderTiptapContent(tiptapContent: JSONContent) {
+    if (tiptapContent.content) {
+        return engine.render(tiptapContent.content);
+    }
+
+    return null;
+}

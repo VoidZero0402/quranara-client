@@ -227,7 +227,7 @@
 }
 
 .tiptap .special-paragraph {
-    @apply relative my-2 h-max p-6 gray-light font-pelak-medium leading-8 rounded-xl;
+    @apply relative my-4 h-max p-6 gray-light font-pelak-medium leading-8 rounded-xl;
 }
 
 .tiptap .special-paragraph::before {
@@ -235,7 +235,7 @@
 }
 
 .tiptap ul {
-    @apply my-2 space-y-2;
+    @apply my-4 space-y-2;
 }
 
 .tiptap ul li {
@@ -251,7 +251,7 @@
 }
 
 .tiptap img {
-    @apply aspect-video sm:aspect-[21/9] object-cover rounded-xl;
+    @apply my-4 aspect-video sm:aspect-[21/9] object-cover rounded-xl;
 }
 
 @media (max-width: 640px) {
