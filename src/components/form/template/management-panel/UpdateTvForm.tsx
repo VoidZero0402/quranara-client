@@ -1,8 +1,10 @@
 "use client";
 
+import { useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useQuery } from "@tanstack/react-query";
+import { JSONContent } from "@tiptap/react";
 
 import { tv as tvCache } from "@/api/cache/tags";
 import { getCategoriesSummary } from "@/api/queries/categories";
@@ -22,6 +24,7 @@ import TextField from "../../TextField";
 import Select, { SelectItem } from "../../Select";
 import Checkbox from "../../Checkbox";
 
+import Tiptap from "@/components/ui/editor/Tiptap";
 import Button from "@/components/ui/Button";
 
 import { Tv } from "@/types/tv.types";
@@ -33,6 +36,7 @@ function UpdateTvForm({ tv }: UpdateTvFormProps) {
         control,
         handleSubmit,
         formState: { isSubmitting },
+        setValue,
     } = useForm<CreateTvSchemaType>({
         defaultValues: {
             title: tv.title,
@@ -64,6 +68,13 @@ function UpdateTvForm({ tv }: UpdateTvFormProps) {
         }
     };
 
+    const onSaveContent = useCallback((content: JSONContent | null) => {
+        setValue("content", JSON.stringify(content) ?? "", {
+            shouldDirty: true,
+            shouldTouch: true,
+        });
+    }, []);
+
     return (
         <form className="flex flex-col gap-8" onSubmit={handleSubmit(submitHandler)}>
             <TextField control={control} name="title" label="عنوان آموزش" placeholder="عنوان آموزش را وارد کنید" />
@@ -82,7 +93,10 @@ function UpdateTvForm({ tv }: UpdateTvFormProps) {
                 <TextField control={control} name="cover" label="آدرس کاور آموزش" placeholder="آدرس کاور آموزش را وارد کنید" className="w-full" />
                 <TextField control={control} name="video" label="آدرس ویدیو آموزش" placeholder="آدرس ویدیو آموزش را وارد کنید" className="w-full" />
             </div>
-            <TextArea control={control} name="content" label="توضیحات کامل آموزش ( اختیاری )" placeholder="توضیحات کامل آموزش را وارد کنید" />
+            <div className="space-y-2">
+                <span className="font-pelak-medium text-sm text-gray-800 dark:text-gray-200">توضیحات کامل آموزش ( اختیاری )</span>
+                <Tiptap onSave={onSaveContent} content={tv.content ? JSON.parse(tv.content) : undefined} store={{ key: `tiptap:update-tv:${tv._id}` }} />
+            </div>
             <TextField control={control} name="attached" label="آدرس پیوست آموزش ( اختیاری )" placeholder="آدرس پیوست آموزش را وارد کنید" />
             <Checkbox control={control} name="shown" label="نمایش بلافاصله آموزش" caption="در صورت فعال بودن این گزینه آموزش در صفحه اصلی نمایش داده خواهد شد" />
             <Button type="submit" size="lg" className="w-max" disabled={isSubmitting}>

@@ -16,12 +16,12 @@ function Colors({ editor }: ColorsProps) {
             <div className="absolute top-full left-0 pt-4 invisible opacity-0 group-hover:pt-2 group-hover:visible group-hover:opacity-100 transition-all">
                 <div className="space-y-2 w-max p-4 bg-gray-100 dark:bg-gray-750 rounded-xl">
                     <div className="flex gap-x-2">
-                        <button className="size-8 bg-sky-500 rounded-lg" onClick={() => editor.chain().focus().setColor("#0ea5e9").run()}></button>
-                        <button className="size-8 bg-teal-500 rounded-lg" onClick={() => editor.chain().focus().setColor("#14b8a6").run()}></button>
-                        <button className="size-8 bg-red-500 rounded-lg" onClick={() => editor.chain().focus().setColor("#ef4444").run()}></button>
-                        <button className="size-8 bg-amber-400 rounded-lg" onClick={() => editor.chain().focus().setColor("#fbbf24").run()}></button>
-                        <button className="size-8 bg-blue-500 rounded-lg" onClick={() => editor.chain().focus().setColor("#3b82f6").run()}></button>
-                        <button className="size-8 bg-gray-500 rounded-lg" onClick={() => editor.chain().focus().unsetColor().run()}></button>
+                        <button type="button" className="size-8 bg-sky-500 rounded-lg" onClick={() => editor.chain().focus().setColor("#0ea5e9").run()}></button>
+                        <button type="button" className="size-8 bg-teal-500 rounded-lg" onClick={() => editor.chain().focus().setColor("#14b8a6").run()}></button>
+                        <button type="button" className="size-8 bg-red-500 rounded-lg" onClick={() => editor.chain().focus().setColor("#ef4444").run()}></button>
+                        <button type="button" className="size-8 bg-amber-400 rounded-lg" onClick={() => editor.chain().focus().setColor("#fbbf24").run()}></button>
+                        <button type="button" className="size-8 bg-blue-500 rounded-lg" onClick={() => editor.chain().focus().setColor("#3b82f6").run()}></button>
+                        <button type="button" className="size-8 bg-gray-500 rounded-lg" onClick={() => editor.chain().focus().unsetColor().run()}></button>
                     </div>
                 </div>
             </div>

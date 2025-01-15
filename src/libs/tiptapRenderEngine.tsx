@@ -1,6 +1,6 @@
 import { createElement } from "react";
 import Link from "next/link";
-import { JSONContent, Mark } from "@tiptap/react";
+import { JSONContent } from "@tiptap/react";
 
 import Image from "@/components/ui/Image";
 
@@ -55,7 +55,7 @@ class TiptapRenderEngine {
 
             if (!Node) return null;
 
-            const nodeContent = node.text && node.marks ? this.renderMark(node.text, node.marks as Mark[]) : node.text ?? null;
+            const nodeContent = node.text && node.marks ? this.renderMark(node.text, node.marks as JSONContent[]) : node.text ?? null;
 
             return (
                 <Node key={index} {...node.attrs}>

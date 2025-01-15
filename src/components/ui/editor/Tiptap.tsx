@@ -24,6 +24,7 @@ import Button from "../Button";
 
 type TiptapProps = {
     onSave: (content: JSONContent | null) => void;
+    content?: JSONContent;
     store?: {
         key: string;
         intervalMs?: number;
@@ -31,7 +32,7 @@ type TiptapProps = {
     };
 };
 
-function Tiptap({ onSave, store }: TiptapProps) {
+function Tiptap({ onSave, content, store }: TiptapProps) {
     const editor = useEditor({
         extensions: [
             StarterKit.configure({
@@ -44,14 +45,17 @@ function Tiptap({ onSave, store }: TiptapProps) {
                 openOnClick: false,
             }),
             Image,
-            TextStyle.configure({
-                HTMLAttributes: {
-                    class: "font-pelak-medium",
-                },
-            }),
+            TextStyle,
             Color,
             SpecialParagraph,
         ],
+        immediatelyRender: false,
+        ...(content && { content }),
+        editorProps: {
+            attributes: {
+                class: "tiptap-custom",
+            },
+        },
     });
 
     useTiptapStore(editor, store);
@@ -77,15 +81,26 @@ function Tiptap({ onSave, store }: TiptapProps) {
         onSave(content);
     }, [editor]);
 
+    const onClearStorage = useCallback(() => {
+        if (store?.key) {
+            localStorage.removeItem(store.key);
+        }
+    }, [editor]);
+
     if (!editor) return null;
 
     return (
-        <div className="space-y-4 p-4 bg-white dark:bg-gray-850 rounded-2xl">
+        <div className="space-y-4">
             <Toolbar editor={editor} setLink={setLink} setImage={setImage} />
             <EditorContent editor={editor} />
-            <Button size="lg" variant="neutral-base" onClick={onSaveContent}>
-                ذخیره‌سازی محتوا
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4">
+                <Button type="button" size="lg" onClick={onSaveContent}>
+                    ذخیره‌سازی محتوا
+                </Button>
+                <Button type="button" size="lg" variant="neutral-base" onClick={onClearStorage}>
+                    پاک‌سازی حافظه پنهان
+                </Button>
+            </div>
             <TiptapSetLinkModal isOpen={isOpenLinkModal} onClose={closeLinkModal} {...linkModalProps} />
             <TiptapSetImageModal isOpen={isOpenImageModal} onClose={closeImageModal} {...imageModalProps} />
         </div>

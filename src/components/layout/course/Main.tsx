@@ -12,9 +12,9 @@ import Comments from "./CourseComments";
 import { Course } from "@/types/course.types";
 import { Topic } from "@/types/topic.types";
 
-type MainProps = Pick<Course, "_id" | "slug" | "time" | "metadata" | "updatedAt"> & { content: string; topics: Topic[] };
+type MainProps = Pick<Course, "_id" | "slug" | "time" | "metadata" | "updatedAt"> & { content?: string; topics: Topic[] };
 
-function Main({ _id, topics, slug, time, metadata, updatedAt }: MainProps) {
+function Main({ _id, topics, slug, content, time, metadata, updatedAt }: MainProps) {
     const [section, setSection] = useState("details");
 
     const onInView = useCallback((section: string) => setSection(section), []);
@@ -23,7 +23,7 @@ function Main({ _id, topics, slug, time, metadata, updatedAt }: MainProps) {
         <main className="space-y-8 w-full xl:w-[70%]">
             <Navigation section={section} />
             <Details time={time} metadata={metadata} updatedAt={updatedAt} onInView={onInView} />
-            <IntroContent onInView={onInView} />
+            {!!content && <IntroContent content={content} onInView={onInView} />}
             <Suspense fallback={<TopicsLoading />}>
                 <Topics _id={_id} topics={topics} onInView={onInView} />
             </Suspense>

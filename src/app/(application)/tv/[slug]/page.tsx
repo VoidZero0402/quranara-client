@@ -32,7 +32,7 @@ async function Tv({ params }: { params: Promise<{ slug: string }> }) {
                     <main className="space-y-8 w-full xl:w-[70%]">
                         <section className="space-y-8">
                             <Details _id={tv._id} title={tv.title} description={tv.description} category={tv.category} cover={tv.cover} video={tv.video} attached={tv.attached} />
-                            <TvContent />
+                            {!!tv.content && <TvContent content={tv.content} />}
                         </section>
                     </main>
                     <aside className="flex flex-col md:flex-row xl:flex-col gap-8 w-full xl:w-[30%]">

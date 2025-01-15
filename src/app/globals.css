@@ -194,8 +194,12 @@
     height: 100%;
 }
 
-.tiptap {
-    @apply p-4 w-full min-h-40 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-800 focus:border-gray-200 dark:focus:border-gray-700 rounded-xl transition-all;
+.tiptap-custom {
+    @apply flex flex-col gap-y-2 p-4 w-full min-h-40 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-800 focus:border-gray-200 dark:focus:border-gray-700 rounded-xl transition-all;
+}
+
+.tiptap-content {
+    @apply flex flex-col gap-y-2;
 }
 
 .tiptap strong {
@@ -208,6 +212,10 @@
 
 .tiptap a {
     @apply font-pelak-medium text-blue-500 dark:text-blue-400 underline cursor-pointer;
+}
+
+.tiptap span {
+    @apply font-pelak-medium;
 }
 
 .tiptap h2 {
@@ -227,7 +235,7 @@
 }
 
 .tiptap .special-paragraph {
-    @apply relative my-4 h-max p-6 gray-light font-pelak-medium leading-8 rounded-xl;
+    @apply relative my-2 h-max p-6 gray-light font-pelak-medium leading-8 rounded-xl;
 }
 
 .tiptap .special-paragraph::before {
@@ -235,7 +243,7 @@
 }
 
 .tiptap ul {
-    @apply my-4 space-y-2;
+    @apply my-2 space-y-2;
 }
 
 .tiptap ul li {
@@ -243,11 +251,11 @@
 }
 
 .tiptap ul li::before {
-    @apply content-[''] absolute right-0 top-0 bottom-0 m-auto size-1.5 bg-amber-400 rounded-sm;
+    @apply content-[''] absolute right-0 top-3.5 size-1.5 bg-amber-400 rounded-sm;
 }
 
 .tiptap ul li p {
-    @apply font-pelak-medium text-lg text-gray-800 dark:text-gray-200;
+    @apply font-pelak-medium text-gray-800 dark:text-gray-200;
 }
 
 .tiptap img {

@@ -1,7 +1,9 @@
 "use client";
 
+import { useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { JSONContent } from "@tiptap/react";
 
 import { courses as coursesCache } from "@/api/cache/tags";
 import { updateCourse } from "@/api/mutations/courses";
@@ -21,6 +23,7 @@ import NumericField from "../../NumericField";
 import Select, { SelectItem } from "../../Select";
 import Checkbox from "../../Checkbox";
 
+import Tiptap from "@/components/ui/editor/Tiptap";
 import Button from "@/components/ui/Button";
 
 import { Course } from "@/types/course.types";
@@ -31,7 +34,8 @@ function UpdateCourseForm({ course }: UpdateCourseFormProps) {
     const {
         control,
         handleSubmit,
-        formState: { isSubmitting },
+        formState: { isSubmitting, errors },
+        setValue,
         watch,
     } = useForm<UpdateCourseSchemaType>({
         defaultValues: {
@@ -61,7 +65,16 @@ function UpdateCourseForm({ course }: UpdateCourseFormProps) {
         }
     };
 
+    const onSaveContent = useCallback((content: JSONContent | null) => {
+        setValue("introduction.content", JSON.stringify(content) ?? "", {
+            shouldDirty: true,
+            shouldTouch: true,
+        });
+    }, []);
+
     const price = watch("price");
+
+    console.log(errors);
 
     return (
         <form className="flex flex-col gap-8" onSubmit={handleSubmit(submitHandler)}>
@@ -97,7 +110,10 @@ function UpdateCourseForm({ course }: UpdateCourseFormProps) {
                 <TextField control={control} name="introduction.video" label="آدرس ویدیو معرفی ( اختیاری )" placeholder="آدرس ویدیو معرفی دوره را وارد کنید" className="w-full" />
                 <NumericField control={control} name="discount" label="تخفیف دوره ( اختیاری )" placeholder="تخفیف دوره را وارد کنید" className="w-full" caption="تخفیف را بر حسب درصد وارد کنید" />
             </div>
-            <TextArea control={control} name="introduction.content" label="توضیحات کامل دوره ( اختیاری )" placeholder="توضیحات کامل دوره را وارد کنید" />
+            <div className="space-y-2">
+                <span className="font-pelak-medium text-sm text-gray-800 dark:text-gray-200">توضیحات کامل آموزش ( اختیاری )</span>
+                <Tiptap onSave={onSaveContent} content={course.introduction?.content ? JSON.parse(course.introduction.content) : undefined} store={{ key: `tiptap:update-course:${course._id}` }} />
+            </div>
             <Checkbox control={control} name="shown" label="نمایش بلافاصله دوره" caption="در صورت فعال بودن این گزینه دوره در صفحه اصلی نمایش داده خواهد شد" />
             <Button type="submit" size="lg" className="w-max" disabled={isSubmitting}>
                 {isSubmitting ? "در حال ویرایش دوره" : "ویرایش دوره"}

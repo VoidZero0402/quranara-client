@@ -17,7 +17,7 @@ function useTiptapStore(editor: Editor | null, storeOptions?: StoreOptions) {
             }, store.intervalMs);
 
             if (store.loadContent) {
-                editor.commands.setContent(JSON.parse(localStorage.getItem(store.key) ?? ""));
+                editor.commands.setContent(JSON.parse(localStorage.getItem(store.key) as string) ?? "");
             }
 
             return () => clearInterval(interval);

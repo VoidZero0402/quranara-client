@@ -1,7 +1,9 @@
 "use client";
 
+import { useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { JSONContent } from "@tiptap/react";
 
 import { courses } from "@/api/cache/tags";
 import { createCourse } from "@/api/mutations/courses";
@@ -21,6 +23,7 @@ import NumericField from "../../NumericField";
 import Select, { SelectItem } from "../../Select";
 import Checkbox from "../../Checkbox";
 
+import Tiptap from "@/components/ui/editor/Tiptap";
 import Button from "@/components/ui/Button";
 
 function CreateCourseForm() {
@@ -28,6 +31,7 @@ function CreateCourseForm() {
         control,
         handleSubmit,
         formState: { isSubmitting },
+        setValue,
         watch,
         reset,
     } = useForm<CreateCourseSchemaType>({
@@ -66,6 +70,13 @@ function CreateCourseForm() {
         }
     };
 
+    const onSaveContent = useCallback((content: JSONContent | null) => {
+        setValue("introduction.content", JSON.stringify(content) ?? "", {
+            shouldDirty: true,
+            shouldTouch: true,
+        });
+    }, []);
+
     const price = watch("price");
 
     return (
@@ -100,6 +111,10 @@ function CreateCourseForm() {
                 <TextField control={control} name="metadata.support" label="روش پشتیبانی" placeholder="روش پشتیبانی دوره را وارد کنید" className="w-full" />
             </div>
             <TextField control={control} name="introduction.video" label="آدرس ویدیو معرفی ( اختیاری )" placeholder="آدرس ویدیو معرفی دوره را وارد کنید" className="w-full" />
+            <div className="space-y-2">
+                <span className="font-pelak-medium text-sm text-gray-800 dark:text-gray-200">توضیحات کامل دوره ( اختیاری )</span>
+                <Tiptap onSave={onSaveContent} store={{ key: "tiptap:create-course" }} />
+            </div>
             <TextArea control={control} name="introduction.content" label="توضیحات کامل دوره ( اختیاری )" placeholder="توضیحات کامل دوره را وارد کنید" />
             <Checkbox control={control} name="shown" label="نمایش بلافاصله دوره" caption="در صورت فعال بودن این گزینه دوره در صفحه اصلی نمایش داده خواهد شد" />
             <Button type="submit" size="lg" className="w-max" disabled={isSubmitting}>

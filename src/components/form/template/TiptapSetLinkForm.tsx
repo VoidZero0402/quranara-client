@@ -31,7 +31,13 @@ function TiptapSetLinkForm({ editor, onClose }: TiptapSetLinkFormProps) {
     };
 
     return (
-        <form className="flex flex-col gap-4" onSubmit={handleSubmit(submitHandler)}>
+        <form
+            className="flex flex-col gap-4"
+            onSubmit={(e) => {
+                e.stopPropagation();
+                handleSubmit(submitHandler)(e);
+            }}
+        >
             <TextField name="link" control={control} label="لینک مورد نظر" placeholder="لطفا آدرس لینک را وارد کنید" />
             <div className="flex flex-col sm:flex-row gap-4 mt-4">
                 <Button size="lg" className="w-full">

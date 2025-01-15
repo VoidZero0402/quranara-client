@@ -46,9 +46,11 @@ export const SpecialParagraph = Node.create<SpecialParagraphOptions>({
 
 const engine = new TiptapRenderEngine();
 
-export function renderTiptapContent(tiptapContent: JSONContent) {
-    if (tiptapContent.content) {
-        return engine.render(tiptapContent.content);
+export function renderTiptapContent(tiptapContent: string) {
+    const parsedContent = JSON.parse(tiptapContent) as JSONContent;
+
+    if (parsedContent.content) {
+        return engine.render(parsedContent.content);
     }
 
     return null;

@@ -41,7 +41,7 @@ export const CreateCourseSchema = z.object({
 export type CreateCourseSchemaType = z.infer<typeof CreateCourseSchema> & { slug: string };
 
 export const UpdateCourseSchema = CreateCourseSchema.extend({
-    discount: z.coerce.number().min(1, { message: "حداقل میزان تخفیف ۱ درصد است" }).max(100, { message: "حداکثر میزان تخفیف ۱۰۰ درصد است" }).optional(),
+    discount: z.coerce.number().max(100, { message: "حداکثر میزان تخفیف ۱۰۰ درصد است" }).optional(),
 });
 
 export type UpdateCourseSchemaType = z.infer<typeof UpdateCourseSchema>;
