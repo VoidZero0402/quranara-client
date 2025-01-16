@@ -49,6 +49,10 @@ const engine = new TiptapRenderEngine();
 export function renderTiptapContent(tiptapContent: string) {
     const parsedContent = JSON.parse(tiptapContent) as JSONContent;
 
+    if (!parsedContent) {
+        return null;
+    }
+
     if (parsedContent.content) {
         return engine.render(parsedContent.content);
     }

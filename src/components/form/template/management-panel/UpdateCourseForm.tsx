@@ -1,9 +1,8 @@
 "use client";
 
-import { useCallback } from "react";
+import dynamic from "next/dynamic";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { JSONContent } from "@tiptap/react";
 
 import { courses as coursesCache } from "@/api/cache/tags";
 import { updateCourse } from "@/api/mutations/courses";
@@ -17,14 +16,18 @@ import { formatPrice, getTruthyValues } from "@/libs/funcs";
 
 import { UpdateCourseSchema, UpdateCourseSchemaType } from "@/validators/courses";
 
+import useTiptapContent from "@/hooks/useTiptapContent";
+
 import TextArea from "../../TextArea";
 import TextField from "../../TextField";
 import NumericField from "../../NumericField";
 import Select, { SelectItem } from "../../Select";
 import Checkbox from "../../Checkbox";
 
-import Tiptap from "@/components/ui/editor/Tiptap";
+import { TiptapLoading } from "@/components/ui/editor/Tiptap";
 import Button from "@/components/ui/Button";
+
+const Tiptap = dynamic(() => import("@/components/ui/editor/Tiptap"), { ssr: false, loading: TiptapLoading });
 
 import { Course } from "@/types/course.types";
 
@@ -65,12 +68,7 @@ function UpdateCourseForm({ course }: UpdateCourseFormProps) {
         }
     };
 
-    const onSaveContent = useCallback((content: JSONContent | null) => {
-        setValue("introduction.content", JSON.stringify(content) ?? "", {
-            shouldDirty: true,
-            shouldTouch: true,
-        });
-    }, []);
+    const onSaveContent = useTiptapContent(setValue, "introduction.content");
 
     const price = watch("price");
 

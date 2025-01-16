@@ -4,7 +4,13 @@ import LinkCircle from "@/components/svgs/LinkCircle";
 
 type HeadingProps = React.ComponentProps<"li"> & LinkProps;
 
-function Headings() {
+import { type Heading } from "@/types/blog.types";
+
+type HeadingsProps = {
+    headings: Heading[];
+};
+
+function Headings({ headings }: HeadingsProps) {
     return (
         <div className="space-y-8 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
             <div className="space-y-2">
@@ -15,12 +21,9 @@ function Headings() {
                 <p className="text-sm text-gray-600 dark:text-gray-400">می‌توانید با کلیک روی هر سرفصل به بخش مورد نظر در مقاله بروید</p>
             </div>
             <ul className="space-y-4 font-pelak-medium text-gray-800 dark:text-gray-200">
-                <Heading href="">پیش شرط نبودن لحن ترتیل برای حفظ قرآن کریم</Heading>
-                <Heading href="">لزوم استفاده صحیح ازحافظه تصویری</Heading>
-                <Heading href="">شرایط لازم مکان و زمان حفظ</Heading>
-                <Heading href="">تأثیر تمرکز در ارتقاء کیفیت محفوظات</Heading>
-                <Heading href="">تاثیر نظم در تقویت حافظه و ماندگاری محفوظات</Heading>
-                <Heading href="">استفاده نابجا از تکرار های مکرر جهت ارسال آیات به حافظه</Heading>
+                {headings.map((heading) => (
+                    <Heading key={heading.id} href={`#${heading.id}`}>{heading.text}</Heading>
+                ))}
             </ul>
         </div>
     );

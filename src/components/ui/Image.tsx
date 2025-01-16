@@ -19,7 +19,7 @@ function Image({ wrapperClassName, className, ...props }: ImageProps) {
                     <SkeletonFrame className="size-full" />
                 </Skeleton>
             )}
-            <NextImage className={cn("object-cover opacity-0 transition-opacity duration-300", className, !isLoading && "opacity-100")} onLoad={() => setIsLoading(false)} {...props} />
+            <NextImage className={cn("size-full object-cover opacity-0 transition-opacity duration-300", className, !isLoading && "opacity-100")} onLoad={() => setIsLoading(false)} {...props} />
         </div>
     );
 }

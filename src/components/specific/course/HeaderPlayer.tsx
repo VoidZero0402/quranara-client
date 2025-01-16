@@ -25,7 +25,7 @@ function HeaderPlayer({ video }: HeaderPlayerProps) {
                     }}
                 />
             ) : (
-                <Image src="/webpack-1-768x432.webp" alt="course cover" width={800} height={500} className="rounded-xl" />
+                <Image src="/webpack-1-768x432.webp" alt="course cover" width={800} height={500} wrapperClassName="aspect-video" className="rounded-xl" />
             )}
         </>
     );

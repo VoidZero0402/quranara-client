@@ -219,15 +219,15 @@
 }
 
 .tiptap h2 {
-    @apply my-4 font-pelak-semibold text-2xl text-gray-800 dark:text-gray-200 leading-10;
+    @apply my-2 font-pelak-semibold text-2xl text-gray-800 dark:text-gray-200 leading-10;
 }
 
 .tiptap h3 {
-    @apply my-4 font-pelak-semibold text-xl text-gray-800 dark:text-gray-200 leading-9;
+    @apply my-2 font-pelak-semibold text-xl text-gray-800 dark:text-gray-200 leading-9;
 }
 
 .tiptap h4 {
-    @apply my-4 font-pelak-semibold text-lg text-gray-800 dark:text-gray-200 leading-8;
+    @apply my-2 font-pelak-semibold text-lg text-gray-800 dark:text-gray-200 leading-8;
 }
 
 .tiptap p {

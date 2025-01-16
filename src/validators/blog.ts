@@ -12,6 +12,7 @@ export const CreateBlogSchema = z.object({
         .min(1, { message: "تصویر نمی‌تواند خالی باشد." })
         .regex(/^[\w-\/\:\.]+\.(jpg|jpeg|png|webp)$/, { message: "فرمت تصویر معتبر نیست. از فرمت‌های jpg، jpeg، png یا webp استفاده کنید." }),
     content: z.string({ required_error: "لطفاً محتوای مطلب را وارد کنید." }).min(1, { message: "محتوا نمی‌تواند خالی باشد." }),
+    headings: z.array(z.object({ id: z.string(), text: z.string() })),
     relatedCourses: z.array(z.string({ required_error: "شناسه دوره الزامی است." }), { message: "دوره‌های مرتبط باید به صورت آرایه‌ای از شناسه‌های دوره باشند." }).optional(),
     shown: z.boolean({ required_error: "لطفاً وضعیت نمایش مطلب را مشخص کنید." }),
 });

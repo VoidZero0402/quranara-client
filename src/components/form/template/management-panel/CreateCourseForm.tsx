@@ -1,9 +1,8 @@
 "use client";
 
-import { useCallback } from "react";
+import dynamic from "next/dynamic";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { JSONContent } from "@tiptap/react";
 
 import { courses } from "@/api/cache/tags";
 import { createCourse } from "@/api/mutations/courses";
@@ -17,14 +16,18 @@ import { formatPrice, getTruthyValues } from "@/libs/funcs";
 
 import { CreateCourseSchema, CreateCourseSchemaType } from "@/validators/courses";
 
+import useTiptapContent from "@/hooks/useTiptapContent";
+
 import TextArea from "../../TextArea";
 import TextField from "../../TextField";
 import NumericField from "../../NumericField";
 import Select, { SelectItem } from "../../Select";
 import Checkbox from "../../Checkbox";
 
-import Tiptap from "@/components/ui/editor/Tiptap";
+import { TiptapLoading } from "@/components/ui/editor/Tiptap";
 import Button from "@/components/ui/Button";
+
+const Tiptap = dynamic(() => import("@/components/ui/editor/Tiptap"), { ssr: false, loading: TiptapLoading });
 
 function CreateCourseForm() {
     const {
@@ -70,12 +73,7 @@ function CreateCourseForm() {
         }
     };
 
-    const onSaveContent = useCallback((content: JSONContent | null) => {
-        setValue("introduction.content", JSON.stringify(content) ?? "", {
-            shouldDirty: true,
-            shouldTouch: true,
-        });
-    }, []);
+    const onSaveContent = useTiptapContent(setValue, "introduction.content");
 
     const price = watch("price");
 
@@ -115,7 +113,6 @@ function CreateCourseForm() {
                 <span className="font-pelak-medium text-sm text-gray-800 dark:text-gray-200">توضیحات کامل دوره ( اختیاری )</span>
                 <Tiptap onSave={onSaveContent} store={{ key: "tiptap:create-course" }} />
             </div>
-            <TextArea control={control} name="introduction.content" label="توضیحات کامل دوره ( اختیاری )" placeholder="توضیحات کامل دوره را وارد کنید" />
             <Checkbox control={control} name="shown" label="نمایش بلافاصله دوره" caption="در صورت فعال بودن این گزینه دوره در صفحه اصلی نمایش داده خواهد شد" />
             <Button type="submit" size="lg" className="w-max" disabled={isSubmitting}>
                 {isSubmitting ? "در حال ایجاد دوره جدید" : "ایجاد دوره جدید"}

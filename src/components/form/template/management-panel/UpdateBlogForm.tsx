@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
+import dynamic from "next/dynamic";
 import { useQuery } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -18,13 +19,18 @@ import { revalidate } from "@/libs/revalidate";
 
 import { CreateBlogSchema, CreateBlogSchemaType } from "@/validators/blog";
 
+import useTiptapBlogContent from "@/hooks/useTiptapBlogContent";
+
 import TextArea from "../../TextArea";
 import TextField from "../../TextField";
 import Select, { SelectItem } from "../../Select";
 import MultiSelect from "../../MultiSelect";
 import Checkbox from "../../Checkbox";
 
+import { TiptapLoading } from "@/components/ui/editor/Tiptap";
 import Button from "@/components/ui/Button";
+
+const Tiptap = dynamic(() => import("@/components/ui/editor/Tiptap"), { ssr: false, loading: TiptapLoading });
 
 import { Blog } from "@/types/blog.types";
 
@@ -37,6 +43,7 @@ function UpdateBlogForm({ blog }: UpdateBlogFormProps) {
         control,
         handleSubmit,
         formState: { isSubmitting },
+        setValue,
     } = useForm<CreateBlogSchemaType>({
         defaultValues: {
             title: blog.title,
@@ -45,6 +52,7 @@ function UpdateBlogForm({ blog }: UpdateBlogFormProps) {
             cover: blog.cover,
             category: blog.category._id,
             content: blog.content,
+            headings: blog.headings,
             relatedCourses: blog.relatedCourses as unknown as string[],
             shown: blog.shown,
         },
@@ -73,6 +81,8 @@ function UpdateBlogForm({ blog }: UpdateBlogFormProps) {
         }
     };
 
+    const onSaveContent = useTiptapBlogContent(setValue);
+
     return (
         <form className="flex flex-col gap-8" onSubmit={handleSubmit(submitHandler)}>
             <TextField control={control} name="title" label="عنوان مقاله" placeholder="عنوان مقاله را وارد کنید" />
@@ -91,7 +101,10 @@ function UpdateBlogForm({ blog }: UpdateBlogFormProps) {
                 <TextField control={control} name="cover" label="آدرس کاور مقاله" placeholder="آدرس کاور مقاله را وارد کنید" className="w-full" />
                 <MultiSelect control={control} name="relatedCourses" label="دوره‌های مرتبط" placeholder="لطفا دوره‌های مرتبط را انتخاب کنید" options={relatedCoursesOptions} selectedText="$ دوره مرتبط انتخاب شده" className="w-full" />
             </div>
-            <TextArea control={control} name="content" label="محتوای مقاله" placeholder="محتوای مقاله را وارد کنید" />
+            <div className="space-y-2">
+                <span className="font-pelak-medium text-sm text-gray-800 dark:text-gray-200">محتوای مقاله</span>
+                <Tiptap onSave={onSaveContent} content={JSON.parse(blog.content)} store={{ key: `tiptap:update-blog:${blog._id}` }} />
+            </div>
             <Checkbox control={control} name="shown" label="نمایش بلافاصله مقاله" caption="در صورت فعال بودن این گزینه مقاله در صفحه اصلی نمایش داده خواهد شد" />
             <Button type="submit" size="lg" className="w-max" disabled={isSubmitting}>
                 {isSubmitting ? "در حال ویرایش مقاله" : "ویرایش مقاله"}

@@ -27,7 +27,7 @@ function Details({ title, description, category, timeToRead }: DetailsProps) {
             </div>
             <div className="space-y-2">
                 <h1 className="font-pelak-semibold text-2xl text-gray-800 dark:text-gray-200 leading-10">{title}</h1>
-                <p className="text-gray-600 dark:text-gray-400 leading-7">{description}</p>
+                <p className="text-gray-700 dark:text-gray-300 leading-8">{description}</p>
             </div>
         </section>
     );

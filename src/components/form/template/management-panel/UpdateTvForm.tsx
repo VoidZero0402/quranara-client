@@ -1,10 +1,9 @@
 "use client";
 
-import { useCallback } from "react";
+import dynamic from "next/dynamic";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useQuery } from "@tanstack/react-query";
-import { JSONContent } from "@tiptap/react";
 
 import { tv as tvCache } from "@/api/cache/tags";
 import { getCategoriesSummary } from "@/api/queries/categories";
@@ -19,13 +18,17 @@ import { getTruthyValues } from "@/libs/funcs";
 
 import { CreateTvSchema, CreateTvSchemaType } from "@/validators/tv";
 
+import useTiptapContent from "@/hooks/useTiptapContent";
+
 import TextArea from "../../TextArea";
 import TextField from "../../TextField";
 import Select, { SelectItem } from "../../Select";
 import Checkbox from "../../Checkbox";
 
-import Tiptap from "@/components/ui/editor/Tiptap";
+import { TiptapLoading } from "@/components/ui/editor/Tiptap";
 import Button from "@/components/ui/Button";
+
+const Tiptap = dynamic(() => import("@/components/ui/editor/Tiptap"), { ssr: false, loading: TiptapLoading });
 
 import { Tv } from "@/types/tv.types";
 
@@ -68,12 +71,7 @@ function UpdateTvForm({ tv }: UpdateTvFormProps) {
         }
     };
 
-    const onSaveContent = useCallback((content: JSONContent | null) => {
-        setValue("content", JSON.stringify(content) ?? "", {
-            shouldDirty: true,
-            shouldTouch: true,
-        });
-    }, []);
+    const onSaveContent = useTiptapContent(setValue, "content");
 
     return (
         <form className="flex flex-col gap-8" onSubmit={handleSubmit(submitHandler)}>

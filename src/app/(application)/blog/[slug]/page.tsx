@@ -42,8 +42,8 @@ async function Blog({ params }: { params: Promise<{ slug: string }> }) {
                         <section className="space-y-8 p-4 sm:p-8 bg-white dark:bg-gray-850 rounded-2xl">
                             <article className="space-y-12">
                                 <Details title={blog.title} description={blog.description} category={blog.category} cover={blog.cover} timeToRead={blog.timeToRead} />
-                                <Headings />
-                                <Content />
+                                {!!blog.headings.length && <Headings headings={blog.headings} />}
+                                <Content content={blog.content} />
                             </article>
                             <Slice />
                             <div className="flex flex-col xs:flex-row items-center justify-between gap-y-4">

@@ -4,6 +4,11 @@ import { PopulatedUser } from "./user.types";
 import { PopulatedCategory } from "./category.types";
 import { RelatedCourse } from "./course.types";
 
+export type Heading = {
+    id: string;
+    text: string;
+};
+
 export type Blog = {
     _id: string;
     title: string;
@@ -11,7 +16,7 @@ export type Blog = {
     description: string;
     cover: string;
     content: string;
-    headings: string[];
+    headings: Heading[];
     author: PopulatedUser;
     category: PopulatedCategory;
     shown: boolean;
@@ -24,6 +29,6 @@ export type Blog = {
 
 export type LimitedBlog = Omit<Blog, "content" | "headings" | "status" | "tags" | "relatedCourses">;
 
-export type BlogIdentifiers = Pick<Blog, "_id" | "slug">
+export type BlogIdentifiers = Pick<Blog, "_id" | "slug">;
 
 export type Sorting = (typeof SORTING)[keyof typeof SORTING];

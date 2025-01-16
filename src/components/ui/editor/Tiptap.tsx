@@ -21,9 +21,10 @@ import TiptapSetLinkModal from "@/components/modal/TiptapSetLinkModal";
 import TiptapSetImageModal from "@/components/modal/TiptapSetImageModal";
 
 import Button from "../Button";
+import Skeleton, { SkeletonFrame } from "../Skeleton";
 
 type TiptapProps = {
-    onSave: (content: JSONContent | null) => void;
+    onSave: (editor: Editor) => void;
     content?: JSONContent;
     store?: {
         key: string;
@@ -76,9 +77,7 @@ function Tiptap({ onSave, content, store }: TiptapProps) {
             localStorage.setItem(store.key, JSON.stringify((editor as Editor).getJSON()));
         }
 
-        const content = !(editor as Editor).isEmpty ? (editor as Editor).getJSON() : null;
-
-        onSave(content);
+        onSave(editor as Editor);
     }, [editor]);
 
     const onClearStorage = useCallback(() => {
@@ -104,6 +103,19 @@ function Tiptap({ onSave, content, store }: TiptapProps) {
             <TiptapSetLinkModal isOpen={isOpenLinkModal} onClose={closeLinkModal} {...linkModalProps} />
             <TiptapSetImageModal isOpen={isOpenImageModal} onClose={closeImageModal} {...imageModalProps} />
         </div>
+    );
+}
+
+export function TiptapLoading() {
+    return (
+        <Skeleton className="space-y-4">
+            <SkeletonFrame className="h-14 rounded-xl" />
+            <SkeletonFrame className="h-40 rounded-xl" />
+            <div className="flex flex-col sm:flex-row gap-4">
+                <SkeletonFrame className="w-40 h-14 rounded-2xl"></SkeletonFrame>
+                <SkeletonFrame className="w-40 h-14 rounded-2xl"></SkeletonFrame>
+            </div>
+        </Skeleton>
     );
 }
 

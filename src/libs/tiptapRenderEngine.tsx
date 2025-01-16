@@ -6,6 +6,7 @@ import Image from "@/components/ui/Image";
 
 interface NodeRendererProps {
     children?: React.ReactNode;
+    id?: string;
     level?: number;
     src?: string;
     alt?: string;
@@ -25,7 +26,7 @@ class TiptapRenderEngine {
         text: ({ children }) => children,
         paragraph: ({ children }) => <p>{children}</p>,
         specialParagraph: ({ children }) => <p className="special-paragraph">{children}</p>,
-        heading: ({ children, level = 2 }) => createElement(`h${level}`, null, children),
+        heading: ({ children, level = 2, id }) => createElement(`h${level}`, id ? { id } : null, children),
         bulletList: ({ children }) => <ul>{children}</ul>,
         listItem: ({ children }) => <li>{children}</li>,
         image: ({ src = "", alt = "" }) => <Image src={src} alt={alt} width={1280} height={720} />,
