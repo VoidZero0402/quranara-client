@@ -9,7 +9,9 @@ import Topic from "@/components/specific/management-panel/courses/manage/Topic";
 
 const UpdateTopicModal = dynamic(() => import("@/components/modal/management-panel/courses/UpdateTopicModal"), { ssr: false });
 const CreateSessionModal = dynamic(() => import("@/components/modal/management-panel/courses/CreateSessionModal"), { ssr: false });
+const CreateSessionOffCanvas = dynamic(() => import("@/components/specific/management-panel/courses/manage/CreateSessionOffCanvas"), { ssr: false });
 const UpdateSessionModal = dynamic(() => import("@/components/modal/management-panel/courses/UpdateSessionModal"), { ssr: false });
+const UpdateSessionOffCanvas = dynamic(() => import("@/components/specific/management-panel/courses/manage/UpdateSessionOffCanvas"), { ssr: false });
 
 import { Topic as TopicType, LimitedTopic } from "@/types/topic.types";
 import { PopulatedSession } from "@/types/session.types";
@@ -18,19 +20,19 @@ type TopicSessionManagerProps = { topics: TopicType[]; slug: string };
 
 function TopicSessionManager({ topics, slug }: TopicSessionManagerProps) {
     const { isOpen: isOpenUpdateModal, open: openUpdateModal, close: closeUpdateModal, props: updateModalProps } = useToggleState<{ topic: LimitedTopic }>();
-    const { isOpen: isOpenCreateSessionModal, open: openCreateSessionModal, close: closeCreateSessionModal, props: createSessionModalProps } = useToggleState<{ topic: LimitedTopic }>();
-    const { isOpen: isOpenUpdateSessionModal, open: openUpdateSessionModal, close: closeUpdateSessionModal, props: updateSessionModalProps } = useToggleState<{ session: PopulatedSession }>();
+    const { isOpen: isOpenCreateSessionOffCanvas, open: openCreateSessionOffCanvas, close: closeCreateSessionOffCanvas, props: createSessionOffCanvasProps } = useToggleState<{ topic: LimitedTopic }>();
+    const { isOpen: isOpenUpdateSessionOffCanvas, open: openUpdateSessionOffCanvas, close: closeUpdateSessionOffCanvas, props: updateSessionOffCanvasProps } = useToggleState<{ session: PopulatedSession }>();
 
     const onUpdate = useCallback((topic: LimitedTopic) => {
         openUpdateModal({ topic });
     }, []);
 
     const onCreateSession = useCallback((topic: LimitedTopic) => {
-        openCreateSessionModal({ topic });
+        openCreateSessionOffCanvas({ topic });
     }, []);
 
     const onUpdateSession = useCallback((session: PopulatedSession) => {
-        openUpdateSessionModal({ session });
+        openUpdateSessionOffCanvas({ session });
     }, []);
 
     return (
@@ -41,8 +43,8 @@ function TopicSessionManager({ topics, slug }: TopicSessionManagerProps) {
                 ))}
             </div>
             <UpdateTopicModal isOpen={isOpenUpdateModal} onClose={closeUpdateModal} {...updateModalProps} slug={slug} />
-            <CreateSessionModal isOpen={isOpenCreateSessionModal} onClose={closeCreateSessionModal} {...createSessionModalProps} slug={slug} />
-            <UpdateSessionModal isOpen={isOpenUpdateSessionModal} onClose={closeUpdateSessionModal} {...updateSessionModalProps} slug={slug} />
+            <CreateSessionOffCanvas isOpen={isOpenCreateSessionOffCanvas} onClose={closeCreateSessionOffCanvas} {...createSessionOffCanvasProps} slug={slug} />
+            <UpdateSessionOffCanvas isOpen={isOpenUpdateSessionOffCanvas} onClose={closeUpdateSessionOffCanvas} {...updateSessionOffCanvasProps} slug={slug} />
         </section>
     );
 }

@@ -8,6 +8,7 @@ export type Session = {
     order: string;
     isPublic: boolean;
     video: string;
+    content: string;
     time: string;
     seconds: string;
     attached?: string;
@@ -15,4 +16,4 @@ export type Session = {
     course: Pick<Course, "_id" | "title" | "slug" | "cover">;
 };
 
-export type PopulatedSession = Pick<Session, "_id" | "title" | "slug" | "time" | "isPublic" | "order" | "video" | "attached">;
+export type PopulatedSession = Pick<Session, "_id" | "title" | "slug" | "time" | "isPublic" | "order" | "video" | "content" | "attached">;

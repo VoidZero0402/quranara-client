@@ -20,7 +20,7 @@ function IntroContent({ content, onInView }: IntroContentProps) {
     }, [inView]);
 
     return (
-        <section ref={ref} className="space-y-8 p-6 bg-white dark:bg-gray-850 rounded-2xl" id="content">
+        <section ref={ref} className="space-y-4 p-6 bg-white dark:bg-gray-850 rounded-2xl" id="content">
             <h3 className="flex items-center gap-x-2 font-pelak-medium text-xl">
                 <Widgets className="w-8" />
                 توضیحات دوره

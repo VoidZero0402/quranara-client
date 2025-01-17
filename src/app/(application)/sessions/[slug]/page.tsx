@@ -32,10 +32,10 @@ async function Session({ params }: { params: Promise<{ slug: string }> }) {
         <div className="my-8">
             <Header title={session.title} course={session.course} />
             <div className="container">
-                <div className="flex flex-col xl:flex-row gap-8 my-12">
+                <div className="flex flex-col xl:flex-row gap-8 mt-12">
                     <main className="space-y-8 w-full xl:w-[70%]">
                         <Details title={session.title} order={session.order} topic={session.topic.title} video={session.video} cover={session.course.cover} attached={session.attached} />
-                        <SessionContent />
+                        {!!session.content && <SessionContent content={session.content} />}
                         <Question _id={session._id} slug={slug} />
                     </main>
                     <aside className="flex flex-col md:flex-row xl:flex-col gap-8 w-full xl:w-[30%]">

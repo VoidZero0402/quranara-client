@@ -6,7 +6,7 @@ type TvContentProps = { content: string }
 
 function TvContent({ content }: TvContentProps) {
     return (
-        <section className="p-4 sm:p-8 bg-white dark:bg-gray-850 rounded-2xl">
+        <section className="space-y-4 p-4 sm:p-8 bg-white dark:bg-gray-850 rounded-2xl">
             <span className="flex items-center gap-x-2 font-pelak-medium text-xl">
                 <Widgets className="w-8" />
                 توضیحات آموزش

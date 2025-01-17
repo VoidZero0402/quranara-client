@@ -20,9 +20,11 @@ function Headings({ headings }: HeadingsProps) {
                 </span>
                 <p className="text-sm text-gray-600 dark:text-gray-400">می‌توانید با کلیک روی هر سرفصل به بخش مورد نظر در مقاله بروید</p>
             </div>
-            <ul className="space-y-4 font-pelak-medium text-gray-800 dark:text-gray-200">
+            <ul className="space-y-2 font-pelak-medium text-gray-800 dark:text-gray-200">
                 {headings.map((heading) => (
-                    <Heading key={heading.id} href={`#${heading.id}`}>{heading.text}</Heading>
+                    <Heading key={heading.id} href={`#${heading.id}`}>
+                        {heading.text}
+                    </Heading>
                 ))}
             </ul>
         </div>
@@ -31,9 +33,8 @@ function Headings({ headings }: HeadingsProps) {
 
 function Heading({ children, href }: HeadingProps) {
     return (
-        <li className="flex items-center gap-x-2">
-            <span className="ball"></span>
-            <Link href={href} className="hover:text-amber-500 dark:hover:text-amber-400 transition-all">
+        <li className="blog-heading">
+            <Link href={href} className="block hover:text-amber-500 dark:hover:text-amber-400 leading-8 transition-all">
                 {children}
             </Link>
         </li>

@@ -37,7 +37,7 @@ async function Blog({ params }: { params: Promise<{ slug: string }> }) {
         <div className="my-8">
             <Header title={blog.title} category={blog.category} />
             <div className="container">
-                <div className="flex flex-col xl:flex-row gap-8 my-12">
+                <div className="flex flex-col xl:flex-row gap-8 mt-12 mb-8">
                     <main className="space-y-8 w-full xl:w-[70%]">
                         <section className="space-y-8 p-4 sm:p-8 bg-white dark:bg-gray-850 rounded-2xl">
                             <article className="space-y-12">

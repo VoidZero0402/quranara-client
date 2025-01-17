@@ -28,7 +28,7 @@ async function page({ params }: { params: Promise<{ slug: string }> }) {
         <div className="my-8">
             <Header _id={course._id} title={course.title} description={course.description} price={course.price} status={course.status} cover={course.cover} video={course.introduction?.video} />
             <div className="container">
-                <div className="flex flex-col-reverse xl:flex-row gap-8 my-12">
+                <div className="flex flex-col-reverse xl:flex-row gap-8 mt-12">
                     <Main _id={course._id} topics={topics} slug={slug} content={course.introduction?.content} time={course.time} metadata={course.metadata} updatedAt={course.updatedAt} />
                     <aside className="flex flex-col md:flex-row xl:flex-col gap-8 w-full xl:w-[30%]">
                         <Teacher />
