@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { STATUS, StatusText } from "@/constants/courses";
 
-import { formateDateObject } from "@/libs/funcs";
+import { formateDateObject, getDiscountedPrice } from "@/libs/funcs";
 
 import BadgeLight from "@/components/ui/BadgeLight";
 import IconButton from "@/components/ui/IconButton";
@@ -37,7 +37,15 @@ function CourseRow({ course, onShown, onUnshown }: CourseRowProps) {
             </td>
             <td>{course.shown ? <BadgeLight varient="teal">در حال نمایش</BadgeLight> : <BadgeLight varient="gray">عدم نمایش</BadgeLight>}</td>
             <td>
-                <span className="underline">{course.price.toLocaleString()} تومان</span>
+                <div className="flex flex-col gap-y-2">
+                    {!!course.discount && (
+                        <div className="flex items-center gap-x-2 font-pelak-medium text-xs">
+                            <div className="text-amber-400">{course.discount}٪ تخفیف</div>
+                            <del className="text-gray-600 dark:text-gray-400">{course.price.toLocaleString()}</del>
+                        </div>
+                    )}
+                    <span className="">{getDiscountedPrice(course.price, course.discount)} تومان</span>
+                </div>
             </td>
             <td>{formateDateObject(course.updatedAt)}</td>
             <td>

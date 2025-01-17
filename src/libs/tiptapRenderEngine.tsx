@@ -2,6 +2,8 @@ import { createElement } from "react";
 import Link from "next/link";
 import { JSONContent } from "@tiptap/react";
 
+import ColoredText from "@/components/specific/content/ColoredText";
+
 import Image from "@/components/ui/Image";
 
 interface NodeRendererProps {
@@ -37,7 +39,7 @@ class TiptapRenderEngine {
         italic: ({ children }) => <em>{children}</em>,
         underline: ({ children }) => <u>{children}</u>,
         link: ({ children, href = "#" }) => <Link href={href}>{children}</Link>,
-        textStyle: ({ children, color = "inherit" }) => <span style={{ color }}>{children}</span>,
+        textStyle: ({ children, color = "inherit" }) => <ColoredText varient={color as any}>{children}</ColoredText>,
     };
 
     renderMark(text: string, marks: JSONContent[] = []): React.ReactNode {

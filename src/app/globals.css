@@ -231,7 +231,7 @@
 }
 
 .tiptap p {
-    @apply  text-gray-700 dark:text-gray-300 whitespace-pre-line leading-8;
+    @apply text-gray-700 dark:text-gray-300 whitespace-pre-line leading-8;
 }
 
 .tiptap .special-paragraph {

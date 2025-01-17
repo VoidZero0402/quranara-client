@@ -7,9 +7,9 @@ import { PlayerLoading } from "@/components/ui/Player";
 
 const Player = dynamic(() => import("@/components/ui/Player"), { ssr: false, loading: PlayerLoading });
 
-type HeaderPlayerProps = { cover: string; video?: string };
+type IntroPlayerProps = { cover: string; video?: string };
 
-function HeaderPlayer({ video }: HeaderPlayerProps) {
+function IntroPlayer({ video }: IntroPlayerProps) {
     return (
         <>
             {video ? (
@@ -31,4 +31,4 @@ function HeaderPlayer({ video }: HeaderPlayerProps) {
     );
 }
 
-export default HeaderPlayer;
+export default IntroPlayer;

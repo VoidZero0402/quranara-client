@@ -48,7 +48,10 @@ function UpdateCourseForm({ course }: UpdateCourseFormProps) {
             cover: course.cover,
             price: course.price,
             status: course.status,
-            introduction: course.introduction,
+            introduction: {
+                content: course.introduction?.content ?? "",
+                video: course.introduction?.video ?? "",
+            },
             metadata: course.metadata,
             shown: course.shown,
             discount: course.discount ?? 0,
@@ -57,7 +60,11 @@ function UpdateCourseForm({ course }: UpdateCourseFormProps) {
     });
 
     const submitHandler = async (data: UpdateCourseSchemaType) => {
+        console.log(data);
+
         const body = getTruthyValues(data) as UpdateCourseSchemaType;
+
+        console.log(body);
 
         const res = await updateCourse({ courseId: course._id }, body);
 
@@ -71,8 +78,6 @@ function UpdateCourseForm({ course }: UpdateCourseFormProps) {
     const onSaveContent = useTiptapContent(setValue, "introduction.content");
 
     const price = watch("price");
-
-    console.log(errors);
 
     return (
         <form className="flex flex-col gap-8" onSubmit={handleSubmit(submitHandler)}>

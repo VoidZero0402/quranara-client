@@ -2,6 +2,8 @@ import Link from "next/link";
 
 import { StatusText } from "@/constants/courses";
 
+import { getDiscountedPrice } from "@/libs/funcs";
+
 import Placeholder from "../ui/Placeholder";
 import Slice from "../ui/Slice";
 import Skeleton, { SkeletonFrame } from "../ui/Skeleton";
@@ -12,7 +14,7 @@ import LongArrowLeft from "../svgs/LongArrowLeft";
 
 import { LimitedCourse } from "@/types/course.types";
 
-function Course({ title, description, slug, status, price, metadata }: LimitedCourse) {
+function Course({ title, description, slug, status, price, discount, metadata }: LimitedCourse) {
     return (
         <div className="bg-white dark:bg-gray-850 rounded-2xl overflow-hidden">
             <Link href={`/courses/${slug}`} className="overflow-hidden">
@@ -29,7 +31,7 @@ function Course({ title, description, slug, status, price, metadata }: LimitedCo
                     <Link href={`/courses/${slug}`}>{title}</Link>
                 </h3>
                 <p className="h-18 text-sm text-gray-600 dark:text-gray-400 leading-6 line-clamp-3">{description}</p>
-                <div className="flex items-center justify-between mt-2">
+                <div className="flex items-center justify-between mt-4">
                     <div className="flex gap-x-2">
                         <div className="flex items-center gap-x-1 py-1 px-2 font-pelak-medium text-sm blue-light rounded-lg">
                             <UserRounded className="w-4" />
@@ -40,9 +42,17 @@ function Course({ title, description, slug, status, price, metadata }: LimitedCo
                             <span className="h-4.5">{metadata.rating}</span>
                         </div>
                     </div>
-                    <div className="flex items-center gap-x-1">
-                        <span className="font-pelak-semibold text-xl text-gray-700 dark:text-gray-300">{price}</span>
-                        <span className="f text-xs text-gray-600 dark:text-gray-400">تومان</span>
+                    <div className="relative">
+                        {!!discount && (
+                            <div className="absolute -top-4 left-0 w-max flex items-center gap-x-2 font-pelak-medium text-xs">
+                                <div className="text-amber-400">{discount}٪ تخفیف</div>
+                                <del className="text-gray-600 dark:text-gray-400">{price.toLocaleString()}</del>
+                            </div>
+                        )}
+                        <div className="flex items-center gap-x-1">
+                            <span className="font-pelak-semibold text-xl text-gray-700 dark:text-gray-300">{getDiscountedPrice(price, discount)}</span>
+                            <span className="f text-xs text-gray-600 dark:text-gray-400">تومان</span>
+                        </div>
                     </div>
                 </div>
             </div>
