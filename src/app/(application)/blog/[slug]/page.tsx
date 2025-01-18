@@ -19,6 +19,8 @@ import Actions, { ActionsLoading } from "@/components/specific/blog/Actions";
 
 import Slice from "@/components/ui/Slice";
 
+export const dynamic = "force-static";
+
 async function Blog({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
 

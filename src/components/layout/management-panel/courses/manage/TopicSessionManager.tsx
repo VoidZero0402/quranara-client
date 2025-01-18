@@ -8,9 +8,7 @@ import useToggleState from "@/hooks/useToggleState";
 import Topic from "@/components/specific/management-panel/courses/manage/Topic";
 
 const UpdateTopicModal = dynamic(() => import("@/components/modal/management-panel/courses/UpdateTopicModal"), { ssr: false });
-const CreateSessionModal = dynamic(() => import("@/components/modal/management-panel/courses/CreateSessionModal"), { ssr: false });
 const CreateSessionOffCanvas = dynamic(() => import("@/components/specific/management-panel/courses/manage/CreateSessionOffCanvas"), { ssr: false });
-const UpdateSessionModal = dynamic(() => import("@/components/modal/management-panel/courses/UpdateSessionModal"), { ssr: false });
 const UpdateSessionOffCanvas = dynamic(() => import("@/components/specific/management-panel/courses/manage/UpdateSessionOffCanvas"), { ssr: false });
 
 import { Topic as TopicType, LimitedTopic } from "@/types/topic.types";

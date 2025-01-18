@@ -36,7 +36,7 @@ function CreateBlogForm() {
     const {
         control,
         handleSubmit,
-        formState: { isSubmitting, errors },
+        formState: { isSubmitting },
         setValue,
         reset,
     } = useForm<CreateBlogSchemaType>({

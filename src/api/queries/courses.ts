@@ -19,6 +19,7 @@ export function getLastCourses(): Promise<Response<{ courses: LimitedCourse[]; p
         cache: "force-cache",
         next: {
             tags: [courses.default],
+            revalidate: 86400,
         },
     });
 }
@@ -52,6 +53,7 @@ export function getCourse(params: CoursesQueriesWithSlugParams): Promise<Respons
         cache: "force-cache",
         next: {
             tags: [courses.getOne(params.slug)],
+            revalidate: 86400,
         },
     });
 }
@@ -77,6 +79,7 @@ export function getCourseTopics(params: CoursesQueriesWithSlugParams): Promise<R
         cache: "force-cache",
         next: {
             tags: [courses.getTopics(params.slug)],
+            revalidate: 86400,
         },
     });
 }

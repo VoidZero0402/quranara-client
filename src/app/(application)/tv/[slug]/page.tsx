@@ -10,6 +10,8 @@ import Details from "@/components/layout/tv/Details";
 import TvContent from "@/components/layout/tv/TvContent";
 import TvComments from "@/components/layout/tv/TvComments";
 
+export const dynamic = "force-static";
+
 async function Tv({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
 

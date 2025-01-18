@@ -18,6 +18,7 @@ export function getLastBlogs(): Promise<Response<{ blogs: LimitedBlog[]; paginat
         cache: "force-cache",
         next: {
             tags: [blog.default],
+            revalidate: 86400,
         },
     });
 }
@@ -47,6 +48,7 @@ export function getBlog(params: BlogsQueriesWithSlugParams): Promise<Response<{ 
         cache: "force-cache",
         next: {
             tags: [blog.getOne(params.slug)],
+            revalidate: 86400,
         },
     });
 }
@@ -70,6 +72,7 @@ export function getRelatedBlogs(params: BlogsQueriesWithSlugParams): Promise<Res
         cache: "force-cache",
         next: {
             tags: [blog.getRelated(params.slug)],
+            revalidate: 86400,
         },
     });
 }

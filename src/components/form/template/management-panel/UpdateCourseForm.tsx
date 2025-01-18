@@ -37,7 +37,7 @@ function UpdateCourseForm({ course }: UpdateCourseFormProps) {
     const {
         control,
         handleSubmit,
-        formState: { isSubmitting, errors },
+        formState: { isSubmitting },
         setValue,
         watch,
     } = useForm<UpdateCourseSchemaType>({

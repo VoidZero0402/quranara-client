@@ -10,6 +10,7 @@ export function getMenus(): Promise<Response<Menus>> {
         cache: "force-cache",
         next: {
             tags: [ui.menus],
+            revalidate: 86400,
         },
     });
 }

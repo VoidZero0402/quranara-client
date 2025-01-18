@@ -16,7 +16,7 @@ function UpdateSessionOffCanvas({ isOpen, onClose, session, slug }: UpdateSessio
             <OffCanvasHeader>
                 <div className="flex items-center gap-x-2">
                     <PlaybackSpeed className="w-6 shrink-0" />
-                    <span className="leading-7">ویرایش جلسه "{session?.title}"</span>
+                    <span className="leading-7">ویرایش جلسه &quot;{session?.title}&quot;</span>
                 </div>
             </OffCanvasHeader>
             <div>

@@ -18,6 +18,7 @@ export function getLastTvs(): Promise<Response<{ tvs: LimitedTv[]; pagination: P
         cache: "force-cache",
         next: {
             tags: [tv.default],
+            revalidate: 86400,
         },
     });
 }
@@ -47,6 +48,7 @@ export function getTv(params: TvsQueriesWithSlugParams): Promise<Response<{ tv: 
         cache: "force-cache",
         next: {
             tags: [tv.getOne(params.slug)],
+            revalidate: 86400,
         },
     });
 }
@@ -70,6 +72,7 @@ export function getRelatedTvs(params: TvsQueriesWithSlugParams): Promise<Respons
         cache: "force-cache",
         next: {
             tags: [tv.getRelated(params.slug)],
+            revalidate: 86400,
         },
     });
 }

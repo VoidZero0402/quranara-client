@@ -1,6 +1,5 @@
-export async function revalidate(...tags: string[]) {
-    const queryString = tags.map((tag) => `tag=${tag}`).join("&");
-    const url = `/api/revalidate?${queryString}`;
+import revalidateTags from "@/actions/revalidate";
 
-    await fetch(url);
+export async function revalidate(...tags: string[]) {
+    await revalidateTags(tags);
 }

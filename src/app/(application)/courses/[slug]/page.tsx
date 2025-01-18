@@ -7,6 +7,8 @@ import Main from "@/components/layout/course/Main";
 import Teacher from "@/components/layout/course/Teacher";
 import Progress from "@/components/layout/course/Progress";
 
+export const dynamic = "force-static";
+
 async function page({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
 
