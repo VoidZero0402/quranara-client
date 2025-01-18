@@ -2,7 +2,8 @@
 
 import useLoginStore from "@/store/login";
 
-import LoginOtpForm from "./LoginOtpForm";
+import LoginOtpForm from "@/components/form/template/auth/login/LoginOtpForm";
+
 import LoginSendOtpAgain from "./LoginSendOtpAgain";
 
 import Button from "@/components/ui/Button";

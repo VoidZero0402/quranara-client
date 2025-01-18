@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import SignupForm from "../signup/SignupForm";
+import SignupForm from "@/components/form/template/auth/signup/SignupForm";
 
 function SignupWrapper() {
     return (

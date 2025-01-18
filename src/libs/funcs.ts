@@ -1,19 +1,5 @@
 import { UploadFileType } from "@/constants/uploads";
 
-export function convertToQueryString(params: Record<string, any | string[]>) {
-    const searchParams = new URLSearchParams();
-
-    for (const key in params) {
-        if (Array.isArray(params[key])) {
-            params[key] = params[key].join(",");
-        }
-
-        searchParams.set(key, params[key]);
-    }
-
-    return searchParams.toString();
-}
-
 export function updateURLSearchParams(key: string, value: string, route?: string) {
     const url = new URL(route ?? window.location.href, window.location.origin);
 

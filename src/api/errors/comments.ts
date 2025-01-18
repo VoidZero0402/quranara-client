@@ -49,11 +49,3 @@ export const UnpinCommentStatusOptions: ResponseStatusHandlerOptions = {
         "404": { status: "error", text: "مشکل در سرور", caption: "بنظر میرسه مشکلی در سرور پیش اومده" },
     },
 };
-
-export const CheckRepliesCommentStatusOptions: ResponseStatusHandlerOptions = {
-    statuses: {
-        "200": { status: "success", text: "ذخیره موفق", caption: "تغییرات دیدگاه با موفقیت ذخیره شد" },
-        "401": { status: "error", text: "عدم دسترسی", caption: "شما به این عملکرد دسترسی ندارید" },
-        "404": { status: "error", text: "مشکل در سرور", caption: "بنظر میرسه مشکلی در سرور پیش اومده" },
-    },
-};

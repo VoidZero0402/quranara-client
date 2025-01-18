@@ -44,15 +44,4 @@ function EmptyState() {
     );
 }
 
-export function QuestionsDisplayLoading() {
-    return (
-        <div className="space-y-4">
-            <QuestionLoading />
-            <QuestionLoading />
-            <QuestionLoading />
-            <QuestionLoading />
-        </div>
-    );
-}
-
 export default QuestionsDisplay;

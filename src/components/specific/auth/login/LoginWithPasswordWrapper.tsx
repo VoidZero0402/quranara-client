@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import LoginWithPasswordForm from "../login/LoginWithPasswordForm";
+import LoginWithPasswordForm from "@/components/form/template/auth/login/LoginWithPasswordForm";
 
 import Button from "@/components/ui/Button";
 

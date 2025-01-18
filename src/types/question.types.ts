@@ -33,5 +33,3 @@ export type Question = {
 };
 
 export type LimitedQuestion = Omit<Question, "messages">;
-
-export type QuestionWithFirstMessage = LimitedQuestion & { message: QuestionMessage };
