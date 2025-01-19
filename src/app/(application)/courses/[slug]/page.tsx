@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { getCourse, getCourseTopics } from "@/api/queries/courses";
@@ -7,7 +8,41 @@ import Main from "@/components/layout/course/Main";
 import Teacher from "@/components/layout/course/Teacher";
 import Progress from "@/components/layout/course/Progress";
 
+import JSONLD from "@/components/JSONLD";
+
 export const dynamic = "force-static";
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<void | Metadata> {
+    const { slug } = await params;
+
+    const {
+        data: { course },
+        success,
+    } = await getCourse({ slug });
+
+    if (success) {
+        return {
+            title: course.title,
+            description: course.description,
+            creator: course.teacher.username,
+            openGraph: {
+                title: course.title,
+                description: course.description,
+                url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/courses/${course.slug}`,
+                siteName: "قرآن‌آرا",
+                images: [
+                    {
+                        url: course.cover,
+                        width: 1280,
+                        height: 720,
+                    },
+                ],
+                locale: "fa_IR",
+                type: "article",
+            },
+        };
+    }
+}
 
 async function page({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
@@ -26,6 +61,20 @@ async function page({ params }: { params: Promise<{ slug: string }> }) {
         notFound();
     }
 
+    const JSONLinkedData = {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        headline: course.title,
+        description: course.description,
+        author: course.teacher.username,
+        datePublished: course.createdAt,
+        publisher: {
+            "@type": "Organization",
+            name: "Quranara",
+        },
+        url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/courses/${course.slug}`,
+    };
+
     return (
         <div className="my-8">
             <Header _id={course._id} title={course.title} description={course.description} price={course.price} discount={course.discount} status={course.status} cover={course.cover} video={course.introduction?.video} />
@@ -38,6 +87,7 @@ async function page({ params }: { params: Promise<{ slug: string }> }) {
                     </aside>
                 </div>
             </div>
+            <JSONLD data={JSONLinkedData} />
         </div>
     );
 }

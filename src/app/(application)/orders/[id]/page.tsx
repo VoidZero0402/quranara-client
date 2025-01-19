@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -7,6 +8,11 @@ import { STATUS } from "@/constants/orders";
 
 import Fail from "@/components/specific/orders/Fail";
 import Success from "@/components/specific/orders/Success";
+
+export const metadata: Metadata = {
+    title: "نتیجه خرید شما",
+    description: "قرآن‌آرا در مسیر پیشرفت و یادگیری شما همراهتان است، از اینکه قرآن‌آرا را انتخاب کردید، سپاسگزاریم.",
+};
 
 async function Orders({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;

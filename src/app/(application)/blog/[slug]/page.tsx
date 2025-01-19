@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { getBlog } from "@/api/queries/blog";
@@ -19,7 +20,42 @@ import Actions, { ActionsLoading } from "@/components/specific/blog/Actions";
 
 import Slice from "@/components/ui/Slice";
 
+import JSONLD from "@/components/JSONLD";
+
 export const dynamic = "force-static";
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<void | Metadata> {
+    const { slug } = await params;
+
+    const {
+        data: { blog },
+        success,
+    } = await getBlog({ slug });
+
+    if (success) {
+        return {
+            title: blog.title,
+            description: blog.description,
+            category: blog.category.title,
+            creator: blog.author.username,
+            openGraph: {
+                title: blog.title,
+                description: blog.description,
+                url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/blog/${blog.slug}`,
+                siteName: "قرآن‌آرا",
+                images: [
+                    {
+                        url: blog.cover,
+                        width: 1280,
+                        height: 720,
+                    },
+                ],
+                locale: "fa_IR",
+                type: "article",
+            },
+        };
+    }
+}
 
 async function Blog({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
@@ -34,6 +70,20 @@ async function Blog({ params }: { params: Promise<{ slug: string }> }) {
     }
 
     increaseViews("blog", blog._id);
+
+    const JSONLinkedData = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: blog.title,
+        description: blog.description,
+        author: blog.author.username,
+        datePublished: blog.createdAt,
+        publisher: {
+            "@type": "Organization",
+            name: "Quranara",
+        },
+        url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/blog/${blog.slug}`,
+    };
 
     return (
         <div className="my-8">
@@ -68,6 +118,7 @@ async function Blog({ params }: { params: Promise<{ slug: string }> }) {
                     <div className="hidden xl:block w-[30%]"></div>
                 </div>
             </div>
+            <JSONLD data={JSONLinkedData} />
         </div>
     );
 }

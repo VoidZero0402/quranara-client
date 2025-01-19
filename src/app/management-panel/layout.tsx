@@ -1,8 +1,14 @@
+import type { Metadata } from "next";
+
 import { ROLES } from "@/constants/roles";
 
 import { authenticate } from "@/libs/server/funcs";
 
 import Navigation from "@/components/layout/management-panel/shared/Navigation";
+
+export const metadata: Metadata = {
+    title: "پنل مدیریت قرآن‌آرا",
+};
 
 async function ManagementPanelLayout({
     children,

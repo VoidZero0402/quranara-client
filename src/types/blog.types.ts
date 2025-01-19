@@ -24,7 +24,8 @@ export type Blog = {
     likes: number;
     timeToRead: number;
     relatedCourses: RelatedCourse[];
-    updatedAt: Date;
+    createdAt: string;
+    updatedAt: string;
 };
 
 export type LimitedBlog = Omit<Blog, "content" | "headings" | "status" | "tags" | "relatedCourses">;

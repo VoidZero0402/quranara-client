@@ -13,7 +13,7 @@ export type Session = {
     seconds: string;
     attached?: string;
     topic: Topic;
-    course: Pick<Course, "_id" | "title" | "slug" | "cover">;
+    course: Pick<Course, "_id" | "title" | "slug" | "description" | "cover">;
 };
 
 export type PopulatedSession = Pick<Session, "_id" | "title" | "slug" | "time" | "isPublic" | "order" | "video" | "content" | "attached">;

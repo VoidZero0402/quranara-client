@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { cookies } from "next/headers";
 import { notFound, redirect } from "next/navigation";
 
@@ -9,6 +10,37 @@ import Details from "@/components/layout/session/Details";
 import SessionContent from "@/components/layout/session/SessionContent";
 import Question from "@/components/layout/session/Question";
 import Topics from "@/components/layout/session/Topics";
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<void | Metadata> {
+    const { slug } = await params;
+
+    const {
+        data: { session },
+        success,
+    } = await getSession({ slug });
+
+    if (success) {
+        return {
+            title: session.title,
+            description: session.course.description,
+            openGraph: {
+                title: session.course.title,
+                description: session.course.description,
+                url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/sessions/${session.slug}`,
+                siteName: "قرآن‌آرا",
+                images: [
+                    {
+                        url: session.course.cover,
+                        width: 1280,
+                        height: 720,
+                    },
+                ],
+                locale: "fa_IR",
+                type: "video.episode",
+            },
+        };
+    }
+}
 
 async function Session({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;

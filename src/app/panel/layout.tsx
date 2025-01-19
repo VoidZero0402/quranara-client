@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
+
 import { authenticate } from "@/libs/server/funcs";
 
 import Navigation from "@/components/layout/panel/shared/Navigation";
+
+export const metadata: Metadata = {
+    title: "پنل کاربری قرآن‌آرا",
+};
 
 async function PanelLayout({
     children,
