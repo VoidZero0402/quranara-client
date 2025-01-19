@@ -11,14 +11,9 @@ const nextConfig: NextConfig = {
     images: {
         remotePatterns: [
             {
-                hostname: "rahequran.com",
+                hostname: "dl.quranara.com",
             },
         ],
-    },
-    logging: {
-        fetches: {
-            fullUrl: true,
-        },
     },
 };
 

@@ -5,6 +5,8 @@ import { notFound, redirect } from "next/navigation";
 import { getSession } from "@/api/queries/sessions";
 import { checkAccessServerSide } from "@/api/queries/courses";
 
+import { BASE_URL } from "@/constants/global";
+
 import Header from "@/components/layout/session/Header";
 import Details from "@/components/layout/session/Details";
 import SessionContent from "@/components/layout/session/SessionContent";
@@ -26,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             openGraph: {
                 title: session.course.title,
                 description: session.course.description,
-                url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/sessions/${session.slug}`,
+                url: `${BASE_URL}/sessions/${session.slug}`,
                 siteName: "قرآن‌آرا",
                 images: [
                     {

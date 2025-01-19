@@ -4,10 +4,11 @@ import { notFound } from "next/navigation";
 
 import { getBlog } from "@/api/queries/blog";
 
-import Header from "@/components/layout/blog/Header";
+import { BASE_URL } from "@/constants/global";
 
 import { increaseViews } from "@/libs/redis";
 
+import Header from "@/components/layout/blog/Header";
 import Details from "@/components/layout/blog/Details";
 import Headings from "@/components/layout/blog/Headings";
 import Content from "@/components/layout/content/Content";
@@ -41,7 +42,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             openGraph: {
                 title: blog.title,
                 description: blog.description,
-                url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/blog/${blog.slug}`,
+                url: `${BASE_URL}/blog/${blog.slug}`,
                 siteName: "قرآن‌آرا",
                 images: [
                     {
@@ -82,7 +83,7 @@ async function Blog({ params }: { params: Promise<{ slug: string }> }) {
             "@type": "Organization",
             name: "Quranara",
         },
-        url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/blog/${blog.slug}`,
+        url: `${BASE_URL}/blog/${blog.slug}`,
     };
 
     return (

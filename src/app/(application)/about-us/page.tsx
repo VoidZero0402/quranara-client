@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+import { BASE_URL } from "@/constants/global";
+
 import Header from "@/components/layout/about-us/Header";
 import Introduction from "@/components/layout/about-us/Introduction";
 import Story from "@/components/layout/about-us/Story";
@@ -15,7 +17,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "درباره آکادمی قرآن‌آرا",
         description: "از ایده ساخت قرآن‌آرا گرفته تا هدف اصلی آن در ترویج مهارت‌های قرآنی، در این صفحه با داستان شکل‌گیری، تجربه‌های مؤسس، خدمات آموزشی، مشاوره تخصصی، و دستاوردهای مهم این آکادمی آشنا می‌شوید.",
-        url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/about-us`,
+        url: `${BASE_URL}/about-us`,
         siteName: "قرآن‌آرا",
         images: [
             {
@@ -40,7 +42,7 @@ const JSONLinkedData = {
         "@type": "Organization",
         name: "Quranara",
     },
-    url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/about-us`,
+    url: `${BASE_URL}/about-us`,
 };
 
 function AboutUs() {

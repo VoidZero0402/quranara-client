@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { getQuestions } from "@/api/queries/questions";
 
-import Question, { QuestionLoading } from "./Question";
+import Question from "./Question";
 
 import Button from "@/components/ui/Button";
 

@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 
 import { getTv } from "@/api/queries/tv";
 
+import { BASE_URL } from "@/constants/global";
+
 import { increaseViews } from "@/libs/redis";
 
 import Header from "@/components/layout/tv/Header";
@@ -32,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             openGraph: {
                 title: tv.title,
                 description: tv.description,
-                url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/tv/${tv.slug}`,
+                url: `${BASE_URL}/tv/${tv.slug}`,
                 siteName: "قرآن‌آرا",
                 images: [
                     {
@@ -73,7 +75,7 @@ async function Tv({ params }: { params: Promise<{ slug: string }> }) {
             "@type": "Organization",
             name: "Quranara",
         },
-        url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/tv/${tv.slug}`,
+        url: `${BASE_URL}/tv/${tv.slug}`,
     };
 
     return (

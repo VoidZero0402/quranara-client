@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 
 import { getCourse, getCourseTopics } from "@/api/queries/courses";
 
+import { BASE_URL } from "@/constants/global";
+
 import Header from "@/components/layout/course/Header";
 import Main from "@/components/layout/course/Main";
 import Teacher from "@/components/layout/course/Teacher";
@@ -28,7 +30,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             openGraph: {
                 title: course.title,
                 description: course.description,
-                url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/courses/${course.slug}`,
+                url: `${BASE_URL}/courses/${course.slug}`,
                 siteName: "قرآن‌آرا",
                 images: [
                     {
@@ -72,7 +74,7 @@ async function page({ params }: { params: Promise<{ slug: string }> }) {
             "@type": "Organization",
             name: "Quranara",
         },
-        url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/courses/${course.slug}`,
+        url: `${BASE_URL}/courses/${course.slug}`,
     };
 
     return (
