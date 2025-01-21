@@ -3,7 +3,7 @@ import { cookies } from "next/headers";
 import { notFound, redirect } from "next/navigation";
 
 import { getSession } from "@/api/queries/sessions";
-import { checkAccessServerSide } from "@/api/queries/courses";
+import { checkAccess } from "@/api/queries/courses";
 
 import { BASE_URL } from "@/constants/global";
 
@@ -56,7 +56,7 @@ async function Session({ params }: { params: Promise<{ slug: string }> }) {
         notFound();
     }
 
-    const { data } = await checkAccessServerSide({ courseId: session.course._id }, (await cookies()).toString());
+    const { data } = await checkAccess({ courseId: session.course._id }, (await cookies()).toString());
 
     if (!session.isPublic && !data.hasAccess) {
         redirect("/");

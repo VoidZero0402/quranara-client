@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-import { getCookieUser } from "@/libs/apis";
+import { getUser } from "@/libs/apis";
 
 import Messages from "./Messages";
 
@@ -14,7 +14,6 @@ import AnswerQuestionForm from "@/components/form/template/management-panel/Answ
 import Layers from "@/components/svgs/Layers";
 
 import { AnswerQuestionSchemaType } from "@/validators/questions";
-import { CookieUser } from "@/types/user.types";
 import { Question, QuestionMessage } from "@/types/question.types";
 import UserQuestion from "./UserQuestion";
 
@@ -34,20 +33,22 @@ function ChatOffCanvas({ isOpen, onClose, question }: ChatOffCanvasProps) {
     }, [messages]);
 
     const onMessage = useCallback(async (data: AnswerQuestionSchemaType) => {
-        const user = (await getCookieUser()) as CookieUser;
+        const user = await getUser();
 
-        const message: QuestionMessage = {
-            ...data,
-            createdAt: Date.now(),
-            user: {
-                _id: uuidv4(),
-                role: user.role,
-                username: user.username,
-                profile: user.profile,
-            },
-        };
+        if (user) {
+            const message: QuestionMessage = {
+                ...data,
+                createdAt: Date.now(),
+                user: {
+                    _id: uuidv4(),
+                    role: user.role,
+                    username: user.username,
+                    profile: user.profile,
+                },
+            };
 
-        setMessages((messages) => [...messages, message]);
+            setMessages((messages) => [...messages, message]);
+        }
     }, []);
 
     return (

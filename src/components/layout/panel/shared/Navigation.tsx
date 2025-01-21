@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { getFullDate } from "@/libs/funcs";
-import { getCookieUser } from "@/libs/server/funcs";
+import { getUser } from "@/libs/server/funcs";
 
 import Sidebar from "./Sidebar";
 import ToggleTheme from "@/components/specific/navbar/ToggleTheme";
@@ -10,7 +10,7 @@ import Button from "@/components/ui/Button";
 import Logo from "@/components/ui/Logo";
 
 async function Navigation() {
-    const user = await getCookieUser();
+    const user = await getUser();
     
     return (
         <>

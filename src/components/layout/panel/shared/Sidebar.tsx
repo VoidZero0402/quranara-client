@@ -25,9 +25,9 @@ import QuestionCircle from "@/components/svgs/QuestionCircle";
 import UserRounded from "@/components/svgs/UserRounded";
 import XMark from "@/components/svgs/XMark";
 
-import { CookieUser } from "@/types/user.types";
+import { User } from "@/types/user.types";
 
-type SidebarProps = { user: CookieUser };
+type SidebarProps = { user: User };
 
 function Sidebar({ user }: SidebarProps) {
     const [isOpen, toggleOpen] = useToggle();

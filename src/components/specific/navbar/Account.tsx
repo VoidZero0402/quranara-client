@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { ROLES } from "@/constants/roles";
 
 import { OpacityAnimation } from "@/libs/motions";
-import { getCookieUser } from "@/libs/apis";
+import { getUser } from "@/libs/apis";
 
 import UserAccount from "./UserAccount";
 
@@ -18,7 +18,7 @@ import UserRounded from "@/components/svgs/UserRounded";
 import Setting from "@/components/svgs/Setting";
 
 function Account() {
-    const { data: user } = useSuspenseQuery({ queryKey: ["cookie-user"], queryFn: getCookieUser });
+    const { data: user } = useSuspenseQuery({ queryKey: ["cookie-user"], queryFn: getUser });
 
     if (!user) {
         return (

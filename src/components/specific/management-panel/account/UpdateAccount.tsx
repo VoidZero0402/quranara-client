@@ -1,11 +1,11 @@
-import { getCookieUser } from "@/libs/server/funcs";
+import { getUser } from "@/libs/server/funcs";
 
 import UpdateAccountForm from "@/components/form/template/panel/UpdateAccountForm";
 
 import Transform from "@/components/svgs/Transform";
 
 async function UpdateAccount() {
-    const user = await getCookieUser();
+    const user = await getUser();
 
     return (
         <div className="xl:w-2/3 space-y-8 p-4">

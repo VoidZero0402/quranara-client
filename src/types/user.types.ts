@@ -15,6 +15,4 @@ export type User = {
     updatedAt: number;
 };
 
-export type CookieUser = Omit<User, "_id">;
-
 export type PopulatedUser = Pick<User, "_id" | "username" | "profile">;

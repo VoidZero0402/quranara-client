@@ -20,9 +20,9 @@ import Layers from "@/components/svgs/Layers";
 import ChatRoundLine from "@/components/svgs/ChatRoundLine";
 import QuestionCircle from "@/components/svgs/QuestionCircle";
 
-import { CookieUser } from "@/types/user.types";
+import { User } from "@/types/user.types";
 
-type UserAccountProps = { user: CookieUser };
+type UserAccountProps = { user: User };
 
 function UserAccount({ user }: UserAccountProps) {
     const { ref, isOpen, toggleOpen } = useToggle();

@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import useEffectState from "@/hooks/useEffectState";
 
-import { getCookieUser } from "@/libs/apis";
+import { getUser } from "@/libs/apis";
 
 import OffCanvas, { OffCanvasHeader, OffCanvasInstanceProps } from "@/components/ui/OffCanvas";
 
@@ -16,7 +16,6 @@ import Messages from "./Messages";
 import ChatRoundLine from "@/components/svgs/ChatRoundLine";
 
 import { AnswerTicketSchemaType } from "@/validators/tickets";
-import { CookieUser } from "@/types/user.types";
 import { Ticket, TicketMessage } from "@/types/ticket.types";
 
 type ChatOffCanvasProps = OffCanvasInstanceProps & { ticket: Ticket };
@@ -30,20 +29,22 @@ function ChatOffCanvas({ isOpen, onClose, ticket }: ChatOffCanvasProps) {
     }, [messages]);
 
     const onMessage = useCallback(async (data: AnswerTicketSchemaType) => {
-        const user = (await getCookieUser()) as CookieUser;
+        const user = await getUser();
 
-        const message: TicketMessage = {
-            ...data,
-            createdAt: Date.now(),
-            user: {
-                _id: uuidv4(),
-                role: user.role,
-                username: user.username,
-                profile: user.profile,
-            },
-        };
+        if (user) {
+            const message: TicketMessage = {
+                ...data,
+                createdAt: Date.now(),
+                user: {
+                    _id: uuidv4(),
+                    role: user.role,
+                    username: user.username,
+                    profile: user.profile,
+                },
+            };
 
-        setMessages((messages) => [...messages, message]);
+            setMessages((messages) => [...messages, message]);
+        }
     }, []);
 
     return (

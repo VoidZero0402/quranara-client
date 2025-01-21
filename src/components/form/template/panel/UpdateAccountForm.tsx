@@ -26,9 +26,9 @@ import HomeAngle from "@/components/svgs/HomeAngle";
 import Calendar from "@/components/svgs/Calendar";
 import UserSpeak from "@/components/svgs/UserSpeak";
 
-import { CookieUser } from "@/types/user.types";
+import { User } from "@/types/user.types";
 
-type UpdateAccountFormProps = { user: CookieUser };
+type UpdateAccountFormProps = { user: User };
 
 function UpdateAccountForm({ user }: UpdateAccountFormProps) {
     const router = useRouter();

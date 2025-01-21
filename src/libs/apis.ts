@@ -1,16 +1,16 @@
-import getCookie from "@/actions/getCookie";
+import { getMe } from "@/api/queries/auth";
 
 import { courses as coursesCache } from "@/api/cache/tags";
 
 import { revalidate } from "./revalidate";
 
-import { CookieUser } from "@/types/user.types";
+import { User } from "@/types/user.types";
 import { getCoursesSummary } from "@/api/queries/courses";
 
-export async function getCookieUser(): Promise<CookieUser | null> {
-    const { value } = await getCookie("_user");
+export async function getUser(): Promise<User | null> {
+    const res = await getMe();
 
-    return value ?? null;
+    return res.data.user ?? null;
 }
 
 export async function revalidateCoursesCache() {

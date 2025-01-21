@@ -1,8 +1,8 @@
 import StarShine from "@/components/svgs/StarShine";
-import { getCookieUser } from "@/libs/server/funcs";
+import { getUser } from "@/libs/server/funcs";
 
 async function Welcome() {
-    const user = await getCookieUser();
+    const user = await getUser();
 
     return (
         <div className="flex flex-col sm:flex-row items-center gap-4 p-4 bg-white dark:bg-gray-850 sm:rounded-2xl">

@@ -7,12 +7,12 @@ import Slice from "@/components/ui/Slice";
 
 import QuestionCircle from "@/components/svgs/QuestionCircle";
 import { getSessionQuestion } from "@/api/queries/sessions";
-import { getUserFromCookies } from "@/libs/server/funcs";
+import { getUser } from "@/libs/server/funcs";
 
 type QuestionProps = { _id: string; slug: string };
 
 async function Question({ _id, slug }: QuestionProps) {
-    const user = await getUserFromCookies();
+    const user = await getUser();
 
     if (!user) {
         return (
@@ -25,7 +25,7 @@ async function Question({ _id, slug }: QuestionProps) {
                     <p className="text-sm text-gray-600 dark:text-gray-400">اگر سوال یا مشکلی در هر جلسه داشتین، می‌توانید در این بخش با مدرس در ارتباط باشید</p>
                 </div>
                 <div className="flex-center col-span-4 py-10">
-                    <span className="font-pelak-medium text-lg text-red-400">برای دسترسی به این بخش ابتدا به حساب کاربری خود وارد شوید</span>
+                    <span className="font-pelak-medium text-lg text-red-500">برای دسترسی به این بخش ابتدا به حساب کاربری خود وارد شوید</span>
                 </div>
             </section>
         );

@@ -13,6 +13,9 @@ const nextConfig: NextConfig = {
             {
                 hostname: "dl.quranara.com",
             },
+            {
+                hostname: "rahequran.com",
+            },
         ],
     },
 };

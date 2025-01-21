@@ -6,32 +6,22 @@ import { cookies } from "next/headers";
 
 import { getMe } from "@/api/queries/auth";
 
-import { CookieUser, Role } from "@/types/user.types";
+import { User, Role } from "@/types/user.types";
 
-export async function getCookiesUserFrom(): Promise<CookieUser | undefined> {
-    const cookie = (await cookies()).get("_user")?.value;
-    const value = cookie && JSON.parse(cookie);
+export async function getUser(): Promise<User> {
+    const res = await getMe((await cookies()).toString());
 
-    return value;
-}
-
-export async function getCookieUser(): Promise<CookieUser> {
-    const cookie = (await cookies()).get("_user")?.value;
-
-    if (!cookie) {
+    if (res.status !== 200) {
         redirect("/");
     }
 
-    const value: CookieUser = JSON.parse(cookie);
-
-    return value;
+    return res.data.user;
 }
 
 export async function isAuthenticated(req: NextRequest): Promise<boolean> {
-    const user = req.cookies.get("_user")?.value;
     const session = req.cookies.get("_session")?.value;
 
-    return !!user && !!session;
+    return !!session;
 }
 
 export async function authenticate(role?: Role): Promise<void> {
