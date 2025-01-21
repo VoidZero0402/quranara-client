@@ -20,7 +20,7 @@ async function Courses() {
                         <Layers className="w-8" />
                         <h2 className="font-pelak-semibold text-2xl">دوره‌های تخصصی قرآن‌آرا</h2>
                     </div>
-                    <p className="font-pelak-medium text-gray-500">آموزش کامل از روخوانی تا تفسیر قرآن</p>
+                    <p className="font-pelak-medium text-gray-500">آموزش کامل از روخوانی تا حفظ و تفسیر قرآن</p>
                 </div>
                 <Link href="/courses">
                     <Button size="lg" rounded="lg" variant="text-primary">

@@ -27,12 +27,12 @@ function Introduction() {
             </div>
             <div className="flex flex-col gap-y-2 lg:w-1/2">
                 <h2 className="font-pelak-semibold text-2xl sm:text-3xl/[1.5] text-gray-800 dark:text-gray-200">ویدیو معرفی آکادمی قرآن‌آرا</h2>
-                <p className="sm:text-lg text-gray-600 dark:text-gray-400 leading-8 sm:leading-8">ویدیوی معرفی قرآن‌آرا داستان شکل‌گیری، اهداف و خدمات آن را روایت می‌کند. این آکادمی برای آموزش و مشاوره قرآنی طراحی شده و بستری برای پیشرفت علاقه‌مندان فراهم می‌کند. در ویدیوی معرفی قرآن‌آرا، حسین خانی، مؤسس این پلتفرم، داستان شکل‌گیری آن را روایت می‌کند و از تجربه‌های قرآنی خود می‌گوید.</p>
+                <p className="sm:text-lg text-gray-600 dark:text-gray-400 leading-8 sm:leading-8">در این ویدیو می‌تونید خیلی جامع و کامل با آکادمی قرآن‌آرا آشنا بشید. حسین خانی، مؤسس قرآن‌آرا از چگونگی شکل‌گیری این پلتفرم صحبت می‌کنه و بخش‌های مختلف اون رو براتون شرح می‌ده. پس اگه می‌خواین قرآن‌آرا و مؤسس اون رو بهتر بشناسید، حتما ویدیو معرفی قرآن‌آرا رو ببینید</p>
                 <div className="mt-4">
                     <a href="#founder">
                         <Button size="lg" variant="neutral-base" className="gap-x-2 w-full sm:w-max">
                             <VerifiedCheck />
-                            درباره مؤسس قرآن‌آرا بخوانید
+                            درباره مؤسس قرآن‌آرا بخونید
                         </Button>
                     </a>
                 </div>

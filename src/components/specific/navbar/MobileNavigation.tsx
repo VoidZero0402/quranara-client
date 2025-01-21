@@ -41,19 +41,19 @@ function MobileNavigation({ menus }: MobileNavigationProps) {
             <CollapsableMobileNavigationItem text="دوره‌های تخصصی" Icon={Layers} isActive={active === "courses"} onActive={onActive("courses")}>
                 <div className="w-full p-2">
                     {useMemo(() => menus.courses.map((course) => <NavigationLink key={course._id} href={`/courses/${course.slug}`} title={course.title} caption="مباحث و موضوعات مربوط به علوم قرآنی" />), [])}
-                    <NavigationLink href="/courses" title="همه دوره‌ها" caption="مشاهده همه دوره‌های تخصصی قرآن آرا" />
+                    <NavigationLink href="/courses" title="همه دوره‌ها" caption="مشاهده همه دوره‌های تخصصی قرآن‌آرا" />
                 </div>
             </CollapsableMobileNavigationItem>
             <CollapsableMobileNavigationItem text="مقالات" Icon={Widgets} isActive={active === "blog"} onActive={onActive("blog")}>
                 <div className="w-full p-2">
                     {useMemo(() => menus.categories.blog.map((blog) => <NavigationLink key={blog._id} href={`#`} title={blog.title} caption={blog.caption} />), [])}
-                    <NavigationLink href="/blog" title="همه مقالات" caption="مشاهده همه مقالات قرآن آرا" />
+                    <NavigationLink href="/blog" title="همه مقالات" caption="مشاهده همه مقالات قرآن‌آرا" />
                 </div>
             </CollapsableMobileNavigationItem>
-            <CollapsableMobileNavigationItem text="آموزش‌های رایگان" Icon={PlayCircle} isActive={active === "tv"} onActive={onActive("tv")}>
+            <CollapsableMobileNavigationItem text="ویدیوهای آموزشی" Icon={PlayCircle} isActive={active === "tv"} onActive={onActive("tv")}>
                 <div className="w-full p-2">
                     {useMemo(() => menus.categories.tv.map((tv) => <NavigationLink key={tv._id} href={`#`} title={tv.title} caption={tv.caption} />), [])}
-                    <NavigationLink href="/tv" title="همه آموزش‌های رایگان" caption="مشاهده همه آموزش‌های رایگان قرآن آرا" />
+                    <NavigationLink href="/tv" title="همه ویدیوهای آموزشی" caption="مشاهده همه ویدیوهای آموزشی قرآن‌آرا" />
                 </div>
             </CollapsableMobileNavigationItem>
             <MobileNavigationItem text="درباره ما" Icon={QuestionCircle} href="/about-us" />

@@ -8,7 +8,7 @@ import { getMe } from "@/api/queries/auth";
 
 import { CookieUser, Role } from "@/types/user.types";
 
-export async function getUserFromCookies(): Promise<CookieUser | undefined> {
+export async function getCookiesUserFrom(): Promise<CookieUser | undefined> {
     const cookie = (await cookies()).get("_user")?.value;
     const value = cookie && JSON.parse(cookie);
 

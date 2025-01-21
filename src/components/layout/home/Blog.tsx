@@ -20,7 +20,7 @@ async function Blog() {
                         <Widgets className="w-8" />
                         <h2 className="font-pelak-semibold text-2xl">مقالات تخصصی قرآن‌آرا</h2>
                     </div>
-                    <p className="font-pelak-medium text-gray-500">مطالب ارزشمند و عمقی درباره قرآن و مفاهیم آن</p>
+                    <p className="font-pelak-medium text-gray-500">مطالب ارزشمند و عمیق درباره علوم مختلف قرآنی</p>
                 </div>
                 <Link href="/blog">
                     <Button size="lg" rounded="lg" variant="text-primary" className="font-pelak-medium">

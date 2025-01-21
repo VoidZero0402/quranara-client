@@ -5,6 +5,8 @@ import { Toaster } from "react-hot-toast";
 
 import Providers from "@/providers/Providers";
 
+import { BASE_URL } from "@/constants/global";
+
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -18,7 +20,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "قرآن‌آرا؛ پلی به سوی یادگیری و درک بهتر قرآن",
         description: "با قرآن‌آرا، دوره‌های متنوع روخوانی، روان‌خوانی و تفسیر قرآن را به زبانی روان و با کیفیت بالا بیاموزید",
-        url: process.env.NEXT_PUBLIC_FRONTEND_URL,
+        url: BASE_URL,
         siteName: "قرآن‌آرا",
         images: [
             {

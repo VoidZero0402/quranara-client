@@ -38,7 +38,7 @@ async function Navigation({ menus }: NavigationProps) {
                     </div>
                 </NavigationDropDown>
             </NavigationItem>
-            <NavigationItem text="آموزش‌های رایگان" href="/tv">
+            <NavigationItem text="ویدیوهای آموزشی" href="/tv">
                 <NavigationDropDown>
                     <div className="flex flex-col gap-y-1">
                         {menus.categories.tv.map((tv) => (

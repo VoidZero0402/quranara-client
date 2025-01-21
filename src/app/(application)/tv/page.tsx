@@ -4,7 +4,7 @@ import Header from "@/components/layout/tvs/Header";
 import Main from "@/components/layout/tvs/Main";
 
 export const metadata: Metadata = {
-    title: "ویدیوهای آموزشی رایگان",
+    title: "ویدیوهای آموزشی قرآن‌آرا",
     description: "ویدیوهای کاربردی برای آشنایی با قرآن",
     keywords: ["آموزش قرآن", "ویدیو آموزش قرآن", "آموزش ترتیل و قرائت قرآن", "آموزش ویدیویی حفظ قرآن"],
 };

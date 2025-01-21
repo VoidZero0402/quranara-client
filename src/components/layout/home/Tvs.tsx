@@ -18,9 +18,9 @@ async function Tvs() {
                 <div className="flex flex-col items-center sm:items-start gap-4 text-center sm:text-start">
                     <div className="flex items-center gap-x-2 text-gray-700 dark:text-gray-300">
                         <PlayCircle className="w-8" />
-                        <h2 className="font-pelak-semibold text-2xl">ویدیوهای آموزشی رایگان</h2>
+                        <h2 className="font-pelak-semibold text-2xl">ویدیوهای آموزشی قرآن‌آرا</h2>
                     </div>
-                    <p className="font-pelak-medium text-gray-500">ویدیوهای کاربردی برای آشنایی با قرآن</p>
+                    <p className="font-pelak-medium text-gray-500">ویدیوهای کاربردی برای آشنایی با مهارت‌های قرآنی</p>
                 </div>
                 <Link href="/tv">
                     <Button size="lg" variant="text-primary">

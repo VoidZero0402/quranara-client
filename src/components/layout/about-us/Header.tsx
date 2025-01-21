@@ -9,13 +9,13 @@ function Header() {
             <div className="container">
                 <section className="flex flex-col-reverse lg:flex-row items-center gap-x-16 gap-y-8">
                     <div className="flex flex-col gap-y-2 lg:w-1/2">
-                        <span className="font-pelak-medium text-teal-500">داستان قرآن‌آرا را بخوانید</span>
+                        <span className="font-pelak-medium text-teal-500">داستان قرآن‌آرا رو بخونید</span>
                         <h1 className="font-pelak-semibold text-3xl/[1.5] sm:text-4xl/[1.5] text-gray-800 dark:text-gray-200">درباره آکادمی قرآن‌آرا</h1>
-                        <p className="sm:text-lg text-gray-600 dark:text-gray-400 leading-8 sm:leading-8">از ایده ساخت قرآن‌آرا گرفته تا هدف اصلی آن در ترویج مهارت‌های قرآنی، در این صفحه با داستان شکل‌گیری، تجربه‌های مؤسس، خدمات آموزشی، مشاوره تخصصی، و دستاوردهای مهم این آکادمی آشنا می‌شوید.</p>
+                        <p className="sm:text-lg text-gray-600 dark:text-gray-400 leading-8 sm:leading-8">چی شد که قرآن‌آرا ساخته شد؟ رسالت قرآن‌آرا چیه؟ مؤسس قرآن‌آرا کیه؟ در این صفحه داستان شکل‌گیری قرآن‌آرا رو می‌خونیم، هدف اصلی و رسالت آکادمی قرآن‌آرا و خدماتش رو مرور می‌کنیم و با مؤسس این مجموعه به طور کامل آشنا می‌شیم</p>
                         <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-4 mt-4">
                             <a href="#story">
                                 <Button size="lg" className="w-full">
-                                    داستان قرآن‌آرا را بخوانید
+                                    داستان قرآن‌آرا رو بخونید
                                 </Button>
                             </a>
                             <a href="#introduction">

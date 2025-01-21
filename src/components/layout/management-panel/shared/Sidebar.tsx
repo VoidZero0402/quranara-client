@@ -93,7 +93,7 @@ function Sidebar({ user }: SidebarProps) {
                         </NavLink>
                         <NavLink href="/management-panel/tvs" subs>
                             <PlayCircle />
-                            آموزش‌های رایگان
+                            ویدیوهای آموزشی
                         </NavLink>
                         <NavLink href="/management-panel/categories">
                             <Graph />

@@ -15,7 +15,7 @@ function AboutUsBox({ children, title, description }: AboutUsBoxProps) {
                 </div>
                 <div className="flex flex-col gap-y-2 text-center sm:text-start">
                     <h3 className="font-pelak-medium text-xl">{title}</h3>
-                    <p className="text-gray-600 dark:text-gray-400 leading-7 line-clamp-4">{description}</p>
+                    <p className="text-gray-600 dark:text-gray-400 leading-7 line-clamp-3">{description}</p>
                 </div>
             </div>
         </motion.div>

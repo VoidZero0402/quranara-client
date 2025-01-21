@@ -1,3 +1,5 @@
+import { BASE_URL } from "@/constants/global";
+
 import Header from "@/components/layout/home/Header";
 import CTABoxes from "@/components/layout/home/CTABoxes";
 import Courses from "@/components/layout/home/Courses";
@@ -13,8 +15,8 @@ const OrganizationJSONLinkedData = {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "قرآن‌آرا",
-    url: process.env.NEXT_PUBLIC_FRONTEND_URL,
-    logo: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/logo.png`,
+    url: BASE_URL,
+    logo: `${BASE_URL}/logo.png`,
     sameAs: ["https://instagram.com/quranara.academy"],
 };
 
@@ -23,7 +25,7 @@ const WebPageJSONLinkedData = {
     "@type": "WebPage",
     name: "صفحه اصلی قرآن‌آرا",
     description: "قرآن‌آرا؛ پلی به سوی یادگیری و درک بهتر قرآن",
-    url: process.env.NEXT_PUBLIC_FRONTEND_URL,
+    url: BASE_URL,
 };
 
 function Home() {

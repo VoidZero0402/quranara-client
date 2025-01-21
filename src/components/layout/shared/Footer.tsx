@@ -37,7 +37,7 @@ function Footer() {
                                 </Link>
                                 <Link href="/tv" className="flex items-center gap-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-all">
                                     <span className="w-3 h-1 bg-gray-300 dark:bg-gray-700 rounded-full"></span>
-                                    آموزش‌های رایگان
+                                    ویدیوهای آموزشی
                                 </Link>
                                 <Link href="/blog" className="flex items-center gap-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-all">
                                     <span className="w-3 h-1 bg-gray-300 dark:bg-gray-700 rounded-full"></span>
