@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 
-import Placeholder from "@/components/ui/Placeholder";
+import Image from "@/components/ui/Image";
 import Button from "@/components/ui/Button";
 
 import "swiper/css";
@@ -48,7 +48,9 @@ function NewsSlide({ cover, title, description, link }: News) {
                     </div>
                 )}
             </div>
-            <Placeholder className="aspect-[2/1] w-full lg:w-1/2" title={cover} type="image" />
+            <div className="aspect-[2/1] w-full lg:w-1/2">
+                <Image src={cover} alt={title} width={720} height={360} wrapperClassName="rounded-xl" />
+            </div>
         </div>
     );
 }

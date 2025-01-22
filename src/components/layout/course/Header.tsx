@@ -73,7 +73,7 @@ function Header({ _id, title, description, price, discount, status, cover, video
                     </div>
 
                     <div className="w-full xl:w-1/2">
-                        <IntroPlayer cover={cover} video={video} />
+                        <IntroPlayer title={title} cover={cover} video={video} />
                     </div>
                 </section>
             </div>

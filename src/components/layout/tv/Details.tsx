@@ -19,16 +19,16 @@ const Player = dynamic(() => import("@/components/ui/Player"), { ssr: false, loa
 
 type DetailsProps = Pick<Tv, "_id" | "title" | "description" | "category" | "cover" | "video" | "attached">;
 
-function Details({ _id, title, description, video, category, attached }: DetailsProps) {
+function Details({ _id, title, description, cover, video, category, attached }: DetailsProps) {
     return (
         <section className="space-y-4 p-4 sm:p-8 bg-white dark:bg-gray-850 rounded-2xl">
             <Player
                 source={{
                     type: "video",
-                    poster: "https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg",
+                    poster: cover,
                     sources: [
                         {
-                            src: "https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4",
+                            src: video,
                         },
                     ],
                 }}

@@ -7,25 +7,27 @@ import { PlayerLoading } from "@/components/ui/Player";
 
 const Player = dynamic(() => import("@/components/ui/Player"), { ssr: false, loading: PlayerLoading });
 
-type IntroPlayerProps = { cover: string; video?: string };
+type IntroPlayerProps = { title: string; cover: string; video?: string };
 
-function IntroPlayer({ video }: IntroPlayerProps) {
+function IntroPlayer({ title, cover, video }: IntroPlayerProps) {
     return (
         <>
             {video ? (
                 <Player
                     source={{
                         type: "video",
-                        poster: "https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg",
+                        poster: cover,
                         sources: [
                             {
-                                src: "https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4",
+                                src: video,
                             },
                         ],
                     }}
                 />
             ) : (
-                <Image src="/webpack-1-768x432.webp" alt="course cover" width={800} height={500} wrapperClassName="aspect-video" className="rounded-xl" />
+                <div className="aspect-video">
+                    <Image src={cover} alt={title} width={720} height={405} wrapperClassName="rounded-xl" />
+                </div>
             )}
         </>
     );

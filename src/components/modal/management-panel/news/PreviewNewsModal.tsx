@@ -3,7 +3,7 @@
 import Modal, { ModalBody, ModalFooter, ModalHeader, ModalInstanceProps } from "../../Modal";
 
 import Button from "@/components/ui/Button";
-import Placeholder from "@/components/ui/Placeholder";
+import Image from "@/components/ui/Image";
 
 import Document from "@/components/svgs/Document";
 import LinkCircle from "@/components/svgs/LinkCircle";
@@ -36,7 +36,9 @@ function PreviewNewsModal({ isOpen, onClose, news }: PreviewNewsModalProps) {
 function News({ cover, title, description, link }: News) {
     return (
         <div className="space-y-4">
-            <Placeholder className="aspect-[21/9] rounded-xl" type="image" title={cover} />
+            <div className="aspect-[2/1]">
+                <Image src={cover} alt={title} width={720} height={405} wrapperClassName="rounded-xl" />
+            </div>
             <div className="space-y-2 leading-8">
                 <span className="font-pelak-medium text-lg text-gray-800 dark:text-gray-200">{title}</span>
                 <p className="text-gray-600 dark:text-gray-400">{description}</p>

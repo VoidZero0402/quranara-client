@@ -19,7 +19,7 @@ function Questions() {
                     </span>
                     <p className="text-sm text-gray-600 dark:text-gray-400 leading-7">آخرین پرسش‌هایی که ایجاد کردی</p>
                 </div>
-                <Link href="/panel/tickets">
+                <Link href="/panel/questions">
                     <Button size="lg" variant="text-primary">
                         مشاهده همه پرسش‌های من
                         <LongArrowLeft />

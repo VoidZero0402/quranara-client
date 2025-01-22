@@ -2,17 +2,18 @@ import Link from "next/link";
 
 import RemoveFromBasketButton from "@/components/specific/panel/cart/RemoveFromBasketButton";
 
-import Placeholder from "@/components/ui/Placeholder";
+import Image from "@/components/ui/Image";
 import Skeleton, { SkeletonFrame } from "@/components/ui/Skeleton";
 
 import { type CartItem } from "@/types/cart.types";
 
-
-function CartItem({ _id, title, description, slug, price, discount }: CartItem) {
+function CartItem({ _id, title, description, slug, price, cover, discount }: CartItem) {
     return (
         <div className="flex flex-col md:flex-row md:items-center gap-4 relative">
             <Link href={`/courses/${slug}`} className="md:w-1/4 shrink-0 overflow-hidden">
-                <Placeholder className="aspect-video rounded-xl" type="image" />
+                <div className="aspect-video">
+                    <Image src={cover} alt={title} width={480} height={270} wrapperClassName="rounded-xl" />
+                </div>
             </Link>
             <div className="md:w-1/2 space-y-2">
                 <h3 className="font-pelak-medium text-lg text-gray-800 dark:text-gray-200 line-clamp-1">

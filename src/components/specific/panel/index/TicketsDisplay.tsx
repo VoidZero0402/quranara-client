@@ -34,7 +34,7 @@ function EmptyState() {
                 <span className="font-pelak-medium text-xl text-gray-800 dark:text-gray-200 leading-8">هنوز هیچ تیکتی رو ایجاد نکردی</span>
                 <p className="text-gray-600 dark:text-gray-400 leading-7">اگه مشکلی داری یا دوست داری با مدیریت صحبت کنی میتونی از تیکت استفاده کنی</p>
             </div>
-            <Link href="/courses">
+            <Link href="/panel/tickets/new">
                 <Button size="lg">
                     <LinkCircle />
                     ایجاد اولین تیکت

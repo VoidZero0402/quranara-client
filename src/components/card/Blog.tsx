@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import Placeholder from "../ui/Placeholder";
+import Image from "../ui/Image";
 import Badge from "../ui/Badge";
 import Skeleton, { SkeletonFrame } from "../ui/Skeleton";
 import Slice from "../ui/Slice";
@@ -16,7 +16,9 @@ function Blog({ title, slug, description, cover, category, views, likes, timeToR
         <div className="bg-white dark:bg-gray-850 rounded-2xl overflow-hidden">
             <div>
                 <Link href={`/blog/${slug}`}>
-                    <Placeholder className="aspect-video rounded-xl" title={cover} type="image" />
+                    <div className="aspect-video">
+                        <Image src={cover} alt={title} width={480} height={270} wrapperClassName="rounded-xl" />
+                    </div>
                 </Link>
             </div>
             <div className="flex flex-col gap-2 p-4">

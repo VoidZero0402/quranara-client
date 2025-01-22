@@ -4,7 +4,7 @@ import { StatusText } from "@/constants/courses";
 
 import { getDiscountedPrice } from "@/libs/funcs";
 
-import Placeholder from "../ui/Placeholder";
+import Image from "../ui/Image";
 import Slice from "../ui/Slice";
 import Skeleton, { SkeletonFrame } from "../ui/Skeleton";
 
@@ -14,11 +14,13 @@ import LongArrowLeft from "../svgs/LongArrowLeft";
 
 import { LimitedCourse } from "@/types/course.types";
 
-function Course({ title, description, slug, status, price, discount, metadata }: LimitedCourse) {
+function Course({ title, description, slug, cover, status, price, discount, metadata }: LimitedCourse) {
     return (
         <div className="bg-white dark:bg-gray-850 rounded-2xl overflow-hidden">
             <Link href={`/courses/${slug}`} className="overflow-hidden">
-                <Placeholder className="aspect-video rounded-xl" type="image" />
+                <div className="aspect-video">
+                    <Image src={cover} alt={title} width={480} height={270} wrapperClassName="rounded-xl" />
+                </div>
             </Link>
             <div className="flex flex-col gap-2 p-4">
                 <div className="flex items-center gap-x-1 font-pelak-medium text-xs text-blue-500">

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { StatusText } from "@/constants/courses";
 
-import Placeholder from "@/components/ui/Placeholder";
+import Image from "@/components/ui/Image";
 import Slice from "@/components/ui/Slice";
 import Skeleton, { SkeletonFrame } from "@/components/ui/Skeleton";
 
@@ -11,12 +11,14 @@ import Play from "@/components/svgs/Play";
 
 import { LimitedCourse } from "@/types/course.types";
 
-function Course({ title, description, slug, status }: LimitedCourse) {
+function Course({ title, description, slug, cover, status }: LimitedCourse) {
     return (
         <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden">
             <div>
                 <Link href={`/courses/${slug}#topics`} className="relative group">
-                    <Placeholder className="aspect-video rounded-xl" />
+                    <div className="aspect-video">
+                        <Image src={cover} alt={title} width={480} height={270} wrapperClassName="rounded-xl" />
+                    </div>
                     <div className="flex-center absolute inset-0 m-auto size-16 bg-white/10 rounded-full transition-all duration-300 group-hover:size-18">
                         <div className="flex-center size-12 bg-white/10 border border-white/20 rounded-full">
                             <Play className="w-6 text-white" />

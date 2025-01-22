@@ -34,7 +34,7 @@ function EmptyState() {
                 <span className="font-pelak-medium text-xl text-gray-800 dark:text-gray-200 leading-8">هنوز هیچ پرسشی رو ایجاد نکردی</span>
                 <p className="text-gray-600 dark:text-gray-400 leading-7">در صورتی که راجب هر جلسه از دوره حتی جلسات رایگان سوالی داشتی میتونی مطرح کنی!</p>
             </div>
-            <Link href="/courses">
+            <Link href="/panel/courses">
                 <Button size="lg">
                     <LinkCircle />
                     مشاهده دوره‌های من

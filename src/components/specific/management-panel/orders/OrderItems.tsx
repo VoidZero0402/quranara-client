@@ -1,4 +1,4 @@
-import Placeholder from "@/components/ui/Placeholder";
+import Image from "@/components/ui/Image";
 
 import Layers from "@/components/svgs/Layers";
 
@@ -27,7 +27,9 @@ function Order({ title, description, cover, price }: OrderItem) {
         <div className="flex items-center justify-between gap-x-8 gap-y-4">
             <div className="flex items-center gap-x-4">
                 <div className="shrink-0 h-24 hidden md:block">
-                    <Placeholder className="size-full aspect-video rounded-xl" title={cover} />
+                    <div className="size-full aspect-video">
+                        <Image src={cover} alt={title} width={320} height={180} wrapperClassName="rounded-xl" />
+                    </div>
                 </div>
                 <div className="space-y-2">
                     <div className="flex items-center justify-between gap-4">

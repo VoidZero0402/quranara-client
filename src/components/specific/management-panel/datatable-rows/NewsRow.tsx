@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { formatDate } from "@/libs/funcs";
 
-import Placeholder from "@/components/ui/Placeholder";
+import Image from "@/components/ui/Image";
 import BadgeLight from "@/components/ui/BadgeLight";
 import IconButton from "@/components/ui/IconButton";
 import LimitedString from "@/components/ui/LimitedString";
@@ -23,8 +23,8 @@ function NewsRow({ news, onPreview, onRemove, onShown, onUnshown }: NewsRowProps
     return (
         <tr>
             <td>
-                <div>
-                    <Placeholder className="h-28 aspect-video" type="image" />
+                <div className="h-28 aspect-video">
+                    <Image src={news.cover} alt={news.title} width={320} height={180} wrapperClassName="rounded-xl" />
                 </div>
             </td>
             <td>

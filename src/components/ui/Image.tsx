@@ -9,7 +9,7 @@ import Skeleton, { SkeletonFrame } from "./Skeleton";
 
 type ImageProps = { wrapperClassName?: string } & NextImageProps;
 
-function Image({ wrapperClassName, className, ...props }: ImageProps) {
+function Image({ wrapperClassName, className, src = "/placeholder.webp", ...props }: ImageProps) {
     const [isLoading, setIsLoading] = useState(true);
 
     return (
@@ -19,7 +19,7 @@ function Image({ wrapperClassName, className, ...props }: ImageProps) {
                     <SkeletonFrame className="size-full" />
                 </Skeleton>
             )}
-            <NextImage className={cn("size-full object-cover opacity-0 transition-opacity duration-300", className, !isLoading && "opacity-100")} onLoad={() => setIsLoading(false)} {...props} />
+            <NextImage className={cn("size-full object-cover opacity-0 transition-opacity duration-300", className, !isLoading && "opacity-100")} onLoad={() => setIsLoading(false)} src={src} {...props} />
         </div>
     );
 }

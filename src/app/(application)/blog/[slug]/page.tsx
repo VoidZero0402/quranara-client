@@ -100,7 +100,7 @@ async function Blog({ params }: { params: Promise<{ slug: string }> }) {
                             </article>
                             <Slice />
                             <div className="flex flex-col xs:flex-row items-center justify-between gap-y-4">
-                                <Author />
+                                <Author author={blog.author} />
                                 <Suspense fallback={<ActionsLoading />}>
                                     <Actions _id={blog._id} />
                                 </Suspense>

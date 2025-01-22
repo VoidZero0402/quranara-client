@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-import Skeleton, { SkeletonFrame } from "../ui/Skeleton";
-import Placeholder from "../ui/Placeholder";
+import Image from "../ui/Image";
 import Badge from "../ui/Badge";
+import Skeleton, { SkeletonFrame } from "../ui/Skeleton";
 
 import Eye from "../svgs/Eye";
 import Heart from "../svgs/Heart";
@@ -16,7 +16,9 @@ function Tv({ title, slug, description, category, cover, views, likes, createdAt
         <div className="bg-white dark:bg-gray-850 rounded-2xl overflow-hidden">
             <div>
                 <Link href={`/tv/${slug}`} className="relative group">
-                    <Placeholder className="aspect-video rounded-xl" title={cover} />
+                    <div className="aspect-video">
+                        <Image src={cover} alt={title} width={480} height={270} wrapperClassName="rounded-xl" />
+                    </div>
                     <div className="flex-center absolute inset-0 m-auto size-16 bg-white/10 rounded-full transition-all duration-300 group-hover:size-18">
                         <div className="flex-center size-12 bg-white/10 border border-white/20 rounded-full">
                             <Play className="w-6 text-white" />

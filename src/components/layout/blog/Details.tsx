@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import Placeholder from "@/components/ui/Placeholder";
+import Image from "@/components/ui/Image";
 
 import ClockCircle from "@/components/svgs/ClockCircle";
 import Folder from "@/components/svgs/Folder";
@@ -9,11 +9,13 @@ import { Blog } from "@/types/blog.types";
 
 type DetailsProps = Pick<Blog, "title" | "description" | "category" | "cover" | "timeToRead">;
 
-function Details({ title, description, category, timeToRead }: DetailsProps) {
+function Details({ title, description, category, cover, timeToRead }: DetailsProps) {
     return (
         <section className="space-y-12">
             <div className="space-y-4">
-                <Placeholder className="aspect-video rounded-xl" type="image" />
+                <div className="aspect-video">
+                    <Image src={cover} alt={title} width={720} height={405} wrapperClassName="rounded-xl" />
+                </div>
                 <div className="flex flex-col xs:flex-row items-center gap-4">
                     <Link href={`/blog?category=${category._id}`} className="flex items-center gap-x-2 py-2.5 px-4 font-pelak-medium amber-light rounded-xl">
                         <Folder />
