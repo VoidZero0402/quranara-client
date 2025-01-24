@@ -13,7 +13,7 @@ import SmartPhone from "@/components/svgs/SmartPhone";
 import NumericField from "@/components/form/NumericField";
 
 function LoginForm() {
-    const { user, submit, getOtp } = useLoginStore();
+    const { user, getOtp } = useLoginStore();
 
     const {
         control,
@@ -25,8 +25,7 @@ function LoginForm() {
     });
 
     const submitHandler = async (data: LoginWithOtpFormSchemaType) => {
-        await getOtp(data.phone);
-        submit(data);
+        await getOtp(data.phone, data);
     };
 
     return (

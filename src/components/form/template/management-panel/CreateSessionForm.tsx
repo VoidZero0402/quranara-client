@@ -79,7 +79,7 @@ function CreateSessionForm({ topic, slug, onClose }: CreateSessionFormProps) {
             </div>
             <div className="space-y-2">
                 <span className="font-pelak-medium text-sm text-gray-800 dark:text-gray-200">توضیحات جلسه ( اختیاری )</span>
-                <Tiptap onSave={onSaveContent} />
+                <Tiptap onSave={onSaveContent} source="session" />
             </div>
             <Checkbox control={control} name="isPublic" label="جلسه رایگان" caption="در صورت فعال بودن این گزینه این جلسه برای همه قابل مشاهده خواهد بود" />
             <div className="flex flex-col sm:flex-row gap-4">

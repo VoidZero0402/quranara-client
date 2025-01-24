@@ -14,9 +14,11 @@ async function AuthLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const { data } = await getMe((await cookies()).toString());
+    const res = await getMe((await cookies()).toString());
 
-    if (data.user) {
+    console.log("Login getMe Response =>", res);
+
+    if (res.data.user) {
         redirect("/");
     }
 

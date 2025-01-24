@@ -91,7 +91,7 @@ function CreateTvForm() {
             </div>
             <div className="space-y-2">
                 <span className="font-pelak-medium text-sm text-gray-800 dark:text-gray-200">توضیحات کامل آموزش ( اختیاری )</span>
-                <Tiptap onSave={onSaveContent} store={{ key: "tiptap:create-tv" }} />
+                <Tiptap onSave={onSaveContent} source="tv" store={{ key: "tiptap:create-tv" }} />
             </div>
             <TextField control={control} name="attached" label="آدرس پیوست آموزش ( اختیاری )" placeholder="آدرس پیوست آموزش را وارد کنید" />
             <Checkbox control={control} name="shown" label="نمایش بلافاصله آموزش" caption="در صورت فعال بودن این گزینه آموزش در صفحه اصلی نمایش داده خواهد شد" />

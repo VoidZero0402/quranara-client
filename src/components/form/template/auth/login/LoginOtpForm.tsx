@@ -12,8 +12,10 @@ import { ROLES } from "@/constants/roles";
 import useLoginStore from "@/store/login";
 
 import { statusHandler } from "@/libs/responses";
+import { persianToEnglish } from "@/libs/funcs";
 
 import useOTPCredential from "@/hooks/useOTPCredential";
+import useInvalidateQueries from "@/hooks/useInvalidateQueries";
 
 import Button from "@/components/ui/Button";
 
@@ -24,6 +26,8 @@ function LoginOtpForm() {
     const { user } = useLoginStore();
 
     const router = useRouter();
+
+    const invalidate = useInvalidateQueries(["get-me-user"]);
 
     const setOTPCredential = useCallback((code: string) => {
         setOtp(code.split(""));
@@ -37,15 +41,16 @@ function LoginOtpForm() {
             if (data) {
                 statusHandler(data, LoginWithOtpStatusOptions);
 
-                if (data.status === 200) router.replace(data.data.role === ROLES.MANAGER ? "/management-panel" : "/panel");
+                if (data.status === 200) {
+                    invalidate();
+                    router.replace(data.data.role === ROLES.MANAGER ? "/management-panel" : "/panel");
+                }
             }
         },
     });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
         const { value } = e.target;
-
-        if (!/^[0-9]*$/.test(value)) return;
 
         const values = [...otp];
         values[index] = value;
@@ -90,7 +95,10 @@ function LoginOtpForm() {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        mutate({ ...user, otp: [...otp].reverse().join("") });
+
+        const code = persianToEnglish([...otp].reverse().join(""));
+
+        mutate({ ...user, otp: code });
     };
 
     return (
@@ -100,8 +108,9 @@ function LoginOtpForm() {
                     return (
                         <input
                             key={index}
-                            type="text"
+                            type="number"
                             maxLength={1}
+                            pattern="/0-9\u06F0-\u06F9/"
                             value={otp[index]}
                             ref={(el) => {
                                 inputsRef.current[index] = el;

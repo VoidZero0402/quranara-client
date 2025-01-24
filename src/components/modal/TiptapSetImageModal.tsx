@@ -6,12 +6,15 @@ import { Editor } from "@tiptap/react";
 
 import Modal, { ModalBody, ModalHeader, ModalInstanceProps } from "./Modal";
 
-import Gallery from "../svgs/Gallery";
 import TiptapSetImageForm from "../form/template/TiptapSetImageForm";
 
-type TiptapSetImageModalProps = { editor: Editor } & ModalInstanceProps;
+import Gallery from "../svgs/Gallery";
 
-function TiptapSetImageModal({ isOpen, onClose, editor }: TiptapSetImageModalProps) {
+import { Source } from "@/types/editor.types";
+
+type TiptapSetImageModalProps = { editor: Editor; source: Source } & ModalInstanceProps;
+
+function TiptapSetImageModal({ isOpen, onClose, editor, source }: TiptapSetImageModalProps) {
     return (
         <Modal isOpen={isOpen} onClose={onClose} className="max-w-[640px] w-full">
             <ModalHeader>
@@ -21,7 +24,7 @@ function TiptapSetImageModal({ isOpen, onClose, editor }: TiptapSetImageModalPro
                 </div>
             </ModalHeader>
             <ModalBody>
-                <TiptapSetImageForm editor={editor} onClose={onClose} />
+                <TiptapSetImageForm editor={editor} source={source} onClose={onClose} />
             </ModalBody>
         </Modal>
     );

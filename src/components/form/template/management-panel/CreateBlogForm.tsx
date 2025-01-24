@@ -99,7 +99,7 @@ function CreateBlogForm() {
             </div>
             <div className="space-y-2">
                 <span className="font-pelak-medium text-sm text-gray-800 dark:text-gray-200">محتوای مقاله</span>
-                <Tiptap onSave={onSaveContent} store={{ key: "tiptap:create-blog" }} />
+                <Tiptap onSave={onSaveContent} source="blog" store={{ key: "tiptap:create-blog" }} />
             </div>
             <Checkbox control={control} name="shown" label="نمایش بلافاصله مقاله" caption="در صورت فعال بودن این گزینه مقاله در صفحه اصلی نمایش داده خواهد شد" />
             <Button type="submit" size="lg" className="w-max" disabled={isSubmitting}>

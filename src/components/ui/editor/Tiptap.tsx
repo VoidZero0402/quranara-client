@@ -23,8 +23,11 @@ import TiptapSetImageModal from "@/components/modal/TiptapSetImageModal";
 import Button from "../Button";
 import Skeleton, { SkeletonFrame } from "../Skeleton";
 
+import { Source } from "@/types/editor.types";
+
 type TiptapProps = {
     onSave: (editor: Editor) => void;
+    source: Source;
     content?: JSONContent;
     store?: {
         key: string;
@@ -33,7 +36,7 @@ type TiptapProps = {
     };
 };
 
-function Tiptap({ onSave, content, store }: TiptapProps) {
+function Tiptap({ onSave, source, content, store }: TiptapProps) {
     const editor = useEditor({
         extensions: [
             StarterKit.configure({
@@ -101,7 +104,7 @@ function Tiptap({ onSave, content, store }: TiptapProps) {
                 </Button>
             </div>
             <TiptapSetLinkModal isOpen={isOpenLinkModal} onClose={closeLinkModal} {...linkModalProps} />
-            <TiptapSetImageModal isOpen={isOpenImageModal} onClose={closeImageModal} {...imageModalProps} />
+            <TiptapSetImageModal isOpen={isOpenImageModal} onClose={closeImageModal} {...imageModalProps} source={source} />
         </div>
     );
 }

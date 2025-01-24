@@ -115,7 +115,7 @@ function UpdateCourseForm({ course }: UpdateCourseFormProps) {
             </div>
             <div className="space-y-2">
                 <span className="font-pelak-medium text-sm text-gray-800 dark:text-gray-200">توضیحات کامل آموزش ( اختیاری )</span>
-                <Tiptap onSave={onSaveContent} content={course.introduction?.content ? JSON.parse(course.introduction.content) : undefined} store={{ key: `tiptap:update-course:${course._id}` }} />
+                <Tiptap onSave={onSaveContent} source="course" content={course.introduction?.content ? JSON.parse(course.introduction.content) : undefined} store={{ key: `tiptap:update-course:${course._id}` }} />
             </div>
             <Checkbox control={control} name="shown" label="نمایش بلافاصله دوره" caption="در صورت فعال بودن این گزینه دوره در صفحه اصلی نمایش داده خواهد شد" />
             <Button type="submit" size="lg" className="w-max" disabled={isSubmitting}>

@@ -1,4 +1,8 @@
 import { UploadFileType } from "@/constants/uploads";
+import { SourcePaths } from "@/constants/content";
+
+import { Source } from "@/types/editor.types";
+import { TiptapSetImageSchemaType } from "@/validators/editor";
 
 export function updateURLSearchParams(key: string, value: string, route?: string) {
     const url = new URL(route ?? window.location.href, window.location.origin);
@@ -133,4 +137,12 @@ export function formatPrice(price: string) {
 export function getDiscountedPrice(price: number, discount: number) {
     const discountedPrice = price - (price * discount) / 100;
     return discountedPrice.toLocaleString();
+}
+
+export function updateTiptapImageSrc(source: Source, data: TiptapSetImageSchemaType) {
+    const src = `${SourcePaths[source]}/${data.src}`;
+
+    const updatedData = { ...data, src };
+
+    return updatedData;
 }

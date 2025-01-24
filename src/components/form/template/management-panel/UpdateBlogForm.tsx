@@ -103,7 +103,7 @@ function UpdateBlogForm({ blog }: UpdateBlogFormProps) {
             </div>
             <div className="space-y-2">
                 <span className="font-pelak-medium text-sm text-gray-800 dark:text-gray-200">محتوای مقاله</span>
-                <Tiptap onSave={onSaveContent} content={JSON.parse(blog.content)} store={{ key: `tiptap:update-blog:${blog._id}` }} />
+                <Tiptap onSave={onSaveContent} source="blog" content={JSON.parse(blog.content)} store={{ key: `tiptap:update-blog:${blog._id}` }} />
             </div>
             <Checkbox control={control} name="shown" label="نمایش بلافاصله مقاله" caption="در صورت فعال بودن این گزینه مقاله در صفحه اصلی نمایش داده خواهد شد" />
             <Button type="submit" size="lg" className="w-max" disabled={isSubmitting}>

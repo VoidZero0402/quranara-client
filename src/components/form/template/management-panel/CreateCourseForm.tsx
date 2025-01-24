@@ -111,7 +111,7 @@ function CreateCourseForm() {
             <TextField control={control} name="introduction.video" label="آدرس ویدیو معرفی ( اختیاری )" placeholder="آدرس ویدیو معرفی دوره را وارد کنید" className="w-full" />
             <div className="space-y-2">
                 <span className="font-pelak-medium text-sm text-gray-800 dark:text-gray-200">توضیحات کامل دوره ( اختیاری )</span>
-                <Tiptap onSave={onSaveContent} store={{ key: "tiptap:create-course" }} />
+                <Tiptap onSave={onSaveContent} source="course" store={{ key: "tiptap:create-course" }} />
             </div>
             <Checkbox control={control} name="shown" label="نمایش بلافاصله دوره" caption="در صورت فعال بودن این گزینه دوره در صفحه اصلی نمایش داده خواهد شد" />
             <Button type="submit" size="lg" className="w-max" disabled={isSubmitting}>

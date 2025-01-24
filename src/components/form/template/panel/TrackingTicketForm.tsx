@@ -2,7 +2,6 @@
 
 import { useCallback } from "react";
 import { useRouter } from "next/navigation";
-import { useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -16,6 +15,8 @@ import { AnswerTicketSchema, AnswerTicketSchemaType } from "@/validators/tickets
 import { getUploadType } from "@/libs/funcs";
 import { statusHandler } from "@/libs/responses";
 
+import useInvalidateQueries from "@/hooks/useInvalidateQueries";
+
 import TextArea from "../../TextArea";
 
 import Uploader from "@/components/ui/Uploader";
@@ -28,7 +29,7 @@ type TrackingTicketFormProps = { _id: string };
 function TrackingTicketForm({ _id }: TrackingTicketFormProps) {
     const router = useRouter();
 
-    const queryClient = useQueryClient();
+    const invalidate = useInvalidateQueries(["infinite-tickets"]);
 
     const {
         control,
@@ -71,7 +72,7 @@ function TrackingTicketForm({ _id }: TrackingTicketFormProps) {
         if (res.success) {
             reset();
             router.refresh();
-            queryClient.invalidateQueries({ queryKey: ["infinite-tickets"], exact: true, refetchType: "all" });
+            invalidate();
         }
     };
 

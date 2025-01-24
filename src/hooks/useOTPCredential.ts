@@ -21,10 +21,10 @@ function useOTPCredential(set: (code: string) => void) {
 
                     const credential = (await navigator.credentials.get(options)) as OTPCredential;
 
+                    console.log("Otp Credential Code =>", credential.code);
+
                     set(credential.code);
-                } catch {
-                    console.error("Failed to fetch OTP. Please check your browser.");
-                }
+                } catch {}
             };
 
             fetchOtp();

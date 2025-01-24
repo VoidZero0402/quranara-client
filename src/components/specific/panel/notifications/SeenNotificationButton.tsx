@@ -1,6 +1,7 @@
 "use client";
 
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
+import { useMutation } from "@tanstack/react-query";
 
 import { MODE } from "@/constants/notifications";
 
@@ -9,15 +10,16 @@ import { SeenNotificationStatusOptions } from "@/api/errors/notifications";
 
 import { statusHandler } from "@/libs/responses";
 
+import useInvalidateQueries from "@/hooks/useInvalidateQueries";
+
 import Button from "@/components/ui/Button";
-import { useRouter } from "next/navigation";
 
 type SeenNotificationButtonProps = { identifier: string };
 
 function SeenNotificationButton({ identifier }: SeenNotificationButtonProps) {
     const router = useRouter();
 
-    const queryClient = useQueryClient();
+    const invalidate = useInvalidateQueries([`notifications-${MODE.READ}`, `notifications-${MODE.UNREAD}`]);
 
     const { mutate: seen, isPending } = useMutation({
         mutationKey: [`seen-notification-${identifier}`],
@@ -27,14 +29,7 @@ function SeenNotificationButton({ identifier }: SeenNotificationButtonProps) {
                 statusHandler(data, SeenNotificationStatusOptions);
 
                 if (data.status === 200) {
-                    queryClient.invalidateQueries({
-                        queryKey: [`notifications-${MODE.UNREAD}`],
-                    });
-
-                    queryClient.invalidateQueries({
-                        queryKey: [`notifications-${MODE.READ}`],
-                    });
-
+                    invalidate();
                     router.refresh();
                 }
             }

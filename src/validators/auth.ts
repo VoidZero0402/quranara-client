@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { PHASE } from "@/constants/auth";
 
 export const SignupSchema = z.object({
     phone: z.string({ required_error: "لطفاً شماره موبایل خود را وارد کنید." }).regex(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/g, {
@@ -15,7 +16,7 @@ export const SignupFormSchema = SignupSchema.omit({ otp: true });
 
 export type SignupFormSchemaType = z.infer<typeof SignupFormSchema>;
 
-export const SendOtpSchema = SignupSchema.pick({ phone: true });
+export const SendOtpSchema = SignupSchema.pick({ phone: true }).extend({ phase: z.enum([PHASE.SIGNUP, PHASE.LOGIN]).default(PHASE.SIGNUP) });
 
 export type SendOtpSchemaType = z.infer<typeof SendOtpSchema>;
 

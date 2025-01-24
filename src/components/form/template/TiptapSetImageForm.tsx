@@ -6,13 +6,17 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { TiptapSetImageSchema, TiptapSetImageSchemaType } from "@/validators/editor";
 
+import { updateTiptapImageSrc } from "@/libs/funcs";
+
 import TextField from "../TextField";
 
 import Button from "@/components/ui/Button";
 
-type TiptapSetImageFormProps = { editor: Editor; onClose: () => void };
+import { Source } from "@/types/editor.types";
 
-function TiptapSetImageForm({ editor, onClose }: TiptapSetImageFormProps) {
+type TiptapSetImageFormProps = { editor: Editor; source: Source; onClose: () => void };
+
+function TiptapSetImageForm({ editor, source, onClose }: TiptapSetImageFormProps) {
     const { control, handleSubmit } = useForm<TiptapSetImageSchemaType>({
         defaultValues: {
             src: "",
@@ -21,8 +25,8 @@ function TiptapSetImageForm({ editor, onClose }: TiptapSetImageFormProps) {
         resolver: zodResolver(TiptapSetImageSchema),
     });
 
-    const submitHandler = (data: TiptapSetImageSchemaType) => {
-        editor.commands.setImage(data);
+    const submitHandler = (data: TiptapSetImageSchemaType) => {        
+        editor.commands.setImage(updateTiptapImageSrc(source, data));
         onClose();
     };
 

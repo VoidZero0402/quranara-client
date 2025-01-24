@@ -16,7 +16,7 @@ import SmartPhone from "@/components/svgs/SmartPhone";
 import Lock from "@/components/svgs/Lock";
 
 function SignupForm() {
-    const { user, submit, getOtp } = useSignupStore();
+    const { user, getOtp } = useSignupStore();
 
     const {
         control,
@@ -28,8 +28,7 @@ function SignupForm() {
     });
 
     const submitHandler = async (data: SignupFormSchemaType) => {
-        await getOtp(data.phone);
-        submit(data);
+        await getOtp(data.phone, data);
     };
 
     return (

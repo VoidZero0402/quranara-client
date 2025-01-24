@@ -14,6 +14,8 @@ import { ROLES } from "@/constants/roles";
 
 import { statusHandler } from "@/libs/responses";
 
+import useInvalidateQueries from "@/hooks/useInvalidateQueries";
+
 import TextField from "@/components/form/TextField";
 import NumericField from "@/components/form/NumericField";
 import Button from "@/components/ui/Button";
@@ -32,13 +34,18 @@ function LoginWithPasswordForm() {
 
     const router = useRouter();
 
+    const invalidate = useInvalidateQueries(["get-me-user"]);
+
     const { mutate, isPending } = useMutation({
         mutationFn: loginWithPassword,
         onSettled(data) {
             if (data) {
                 statusHandler(data, LoginWithPasswordStatusOptions);
 
-                if (data.status === 200) router.replace(data.data.role === ROLES.MANAGER ? "/management-panel" : "/panel");
+                if (data.status === 200) {
+                    invalidate();
+                    router.replace(data.data.role === ROLES.MANAGER ? "/management-panel" : "/panel");
+                }
             }
         },
     });

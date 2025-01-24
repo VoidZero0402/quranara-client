@@ -18,7 +18,7 @@ import UserRounded from "@/components/svgs/UserRounded";
 import Setting from "@/components/svgs/Setting";
 
 function Account() {
-    const { data: user } = useSuspenseQuery({ queryKey: ["cookie-user"], queryFn: getUser });
+    const { data: user } = useSuspenseQuery({ queryKey: ["get-me-user"], queryFn: getUser });
 
     if (!user) {
         return (

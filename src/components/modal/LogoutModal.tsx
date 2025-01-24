@@ -8,6 +8,8 @@ import { LogoutStatusOptions } from "@/api/errors/auth";
 
 import { statusHandler } from "@/libs/responses";
 
+import useInvalidateQueries from "@/hooks/useInvalidateQueries";
+
 import Modal, { ModalBody, ModalFooter, ModalHeader, ModalInstanceProps } from "./Modal";
 
 import Button from "../ui/Button";
@@ -17,6 +19,8 @@ import LogoutIcon from "@/components/svgs/Logout";
 function LogoutModal({ isOpen, onClose }: ModalInstanceProps) {
     const router = useRouter();
 
+    const invalidate = useInvalidateQueries(["get-me-user"]);
+
     const { mutate: handleLogout, isPending } = useMutation({
         mutationKey: ["logout-user"],
         mutationFn: logout,
@@ -25,6 +29,7 @@ function LogoutModal({ isOpen, onClose }: ModalInstanceProps) {
                 statusHandler(data, LogoutStatusOptions);
 
                 if (data.status === 200) {
+                    invalidate();
                     onClose();
                     router.replace("/");
                 }
