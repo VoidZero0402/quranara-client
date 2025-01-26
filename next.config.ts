@@ -14,7 +14,7 @@ const nextConfig: NextConfig = {
                 hostname: "dl.quranara.com",
             },
             {
-                hostname: "rahequran.com",
+                hostname: "c938059.parspack.net",
             },
         ],
     },

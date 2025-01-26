@@ -38,7 +38,6 @@ function CreateBlogForm() {
         handleSubmit,
         formState: { isSubmitting },
         setValue,
-        reset,
     } = useForm<CreateBlogSchemaType>({
         defaultValues: {
             title: "",
@@ -73,7 +72,6 @@ function CreateBlogForm() {
 
         if (res.success) {
             revalidate(blog.default);
-            reset();
         }
     };
 

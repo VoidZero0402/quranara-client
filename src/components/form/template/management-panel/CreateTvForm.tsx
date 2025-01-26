@@ -36,7 +36,6 @@ function CreateTvForm() {
         handleSubmit,
         formState: { isSubmitting },
         setValue,
-        reset,
     } = useForm<CreateTvSchemaType>({
         defaultValues: {
             title: "",
@@ -65,7 +64,6 @@ function CreateTvForm() {
 
         if (res.success) {
             revalidate(tv.default);
-            reset();
         }
     };
 

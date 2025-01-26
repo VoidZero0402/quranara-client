@@ -36,7 +36,6 @@ function CreateCourseForm() {
         formState: { isSubmitting },
         setValue,
         watch,
-        reset,
     } = useForm<CreateCourseSchemaType>({
         defaultValues: {
             title: "",
@@ -69,7 +68,6 @@ function CreateCourseForm() {
 
         if (res.success) {
             revalidate(courses.default);
-            reset();
         }
     };
 

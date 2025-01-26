@@ -1,6 +1,6 @@
 "use client";
 
-import { memo, useLayoutEffect, useRef } from "react";
+import { memo, useEffect, useRef } from "react";
 import { useToggle } from "usehooks-ts";
 
 import Session from "./Session";
@@ -15,15 +15,15 @@ import PlayCircle from "@/components/svgs/PlayCircle";
 import { type Topic, LimitedTopic } from "@/types/topic.types";
 import { PopulatedSession } from "@/types/session.types";
 
-type TopicProps = { topic: Topic; onUpdate: (topic: LimitedTopic) => void; onCreateSession: (topic: LimitedTopic) => void; onUpdateSession: (session: PopulatedSession) => void };
+type TopicProps = { topic: Topic; onUpdate: (topic: LimitedTopic) => void; onCreateSession: (topic: LimitedTopic) => void; onUpdateSession: (session: PopulatedSession) => void; onRemoveSession: (session: PopulatedSession) => void };
 
-function Topic({ topic, onUpdate, onCreateSession, onUpdateSession }: TopicProps) {
+function Topic({ topic, onUpdate, onCreateSession, onUpdateSession, onRemoveSession }: TopicProps) {
     const [isOpen, toggleOpen] = useToggle();
     const sessionsRef = useRef<HTMLDivElement | null>(null);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         if (isOpen) {
-            sessionsRef.current!.style.height = `${sessionsRef.current?.scrollHeight}px`;
+            sessionsRef.current!.style.height = "auto";
         }
     }, [topic]);
 
@@ -48,7 +48,7 @@ function Topic({ topic, onUpdate, onCreateSession, onUpdateSession }: TopicProps
             </div>
             <div ref={sessionsRef} className={`lg:mr-6 space-y-4 transition-all duration-300 ${isOpen ? "mt-4 opacity-100" : "mt-0 opacity-0 overflow-hidden"}`} style={{ height: isOpen ? `${sessionsRef.current?.scrollHeight}px` : "0" }}>
                 {topic.sessions.map((session) => (
-                    <Session key={session._id} session={session} onUpdate={onUpdateSession} />
+                    <Session key={session._id} session={session} onUpdate={onUpdateSession} onRemove={onRemoveSession} />
                 ))}
             </div>
         </div>

@@ -60,11 +60,7 @@ function UpdateCourseForm({ course }: UpdateCourseFormProps) {
     });
 
     const submitHandler = async (data: UpdateCourseSchemaType) => {
-        console.log(data);
-
         const body = getTruthyValues(data) as UpdateCourseSchemaType;
-
-        console.log(body);
 
         const res = await updateCourse({ courseId: course._id }, body);
 

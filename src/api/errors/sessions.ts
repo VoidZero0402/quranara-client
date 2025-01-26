@@ -16,3 +16,11 @@ export const UpdateSessionStatusOptions: ResponseStatusHandlerOptions = {
         "401": { status: "error", text: "عدم دسترسی", caption: "شما به این عملکرد دسترسی ندارید" },
     },
 };
+
+export const RemoveSessionStatusOptions: ResponseStatusHandlerOptions = {
+    statuses: {
+        "200": { status: "success", text: "حذف جلسه", caption: "جلسه با موفقیت حذف شد" },
+        "401": { status: "error", text: "عدم دسترسی", caption: "شما به این عملکرد دسترسی ندارید" },
+        "404": { status: "error", text: "مشکل در سرور", caption: "بنظر میرسه مشکلی در سرور پیش اومده" },
+    },
+};

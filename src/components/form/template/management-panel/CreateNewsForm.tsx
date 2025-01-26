@@ -23,7 +23,6 @@ function CreateNewsForm() {
         control,
         handleSubmit,
         formState: { isSubmitting },
-        reset,
     } = useForm<CreateNewsSchemaType>({
         defaultValues: {
             title: "",
@@ -45,7 +44,6 @@ function CreateNewsForm() {
 
         if (res.success) {
             revalidate(news.default);
-            reset();
         }
     };
 
