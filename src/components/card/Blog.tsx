@@ -25,10 +25,12 @@ function Blog({ title, slug, description, cover, category, views, likes, timeToR
                 <Badge color="secondary" className="rounded-lg">
                     {category.title}
                 </Badge>
-                <h3 className="font-pelak-medium text-lg text-gray-800 dark:text-gray-200 line-clamp-1">
-                    <Link href={`/blog/${slug}`}>{title}</Link>
-                </h3>
-                <p className="h-18 text-sm text-gray-600 dark:text-gray-400 leading-6 line-clamp-3">{description}</p>
+                <div className="h-35 space-y-1">
+                    <h3 className="font-pelak-semibold text-gray-800 dark:text-gray-200 leading-7 line-clamp-2">
+                        <Link href={`/blog/${slug}`}>{title}</Link>
+                    </h3>
+                    <p className="h-21 text-sm text-gray-600 dark:text-gray-400 leading-7 line-clamp-3">{description}</p>
+                </div>
                 <div className="flex items-center justify-between mt-2">
                     <div className="flex gap-x-2">
                         <div className="flex items-center gap-x-1 py-1 px-2 font-pelak-medium text-sm blue-light rounded-lg">
@@ -67,11 +69,16 @@ export function BlogLoading() {
             </div>
             <div className="flex flex-col gap-2 p-4">
                 <SkeletonFrame className="h-6 w-20"></SkeletonFrame>
-                <SkeletonFrame className="h-7 w-3/4"></SkeletonFrame>
-                <div className="space-y-1.5">
-                    <SkeletonFrame className="h-5"></SkeletonFrame>
-                    <SkeletonFrame className="h-5"></SkeletonFrame>
-                    <SkeletonFrame className="h-5 w-3/4"></SkeletonFrame>
+                <div className="h-35 space-y-2">
+                    <div className="space-y-1.5">
+                        <SkeletonFrame className="h-5.5"></SkeletonFrame>
+                        <SkeletonFrame className="h-5.5 w-3/4"></SkeletonFrame>
+                    </div>
+                    <div className="space-y-2">
+                        <SkeletonFrame className="h-5"></SkeletonFrame>
+                        <SkeletonFrame className="h-5"></SkeletonFrame>
+                        <SkeletonFrame className="h-5 w-3/4"></SkeletonFrame>
+                    </div>
                 </div>
                 <div className="flex items-center justify-between mt-2">
                     <div className="flex gap-x-2 w-1/2">

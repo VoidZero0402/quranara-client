@@ -23,17 +23,17 @@ function Course({ title, description, slug, cover, status, price, discount, meta
                 </div>
             </Link>
             <div className="flex flex-col gap-2 p-4">
-                <div className="flex items-center gap-x-1 font-pelak-medium text-xs text-blue-500">
-                    <span className="block size-1.5 bg-blue-500 rounded-full">
-                        <span className="block size-full bg-blue-500 rounded-full animate-ping"></span>
+                <div className="flex items-center gap-x-1 font-pelak-medium text-xs text-teal-500">
+                    <span className="block size-1.5 bg-teal-500 rounded-full">
+                        <span className="block size-full bg-teal-500 rounded-full animate-ping"></span>
                     </span>
                     {StatusText[status]}
                 </div>
-                <h3 className="font-pelak-medium text-lg text-gray-800 dark:text-gray-200 line-clamp-1">
+                <h3 className="font-pelak-semibold text-gray-800 dark:text-gray-200 line-clamp-1">
                     <Link href={`/courses/${slug}`}>{title}</Link>
                 </h3>
-                <p className="h-18 text-sm text-gray-600 dark:text-gray-400 leading-6 line-clamp-3">{description}</p>
-                <div className="flex items-center justify-between mt-4">
+                <p className="h-21 text-sm text-gray-600 dark:text-gray-400 leading-7 line-clamp-3">{description}</p>
+                <div className="flex items-center justify-between mt-6">
                     <div className="flex gap-x-2">
                         <div className="flex items-center gap-x-1 py-1 px-2 font-pelak-medium text-sm blue-light rounded-lg">
                             <UserRounded className="w-4" />
@@ -46,7 +46,7 @@ function Course({ title, description, slug, cover, status, price, discount, meta
                     </div>
                     <div className="relative">
                         {!!discount && (
-                            <div className="absolute -top-4 left-0 w-max flex items-center gap-x-2 font-pelak-medium text-xs">
+                            <div className="absolute -top-5 left-0 w-max flex items-center gap-x-2 font-pelak-medium text-xs">
                                 <div className="text-amber-400">{discount}٪ تخفیف</div>
                                 <del className="text-gray-600 dark:text-gray-400">{price.toLocaleString()}</del>
                             </div>
@@ -77,13 +77,13 @@ export function CourseLoading() {
             </div>
             <div className="flex flex-col gap-2 p-4">
                 <SkeletonFrame className="h-4 w-20"></SkeletonFrame>
-                <SkeletonFrame className="h-7 w-3/4"></SkeletonFrame>
-                <div className="space-y-1.5">
+                <SkeletonFrame className="h-6 w-3/4"></SkeletonFrame>
+                <div className="space-y-2">
                     <SkeletonFrame className="h-5"></SkeletonFrame>
                     <SkeletonFrame className="h-5"></SkeletonFrame>
                     <SkeletonFrame className="h-5 w-3/4"></SkeletonFrame>
                 </div>
-                <div className="flex items-center justify-between mt-2">
+                <div className="flex items-center justify-between mt-6">
                     <div className="flex gap-x-2 w-1/2">
                         <SkeletonFrame className="w-1/2 h-6.5"></SkeletonFrame>
                         <SkeletonFrame className="w-1/2 h-6.5"></SkeletonFrame>

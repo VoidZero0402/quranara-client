@@ -1,12 +1,16 @@
 import Link from "next/link";
 
+import { getPopularTvs } from "@/api/queries/tv";
+
 import Widgets from "@/components/svgs/Widgets";
 import LongArrowLeft from "@/components/svgs/LongArrowLeft";
 import LinkRoundAngle from "@/components/svgs/LinkRoundAngle";
 import PlayCircle from "@/components/svgs/PlayCircle";
 import Plain from "@/components/svgs/Plain";
 
-function Footer() {
+async function Footer() {
+    const { data } = await getPopularTvs();
+
     return (
         <footer className="py-8 bg-white dark:bg-gray-850 font-pelak-medium">
             <div className="container">
@@ -25,7 +29,7 @@ function Footer() {
                         </Link>
                     </div>
                     <div className="flex flex-col md:flex-row gap-16 xl:w-[45%]">
-                        <div className="space-y-4">
+                        <div className="space-y-4 shrink-0">
                             <span className="flex items-center gap-x-1 text-lg text-gray-800 dark:text-gray-200">
                                 <LinkRoundAngle className="w-7" />
                                 لینک‌های مفید
@@ -59,26 +63,12 @@ function Footer() {
                                 محبوب‌ترین آموزش‌ها
                             </span>
                             <div className="space-y-4">
-                                <Link href="#" className="flex items-center gap-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-all">
-                                    <span className="w-3 h-1 bg-gray-300 dark:bg-gray-700 rounded-full"></span>
-                                    آموزش مقدماتی حفظ قرآن
-                                </Link>
-                                <Link href="#" className="flex items-center gap-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-all">
-                                    <span className="w-3 h-1 bg-gray-300 dark:bg-gray-700 rounded-full"></span>
-                                    تلاوت سوره فاتحه با تجوید
-                                </Link>
-                                <Link href="#" className="flex items-center gap-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-all">
-                                    <span className="w-3 h-1 bg-gray-300 dark:bg-gray-700 rounded-full"></span>
-                                    آشنایی با مفهوم صبر در قرآن
-                                </Link>
-                                <Link href="#" className="flex items-center gap-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-all">
-                                    <span className="w-3 h-1 bg-gray-300 dark:bg-gray-700 rounded-full"></span>
-                                    مبانی تجوید
-                                </Link>
-                                <Link href="#" className="flex items-center gap-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-all">
-                                    <span className="w-3 h-1 bg-gray-300 dark:bg-gray-700 rounded-full"></span>
-                                    داستان‌های پیامبران در قرآن
-                                </Link>
+                                {data.tvs.map((tv) => (
+                                    <Link key={tv._id} href={`/tv/${tv.slug}`} className="flex items-center gap-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-all">
+                                        <span className="shrink-0 w-3 h-1 bg-gray-300 dark:bg-gray-700 rounded-full"></span>
+                                        <span className="line-clamp-1">{tv.title}</span>
+                                    </Link>
+                                ))}
                             </div>
                         </div>
                     </div>
@@ -87,14 +77,14 @@ function Footer() {
                             <Plain className="w-7" />
                             ما در شبکه‌های اجتماعی
                         </span>
-                        <div className="space-y-4 sm:w-max">
-                            <a href="https://eitaa.com/quranara" target="_blank" data-disable-nprogress={true} className="flex items-center gap-x-2 py-2.5 px-4 bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 rounded-xl transition-all">
+                        <div className="flex flex-wrap xl:flex-col gap-4">
+                            <a href="https://eitaa.com/quranara" target="_blank" data-disable-nprogress={true} className="flex items-center gap-x-2 grow py-2.5 px-4 bg-gray-50 dark:bg-gray-800 text-sm sm:text-base text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 rounded-xl transition-all">
                                 <span className="block size-2 bg-amber-400 rounded-full">
                                     <span className="block size-full bg-amber-400 rounded-full animate-ping"></span>
                                 </span>
                                 کانال قرآن‌آرا در ایتا
                             </a>
-                            <a href="https://instagram.com/quranara.academy" target="_blank" data-disable-nprogress={true} className="flex items-center gap-x-2 py-2.5 px-4 bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 rounded-xl transition-all">
+                            <a href="https://instagram.com/quranara.academy" target="_blank" data-disable-nprogress={true} className="flex items-center gap-x-2 grow py-2.5 px-4 bg-gray-50 dark:bg-gray-800 text-sm sm:text-base text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 rounded-xl transition-all">
                                 <span className="block size-2 bg-blue-500 rounded-full">
                                     <span className="block size-full bg-blue-500 rounded-full animate-ping"></span>
                                 </span>
@@ -112,7 +102,7 @@ function Footer() {
                             تمامی حقوق محتوای وبسایت متعلق به <span className="text-blue-500 underline">آکادمی قرآن‌آرا</span> می‌باشد
                         </span>
                     </div>
-                    <span>در قرآن‌آرا منتظر شما هستیم</span>
+                    <span className="hidden md:block">در قرآن‌آرا منتظر شما هستیم</span>
                 </div>
             </div>
         </footer>

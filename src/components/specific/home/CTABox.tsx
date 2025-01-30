@@ -15,7 +15,7 @@ function CTABox({ children, title, description, href }: CTABoxProps) {
                 </div>
                 <div className="flex flex-col gap-y-2 text-center sm:text-start">
                     <h3 className="font-pelak-medium text-xl">{title}</h3>
-                    <p className="text-gray-600 dark:text-gray-400 leading-7 line-clamp-2">{description}</p>
+                    <p className="text-gray-600 dark:text-gray-400 leading-8 lg:line-clamp-2">{description}</p>
                 </div>
             </div>
         </motion.a>

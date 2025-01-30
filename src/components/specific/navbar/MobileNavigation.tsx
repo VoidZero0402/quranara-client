@@ -95,10 +95,10 @@ function NavigationLink({ href, title, caption }: NavigationLinkProps) {
     return (
         <Link href={href} className="block p-2 space-y-1 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-all">
             <div className="flex items-center gap-x-2">
-                <div className="size-2 rounded-sm bg-amber-400"></div>
-                <span className="block font-pelak-medium text-gray-800 dark:text-gray-200">{title}</span>
+                <div className="shrink-0 size-2 rounded-sm bg-amber-400"></div>
+                <span className="font-pelak-medium text-gray-800 dark:text-gray-200 line-clamp-1">{title}</span>
             </div>
-            <p className="text-xs line-clamp-1 text-gray-600 dark:text-gray-400">{caption}</p>
+            <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-1">{caption}</p>
         </Link>
     );
 }

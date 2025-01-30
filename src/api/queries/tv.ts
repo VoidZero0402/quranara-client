@@ -23,6 +23,16 @@ export function getLastTvs(): Promise<Response<{ tvs: LimitedTv[]; pagination: P
     });
 }
 
+export function getPopularTvs(): Promise<Response<{ tvs: LimitedTv[] }>> {
+    return Quranara.get("/tv", {
+        query: { page: 1, limit: 5 },
+        cache: "force-cache",
+        next: {
+            revalidate: 86400,
+        },
+    });
+}
+
 export function getTvs(query: GetAllTvsQuerySchemaType): Promise<Response<{ tvs: LimitedTv[]; pagination: Pagination }>> {
     return Quranara.get("/tv", {
         query,

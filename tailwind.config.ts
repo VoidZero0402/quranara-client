@@ -22,8 +22,12 @@ export default {
             },
             spacing: {
                 "4.5": "18px",
+                "5.5": "22px",
                 "6.5": "26px",
                 "18": "72px",
+                "21": "84px",
+                "30": "120px",
+                "35": "140px",
             },
             keyframes: {
                 enter: {

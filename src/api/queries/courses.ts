@@ -15,7 +15,7 @@ type CoursesQueriesWithIdParams = { courseId: string };
 
 export function getLastCourses(): Promise<Response<{ courses: LimitedCourse[]; pagination: Pagination }>> {
     return Quranara.get("/courses", {
-        query: { page: 1, limit: 8 },
+        query: { page: 1, limit: 4 },
         cache: "force-cache",
         next: {
             tags: [courses.default],

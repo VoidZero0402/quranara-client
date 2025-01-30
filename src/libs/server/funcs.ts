@@ -20,8 +20,9 @@ export async function getUser(): Promise<User> {
 
 export async function isAuthenticated(req: NextRequest): Promise<boolean> {
     const session = req.cookies.get("_session")?.value;
+    const authKey = req.cookies.get("_auth_key")?.value;
 
-    return !!session;
+    return !!session && !!authKey;
 }
 
 export async function authenticate(role?: Role): Promise<void> {
