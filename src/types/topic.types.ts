@@ -6,6 +6,13 @@ export type Topic = {
     order: number;
     course: string;
     sessions: PopulatedSession[];
+    meta: {
+        count: number;
+        time: {
+            hours: number;
+            minutes: number;
+        };
+    };
 };
 
-export type LimitedTopic = Omit<Topic, "sessions">;
+export type LimitedTopic = Omit<Topic, "sessions" | "meta">;

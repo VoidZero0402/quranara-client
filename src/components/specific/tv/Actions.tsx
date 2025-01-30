@@ -80,7 +80,7 @@ function Actions({ _id }: ActionsProps) {
     });
 
     return (
-        <div className="flex items-center gap-x-4">
+        <div className="flex items-center gap-x-4 self-end">
             {details?.isLiked ? (
                 <button className="flex-center size-12 font-pelak-medium bg-red-500 text-white disabled:bg-red-400 rounded-xl transition-all duration-300" disabled={isPendingDislike} onClick={dislike as any}>
                     <Heart />

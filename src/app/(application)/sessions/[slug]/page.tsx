@@ -47,16 +47,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 async function Session({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
 
+    const cookie = (await cookies()).toString();
+
     const {
         data: { session },
         status,
-    } = await getSession({ slug });
+    } = await getSession({ slug }, cookie);
 
     if (status === 404) {
         notFound();
     }
 
-    const { data } = await checkAccess({ courseId: session.course._id }, (await cookies()).toString());
+    const { data } = await checkAccess({ courseId: session.course._id }, cookie);
 
     if (!session.isPublic && !data.hasAccess) {
         redirect("/");
@@ -66,7 +68,7 @@ async function Session({ params }: { params: Promise<{ slug: string }> }) {
         <div className="my-8">
             <Header title={session.title} course={session.course} />
             <div className="container">
-                <div className="flex flex-col xl:flex-row gap-8 mt-12">
+                <div className="flex flex-col xl:flex-row gap-8 mt-8 sm:mt-12">
                     <main className="space-y-8 w-full xl:w-[70%]">
                         <Details title={session.title} order={session.order} topic={session.topic.title} video={session.video} cover={session.course.cover} attached={session.attached} />
                         {!!session.content && <SessionContent content={session.content} />}

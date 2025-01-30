@@ -1,5 +1,6 @@
-import StarShine from "@/components/svgs/StarShine";
 import { getUser } from "@/libs/server/funcs";
+
+import StarShine from "@/components/svgs/StarShine";
 
 async function Welcome() {
     const user = await getUser();

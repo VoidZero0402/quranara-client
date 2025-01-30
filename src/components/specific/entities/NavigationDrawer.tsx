@@ -42,7 +42,7 @@ function NavigationDrawer({ entity, sort, onChange }: NavigationDrawerProps) {
             <div className="flex items-center justify-between md:hidden p-4 w-full bg-white dark:bg-gray-850 rounded-2xl select-none" onClick={toggleOpen}>
                 <span className="flex items-center gap-x-1 font-pelak-medium text-gray-600 dark:text-gray-400">
                     <SortLines className="w-8" />
-                    مرتب‌سازی {entity}
+                    مرتب‌سازی
                 </span>
                 <span className="font-pelak-medium text-gray-800 dark:text-gray-200">{sorting[sort]}</span>
             </div>

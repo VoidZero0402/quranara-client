@@ -20,7 +20,7 @@ import { Course } from "@/types/course.types";
 type DetailsProps = Pick<Course, "time" | "metadata" | "updatedAt"> & { onInView: (section: string) => void };
 
 function Details({ time, metadata, updatedAt, onInView }: DetailsProps) {
-    const [ref, inView] = useInView({ threshold: .5 });
+    const [ref, inView] = useInView({ threshold: 0.5 });
 
     useEffect(() => {
         if (inView) onInView("details");
@@ -32,7 +32,7 @@ function Details({ time, metadata, updatedAt, onInView }: DetailsProps) {
                 <Plain className="w-8" />
                 جزئیات دوره
             </h3>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid md:grid-cols-2 gap-4">
                 <DetailBox text="مدت زمان دوره" caption={`${time[0]} ساعت و ${time[1]} دقیقه`}>
                     <ClockCircle className="w-8" />
                 </DetailBox>

@@ -12,7 +12,7 @@ function CartItem({ _id, title, description, slug, price, cover, discount }: Car
         <div className="flex flex-col md:flex-row md:items-center gap-4 relative">
             <Link href={`/courses/${slug}`} className="md:w-1/4 shrink-0 overflow-hidden">
                 <div className="aspect-video">
-                    <Image src={cover} alt={title} width={480} height={270} wrapperClassName="rounded-xl" />
+                    <Image src={cover} alt={title} width={640} height={360} wrapperClassName="rounded-xl" />
                 </div>
             </Link>
             <div className="md:w-1/2 space-y-2">

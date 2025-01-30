@@ -33,7 +33,7 @@ function CategoriesDrawer({ categories, category, onChange }: CategoriesDrawerPr
             <div className="flex items-center justify-between md:hidden p-4 w-full bg-white dark:bg-gray-850 rounded-2xl select-none" onClick={toggleOpen}>
                 <span className="flex items-center gap-x-1 font-pelak-medium text-gray-600 dark:text-gray-400">
                     <Transform className="w-8" />
-                    دسته بندی مقالات
+                    دسته بندی
                 </span>
                 <span className="font-pelak-medium text-gray-800 dark:text-gray-200">{text}</span>
             </div>
@@ -41,7 +41,7 @@ function CategoriesDrawer({ categories, category, onChange }: CategoriesDrawerPr
                 <DrawerHeader>
                     <span className="flex items-center gap-x-1 font-pelak-medium text-gray-800 dark:text-gray-200">
                         <Transform />
-                        دسته بندی مقالات
+                        دسته بندی
                     </span>
                 </DrawerHeader>
                 <DrawerBody>

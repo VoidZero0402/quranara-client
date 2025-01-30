@@ -8,7 +8,7 @@ function Header() {
                     <Widgets className="w-8" />
                     <h1 className="font-pelak-semibold text-2xl sm:text-3xl">مقالات تخصصی قرآن‌آرا</h1>
                 </div>
-                <p className="font-pelak-medium sm:text-lg text-gray-500">مطالب ارزشمند و عمقی درباره قرآن و مفاهیم آن</p>
+                <p className="font-pelak-medium sm:text-lg text-gray-500 leading-8">مطالب ارزشمند و عمیق درباره علوم مختلف قرآنی</p>
             </div>
         </div>
     );

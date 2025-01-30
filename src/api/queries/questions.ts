@@ -12,7 +12,7 @@ export function getQuestions(query: PaginationQuerySchemaType, cookie?: string):
     return Quranara.get("/questions", {
         query,
         headers: {
-            ...(cookie && { cookie }),
+            ...(cookie !== undefined && { cookie }),
         },
     });
 }

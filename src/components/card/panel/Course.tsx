@@ -17,7 +17,7 @@ function Course({ title, description, slug, cover, status }: LimitedCourse) {
             <div>
                 <Link href={`/courses/${slug}#topics`} className="relative group">
                     <div className="aspect-video">
-                        <Image src={cover} alt={title} width={480} height={270} wrapperClassName="rounded-xl" />
+                        <Image src={cover} alt={title} width={640} height={360} wrapperClassName="rounded-xl" />
                     </div>
                     <div className="flex-center absolute inset-0 m-auto size-16 bg-white/10 rounded-full transition-all duration-300 group-hover:size-18">
                         <div className="flex-center size-12 bg-white/10 border border-white/20 rounded-full">

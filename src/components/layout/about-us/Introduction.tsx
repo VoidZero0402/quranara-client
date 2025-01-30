@@ -16,10 +16,10 @@ function Introduction() {
                 <Player
                     source={{
                         type: "video",
-                        poster: "https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg",
+                        poster: "https://dl.quranara.com/static/caverdarbarema.jpg",
                         sources: [
                             {
-                                src: "https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4",
+                                src: "https://dl.quranara.com/static/darbarema.mp4",
                             },
                         ],
                     }}
@@ -27,7 +27,7 @@ function Introduction() {
             </div>
             <div className="flex flex-col gap-y-2 lg:w-1/2">
                 <h2 className="font-pelak-semibold text-2xl sm:text-3xl/[1.5] text-gray-800 dark:text-gray-200">ویدیو معرفی آکادمی قرآن‌آرا</h2>
-                <p className="sm:text-lg text-gray-600 dark:text-gray-400 leading-8 sm:leading-8">در این ویدیو می‌تونید خیلی جامع و کامل با آکادمی قرآن‌آرا آشنا بشید. حسین خانی، مؤسس قرآن‌آرا از چگونگی شکل‌گیری این پلتفرم صحبت می‌کنه و بخش‌های مختلف اون رو براتون شرح می‌ده. پس اگه می‌خواین قرآن‌آرا و مؤسس اون رو بهتر بشناسید، حتما ویدیو معرفی قرآن‌آرا رو ببینید</p>
+                <p className="text-gray-600 dark:text-gray-400 leading-8">در این ویدیو می‌تونید خیلی جامع و کامل با آکادمی قرآن‌آرا آشنا بشید. حسین خانی، مؤسس قرآن‌آرا از چگونگی شکل‌گیری این پلتفرم صحبت می‌کنه و بخش‌های مختلف اون رو براتون شرح می‌ده. پس اگه می‌خواین قرآن‌آرا و مؤسس اون رو بهتر بشناسید، حتما ویدیو معرفی قرآن‌آرا رو ببینید</p>
                 <div className="mt-4">
                     <a href="#founder">
                         <Button size="lg" variant="neutral-base" className="gap-x-2 w-full sm:w-max">

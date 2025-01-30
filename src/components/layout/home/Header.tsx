@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import Button from "@/components/ui/Button";
-import Placeholder from "@/components/ui/Placeholder";
+import Image from "@/components/ui/Image";
 
 import Layers from "@/components/svgs/Layers";
 import PlayCircle from "@/components/svgs/PlayCircle";
@@ -31,7 +31,9 @@ function Header() {
                         </div>
                     </div>
                     <div className="w-full lg:w-1/2 order-2">
-                        <Placeholder className="aspect-video" type="image" />
+                        <div className="aspect-video">
+                            <Image src="/hero.jpg" alt="hero" width={720} height={480} wrapperClassName="rounded-xl" />
+                        </div>
                     </div>
                 </section>
             </div>

@@ -5,25 +5,30 @@ import { useToggle } from "usehooks-ts";
 
 import Session from "./Session";
 
-import ArrowDown from "@/components/svgs/ArrowDown";
-
 import { type Topic } from "@/types/topic.types";
 
 type TopicProps = Omit<Topic, "_id"> & { hasAccess: boolean };
 
-function Topic({ title, sessions, hasAccess }: TopicProps) {
+function Topic({ title, sessions, meta, hasAccess }: TopicProps) {
     const [isOpen, toggleOpen] = useToggle();
     const sessionsRef = useRef<HTMLDivElement | null>(null);
 
     return (
-        <div className="flex flex-col gap-y-2">
-            <div onClick={toggleOpen} className={`flex items-center justify-between p-4 min-h-18 rounded-xl cursor-pointer transition-all duration-300 ${isOpen ? "bg-blue-500 text-white dark:bg-blue-500" : "text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700"}`}>
-                <span className="font-pelak-medium">{title}</span>
-                <ArrowDown />
+        <div>
+            <div onClick={toggleOpen} className={`flex flex-col gap-4 p-4 font-pelak-medium rounded-xl cursor-pointer transition-all duration-300 ${isOpen ? "bg-blue-500 text-white dark:bg-blue-500" : "bg-gray-50 dark:bg-gray-800"}`}>
+                <div className="flex items-center justify-between text-xs">
+                    <div className="flex items-center gap-1">
+                        <span>{meta.count} جلسه ویدیویی</span>
+                    </div>
+                    <span>
+                        {meta.time.hours} ساعت و {meta.time.minutes} دقیقه
+                    </span>
+                </div>
+                <span className="font-pelak-medium text-sm leading-8">{title}</span>
             </div>
-            <div ref={sessionsRef} className={`space-y-2 overflow-hidden transition-all duration-300 ${isOpen ? "opacity-100" : "opacity-0"}`} style={{ height: isOpen ? `${sessionsRef.current?.scrollHeight}px` : "0" }}>
+            <div ref={sessionsRef} className={`space-y-2 transition-all duration-300 ${isOpen ? "mt-2 opacity-100" : "mt-0 opacity-0 overflow-hidden "}`} style={{ height: isOpen ? `${sessionsRef.current?.scrollHeight}px` : "0" }}>
                 {sessions.map((session) => (
-                    <Session key={session._id} {...session} isPublic={hasAccess || session.isPublic} />
+                    <Session key={session._id} {...session} hasAccess={hasAccess} />
                 ))}
             </div>
         </div>

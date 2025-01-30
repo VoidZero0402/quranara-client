@@ -49,7 +49,7 @@ function NewsSlide({ cover, title, description, link }: News) {
                 )}
             </div>
             <div className="aspect-[2/1] w-full lg:w-1/2">
-                <Image src={cover} alt={title} width={720} height={360} wrapperClassName="rounded-xl" />
+                <Image src={cover} alt={title} width={1200} height={600} wrapperClassName="rounded-xl" />
             </div>
         </div>
     );

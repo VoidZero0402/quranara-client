@@ -5,8 +5,6 @@ import { User } from "@/types/user.types";
 
 export function getMe(cookie?: string): Promise<Response<{ user: User }>> {
     return Quranara.get("/auth/me", {
-        headers: {
-            ...(cookie && { cookie }),
-        },
+        headers: { ...(cookie !== undefined && { cookie }) },
     });
 }

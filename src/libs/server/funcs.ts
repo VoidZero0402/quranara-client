@@ -18,6 +18,16 @@ export async function getUser(): Promise<User> {
     return res.data.user;
 }
 
+export async function getCurrentUser(): Promise<User | null> {
+    const res = await getMe((await cookies()).toString());
+
+    if (res.status !== 200) {
+        return null;
+    }
+
+    return res.data.user;
+}
+
 export async function isAuthenticated(req: NextRequest): Promise<boolean> {
     const session = req.cookies.get("_session")?.value;
     const authKey = req.cookies.get("_auth_key")?.value;

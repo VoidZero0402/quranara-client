@@ -83,7 +83,7 @@ async function page({ params }: { params: Promise<{ slug: string }> }) {
             <div className="container">
                 <div className="flex flex-col-reverse xl:flex-row gap-8 mt-12">
                     <Main _id={course._id} topics={topics} slug={slug} content={course.introduction?.content} time={course.time} metadata={course.metadata} updatedAt={course.updatedAt} />
-                    <aside className="flex flex-col md:flex-row xl:flex-col gap-8 w-full xl:w-[30%]">
+                    <aside className="flex flex-col gap-8 w-full xl:w-[30%]">
                         <Teacher teacher={course.teacher} />
                         <Progress progress={course.progress} hours={course.time[0]} />
                     </aside>

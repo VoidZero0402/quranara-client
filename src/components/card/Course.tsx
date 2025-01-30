@@ -19,7 +19,7 @@ function Course({ title, description, slug, cover, status, price, discount, meta
         <div className="bg-white dark:bg-gray-850 rounded-2xl overflow-hidden">
             <Link href={`/courses/${slug}`} className="overflow-hidden">
                 <div className="aspect-video">
-                    <Image src={cover} alt={title} width={480} height={270} wrapperClassName="rounded-xl" />
+                    <Image src={cover} alt={title} width={640} height={360} wrapperClassName="rounded-xl" />
                 </div>
             </Link>
             <div className="flex flex-col gap-2 p-4">

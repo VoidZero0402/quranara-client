@@ -12,7 +12,7 @@ export function getTickets(query: PaginationQuerySchemaType, cookie?: string): P
     return Quranara.get("/tickets", {
         query,
         headers: {
-            ...(cookie && { cookie }),
+            ...(cookie !== undefined && { cookie }),
         },
     });
 }

@@ -88,6 +88,6 @@ export function checkAccess(params: CoursesQueriesWithIdParams, cookie?: string)
     const url = `/courses/${params.courseId}/check-access`;
 
     return Quranara.get(url, {
-        headers: { ...(cookie && { cookie }) },
+        headers: { ...(cookie !== undefined && { cookie }) },
     });
 }

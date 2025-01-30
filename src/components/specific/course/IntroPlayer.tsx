@@ -26,7 +26,7 @@ function IntroPlayer({ title, cover, video }: IntroPlayerProps) {
                 />
             ) : (
                 <div className="aspect-video">
-                    <Image src={cover} alt={title} width={720} height={405} wrapperClassName="rounded-xl" />
+                    <Image src={cover} alt={title} width={1600} height={900} wrapperClassName="rounded-xl" />
                 </div>
             )}
         </>

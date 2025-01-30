@@ -8,7 +8,7 @@ function DetailBox({ children, text, caption }: DetailBoxProps) {
             </div>
             <div className="space-y-2">
                 <span className="block font-pelak-semibold text-gray-800 dark:text-gray-200">{text}</span>
-                <span className="block font-pelak-medium text-sm text-gray-600 dark:text-gray-400">{caption}</span>
+                <span className="block text-sm text-gray-600 dark:text-gray-400">{caption}</span>
             </div>
         </div>
     );

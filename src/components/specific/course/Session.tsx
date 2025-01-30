@@ -1,42 +1,28 @@
 import Link from "next/link";
 
-import Button from "@/components/ui/Button";
-
-import Lock from "@/components/svgs/Lock";
 import PlaybackSpeed from "@/components/svgs/PlaybackSpeed";
 
 import { type Session } from "@/types/session.types";
 
-type SessionProps = Omit<Session, "_id" | "seconds" | "video" | "attached" | "topic" | "course">;
+type SessionProps = Omit<Session, "_id" | "seconds" | "video" | "attached" | "topic" | "course"> & { hasAccess: boolean };
 
-function Session({ title, slug, time, isPublic, order }: SessionProps) {
+function Session({ title, slug, time, isPublic, order, hasAccess }: SessionProps) {
+    const isFree = hasAccess || isPublic;
+
     return (
-        <div className="group flex items-center justify-between p-4 h-[76px] font-pelak-medium text-gray-700 dark:text-gray-200 bg-gray-50 dark:bg-gray-800 rounded-xl">
-            <div className="flex items-center gap-x-2 group-hover:text-blue-500 dark:group-hover:text-amber-400 transition-all">
-                <span className="flex-center shrink-0 size-8 text-sm gray-light group-hover:blue-light dark:group-hover:amber-light rounded-md transition-all">{order}</span>
-                <Link href={isPublic ? `/sessions/${slug}` : ""} className={`text-sm sm:text-base ${isPublic ? "" : "pointer-events-none"}`}>
-                    {title}
-                </Link>
-            </div>
-            <div className="flex items-center gap-x-4 shrink-0">
-                <div className="hidden sm:block">
-                    {isPublic ? (
-                        <Link href={`/sessions/${slug}`}>
-                            <Button size="sm" rounded="base" variant="neutral-base">
-                                مشاهده ویدیو
-                            </Button>
-                        </Link>
-                    ) : (
-                        <Lock />
-                    )}
+        <Link href={isFree ? `/sessions/${slug}` : "#"} data-disable-nprogress={isFree} className={`flex flex-col gap-2 p-4 font-pelak-medium text-gray-700 dark:text-gray-200 bg-gray-50 dark:bg-gray-800 rounded-xl ${!isFree ? "pointer-events-none" : ""}`}>
+            <div className="flex items-center justify-between text-xs sm:text-sm">
+                <div className="flex items-center gap-2">
+                    <span>جلسه {order}</span>
+                    {hasAccess ? <span className="text-xs text-teal-500">( مشاهده جلسه )</span> : isPublic ? <span className="text-xs text-teal-500">( جلسه رایگان )</span> : <span className="text-xs text-amber-400">( عدم دسترسی )</span>}
                 </div>
-                <div className="flex items-center justify-end gap-x-2 w-20">
-                    <span className="h-5">{time}</span>
-                    <PlaybackSpeed className="w-6 shrink-0 hidden sm:block" />
-                    <div className="sm:hidden">{isPublic ? <PlaybackSpeed className="w-6 shrink-0" /> : <Lock />}</div>
+                <div className="flex items-center gap-1">
+                    <span>{time}</span>
+                    <PlaybackSpeed className="w-5" />
                 </div>
             </div>
-        </div>
+            <span className="font-pelak-semibold text-sm sm:text-base leading-8 sm:leading-8">{title}</span>
+        </Link>
     );
 }
 

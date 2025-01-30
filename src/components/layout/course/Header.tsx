@@ -5,7 +5,7 @@ import { StatusText } from "@/constants/courses";
 import { getDiscountedPrice } from "@/libs/funcs";
 
 import IntroPlayer from "@/components/specific/course/IntroPlayer";
-import Register, { RegisterLoading } from "@/components/specific/course/Register";
+import RegisterState, { RegisterStateLoading } from "@/components/specific/course/RegisterState";
 
 import Button from "@/components/ui/Button";
 import Breadcrumb, { BreadcrumbItem, BreadcrumbSlice } from "@/components/ui/Breadcrumb";
@@ -33,10 +33,7 @@ function Header({ _id, title, description, price, discount, status, cover, video
                     <div className="xl:w-1/2 space-y-8">
                         <div className="space-y-4">
                             <h1 className="font-pelak-semibold text-xl sm:text-2xl text-gray-800 dark:text-gray-200">{title}</h1>
-                            <p className="text-gray-600 dark:text-gray-400 leading-8 line-clamp-4 h-[128px]">
-                                {description}
-                                {description}
-                            </p>
+                            <p className="text-gray-600 dark:text-gray-400 leading-8 xl:line-clamp-4 xl:h-[128px]">{description}</p>
                         </div>
                         <div className="flex items-center justify-between">
                             <div className="flex items-center gap-x-2 font-pelak-medium text-sm sm:text-base text-blue-500">
@@ -47,7 +44,7 @@ function Header({ _id, title, description, price, discount, status, cover, video
                             </div>
                             <div className="flex items-center gap-x-2 font-pelak-medium">
                                 {!!discount && (
-                                    <div className="p-2 text-sm amber-light rounded-lg">
+                                    <div className="p-2 text-sm teal-light rounded-lg">
                                         {discount}٪ <span className="hidden sm:inline">تخفیف</span>
                                     </div>
                                 )}
@@ -60,8 +57,8 @@ function Header({ _id, title, description, price, discount, status, cover, video
                         </div>
 
                         <div className="flex flex-col sm:flex-row gap-4">
-                            <Suspense fallback={<RegisterLoading />}>
-                                <Register _id={_id} />
+                            <Suspense fallback={<RegisterStateLoading />}>
+                                <RegisterState _id={_id} />
                             </Suspense>
                             <Link href="#topics" className="w-full sm:w-1/2">
                                 <Button size="lg" className="w-full h-14" variant="neutral-base">

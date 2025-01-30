@@ -30,7 +30,7 @@ function Statistics({ usersCount, coursesCount, blogsCount, tvsCount }: Statisti
                 <Statistic title="مقالات تخصصی قرآن‌آرا" caption={`${blogsCount} مقاله تخصصی`} link={{ text: "مدیریت مقالات", href: "/management-panel/blogs" }}>
                     <Widgets />
                 </Statistic>
-                <Statistic title="آموزش‌های ویدیویی قرآن‌آرا" caption={`${tvsCount} آموزش ویدیویی`} link={{ text: "مدیریت آموزش‌ها", href: "/management-panel/tvs" }}>
+                <Statistic title="آموزش‌های ویدیویی قرآن‌آرا" caption={`${tvsCount} آموزش`} link={{ text: "مدیریت آموزش‌ها", href: "/management-panel/tvs" }}>
                     <PlayCircle />
                 </Statistic>
             </div>

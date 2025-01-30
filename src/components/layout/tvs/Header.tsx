@@ -8,7 +8,7 @@ function Header() {
                     <PlayCircle className="w-8" />
                     <h1 className="font-pelak-semibold text-2xl sm:text-3xl">ویدیوهای آموزشی قرآن‌آرا</h1>
                 </div>
-                <p className="font-pelak-medium sm:text-lg text-gray-500">ویدیوهای کاربردی برای آشنایی با قرآن</p>
+                <p className="font-pelak-medium sm:text-lg text-gray-500 leading-8">ویدیوهای کاربردی برای آشنایی با مهارت‌های قرآنی</p>
             </div>
         </div>
     );

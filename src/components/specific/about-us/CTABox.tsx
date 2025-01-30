@@ -16,7 +16,7 @@ function CTABox({ children, title, description, href }: CTABoxProps) {
                     {children}
                     {title}
                 </div>
-                <p className="text-gray-600 dark:text-gray-400 leading-7 line-clamp-3">{description}</p>
+                <p className="text-gray-600 dark:text-gray-400 leading-8 md:line-clamp-3">{description}</p>
             </div>
             <Link href={href} className="flex items-center gap-x-1 font-pelak-medium text-sm hover:text-blue-500 dark:hover:text-amber-400 transition-all">
                 مشاهده بیشتر

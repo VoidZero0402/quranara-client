@@ -16,8 +16,8 @@
     input:-webkit-autofill:hover,
     input:-webkit-autofill:focus,
     input:-webkit-autofill:active {
-        -webkit-box-shadow: 0 0 0px 1000px #fff inset;
-        box-shadow: 0 0 0px 1000px #fff inset;
+        -webkit-box-shadow: 0 0 0px 1000px #f9fafb inset;
+        box-shadow: 0 0 0px 1000px #f9fafb inset;
         -webkit-text-fill-color: #6b7280;
         transition: background-color 5000s ease-in-out 0s;
     }
@@ -199,7 +199,7 @@
 }
 
 .tiptap-content {
-    @apply flex flex-col gap-y-2;
+    @apply flex flex-col gap-y-4;
 }
 
 .tiptap strong {
@@ -231,11 +231,11 @@
 }
 
 .tiptap p {
-    @apply text-gray-700 dark:text-gray-300 whitespace-pre-line leading-8;
+    @apply text-gray-700 dark:text-gray-300 whitespace-pre-line leading-9;
 }
 
 .tiptap .special-paragraph {
-    @apply relative my-2 h-max p-6 gray-light font-pelak-medium leading-8 rounded-xl;
+    @apply relative my-2 h-max p-6 gray-light font-pelak-medium leading-9 rounded-xl;
 }
 
 .tiptap .special-paragraph::before {

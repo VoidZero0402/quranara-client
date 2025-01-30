@@ -13,12 +13,12 @@ async function Topics({ slug, hasAccess }: TopicsProps) {
 
     return (
         <div className="space-y-6 p-4 sm:p-6 bg-white dark:bg-gray-850 rounded-2xl w-full">
-            <span className="flex items-center gap-x-2 font-pelak-medium text-xl">
-                <Layers className="w-8" />
+            <span className="flex items-center gap-x-2 font-pelak-medium">
+                <Layers className="w-6" />
                 سرفصل‌های دوره
             </span>
             <Slice className="dark:bg-gray-800" />
-            <div className="space-y-2 max-h-[500px] overflow-auto with-custom-scroll pl-2">
+            <div className="space-y-2 max-h-[575px] overflow-auto with-custom-scroll pl-2">
                 {data.topics.map((topic) => (
                     <Topic key={topic._id} {...topic} hasAccess={hasAccess} />
                 ))}

@@ -82,7 +82,7 @@ async function Tv({ params }: { params: Promise<{ slug: string }> }) {
         <div className="my-8">
             <Header title={tv.title} category={tv.category} />
             <div className="container">
-                <div className="flex flex-col xl:flex-row gap-8 mt-12 mb-8">
+                <div className="flex flex-col xl:flex-row gap-8 mt-8 sm:mt-12 mb-8">
                     <main className="space-y-8 w-full xl:w-[70%]">
                         <section className="space-y-8">
                             <Details _id={tv._id} title={tv.title} description={tv.description} category={tv.category} cover={tv.cover} video={tv.video} attached={tv.attached} />

@@ -40,7 +40,7 @@ function MobileNavbar({ menus }: MobileNavbarProps) {
                 <div className={cn("h-screen bg-backdrop invisible opacity-0 transition-all duration-300", isOpen && "visible opacity-100")} onClick={toggleOpen}></div>
                 <div className={cn("flex flex-col gap-y-4 absolute -right-72 top-0 bottom-0 w-72 h-screen p-4 bg-white dark:bg-gray-850 overflow-auto with-custom-scroll transform-gpu transition-all duration-300", isOpen && "right-0")}>
                     <div className="flex items-center justify-between">
-                        <Logo className="h-12" />
+                        <Logo />
                         <div className="flex gap-x-4">
                             <ToggleTheme />
                             <Button size="circle" variant="neutral-base" className="size-12" onClick={toggleOpen}>

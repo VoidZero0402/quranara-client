@@ -20,7 +20,7 @@ function Main({ _id, topics, slug, content, time, metadata, updatedAt }: MainPro
     const onInView = useCallback((section: string) => setSection(section), []);
 
     return (
-        <main className="space-y-8 w-full xl:w-[70%]">
+        <main className="flex flex-col gap-8 w-full xl:w-[70%]">
             <Navigation section={section} />
             <Details time={time} metadata={metadata} updatedAt={updatedAt} onInView={onInView} />
             {!!content && <IntroContent content={content} onInView={onInView} />}

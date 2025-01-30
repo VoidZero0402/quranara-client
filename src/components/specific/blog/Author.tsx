@@ -6,7 +6,7 @@ type AvatarProps = { author: PopulatedUser }
 
 function Author({ author }: AvatarProps) {
     return (
-        <div className="flex items-center gap-x-2">
+        <div className="flex items-center gap-x-2 self-start">
             <Avatar src={author.profile} />
             <div className="space-y-2 text-sm text-gray-800 dark:text-gray-200">
                 <span className="block">

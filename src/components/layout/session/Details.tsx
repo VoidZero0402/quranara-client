@@ -16,7 +16,7 @@ import QuestionCircle from "@/components/svgs/QuestionCircle";
 
 type DetailsProps = Pick<Session, "title" | "order" | "video" | "attached"> & { cover: string; topic: string };
 
-function Details({ title, order, topic, video, cover, attached }: DetailsProps) {
+function Details({ title, topic, video, cover, attached }: DetailsProps) {
     return (
         <section className="space-y-4 p-4 sm:p-8 bg-white dark:bg-gray-850 rounded-2xl">
             <Player
@@ -31,10 +31,9 @@ function Details({ title, order, topic, video, cover, attached }: DetailsProps) 
                 }}
             />
             <div className="space-y-4">
-                <div className="flex items-center gap-x-2 font-pelak-medium text-sm sm:text-base text-gray-600 dark:text-gray-400">سرفصل {topic}</div>
-                <div className="flex items-center gap-x-2">
-                    <span className="flex-center p-2.5 font-pelak-medium text-sm gray-light rounded-xl">جلسه {order}</span>
-                    <h1 className="font-pelak-semibold text-xl sm:text-2xl text-gray-800 dark:text-gray-200 leading-10">{title}</h1>
+                <span className="py-2 px-2.5 font-pelak-medium text-xs sm:text-sm gray-light rounded-lg leading-8 sm:leading-8">سرفصل {topic}</span>
+                <div className="font-pelak-semibold">
+                    <h1 className="sm:text-lg text-gray-800 dark:text-gray-200 leading-8 sm:leading-9">{title}</h1>
                 </div>
             </div>
             <Slice className="dark:bg-gray-800" />

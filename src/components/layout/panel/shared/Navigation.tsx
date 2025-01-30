@@ -24,7 +24,7 @@ async function Navigation() {
                     <span className="text-sm text-gray-800 dark:text-gray-200">{getFullDate()}</span>
                 </div>
                 <div className="sm:hidden">
-                    <Logo className="h-12" />
+                    <Logo />
                 </div>
                 <div className="flex gap-x-2">
                     <Link href="/" className="hidden lg:block">

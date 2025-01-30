@@ -17,7 +17,7 @@ function Blog({ title, slug, description, cover, category, views, likes, timeToR
             <div>
                 <Link href={`/blog/${slug}`}>
                     <div className="aspect-video">
-                        <Image src={cover} alt={title} width={480} height={270} wrapperClassName="rounded-xl" />
+                        <Image src={cover} alt={title} width={640} height={360} wrapperClassName="rounded-xl" />
                     </div>
                 </Link>
             </div>

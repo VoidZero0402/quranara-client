@@ -46,13 +46,13 @@ function MobileNavigation({ menus }: MobileNavigationProps) {
             </CollapsableMobileNavigationItem>
             <CollapsableMobileNavigationItem text="مقالات" Icon={Widgets} isActive={active === "blog"} onActive={onActive("blog")}>
                 <div className="w-full p-2">
-                    {useMemo(() => menus.categories.blog.map((blog) => <NavigationLink key={blog._id} href={`#`} title={blog.title} caption={blog.caption} />), [])}
+                    {useMemo(() => menus.categories.blog.map((blog) => <NavigationLink key={blog._id} href={`/blog?category=${blog._id}`} title={blog.title} caption={blog.caption} />), [])}
                     <NavigationLink href="/blog" title="همه مقالات" caption="مشاهده همه مقالات قرآن‌آرا" />
                 </div>
             </CollapsableMobileNavigationItem>
             <CollapsableMobileNavigationItem text="ویدیوهای آموزشی" Icon={PlayCircle} isActive={active === "tv"} onActive={onActive("tv")}>
                 <div className="w-full p-2">
-                    {useMemo(() => menus.categories.tv.map((tv) => <NavigationLink key={tv._id} href={`#`} title={tv.title} caption={tv.caption} />), [])}
+                    {useMemo(() => menus.categories.tv.map((tv) => <NavigationLink key={tv._id} href={`/tv?category=${tv._id}`} title={tv.title} caption={tv.caption} />), [])}
                     <NavigationLink href="/tv" title="همه ویدیوهای آموزشی" caption="مشاهده همه ویدیوهای آموزشی قرآن‌آرا" />
                 </div>
             </CollapsableMobileNavigationItem>

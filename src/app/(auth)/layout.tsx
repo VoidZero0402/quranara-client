@@ -16,8 +16,6 @@ async function AuthLayout({
 }>) {
     const res = await getMe((await cookies()).toString());
 
-    console.log("Login getMe Response =>", res);
-
     if (res.data.user) {
         redirect("/");
     }
