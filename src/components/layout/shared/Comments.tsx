@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, useRef, useCallback } from "react";
-import { useSuspenseInfiniteQuery } from "@tanstack/react-query";
+import { useSuspenseQuery, useSuspenseInfiniteQuery } from "@tanstack/react-query";
+
+import { getUser } from "@/libs/apis";
 
 import CommentForm from "@/components/form/template/CommentForm";
 
@@ -26,6 +28,8 @@ function Comments({ entity, queryKey, fetcher }: CommentsProps) {
         },
     });
 
+    const { data: user } = useSuspenseQuery({ queryKey: ["get-me-user"], queryFn: getUser });
+
     const [replyTo, setReplyTo] = useState<{ commentId: string; username: string } | null>(null);
 
     const commentFormRef = useRef<HTMLDivElement | null>(null);
@@ -36,7 +40,7 @@ function Comments({ entity, queryKey, fetcher }: CommentsProps) {
     }, []);
 
     return (
-        <section className="flex flex-col gap-y-8 p-4 sm:p-8 bg-white dark:bg-gray-850 rounded-2xl" id="comments">
+        <section className="flex flex-col gap-y-4 p-4 sm:p-8 bg-white dark:bg-gray-850 rounded-2xl" id="comments">
             <div className="flex items-center justify-between">
                 <span className="flex items-center gap-x-2 font-pelak-medium text-lg sm:text-xl text-gray-800 dark:text-gray-200">
                     <ChatRoundLine className="w-8" />
@@ -44,9 +48,13 @@ function Comments({ entity, queryKey, fetcher }: CommentsProps) {
                 </span>
             </div>
 
-            <div ref={commentFormRef}>
-                <CommentForm entity={entity} replyTo={replyTo} />
-            </div>
+            {user ? (
+                <div ref={commentFormRef} className="my-4">
+                    <CommentForm entity={entity} replyTo={replyTo} />
+                </div>
+            ) : (
+                <span className="font-pelak-medium text-sm text-blue-500 dark:text-amber-400 leading-8">برای ثبت نظر باید به حساب کاربری خود وارد شوید</span>
+            )}
 
             <div className="space-y-8">
                 {data.pages.flat().map((res, index) => {
@@ -72,7 +80,7 @@ function Comments({ entity, queryKey, fetcher }: CommentsProps) {
 function EmptyState() {
     return (
         <div className="flex-center col-span-4 py-10">
-            <span className="font-pelak-medium text-center text-lg text-gray-600 dark:text-gray-400 leading-8">دیدگاهی برای این مقاله ثبت نشده است</span>
+            <span className="font-pelak-medium text-center sm:text-lg text-gray-600 dark:text-gray-400 leading-8 sm:leading-8">دیدگاهی برای این مقاله ثبت نشده است</span>
         </div>
     );
 }

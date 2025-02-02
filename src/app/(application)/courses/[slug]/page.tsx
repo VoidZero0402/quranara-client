@@ -85,7 +85,7 @@ async function page({ params }: { params: Promise<{ slug: string }> }) {
                     <Main _id={course._id} topics={topics} slug={slug} content={course.introduction?.content} time={course.time} metadata={course.metadata} updatedAt={course.updatedAt} />
                     <aside className="flex flex-col gap-8 w-full xl:w-[30%]">
                         <Teacher teacher={course.teacher} />
-                        <Progress progress={course.progress} hours={course.time[0]} />
+                        <Progress progress={course.progress} time={course.time} />
                     </aside>
                 </div>
             </div>

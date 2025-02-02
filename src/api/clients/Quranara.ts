@@ -5,7 +5,7 @@ const Quranara = new Axios({
     headers: {
         "Content-Type": "application/json",
         "x-quranara-secret": process.env.NEXT_PUBLIC_QURANARA_SECRET as string,
-        origin: "https://quranara.com",
+        origin: process.env.NEXT_PUBLIC_FRONTEND_URL as string,
     },
     requestOptions: {
         credentials: "include",
@@ -13,3 +13,5 @@ const Quranara = new Axios({
 });
 
 export default Quranara;
+
+// image load

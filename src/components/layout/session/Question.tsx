@@ -43,7 +43,7 @@ async function Question({ _id, slug }: QuestionProps) {
                     <QuestionCircle className="w-8" />
                     پرسش و پاسخ
                 </span>
-                <p className="text-sm text-gray-600 dark:text-gray-400 leading-6">اگر سوال یا مشکلی در هر جلسه داشتین، می‌توانید در این بخش با مدرس در ارتباط باشید</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400 leading-7">اگر سوال یا مشکلی در هر جلسه داشتین، می‌توانید در این بخش با مدرس در ارتباط باشید</p>
             </div>
             <Slice className="dark:bg-gray-800" />
             <div className="flex items-center gap-x-2">

@@ -21,7 +21,7 @@ function Topic({ title, sessions, meta, hasAccess }: TopicProps) {
                         <span>{meta.count} جلسه ویدیویی</span>
                     </div>
                     <span>
-                        {meta.time.hours} ساعت و {meta.time.minutes} دقیقه
+                        {!!meta.time.hours && `${meta.time.hours} ساعت و `} {meta.time.minutes} دقیقه
                     </span>
                 </div>
                 <span className="font-pelak-medium text-sm leading-8">{title}</span>

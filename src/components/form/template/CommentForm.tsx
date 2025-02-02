@@ -55,7 +55,7 @@ function CommentForm({ entity, replyTo }: CommentFormProps) {
                         <NotificationUnreadLines />
                         ثبت دیدگاه جدید
                     </span>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 leading-6">دیدگاه شما پس از تایید توسط مدیریت به نمایش درخواهد آمد</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 leading-7">دیدگاه شما پس از تایید توسط مدیریت به نمایش درخواهد آمد</p>
                     {replyTo && <p className="md:hidden font-pelak-medium text-sm mt-2 text-amber-400">در پاسخ به {replyTo.username}</p>}
                 </div>
                 {replyTo && <span className="hidden md:block py-2.5 px-4 font-pelak-medium text-sm gray-light dark:teal-light rounded-xl">در پاسخ به {replyTo.username}</span>}

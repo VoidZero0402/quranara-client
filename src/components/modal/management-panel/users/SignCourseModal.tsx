@@ -4,11 +4,13 @@ import { useCallback, useState } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useDebounceCallback } from "usehooks-ts";
 
+import { courses as coursesCache } from "@/api/cache/tags";
 import { getCoursesSummary } from "@/api/queries/courses";
 import { signCourse } from "@/api/mutations/users";
 import { SignCourseStatusOptions } from "@/api/errors/users";
 
 import { statusHandler } from "@/libs/responses";
+import { revalidate } from "@/libs/revalidate";
 
 import Modal, { ModalBody, ModalFooter, ModalHeader, ModalInstanceProps } from "../../Modal";
 
@@ -44,6 +46,10 @@ function SignCourseModal({ isOpen, onClose, user }: SignCourseModalProps) {
         onSettled(data) {
             if (data) {
                 statusHandler(data, SignCourseStatusOptions);
+
+                if (data.success) {
+                    revalidate(coursesCache.default, coursesCache.getOne(course?.slug as string));
+                }
             }
         },
     });

@@ -32,7 +32,7 @@ function EmptyState() {
         <div className="flex-center flex-col gap-4">
             <div className="space-y-2 text-center">
                 <span className="font-pelak-medium text-xl text-gray-800 dark:text-gray-200 leading-8">هنوز هیچ پرسشی رو ایجاد نکردی</span>
-                <p className="text-gray-600 dark:text-gray-400 leading-7">در صورتی که راجب هر جلسه از دوره حتی جلسات رایگان سوالی داشتی میتونی مطرح کنی!</p>
+                <p className="text-gray-600 dark:text-gray-400 leading-8">در صورتی که راجب هر جلسه از دوره حتی جلسات رایگان سوالی داشتی میتونی مطرح کنی!</p>
             </div>
             <Link href="/panel/courses">
                 <Button size="lg">

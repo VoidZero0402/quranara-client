@@ -33,10 +33,10 @@ function Course({ title, description, slug, cover, status }: LimitedCourse) {
                     </span>
                     {StatusText[status]}
                 </div>
-                <h3 className="font-pelak-medium text-lg text-gray-800 dark:text-gray-200 line-clamp-1">
-                    <Link href={`/courses/${slug}#topics`}>{title}</Link>
+                <h3 className="font-pelak-semibold text-gray-800 dark:text-gray-200 line-clamp-1">
+                    <Link href={`/courses/${slug}`}>{title}</Link>
                 </h3>
-                <p className="h-18 text-sm text-gray-600 dark:text-gray-400 leading-6 line-clamp-3">{description}</p>
+                <p className="h-21 text-sm text-gray-600 dark:text-gray-400 leading-7 line-clamp-3">{description}</p>
             </div>
             <Slice className="mx-4" />
             <div className="p-4">
@@ -57,8 +57,8 @@ export function CourseLoading() {
             </div>
             <div className="flex flex-col gap-2 p-4">
                 <SkeletonFrame className="h-4 w-20"></SkeletonFrame>
-                <SkeletonFrame className="h-7 w-3/4"></SkeletonFrame>
-                <div className="space-y-1.5">
+                <SkeletonFrame className="h-6 w-3/4"></SkeletonFrame>
+                <div className="space-y-2">
                     <SkeletonFrame className="h-5"></SkeletonFrame>
                     <SkeletonFrame className="h-5"></SkeletonFrame>
                     <SkeletonFrame className="h-5 w-3/4"></SkeletonFrame>

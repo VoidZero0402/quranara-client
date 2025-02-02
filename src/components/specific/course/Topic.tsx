@@ -23,7 +23,9 @@ function Topic({ title, sessions, meta, hasAccess }: TopicProps) {
                         <PlayCircle className="w-5 shrink-0" />
                         <span>{meta.count} جلسه ویدیویی</span>
                     </div>
-                    <span>{meta.time.hours} ساعت و {meta.time.minutes} دقیقه</span>
+                    <span>
+                        {!!meta.time.hours && `${meta.time.hours} ساعت و `} {meta.time.minutes} دقیقه
+                    </span>
                 </div>
                 <span className="font-pelak-semibold text-sm sm:text-base leading-8 sm:leading-8">{title}</span>
             </div>

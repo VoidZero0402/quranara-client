@@ -19,7 +19,7 @@ function Image({ wrapperClassName, className, src = "/placeholder.webp", ...prop
                     <SkeletonFrame className="size-full" />
                 </Skeleton>
             )}
-            <NextImage className={cn("size-full object-cover opacity-0 transition-opacity duration-300", className, !isLoading && "opacity-100")} onLoad={() => setIsLoading(false)} src={src} {...props} />
+            <NextImage key={src as string} className={cn("size-full object-cover opacity-0 transition-opacity duration-300", className, !isLoading && "opacity-100")} onLoad={() => setIsLoading(false)} src={src} {...props} />
         </div>
     );
 }

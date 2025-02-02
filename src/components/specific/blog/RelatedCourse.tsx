@@ -12,7 +12,7 @@ function RelatedCourse({ title, slug, description, status, metadata }: RelatedCo
         <Link href={`/courses/${slug}`} className="group flex flex-col gap-y-4 relative p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
             <div className="space-y-2">
                 <span className="font-pelak-semibold text-sm text-gray-800 dark:text-gray-200 group-hover:text-amber-400 transition-all line-clamp-1">{title}</span>
-                <p className="text-xs text-gray-600 dark:text-gray-400 leading-6 line-clamp-2">{description}</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400 leading-7 line-clamp-2">{description}</p>
             </div>
             <div className="flex items-center justify-between">
                 <div className="flex gap-x-2">

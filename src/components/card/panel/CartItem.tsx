@@ -19,7 +19,7 @@ function CartItem({ _id, title, description, slug, price, cover, discount }: Car
                 <h3 className="font-pelak-medium text-lg text-gray-800 dark:text-gray-200 line-clamp-1">
                     <Link href={`/courses/${slug}`}>{title}</Link>
                 </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400 leading-6 line-clamp-2">{description}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400 leading-7 line-clamp-2">{description}</p>
             </div>
             <div className="flex items-center justify-between md:w-1/4 shrink-0">
                 <div>

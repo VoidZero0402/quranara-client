@@ -18,7 +18,7 @@ function Headings({ headings }: HeadingsProps) {
                     <LinkCircle className="w-8" />
                     سرفصل‌های مقاله
                 </span>
-                <p className="text-sm text-gray-600 dark:text-gray-400">می‌توانید با کلیک روی هر سرفصل به بخش مورد نظر در مقاله بروید</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400 leading-7">می‌توانید با کلیک روی هر سرفصل به بخش مورد نظر در مقاله بروید</p>
             </div>
             <ul className="space-y-2 font-pelak-medium text-gray-800 dark:text-gray-200">
                 {headings.map((heading) => (

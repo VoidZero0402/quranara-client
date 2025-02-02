@@ -1,8 +1,8 @@
 import Transform from "@/components/svgs/Transform";
 
-type ProgressProps = { progress: number; hours: number };
+type ProgressProps = { progress: number; time: [number, number] };
 
-function Progress({ progress, hours }: ProgressProps) {
+function Progress({ progress, time }: ProgressProps) {
     return (
         <div className="grow xl:grow-0 space-y-4 p-4 sm:p-6 bg-white dark:bg-gray-850 rounded-2xl">
             <div className="space-y-2">
@@ -14,7 +14,7 @@ function Progress({ progress, hours }: ProgressProps) {
             </div>
             <div className="space-y-2">
                 <div className="flex justify-between font-pelak-medium text-gray-600 dark:text-gray-400">
-                    <span>{hours} ساعت محتوا</span>
+                    <span>{time[0] + Number(time[1] >= 30)} ساعت محتوا</span>
                     <span>{progress} درصد</span>
                 </div>
                 <div className="relative h-4 gray-light rounded-full overflow-hidden">
