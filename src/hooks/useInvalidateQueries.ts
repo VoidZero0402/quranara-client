@@ -1,11 +1,13 @@
 import { useCallback } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 
-function useInvalidateQueries(queryKey: string[]) {
+function useInvalidateQueries(queryKeys: string[]) {
     const queryClient = useQueryClient();
 
     const invalidate = useCallback(() => {
-        queryClient.invalidateQueries({ queryKey, exact: true, refetchType: "all" });
+        for (const queryKey of queryKeys) {
+            queryClient.invalidateQueries({ queryKey: [queryKey], exact: false, refetchType: "all" });
+        }
     }, []);
 
     return invalidate;

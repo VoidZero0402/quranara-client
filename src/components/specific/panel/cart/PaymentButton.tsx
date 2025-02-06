@@ -30,11 +30,11 @@ function PaymentButton({ discount }: PaymentButtonProps) {
         watch,
     } = useForm<PaymentForm>({
         defaultValues: {
-            terms: false,
+            terms: true,
         },
     });
 
-    const handleOrder = useCallback(async () => {        
+    const handleOrder = useCallback(async () => {
         const res = await createOrder({ discountCode: discount?.code });
 
         statusHandler(res, CreateOrderStatusOptions);

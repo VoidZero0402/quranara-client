@@ -49,8 +49,14 @@ function Header({ _id, title, description, price, discount, status, cover, video
                                     </div>
                                 )}
                                 <div className="flex items-center gap-x-1 relative">
-                                    <span className="font-pelak-semibold text-3xl text-gray-700 dark:text-gray-300">{getDiscountedPrice(price, discount)}</span>
-                                    <span className="text-sm text-gray-600 dark:text-gray-400">تومان</span>
+                                    {discount === 100 ? (
+                                        <span className="font-pelak-semibold text-xl text-gray-800 dark:text-gray-200">رایگان!</span>
+                                    ) : (
+                                        <>
+                                            <span className="font-pelak-semibold text-3xl text-gray-700 dark:text-gray-300">{getDiscountedPrice(price, discount)}</span>
+                                            <span className="text-sm text-gray-600 dark:text-gray-400">تومان</span>
+                                        </>
+                                    )}
                                     {!!discount && <del className="absolute -top-6 text-gray-400 dark:text-gray-600">{price.toLocaleString()}</del>}
                                 </div>
                             </div>

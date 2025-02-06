@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 
 import { loginWithOtp } from "@/api/mutations/auth";
@@ -22,11 +22,13 @@ function LoginOtpForm() {
     const [otp, setOtp] = useState<string[]>(Array(5).fill(""));
     const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
 
+    const searchParams = useSearchParams();
+
     const { user } = useLoginStore();
 
     const router = useRouter();
 
-    const invalidate = useInvalidateQueries(["get-me-user"]);
+    const invalidate = useInvalidateQueries(["get-me-user", "check-course-access"]);
 
     const { mutate, isPending } = useMutation({
         mutationFn: loginWithOtp,
@@ -36,7 +38,7 @@ function LoginOtpForm() {
 
                 if (data.status === 200) {
                     invalidate();
-                    router.replace(data.data.role === ROLES.MANAGER ? "/management-panel" : "/panel");
+                    router.replace(searchParams.get("callback") || (data.data.role === ROLES.MANAGER ? "/management-panel" : "/panel"));
                 }
             }
         },

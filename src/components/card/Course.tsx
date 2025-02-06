@@ -51,10 +51,14 @@ function Course({ title, description, slug, cover, status, price, discount, meta
                                 <del className="text-gray-600 dark:text-gray-400">{price.toLocaleString()}</del>
                             </div>
                         )}
-                        <div className="flex items-center gap-x-1">
-                            <span className="font-pelak-semibold text-xl text-gray-700 dark:text-gray-300">{getDiscountedPrice(price, discount)}</span>
-                            <span className="f text-xs text-gray-600 dark:text-gray-400">تومان</span>
-                        </div>
+                        {discount === 100 ? (
+                            <span className="font-pelak-semibold text-xl text-teal-500">رایگان!</span>
+                        ) : (
+                            <div className="flex items-center gap-x-1">
+                                <span className="font-pelak-semibold text-xl text-gray-700 dark:text-gray-300">{getDiscountedPrice(price, discount)}</span>
+                                <span className="f text-xs text-gray-600 dark:text-gray-400">تومان</span>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

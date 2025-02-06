@@ -44,7 +44,7 @@ function ApplyDiscountForm({ onChange }: ApplyDiscountFormProps) {
 
     return (
         <form className="relative" onSubmit={handleSubmit(submitHandler)}>
-            <TextField control={control} name="code" label="کد تخفیف دارید؟" placeholder="کد تخفیف را وارد کنید" className="grow" />
+            <TextField control={control} name="code" label="در صورتی که کد تخفیف دارید وارد کنید" placeholder="کد تخفیف" className="grow" />
             <Button size="lg" className="absolute -left-2 top-7" disabled={isSubmitting}>
                 اعمال تخفیف
             </Button>

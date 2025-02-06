@@ -1,8 +1,13 @@
+"use client";
+
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 import SignupForm from "@/components/form/template/auth/signup/SignupForm";
 
 function SignupWrapper() {
+    const searchParams = useSearchParams();
+
     return (
         <div className="space-y-8 p-8 sm:p-12 max-w-[480px] w-full bg-white dark:bg-gray-850 rounded-2xl sm:rounded-3xl shadow-xl shadow-gray-100 dark:shadow-none">
             <div className="space-y-2 text-center">
@@ -12,7 +17,7 @@ function SignupWrapper() {
             <SignupForm />
             <p className="text-gray-600 text-sm xs:text-base dark:text-gray-400">
                 در صورتی که قبلا ثبت نام کرده‌اید{" "}
-                <Link href="/login" className="font-pelak-medium text-blue-500">
+                <Link href={searchParams.has("callback") ? `/login?callback=${searchParams.get("callback")}` : "/login"} className="font-pelak-medium text-blue-500">
                     وارد شوید
                 </Link>
             </p>

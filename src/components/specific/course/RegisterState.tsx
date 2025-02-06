@@ -15,7 +15,7 @@ type RegisterProps = { _id: string };
 function RegisterState({ _id }: RegisterProps) {
     const {
         data: { data },
-    } = useSuspenseQuery({ queryKey: [`check-course-access-${_id}`], queryFn: () => checkAccess({ courseId: _id }) });
+    } = useSuspenseQuery({ queryKey: ["check-course-access", { _id }], queryFn: () => checkAccess({ courseId: _id }) });
 
     return (
         <div className="w-full sm:w-1/2">

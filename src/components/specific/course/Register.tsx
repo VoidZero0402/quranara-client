@@ -33,7 +33,7 @@ function Register({ _id }: RegisterProps) {
 
                 if (data.status === 401) {
                     openUnauthorizedModal();
-                } else if (data.status === 200) {
+                } else if (data.status === 200 || data.status === 409) {
                     router.push("/panel/cart");
                 }
             }

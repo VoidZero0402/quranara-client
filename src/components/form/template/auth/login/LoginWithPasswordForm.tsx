@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
@@ -34,7 +34,9 @@ function LoginWithPasswordForm() {
 
     const router = useRouter();
 
-    const invalidate = useInvalidateQueries(["get-me-user"]);
+    const searchParams = useSearchParams();
+
+    const invalidate = useInvalidateQueries(["get-me-user", "check-course-access"]);
 
     const { mutate, isPending } = useMutation({
         mutationFn: loginWithPassword,
@@ -44,7 +46,7 @@ function LoginWithPasswordForm() {
 
                 if (data.status === 200) {
                     invalidate();
-                    router.replace(data.data.role === ROLES.MANAGER ? "/management-panel" : "/panel");
+                    router.replace(searchParams.get("callback") || (data.data.role === ROLES.MANAGER ? "/management-panel" : "/panel"));
                 }
             }
         },

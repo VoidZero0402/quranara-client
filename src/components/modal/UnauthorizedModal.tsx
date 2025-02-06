@@ -1,5 +1,7 @@
 "use client";
 
+import { usePathname } from "next/navigation";
+
 import Modal, { ModalBody, ModalFooter, ModalHeader, ModalInstanceProps } from "./Modal";
 
 import Button from "../ui/Button";
@@ -8,6 +10,8 @@ import UserBlockRounded from "../svgs/UserBlockRounded";
 import Link from "next/link";
 
 function UnauthorizedModal({ isOpen, onClose }: ModalInstanceProps) {
+    const pathname = usePathname();
+
     return (
         <Modal isOpen={isOpen} onClose={onClose} className="max-w-[640px] w-full">
             <ModalHeader>
@@ -23,12 +27,12 @@ function UnauthorizedModal({ isOpen, onClose }: ModalInstanceProps) {
                 </div>
             </ModalBody>
             <ModalFooter className="flex-col sm:flex-row gap-4">
-                <Link href="/login" className="block w-full">
+                <Link href={`/login?callback=${pathname}`} className="block w-full">
                     <Button size="lg" className="w-full">
                         ورود به حساب کاربری
                     </Button>
                 </Link>
-                <Link href="/signup" className="block w-full">
+                <Link href={`/signup?callback=${pathname}`} className="block w-full">
                     <Button size="lg" variant="neutral-base" className="w-full">
                         ثبت‌نام در قرآن‌آرا
                     </Button>
