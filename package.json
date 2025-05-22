@@ -5,7 +5,7 @@
     "scripts": {
         "dev": "next dev --turbopack -H 0.0.0.0",
         "build": "next build",
-        "start": "next start",
+        "start": "next start -p 3001",
         "lint": "next lint"
     },
     "dependencies": {
@@ -20,6 +20,7 @@
         "@tiptap/pm": "^2.11.0",
         "@tiptap/react": "^2.11.0",
         "@tiptap/starter-kit": "^2.11.0",
+        "axios": "^1.9.0",
         "class-variance-authority": "^0.7.0",
         "clsx": "^2.1.1",
         "cookies-next": "^5.0.2",
