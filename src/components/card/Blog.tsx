@@ -11,7 +11,7 @@ import Calendar from "../svgs/Calendar";
 
 import { LimitedBlog } from "@/types/blog.types";
 
-function Blog({ title, slug, description, cover, category, views, likes, timeToRead, updatedAt }: LimitedBlog) {
+function Blog({ title, slug, description, cover, category, views, likes, timeToRead, createdAt }: LimitedBlog) {
     return (
         <div className="bg-white dark:bg-gray-850 rounded-2xl overflow-hidden">
             <div>
@@ -44,7 +44,7 @@ function Blog({ title, slug, description, cover, category, views, likes, timeToR
                     </div>
                     <div className="flex items-center gap-x-1 py-1 px-2 font-pelak-medium text-sm gray-light rounded-lg">
                         <Calendar className="w-4" />
-                        <span className="h-4.5">{new Date(updatedAt).toLocaleDateString("fa")}</span>
+                        <span className="h-4.5">{new Date(createdAt).toLocaleDateString("fa")}</span>
                     </div>
                 </div>
             </div>
