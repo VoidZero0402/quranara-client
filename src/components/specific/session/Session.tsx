@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { type Session } from "@/types/session.types";
 
-type SessionProps = Omit<Session, "_id" | "seconds" | "video" | "attached" | "topic" | "course"> & { hasAccess: boolean };
+type SessionProps = Omit<Session, "_id" | "seconds" | "video" | "attached" | "topic" | "course" | "type"> & { hasAccess: boolean };
 
 function Session({ title, slug, time, isPublic, order, hasAccess }: SessionProps) {
     const isFree = hasAccess || isPublic;

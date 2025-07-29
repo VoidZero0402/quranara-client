@@ -70,7 +70,7 @@ async function Session({ params }: { params: Promise<{ slug: string }> }) {
             <div className="container">
                 <div className="flex flex-col xl:flex-row gap-8 mt-8 sm:mt-12">
                     <main className="space-y-8 w-full xl:w-[70%]">
-                        <Details title={session.title} order={session.order} topic={session.topic.title} video={session.video} cover={session.course.cover} attached={session.attached} />
+                        <Details title={session.title} order={session.order} topic={session.topic.title} video={session.video} cover={session.course.cover} attached={session.attached} type={session.type} />
                         {!!session.content && <SessionContent content={session.content} />}
                         <Question _id={session._id} slug={slug} />
                     </main>

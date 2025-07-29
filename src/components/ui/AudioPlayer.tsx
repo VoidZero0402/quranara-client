@@ -1,11 +1,9 @@
 import Plyr, { PlyrProps } from "plyr-react";
 import "plyr-react/plyr.css";
 
-import Skeleton, { SkeletonFrame } from "./Skeleton";
-
-function Player(props: PlyrProps) {
+function AudioPlayer(props: PlyrProps) {
     return (
-        <div className="aspect-video">
+        <div>
             <Plyr
                 {...props}
                 options={{
@@ -13,8 +11,8 @@ function Player(props: PlyrProps) {
                         controls: true,
                     },
                     i18n: {
-                        play: "پخش ویدیو",
-                        pause: "توقف ویدیو",
+                        play: "پخش صوت",
+                        pause: "توقف صوت",
                         mute: "بی صدا",
                         settings: "تنظیمات",
                         pip: "حالت شناور",
@@ -23,28 +21,17 @@ function Player(props: PlyrProps) {
                         speed: "سرعت",
                         normal: "پیش فرض",
                     },
-                    ratio: "16:9",
                 }}
             />
         </div>
     );
 }
 
-export function PlayerLoading() {
-    return (
-        <Skeleton>
-            <SkeletonFrame className="aspect-video rounded-xl"></SkeletonFrame>
-        </Skeleton>
-    );
-}
-
 export function AudioPlayerLoading() {
     return (
-        <Skeleton>
-            <SkeletonFrame className="h-[52px] rounded-xl"></SkeletonFrame>
-        </Skeleton>
+        <div className="h-[52px]"></div>
     );
 }
 
 
-export default Player;
+export default AudioPlayer;

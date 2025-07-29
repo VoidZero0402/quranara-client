@@ -4,8 +4,10 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 
 import { PlayerLoading } from "@/components/ui/Player";
+import { AudioPlayerLoading } from "@/components/ui/AudioPlayer";
 
 const Player = dynamic(() => import("@/components/ui/Player"), { ssr: false, loading: PlayerLoading });
+const AudioPlayer = dynamic(() => import("@/components/ui/AudioPlayer"), { ssr: false, loading: AudioPlayerLoading });
 
 import { Session } from "@/types/session.types";
 import Slice from "@/components/ui/Slice";
@@ -13,23 +15,37 @@ import Button from "@/components/ui/Button";
 import PlayCircle from "@/components/svgs/PlayCircle";
 import Copy from "@/components/svgs/Copy";
 import QuestionCircle from "@/components/svgs/QuestionCircle";
+import { TYPE } from "@/constants/sessions";
 
-type DetailsProps = Pick<Session, "title" | "order" | "video" | "attached"> & { cover: string; topic: string };
+type DetailsProps = Pick<Session, "title" | "order" | "video" | "attached" | "type"> & { cover: string; topic: string };
 
-function Details({ title, topic, video, cover, attached }: DetailsProps) {
+function Details({ title, topic, video, cover, attached, type }: DetailsProps) {
     return (
         <section className="space-y-4 p-4 sm:p-8 bg-white dark:bg-gray-850 rounded-2xl">
-            <Player
-                source={{
-                    type: "video",
-                    poster: cover,
-                    sources: [
-                        {
-                            src: video,
-                        },
-                    ],
-                }}
-            />
+            {type === TYPE.VIDEO ? (
+                <Player
+                    source={{
+                        type: "video",
+                        poster: cover,
+                        sources: [
+                            {
+                                src: video,
+                            },
+                        ],
+                    }}
+                />
+            ) : (
+                <AudioPlayer
+                    source={{
+                        type: "audio",
+                        sources: [
+                            {
+                                src: video,
+                            },
+                        ],
+                    }}
+                />
+            )}
             <div className="space-y-4">
                 <span className="py-2 px-2.5 font-pelak-medium text-xs sm:text-sm gray-light rounded-lg leading-8 sm:leading-8">سرفصل {topic}</span>
                 <div className="font-pelak-semibold">
