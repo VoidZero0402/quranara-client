@@ -49,7 +49,7 @@ function Header({ _id, title, description, price, discount, status, cover, video
                                     </div>
                                 )}
                                 <div className="flex items-center gap-x-1 relative">
-                                    {discount === 100 ? (
+                                    {discount === 100 || price === 0 ? (
                                         <span className="font-pelak-semibold text-xl text-gray-800 dark:text-gray-200">رایگان!</span>
                                     ) : (
                                         <>

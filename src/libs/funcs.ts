@@ -72,10 +72,12 @@ export function getFullDate(): string {
     return formatDate(new Date());
 }
 
-export function getTruthyValues(obj: Record<string, any>): Record<string, any> {
+export function getTruthyValues(obj: Record<string, any>, excludes: string[] = []): Record<string, any> {
     const record: Record<string, any> = {};
 
     for (const prop in obj) {
+        if (excludes.includes(prop)) continue;
+        
         if (typeof obj[prop] === "object") {
             record[prop] = getTruthyValues(obj[prop]);
             continue;

@@ -1,12 +1,14 @@
 import Link from "next/link";
 
 import PlaybackSpeed from "@/components/svgs/PlaybackSpeed";
+import Microphone from "@/components/svgs/Microphone";
 
 import { type Session } from "@/types/session.types";
+import { TYPE } from "@/constants/sessions";
 
-type SessionProps = Omit<Session, "_id" | "seconds" | "video" | "attached" | "topic" | "course" | "type"> & { hasAccess: boolean };
+type SessionProps = Omit<Session, "_id" | "seconds" | "video" | "attached" | "topic" | "course"> & { hasAccess: boolean };
 
-function Session({ title, slug, time, isPublic, order, hasAccess }: SessionProps) {
+function Session({ title, slug, time, isPublic, order, type, hasAccess }: SessionProps) {
     const isFree = hasAccess || isPublic;
 
     return (
@@ -18,7 +20,7 @@ function Session({ title, slug, time, isPublic, order, hasAccess }: SessionProps
                 </div>
                 <div className="flex items-center gap-1">
                     <span>{time}</span>
-                    <PlaybackSpeed className="w-5" />
+                    {type === TYPE.VIDEO ? <PlaybackSpeed className="w-5" /> : <Microphone className="w-5" />}
                 </div>
             </div>
             <span className="font-pelak-semibold text-sm sm:text-base leading-8 sm:leading-8">{title}</span>

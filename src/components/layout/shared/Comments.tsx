@@ -80,7 +80,7 @@ function Comments({ entity, queryKey, fetcher }: CommentsProps) {
 function EmptyState() {
     return (
         <div className="flex-center col-span-4 py-10">
-            <span className="font-pelak-medium text-center sm:text-lg text-gray-600 dark:text-gray-400 leading-8 sm:leading-8">دیدگاهی برای این مقاله ثبت نشده است</span>
+            <span className="font-pelak-medium text-center sm:text-lg text-gray-600 dark:text-gray-400 leading-8 sm:leading-8">هنوز دیدگاهی ثبت نشده است</span>
         </div>
     );
 }

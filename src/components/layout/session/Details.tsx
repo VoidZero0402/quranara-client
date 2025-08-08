@@ -19,7 +19,7 @@ import { TYPE } from "@/constants/sessions";
 
 type DetailsProps = Pick<Session, "title" | "order" | "video" | "attached" | "type"> & { cover: string; topic: string };
 
-function Details({ title, topic, video, cover, attached, type }: DetailsProps) {
+function Details({ title, topic, video: media, cover, attached, type }: DetailsProps) {
     return (
         <section className="space-y-4 p-4 sm:p-8 bg-white dark:bg-gray-850 rounded-2xl">
             {type === TYPE.VIDEO ? (
@@ -29,7 +29,7 @@ function Details({ title, topic, video, cover, attached, type }: DetailsProps) {
                         poster: cover,
                         sources: [
                             {
-                                src: video,
+                                src: media,
                             },
                         ],
                     }}
@@ -40,7 +40,7 @@ function Details({ title, topic, video, cover, attached, type }: DetailsProps) {
                         type: "audio",
                         sources: [
                             {
-                                src: video,
+                                src: media,
                             },
                         ],
                     }}
@@ -54,10 +54,10 @@ function Details({ title, topic, video, cover, attached, type }: DetailsProps) {
             </div>
             <Slice className="dark:bg-gray-800" />
             <div className="flex flex-col sm:flex-row sm:justify-between gap-4">
-                <a href={video} download data-disable-nprogress={true}>
+                <a href={media} download data-disable-nprogress={true}>
                     <Button size="lg" className="w-full sm:w-max">
                         <PlayCircle />
-                        دانلود ویدیو
+                        {type === TYPE.VIDEO ? "دانلود ویدیو" : "دانلود فایل صوتی"}
                     </Button>
                 </a>
                 <div className="flex flex-col sm:flex-row gap-4">

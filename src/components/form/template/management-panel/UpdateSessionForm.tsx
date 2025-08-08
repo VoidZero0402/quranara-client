@@ -50,7 +50,7 @@ function UpdateSessionForm({ session, slug, onClose }: UpdateSessionFormProps) {
     });
 
     const submitHandler = async (data: UpdateSessionSchemaType) => {
-        const body = getTruthyValues(data) as UpdateSessionSchemaType;
+        const body = getTruthyValues(data, ['content']) as UpdateSessionSchemaType;
 
         const res = await updateSession({ sessionId: session._id }, body);
 
