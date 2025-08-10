@@ -76,8 +76,13 @@ export function getTruthyValues(obj: Record<string, any>, excludes: string[] = [
     const record: Record<string, any> = {};
 
     for (const prop in obj) {
-        if (excludes.includes(prop)) continue;
-        
+        if (excludes.includes(prop)) {
+            if (obj[prop] !== "") {
+                record[prop] = obj[prop];
+            }
+            continue;
+        }
+
         if (typeof obj[prop] === "object") {
             record[prop] = getTruthyValues(obj[prop]);
             continue;

@@ -51,7 +51,7 @@ function Course({ title, description, slug, cover, status, price, discount, meta
                                 <del className="text-gray-600 dark:text-gray-400">{price.toLocaleString()}</del>
                             </div>
                         )}
-                        {discount === 100 ? (
+                        {discount === 100 || price === 0 ? (
                             <span className="font-pelak-semibold text-xl text-teal-500">رایگان!</span>
                         ) : (
                             <div className="flex items-center gap-x-1">
