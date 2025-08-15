@@ -29,6 +29,9 @@ export default {
                 "30": "120px",
                 "35": "140px",
             },
+            borderRadius: {
+                "rounded-2xl": "0px",
+            },
             keyframes: {
                 enter: {
                     "0%": { opacity: "0", transform: "translateX(-20px)" },

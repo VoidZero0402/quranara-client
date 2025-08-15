@@ -160,6 +160,10 @@
 }
 
 @layer utilities {
+    .rounded-2xl {
+        border-radius: 0.75rem;
+    }
+
     .flex-center {
         @apply flex items-center justify-center;
     }
