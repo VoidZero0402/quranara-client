@@ -22,9 +22,9 @@ async function Navigation({ menus }: NavigationProps) {
                 <NavigationDropDown>
                     <div className="flex flex-col gap-y-1">
                         {menus.courses.map((course) => (
-                            <NavigationLink key={course._id} href={`/courses/${course.slug}`} title={course.title} caption="مباحث و موضوعات مربوط به علوم قرآنی" />
+                            <NavigationLink key={course._id} href={`/courses/${course.slug}`} title={course.title} caption={course.description} />
                         ))}
-                        <NavigationLink href="/courses" title="همه دوره‌ای تخصصی" caption="مشاهده همه دوره‌های تخصصی قرآن‌آرا" />
+                        <NavigationLink href="/courses" title="همه دوره‌های تخصصی" caption="مشاهده همه دوره‌های تخصصی قرآن‌آرا" />
                     </div>
                 </NavigationDropDown>
             </NavigationItem>

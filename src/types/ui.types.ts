@@ -4,6 +4,7 @@ import { Order } from "./order.types";
 type MenuCourse = {
     _id: string;
     title: string;
+    description: string;
     slug: string;
 };
 
