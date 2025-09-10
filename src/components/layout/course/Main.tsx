@@ -1,11 +1,13 @@
 "use client";
 
-import { Suspense, useCallback, useState } from "react";
+import { useCallback, useState } from "react";
+import dynamic from "next/dynamic";
 
 import Navigation from "./Navigation";
 import Details from "./Details";
 import IntroContent from "./IntroContent";
-import Topics, { TopicsLoading } from "./Topics";
+import { TopicsLoading } from "./Topics";
+const Topics = dynamic(() => import("./Topics"), { ssr: false, loading: TopicsLoading });
 
 import Comments from "./CourseComments";
 
@@ -24,9 +26,7 @@ function Main({ _id, topics, slug, content, time, metadata, updatedAt }: MainPro
             <Navigation section={section} />
             <Details time={time} metadata={metadata} updatedAt={updatedAt} onInView={onInView} />
             {!!content && <IntroContent content={content} onInView={onInView} />}
-            <Suspense fallback={<TopicsLoading />}>
-                <Topics _id={_id} topics={topics} onInView={onInView} />
-            </Suspense>
+            <Topics _id={_id} topics={topics} onInView={onInView} />
             <Comments _id={_id} slug={slug} onInView={onInView} />
         </main>
     );

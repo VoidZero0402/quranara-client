@@ -12,7 +12,7 @@ import Progress from "@/components/layout/course/Progress";
 
 import JSONLD from "@/components/JSONLD";
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<void | Metadata> {
     const { slug } = await params;
