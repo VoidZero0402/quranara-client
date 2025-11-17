@@ -9,6 +9,16 @@ export const SignCourseStatusOptions: ResponseStatusHandlerOptions = {
     },
 };
 
+export const CreateUserStatusOptions: ResponseStatusHandlerOptions = {
+    statuses: {
+        "201": { status: "success", text: "عملیات موفق", caption: "کاربر جدید با موفقیت اضافه شد" },
+        "400-validation": { status: "error", text: "اطلاعات نامعتبر", caption: "لطفا اطلاعات معتبر را وارد کنید" },
+        "401": { status: "error", text: "عدم دسترسی", caption: "شما به این عملکرد دسترسی ندارید" },
+        "409": { status: "error", text: "تناقض در سرور", caption: "بنظر میرسه کاربر از قبل ثبت‌نام کرده" },
+    },
+};
+
+
 export const BanUserStatusOptions: ResponseStatusHandlerOptions = {
     statuses: {
         "201": { status: "success", text: "مسدودیت موفق", caption: "کاربر مدنظر با موفقیت مسدود شد" },
