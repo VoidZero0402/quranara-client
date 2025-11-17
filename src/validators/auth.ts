@@ -2,7 +2,7 @@ import { z } from "zod";
 import { PHASE } from "@/constants/auth";
 
 export const SignupSchema = z.object({
-    phone: z.string({ required_error: "لطفاً شماره موبایل خود را وارد کنید." }).regex(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/g, {
+    phone: z.string({ required_error: "لطفاً شماره موبایل خود را وارد کنید." }).regex(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,10}$/g, {
         message: "شماره موبایل وارد شده معتبر نیست.",
     }),
     fullname: z.string({ required_error: "لطفاً نام کامل خود را وارد کنید." }).min(3, { message: "نام کامل باید حداقل ۳ کاراکتر داشته باشد." }).max(255, { message: "نام کامل نمی‌تواند بیشتر از ۲۵۵ کاراکتر باشد." }),
