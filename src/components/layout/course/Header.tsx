@@ -1,11 +1,9 @@
-import { Suspense } from "react";
-
 import { StatusText } from "@/constants/courses";
 
 import { getDiscountedPrice } from "@/libs/funcs";
 
 import IntroPlayer from "@/components/specific/course/IntroPlayer";
-import RegisterState, { RegisterStateLoading } from "@/components/specific/course/RegisterState";
+import RegisterState from "@/components/specific/course/RegisterState";
 
 import Button from "@/components/ui/Button";
 import Breadcrumb, { BreadcrumbItem, BreadcrumbSlice } from "@/components/ui/Breadcrumb";
@@ -15,9 +13,9 @@ import Link from "next/link";
 
 import { Course } from "@/types/course.types";
 
-type HeaderProps = Pick<Course, "_id" | "title" | "description" | "price" | "discount" | "status" | "cover"> & { video?: string };
+type HeaderProps = Pick<Course, "_id" | "title" | "description" | "price" | "discount" | "status" | "cover" | "hasAccess"> & { video?: string };
 
-function Header({ _id, title, description, price, discount, status, cover, video }: HeaderProps) {
+function Header({ _id, title, description, price, discount, status, cover, video, hasAccess }: HeaderProps) {
     return (
         <header className="container">
             <div className="space-y-12">
@@ -63,9 +61,7 @@ function Header({ _id, title, description, price, discount, status, cover, video
                         </div>
 
                         <div className="flex flex-col sm:flex-row gap-4">
-                            <Suspense fallback={<RegisterStateLoading />}>
-                                <RegisterState _id={_id} />
-                            </Suspense>
+                            <RegisterState hasAccess={hasAccess} _id={_id} />
                             <Link href="#topics" className="w-full sm:w-1/2">
                                 <Button size="lg" className="w-full h-14" variant="neutral-base">
                                     <Layers />

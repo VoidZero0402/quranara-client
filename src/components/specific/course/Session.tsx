@@ -16,7 +16,7 @@ function Session({ title, slug, time, isPublic, order, type, hasAccess }: Sessio
             <div className="flex items-center justify-between text-xs sm:text-sm">
                 <div className="flex items-center gap-2">
                     <span>جلسه {order}</span>
-                    {hasAccess ? <span className="text-xs text-teal-500">( مشاهده جلسه )</span> : isPublic ? <span className="text-xs text-teal-500">( جلسه رایگان )</span> : <span className="text-xs text-amber-400">( عدم دسترسی )</span>}
+                    {hasAccess ? <span className="text-xs text-teal-500">مشاهده جلسه</span> : isPublic ? <span className="text-xs text-teal-500">جلسه رایگان</span> : <span className="text-xs text-amber-400">عدم دسترسی</span>}
                 </div>
                 <div className="flex items-center gap-1">
                     <span>{time}</span>

@@ -3,7 +3,6 @@ import { cookies } from "next/headers";
 import { notFound, redirect } from "next/navigation";
 
 import { getSession } from "@/api/queries/sessions";
-import { checkAccess } from "@/api/queries/courses";
 
 import { BASE_URL } from "@/constants/global";
 
@@ -58,9 +57,7 @@ async function Session({ params }: { params: Promise<{ slug: string }> }) {
         notFound();
     }
 
-    const { data } = await checkAccess({ courseId: session.course._id }, cookie);
-
-    if (!session.isPublic && !data.hasAccess) {
+    if (!session.isPublic && !session.hasAccess) {
         redirect("/");
     }
 
@@ -75,7 +72,7 @@ async function Session({ params }: { params: Promise<{ slug: string }> }) {
                         <Question _id={session._id} slug={slug} />
                     </main>
                     <aside className="flex flex-col md:flex-row xl:flex-col gap-8 w-full xl:w-[30%]">
-                        <Topics slug={session.course.slug} hasAccess={data.hasAccess} />
+                        <Topics slug={session.course.slug} hasAccess={session.hasAccess} />
                     </aside>
                 </div>
             </div>

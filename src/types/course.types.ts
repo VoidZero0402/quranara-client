@@ -33,6 +33,7 @@ export type Course = {
     metadata: CourseMetadata;
     createdAt: Date;
     updatedAt: Date;
+    hasAccess: boolean
 };
 
 export type LimitedCourse = Omit<Course, "introduction">;

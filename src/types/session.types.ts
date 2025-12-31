@@ -18,6 +18,7 @@ export type Session = {
     type: SessionType;
     topic: Topic;
     course: Pick<Course, "_id" | "title" | "slug" | "description" | "cover">;
+    hasAccess: boolean
 };
 
 export type PopulatedSession = Pick<Session, "_id" | "title" | "slug" | "time" | "isPublic" | "order" | "video" | "content" | "attached" | "type">;

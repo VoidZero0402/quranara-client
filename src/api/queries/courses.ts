@@ -46,15 +46,11 @@ export function searchInCourses(query: SearchCoursesQuerySchameType): Promise<Re
     });
 }
 
-export function getCourse(params: CoursesQueriesWithSlugParams): Promise<Response<{ course: Course }>> {
+export function getCourse(params: CoursesQueriesWithSlugParams, cookie?: string): Promise<Response<{ course: Course }>> {
     const url = `/courses/${params.slug}`;
 
     return Quranara.get(url, {
-        cache: "force-cache",
-        next: {
-            tags: [courses.getOne(params.slug)],
-            revalidate: 86400,
-        },
+        headers: { ...(cookie !== undefined && { cookie }) },
     });
 }
 
