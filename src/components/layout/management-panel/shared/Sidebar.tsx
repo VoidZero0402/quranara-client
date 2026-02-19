@@ -18,7 +18,6 @@ import HamburgerMenu from "@/components/svgs/HamburgerMenu";
 import Setting from "@/components/svgs/Setting";
 import UserGroup from "@/components/svgs/UserGroup";
 import Layers from "@/components/svgs/Layers";
-import Key from "@/components/svgs/Key";
 import Widgets from "@/components/svgs/Widgets";
 import PlayCircle from "@/components/svgs/PlayCircle";
 import Graph from "@/components/svgs/Graph";
@@ -32,7 +31,6 @@ import Discount from "@/components/svgs/Discount";
 import UserRounded from "@/components/svgs/UserRounded";
 
 import { User } from "@/types/user.types";
-
 
 type SidebarProps = { user: User };
 
@@ -96,10 +94,6 @@ function Sidebar({ user }: SidebarProps) {
                         <NavLink href="/management-panel/tvs" subs>
                             <PlayCircle />
                             ویدیوهای آموزشی
-                        </NavLink>
-                        <NavLink href="/management-panel/uploads">
-                            <Key className="w-8" />
-                            آپلود فایل
                         </NavLink>
                         <NavLink href="/management-panel/categories">
                             <Graph />
