@@ -35,6 +35,10 @@ const columns: Column[] = [
         text: "تعداد دوره",
     },
     {
+        key: "status",
+        text: "وضعیت",
+    },
+    {
         key: "actions",
         text: "گزینه‌های پیشرفته",
     },

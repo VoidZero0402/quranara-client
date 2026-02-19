@@ -1,6 +1,7 @@
 "use client";
 
 import { formatDate } from "@/libs/funcs";
+import { STATUS, StatusText } from "@/constants/orders";
 
 import BadgeLight from "@/components/ui/BadgeLight";
 import IconButton from "@/components/ui/IconButton";
@@ -9,6 +10,12 @@ import Eye from "@/components/svgs/Eye";
 
 import { Order } from "@/types/order.types";
 import Avatar from "@/components/ui/Avatar";
+
+const StatusVarients = {
+    [STATUS.FAILED]: "danger",
+    [STATUS.PAYING]: "secondary",
+    [STATUS.SUCCESSFUL]: "teal",
+};
 
 type OrderRowProps = { order: Order; onDetails: (order: Order) => void };
 
@@ -38,6 +45,9 @@ function OrderRow({ order, onDetails }: OrderRowProps) {
             <td>{formatDate(new Date(order.updatedAt ?? Date.now()))}</td>
             <td>
                 <BadgeLight>{order.items.length} دوره</BadgeLight>
+            </td>
+            <td>
+                <BadgeLight varient={StatusVarients[order.status] as any}>{StatusText[order.status]}</BadgeLight>
             </td>
             <td>
                 <div className="flex gap-x-2">
