@@ -1,6 +1,6 @@
 import Quranara from "../clients/Quranara";
 
-import { CreateCommentSchemaType, ReplyCommentSchemaType, ActionsQuerySchemaType } from "@/validators/comments";
+import { CreateCommentSchemaType, CreateCommentExtenalSchemaType, ReplyCommentSchemaType, ActionsQuerySchemaType } from "@/validators/comments";
 
 import { MessageResponse } from "@/types/response.types";
 
@@ -8,6 +8,12 @@ type CommentsQueriesWithIdParams = { commentId: string };
 
 export function createComment(data: CreateCommentSchemaType): MessageResponse {
     return Quranara.post("/comments", {
+        body: JSON.stringify(data),
+    });
+}
+
+export function createCommentExternal(data: CreateCommentExtenalSchemaType & { course: string }): MessageResponse {
+    return Quranara.post("/comments/external", {
         body: JSON.stringify(data),
     });
 }

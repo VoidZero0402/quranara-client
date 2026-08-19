@@ -14,6 +14,8 @@ import Eye from "@/components/svgs/Eye";
 import PenSquare from "@/components/svgs/PenSquare";
 import SquareTopUp from "@/components/svgs/SquareTopUp";
 import SquareBottomTop from "@/components/svgs/SquareBottomTop";
+import Layers from "@/components/svgs/Layers";
+import ChatRoundLine from "@/components/svgs/ChatRoundLine";
 
 const StatusVarients = {
     [STATUS.PRE_SELL]: "primary",
@@ -22,11 +24,10 @@ const StatusVarients = {
 };
 
 import { LimitedCourse, CourseIdentifiers } from "@/types/course.types";
-import Layers from "@/components/svgs/Layers";
 
-type CourseRowProps = { course: LimitedCourse; onShown: (course: CourseIdentifiers) => void; onUnshown: (course: CourseIdentifiers) => void };
+type CourseRowProps = { course: LimitedCourse; onComment: (course: CourseIdentifiers) => void; onShown: (course: CourseIdentifiers) => void; onUnshown: (course: CourseIdentifiers) => void };
 
-function CourseRow({ course, onShown, onUnshown }: CourseRowProps) {
+function CourseRow({ course, onComment, onShown, onUnshown }: CourseRowProps) {
     return (
         <tr>
             <td>
@@ -65,6 +66,9 @@ function CourseRow({ course, onShown, onUnshown }: CourseRowProps) {
                             <PenSquare />
                         </IconButton>
                     </Link>
+                    <IconButton label="نظر جدید" onClick={() => onComment({ _id: course._id, slug: course.slug })}>
+                        <ChatRoundLine />
+                    </IconButton>
                     {course.shown ? (
                         <IconButton label="عدم نمایش" onClick={() => onUnshown({ _id: course._id, slug: course.slug })}>
                             <SquareTopUp />

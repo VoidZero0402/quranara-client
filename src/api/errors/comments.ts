@@ -8,6 +8,15 @@ export const CreateCommentStatusOptions: ResponseStatusHandlerOptions = {
     },
 };
 
+export const CreateCommentExternalStatusOptions: ResponseStatusHandlerOptions = {
+    statuses: {
+        "201": { status: "success", text: "ثبت دیدگاه جدید", caption: "دیدگاه شما با موفقیت ثبت شد" },
+        "400-validation": { status: "error", text: "اطلاعات نامعتبر", caption: "لطفا اطلاعات معتبر را وارد کنید" },
+        "401": { status: "info", text: "لطفا ابتدا وارد شوید", caption: "ابتدا نیاز به ورود یا ثبت‌نام دارید" },
+    },
+};
+
+
 export const AnswerCommentStatusOptions: ResponseStatusHandlerOptions = {
     statuses: {
         "201": { status: "success", text: "ثبت پاسخ", caption: "پاسخ شما با موفقیت ثبت شد" },

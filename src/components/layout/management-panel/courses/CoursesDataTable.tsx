@@ -1,6 +1,8 @@
 "use client";
 
+import { useCallback } from "react";
 import { useRouter } from "next/navigation";
+import dynamic from "next/dynamic";
 import { useMutation } from "@tanstack/react-query";
 
 import { courses as coursesCache } from "@/api/cache/tags";
@@ -10,9 +12,13 @@ import { ShownCourseStatusOptions, UnshownCourseStatusOptions } from "@/api/erro
 import { revalidate } from "@/libs/revalidate";
 import { statusHandler } from "@/libs/responses";
 
+import useToggleState from "@/hooks/useToggleState";
+
 import { ENTITIES } from "@/constants/entities";
 
 import CourseRow from "@/components/specific/management-panel/datatable-rows/CourseRow";
+
+const CreateCommentModal = dynamic(() => import("@/components/modal/management-panel/courses/CreateCommentModal"), { ssr: false });
 
 import DataTable, { DataTableBody, Column } from "@/components/ui/datatable/DataTable";
 
@@ -82,15 +88,22 @@ function CoursesDataTable({ courses, pagination }: CoursesDataTableProps) {
         },
     });
 
+    const { isOpen: isOpenCommentModal, open: openCommentModal, close: closeCommentModal, props: commentModalProps } = useToggleState<{ course: CourseIdentifiers }>();
+
+    const onComment = useCallback((course: CourseIdentifiers) => {
+        openCommentModal({ course });
+    }, []);
+
     return (
         <section>
             <DataTable entity={ENTITIES.COURSES} columns={columns} pagination={pagination}>
                 <DataTableBody>
                     {courses.map((course) => (
-                        <CourseRow key={course._id} course={course} onShown={shown} onUnshown={unshown} />
+                        <CourseRow key={course._id} course={course} onComment={onComment} onShown={shown} onUnshown={unshown} />
                     ))}
                 </DataTableBody>
             </DataTable>
+            <CreateCommentModal isOpen={isOpenCommentModal} onClose={closeCommentModal} {...commentModalProps} />
         </section>
     );
 }

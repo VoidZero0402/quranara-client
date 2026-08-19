@@ -24,6 +24,13 @@ export const CreateCommentSchema = z
 
 export type CreateCommentSchemaType = z.infer<typeof CreateCommentSchema>;
 
+export const CreateCommentExtenalSchema = z.object({
+    username: z.string({ required_error: "username is required" }).min(1, { message: "username should be more than or equal 3 character" }).max(255, { message: "username should be less than or equal 255 character" }),
+    content: z.string({ required_error: "لطفاً محتوای نظر را وارد کنید." }).min(1, { message: "محتوای نظر نمی‌تواند خالی باشد." }).max(2048, { message: "محتوای نظر نمی‌تواند بیشتر از ۲۰۴۸ کاراکتر باشد." }),
+});
+
+export type CreateCommentExtenalSchemaType = z.infer<typeof CreateCommentExtenalSchema>;
+
 export const ReplyCommentSchema = z.object({
     content: z.string({ required_error: "لطفاً محتوای نظر را وارد کنید." }).min(1, { message: "محتوای نظر نمی‌تواند خالی باشد." }).max(2048, { message: "محتوای نظر نمی‌تواند بیشتر از ۲۰۴۸ کاراکتر باشد." }),
 });
